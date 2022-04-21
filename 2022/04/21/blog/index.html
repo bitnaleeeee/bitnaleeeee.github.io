@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="John Doe">
+
+
+
+
+
+
+
+<title>JavaScript 일부 문자열 숫자로 치환하기 | Hexo</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Roboto+Mono&display=swap');
+</style>
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/frame.js"></script>
+    
+
+
+
+
+
+
+
+
+
+
+  <meta name="generator" content="Hexo 6.1.0"></head>
+  <body>
+    <div class="mask-border">
+    </div>
+
+    <div class="wrapper">
+
+      <div class="header">
+  <div class="flex-container">
+    <div class="header-inner">
+      <div class="site-brand-container">
+        <a href="/">
+          
+            day.binna
+          
+        </a>
+      </div>
+      <div id="menu-btn" class="menu-btn" onclick="toggleMenu()">
+        Menu
+      </div>
+      <nav class="site-nav">
+        <ul class="menu-list">
+          
+            
+              <li class="menu-item">
+                <a href="/">Home</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/archives/">Archive</a>
+              </li> 
+                   
+          
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main">
+        <div class="flex-container">
+          <article id="post">
+
+  
+    <div class="post-head">
+    <div class="post-info">
+        <div class="tag-list">
+            
+        </div>
+        <div class="post-title">
+            
+            
+                JavaScript 일부 문자열 숫자로 치환하기
+            
+            
+        </div>
+        <span class="post-date">
+            Apr 21, 2022
+        </span>
+    </div>
+    <div class="post-img">
+        
+            <div class="h-line-primary"></div>
+              
+    </div>
+</div>
+    <div class="post-content">
+    <p>숫자의 일부 자릿수가 영단어로 표기 되어 있는 경우 해당 문자열을 숫자로 변환시키는 함수 solution을 작성하였다.</p>
+<p>숫자	   영단어<br>0	      zero<br>1	      one<br>2	      two<br>3	      three<br>4	      four<br>5	      five<br>6	      six<br>7	      seven<br>8	      eight<br>9	      nine</p>
+<p>예를 들어 함수 solution에 매개변수 “one4seveneight”이 주어지면, 결과 값은 1478 이 나와야 한다.</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">funciton <span class="title function_">solution</span>(<span class="params">s</span>)&#123;</span><br><span class="line"><span class="keyword">let</span> answer = s;</span><br><span class="line"><span class="keyword">let</span> numbers = [<span class="string">&#x27;zero&#x27;</span>, <span class="string">&#x27;one&#x27;</span>, <span class="string">&#x27;two&#x27;</span>, <span class="string">&#x27;three&#x27;</span>, <span class="string">&#x27;four&#x27;</span>, <span class="string">&#x27;five&#x27;</span>, <span class="string">&#x27;six&#x27;</span>, <span class="string">&#x27;seven&#x27;</span>, <span class="string">&#x27;eight&#x27;</span>, <span class="string">&#x27;nine&#x27;</span>];</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; numbers.<span class="property">length</span>; i++)&#123;</span><br><span class="line">  <span class="keyword">let</span> arr = answer.<span class="title function_">split</span>(numbers[i];</span><br><span class="line">  answer = arr.<span class="title function_">join</span>(i);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> <span class="title class_">Number</span>(answer);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">solution</span>(one4seveneight);</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>변수 answer 을 생성하여 매개변수 s를 담는다. 함수 안 for 문에 재정의되는 answer 값을 저장하여, i의 값이 변할때마다 재정의된 새로운 값을 대입하여 실행하게 한다.</li>
+<li>변수 numbers 을 생성하여 아래 split 함수를 이용해, 포문이 반복되며 변수 number의 인덱스 값과 answer값이 일치하면 추출하여 숫자로 치환한다.</li>
+<li>join 함수는 ‘’공백이 있을때 그 자리를 메꾸어 연결시켜주는 특성을 가지고 있다. i에 숫자 0~해당 문자열의 인덱스 값이 들어가면서 추출한 문자열 자리에 해당 숫자를 넣어준다.</li>
+</ol>
+
+</div> 
+
+<script>
+    window.onload = detectors();
+</script>
+    <div class="post-footer">
+    <div class="h-line-primary"></div>
+    <nav class="post-nav">
+        <div class="prev-item">
+           
+        </div>
+        <div class="next-item">
+            
+                <div class="icon arrow-right"></div>
+                <div class="post-link">
+                  <a href="/2022/04/13/happy/">Next</a>  
+                </div>  
+            
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="post-comment">
+
+     
+
+     
+    
+    
+
+</div>
+     
+  
+</article>
+        </div>
+      </div>
+      
+      <div class="footer">
+    <div class="flex-container">
+        <div class="footer-text">
+            
+            
+            
+                Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & <a target="_blank" rel="noopener" href="https://github.com/zoeingwingkei/frame/">Frame</a>
+                
+        </div>
+    </div>
+</div>
+
+    </div>
+
+  </body>
+</html>
