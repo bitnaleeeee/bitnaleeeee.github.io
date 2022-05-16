@@ -139,7 +139,74 @@
 <li>값이 3이 되었을때 (모든 동의체크박스가 체크 되어있을때), prop 함수를 이용하여 checked 값 true 를 주어 전체동의 박스를 체크한다.</li>
 <li>else, 3의 값이 아닌 모든 경우, 전체동의 박스 체크를 해제한다. prop checked &#x3D; false</li>
 </ol>
+<h2 id="구현"><a href="#구현" class="headerlink" title="구현"></a>구현</h2><script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+<script>
+    window.onload = function () {
+        let agreeBox = $('label').find('input[type=checkbox]');
+        let boxZero = agreeBox.eq(0);
 
+        boxZero.on('click', function () {
+
+            if (boxZero.prop('checked')) {
+                agreeBox.prop('checked', true);
+            }
+            else {
+                agreeBox.prop('checked', false);
+            }
+        })
+
+        agreeBox.on('click', function () {
+            let checkNum = 0;
+            for (let i = 1; i < $('label').length; i++) {
+                if (agreeBox.eq(i).prop('checked')) {
+                    checkNum++;
+                }
+            }
+            console.log(checkNum);
+            if (checkNum === 3) {
+                boxZero.prop('checked', true)
+            }
+            else { boxZero.prop('checked', false) }
+        })
+
+    };
+
+
+</script>
+<style>
+    * {
+        margin: 0;
+        padding: 0
+    }
+
+    #checkWrap {
+        width: 120px
+    }
+
+    #checkWrap label {
+        display: block;
+        margin: 5px;
+        font-size: 14px
+    }
+
+    #checkWrap label input[type="checkbox"] {
+        margin-right: 5px;
+        width: 20px;
+        height: 20px;
+        vertical-align: middle
+    }
+
+    #checkWrap label:first-child input[type="checkbox"] {
+        width: 30px;
+        height: 30px
+    }
+</style>
+<div id="checkWrap">
+    <label for="cheeck01"><input type="checkbox" id="cheeck01" />전체 동의</label>
+    <label for="cheeck02"><input type="checkbox" id="cheeck02" />동의</label>
+    <label for="cheeck03"><input type="checkbox" id="cheeck03" />동의</label>
+    <label for="cheeck04"><input type="checkbox" id="cheeck04" />동의</label>
+</div>
 </div> 
 
 <script>
