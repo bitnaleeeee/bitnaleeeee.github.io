@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="John Doe">
+
+
+
+
+
+
+
+<title>jQuery 전체동의 체크박스 만들기 | Hexo</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Roboto+Mono&display=swap');
+</style>
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/frame.js"></script>
+    
+
+
+
+
+
+
+
+
+
+
+  <meta name="generator" content="Hexo 6.1.0"></head>
+  <body>
+    <div class="mask-border">
+    </div>
+
+    <div class="wrapper">
+
+      <div class="header">
+  <div class="flex-container">
+    <div class="header-inner">
+      <div class="site-brand-container">
+        <a href="/">
+          
+            day.binna
+          
+        </a>
+      </div>
+      <div id="menu-btn" class="menu-btn" onclick="toggleMenu()">
+        Menu
+      </div>
+      <nav class="site-nav">
+        <ul class="menu-list">
+          
+            
+              <li class="menu-item">
+                <a href="/">Home</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/archives/">Archive</a>
+              </li> 
+                   
+          
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main">
+        <div class="flex-container">
+          <article id="post">
+
+  
+    <div class="post-head">
+    <div class="post-info">
+        <div class="tag-list">
+            
+        </div>
+        <div class="post-title">
+            
+            
+                jQuery 전체동의 체크박스 만들기
+            
+            
+        </div>
+        <span class="post-date">
+            Apr 13, 2022
+        </span>
+    </div>
+    <div class="post-img">
+        
+            <div class="h-line-primary"></div>
+              
+    </div>
+</div>
+    <div class="post-content">
+    <h3>jQuery전체동의 체크박스 만들기</h3>
+
+<p>jQuery를 이용하여 전체동의 체크박스를 아래와 같이 만들어 보았다.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">fucntion <span class="title function_">counterCharacter</span>(<span class="params">word, ch</span>)&#123;</span><br><span class="line">  <span class="keyword">let</span> count = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; word.<span class="property">length</span>; i++&gt;)&#123;</span><br><span class="line">    <span class="keyword">if</span> (word[i].<span class="title function_">toUppercase</span>() === ch.<span class="title function_">toUpperCase</span>()) &#123;</span><br><span class="line">      count ++;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"><span class="keyword">return</span> count;</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">countCharacter</span>(<span class="string">&#x27;AbaCedEA&#x27;</span>, <span class="string">&#x27;E&#x27;</span>));</span><br></pre></td></tr></table></figure>
+
+
+<ol>
+<li>함수 안에 let &#x3D; count 로 변수를 선언 : 전역변수로 for 문에서 반복할때마다 해당 값이 카운트 되어 저장되게 한다.</li>
+<li>word.length는 해당 단어의 글자 수로, 인덱스 값은 0부터 시작하므로 i &lt; word.length 는 해당 단어의 인덱스 값을 모두 추출한다.</li>
+<li>toUppercase 로 매개변수를 모두 대문자로 바꾼 후 둘을 비교하여 일치할 경우 count 값을 리턴한다.(대소문자 구분 없이 카운트)</li>
+<li>return count 는 for에서 반복하여 쌓인 최종 count 값을 저장하고 해당 함수를 종료시킨다. 이때 for 문 안에서 count 값을 작성 하게 되면, 실행값이 달라지므로<br>for 문 밖, 함수 안에서 return 을 작성하여야 한다.</li>
+</ol>
+<p>4-(1). return count 을 for 문 안에 써준 경우</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">countCharacter</span>(<span class="params">AbaCedEA, E</span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> count = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; word.<span class="property">length</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (word[i].<span class="title function_">toUpperCase</span>() === ch.<span class="title function_">toUpperCase</span>()) &#123;</span><br><span class="line">            count++; </span><br><span class="line">            <span class="keyword">return</span> count;      </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">countCharacter</span>(<span class="string">&#x27;AbaCedEA&#x27;</span>, <span class="string">&#x27;E&#x27;</span>));</span><br></pre></td></tr></table></figure>
+
+<p>4-(2). return count 을 for문 안에 써준 경우</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">countCharacter</span>(<span class="params">AbaCedEA, E</span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> count = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; word.<span class="property">length</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (word[i].<span class="title function_">toUpperCase</span>() === ch.<span class="title function_">toUpperCase</span>()) &#123;</span><br><span class="line">            count++;    </span><br><span class="line">        &#125;</span><br><span class="line">         <span class="keyword">return</span> count;   </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">countCharacter</span>(<span class="string">&#x27;AbaCedEA&#x27;</span>, <span class="string">&#x27;E&#x27;</span>));</span><br></pre></td></tr></table></figure>
+
+<p>결과는 모두 0이 나오게 되는데 if 의 조건이 충족한 경우, count++로 내려온 후 바로 return 으로 해당 함수를 종료시키기 때문이다. </p>
+
+</div> 
+
+<script>
+    window.onload = detectors();
+</script>
+    <div class="post-footer">
+    <div class="h-line-primary"></div>
+    <nav class="post-nav">
+        <div class="prev-item">
+           
+                <div class="icon arrow-left"></div>
+                <div class="post-link">
+                    <a href="/2022/04/13/happy/">Prev</a>
+                </div>
+            
+        </div>
+        <div class="next-item">
+            
+                <div class="icon arrow-right"></div>
+                <div class="post-link">
+                  <a href="/2022/04/13/hi/">Next</a>  
+                </div>  
+            
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="post-comment">
+
+     
+
+     
+    
+    
+
+</div>
+     
+  
+</article>
+        </div>
+      </div>
+      
+      <div class="footer">
+    <div class="flex-container">
+        <div class="footer-text">
+            
+            
+            
+                Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & <a target="_blank" rel="noopener" href="https://github.com/zoeingwingkei/frame/">Frame</a>
+                
+        </div>
+    </div>
+</div>
+
+    </div>
+
+  </body>
+</html>
