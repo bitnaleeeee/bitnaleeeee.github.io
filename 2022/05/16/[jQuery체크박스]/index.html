@@ -125,65 +125,55 @@
 <p>jQuery를 이용하여 전체동의 체크박스UI를 아래와 같이 만들어 보았다.</p>
 <h2 id="구현"><a href="#구현" class="headerlink" title="구현"></a>구현</h2><script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 <script>
-    window.onload = function () {
-        let agreeBox = $('label').find('input[type=checkbox]');
-        let boxZero = agreeBox.eq(0);
-
-        boxZero.on('click', function () {
-
-            if (boxZero.prop('checked')) {
-                agreeBox.prop('checked', true);
+$(document).ready(function() {
+    let agreeBox = $('label').find('input[type=checkbox]');
+    let boxZero = agreeBox.eq(0);
+    boxZero.on('click', function () {
+        if (boxZero.prop('checked')) {
+            agreeBox.prop('checked', true);
+        }
+        else {
+            agreeBox.prop('checked', false);
+        }
+    })
+    agreeBox.on('click', function () {
+        let checkNum = 0;
+        for (let i = 1; i < $('label').length; i++) {
+            if (agreeBox.eq(i).prop('checked')) {
+                checkNum++;
             }
-            else {
-                agreeBox.prop('checked', false);
-            }
-        })
-
-        agreeBox.on('click', function () {
-            let checkNum = 0;
-            for (let i = 1; i < $('label').length; i++) {
-                if (agreeBox.eq(i).prop('checked')) {
-                    checkNum++;
-                }
-            }
-            console.log(checkNum);
-            if (checkNum === 3) {
-                boxZero.prop('checked', true)
-            }
-            else { boxZero.prop('checked', false) }
-        })
-
-    };
-
-
+        }
+        console.log(checkNum);
+        if (checkNum === 3) {
+            boxZero.prop('checked', true)
+        }
+        else { boxZero.prop('checked', false) }
+    })
+});
 </script>
 <style>
-    * {
-        margin: 0;
-        padding: 0
-    }
-
-    #checkWrap {
-        width: 120px
-    }
-
-    #checkWrap label {
-        display: block;
-        margin: 5px;
-        font-size: 14px
-    }
-
-    #checkWrap label input[type="checkbox"] {
-        margin-right: 5px;
-        width: 20px;
-        height: 20px;
-        vertical-align: middle
-    }
-
-    #checkWrap label:first-child input[type="checkbox"] {
-        width: 30px;
-        height: 30px
-    }
+* {
+    margin: 0;
+    padding: 0
+}
+#checkWrap {
+    width: 120px
+}
+#checkWrap label {
+    display: block;
+    margin: 5px;
+    font-size: 14px
+}
+#checkWrap label input[type="checkbox"] {
+    margin-right: 5px;
+    width: 20px;
+    height: 20px;
+    vertical-align: middle
+}
+#checkWrap label:first-child input[type="checkbox"] {
+    width: 30px;
+    height: 30px
+}
 </style>
 <div id="checkWrap">
     <label for="cheeck01"><input type="checkbox" id="cheeck01" />전체 동의</label>
