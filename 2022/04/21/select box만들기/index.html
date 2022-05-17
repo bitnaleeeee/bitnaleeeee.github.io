@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="John Doe">
+
+
+
+
+
+
+
+<title>jQuery Select Box | Hexo</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Roboto+Mono&display=swap');
+</style>
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/frame.js"></script>
+    
+
+
+
+
+
+
+
+
+
+
+  <meta name="generator" content="Hexo 6.1.0"></head>
+  <body>
+    <div class="mask-border">
+    </div>
+
+    <div class="wrapper">
+
+      <div class="header">
+  <div class="flex-container">
+    <div class="header-inner">
+      <div class="site-brand-container">
+        <a href="/">
+          
+            day.binna
+          
+        </a>
+      </div>
+      <div id="menu-btn" class="menu-btn" onclick="toggleMenu()">
+        Menu
+      </div>
+      <nav class="site-nav">
+        <ul class="menu-list">
+          
+            
+              <li class="menu-item">
+                <a href="/">Home</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/archives/">Archive</a>
+              </li> 
+                   
+          
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main">
+        <div class="flex-container">
+          <article id="post">
+
+  
+    <div class="post-head">
+    <div class="post-info">
+        <div class="tag-list">
+            
+        </div>
+        <div class="post-title">
+            
+            
+                jQuery Select Box
+            
+            
+        </div>
+        <span class="post-date">
+            Apr 21, 2022
+        </span>
+    </div>
+    <div class="post-img">
+        
+            <div class="h-line-primary"></div>
+              
+    </div>
+</div>
+    <div class="post-content">
+    <h2 id="조건"><a href="#조건" class="headerlink" title="조건"></a>조건</h2><ol>
+<li><p>select class 클릭 시, list class 보이게 하라!</p>
+</li>
+<li><p>li 항목 클릭 시, 해당 텍스트가 select text에 담겨야 한다</p>
+</li>
+<li><p>li 항목 클릭 시, 형제 리스트 목록은 숨겨져야 한다. (클래스 제거)</p>
+</li>
+<li><p>list class가 보일때 select box를 제외한 부분을 클릭할 시, 모든 리스트는 숨겨져야 한다.</p>
+<p> 조건 4-1. select 를 제외한 다른 부분을 클릭할때 &#x3D; select 클릭이 아닐때<br> 조건 4-2. list가 다 보였을때</p>
+</li>
+</ol>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">  </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="variable language_">window</span>.<span class="property">onload</span> = <span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line"></span><br><span class="line">    $(<span class="string">&#x27;.select&#x27;</span>).<span class="title function_">on</span>(<span class="string">&#x27;click&#x27;</span>, <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">          $(<span class="string">&#x27;.list&#x27;</span>).<span class="title function_">toggleClass</span>(<span class="string">&#x27;on&#x27;</span>);</span><br><span class="line">          &#125;)</span><br><span class="line"></span><br><span class="line">    $(<span class="string">&#x27;li&#x27;</span>).<span class="title function_">on</span>(<span class="string">&#x27;click&#x27;</span>, <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">     </span><br><span class="line">      <span class="keyword">let</span> pickList = $(<span class="variable language_">this</span>).<span class="title function_">text</span>();</span><br><span class="line">      $(<span class="string">&#x27;.select&#x27;</span>).<span class="title function_">text</span>(pickList);</span><br><span class="line">      $(<span class="variable language_">this</span>).<span class="title function_">parent</span>().<span class="title function_">removeClass</span>(<span class="string">&#x27;on&#x27;</span>);</span><br><span class="line">    &#125;)</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">      $(<span class="variable language_">document</span>).<span class="title function_">on</span>(<span class="string">&#x27;click&#x27;</span>, <span class="keyword">function</span>(<span class="params">event</span>) &#123;</span><br><span class="line">         </span><br><span class="line">          </span><br><span class="line">        <span class="keyword">if</span>(!($(event.<span class="property">target</span>).<span class="title function_">is</span>($(<span class="string">&#x27;.select&#x27;</span>))) &amp;&amp; $(<span class="string">&#x27;.list&#x27;</span>).<span class="title function_">hasClass</span>(<span class="string">&#x27;on&#x27;</span>))&#123;</span><br><span class="line">          $(<span class="string">&#x27;.list&#x27;</span>).<span class="title function_">removeClass</span>(<span class="string">&#x27;on&#x27;</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    </span><br><span class="line">      &#125;)</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="해설"><a href="#해설" class="headerlink" title="해설"></a>해설</h2><ol>
+<li>toggleclass(‘클래스명’) 함수는 클릭할때 해당 클래스가 적용되고, 다시 한번 클릭하면 자동 해제된다.</li>
+<li>$(‘객체’).text()는 해당 객체의 텍스트를 저장한다. text 괄호 ()안에 값을 넣으면, 해당 객체안의<br>텍스트에 값이 들어간다.</li>
+<li>event.target();은 클릭한 객체를 나타낸다. event.target.is();는 ()안에 해당 값이 들어가있으면 true, 아닐시 false를 반환한다.</li>
+<li>hasClass(‘클래스명’)함수는 해당 클래스가 있을시 true, 없을시 false를 반환한다.</li>
+</ol>
+
+</div> 
+
+<script>
+    window.onload = detectors();
+</script>
+    <div class="post-footer">
+    <div class="h-line-primary"></div>
+    <nav class="post-nav">
+        <div class="prev-item">
+           
+                <div class="icon arrow-left"></div>
+                <div class="post-link">
+                    <a href="/2022/04/21/%ED%84%B0%EB%AF%B8%EB%84%90%EC%97%B4%EA%B8%B0/">Prev</a>
+                </div>
+            
+        </div>
+        <div class="next-item">
+            
+                <div class="icon arrow-right"></div>
+                <div class="post-link">
+                  <a href="/2022/04/13/happy/">Next</a>  
+                </div>  
+            
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="post-comment">
+
+     
+
+     
+    
+    
+
+</div>
+     
+  
+</article>
+        </div>
+      </div>
+      
+      <div class="footer">
+    <div class="flex-container">
+        <div class="footer-text">
+            
+            
+            
+                Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & <a target="_blank" rel="noopener" href="https://github.com/zoeingwingkei/frame/">Frame</a>
+                
+        </div>
+    </div>
+</div>
+
+    </div>
+
+  </body>
+</html>
