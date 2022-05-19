@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="John Doe">
+
+
+
+
+
+
+
+<title>Accodian Menu | Hexo</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Roboto+Mono&display=swap');
+</style>
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/frame.js"></script>
+    
+
+
+
+
+
+
+
+
+
+
+  <meta name="generator" content="Hexo 6.1.0"></head>
+  <body>
+    <div class="mask-border">
+    </div>
+
+    <div class="wrapper">
+
+      <div class="header">
+  <div class="flex-container">
+    <div class="header-inner">
+      <div class="site-brand-container">
+        <a href="/">
+          
+            day.binna
+          
+        </a>
+      </div>
+      <div id="menu-btn" class="menu-btn" onclick="toggleMenu()">
+        Menu
+      </div>
+      <nav class="site-nav">
+        <ul class="menu-list">
+          
+            
+              <li class="menu-item">
+                <a href="/">Home</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/archives/">Archive</a>
+              </li> 
+                   
+          
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main">
+        <div class="flex-container">
+          <article id="post">
+
+  
+    <div class="post-head">
+    <div class="post-info">
+        <div class="tag-list">
+            
+        </div>
+        <div class="post-title">
+            
+            
+                Accodian Menu
+            
+            
+        </div>
+        <span class="post-date">
+            May 19, 2022
+        </span>
+    </div>
+    <div class="post-img">
+        
+            <div class="h-line-primary"></div>
+              
+    </div>
+</div>
+    <div class="post-content">
+    <h2 id="UI-조건"><a href="#UI-조건" class="headerlink" title="UI 조건"></a>UI 조건</h2><ol>
+<li>que를 클릭했을 때, 바로 다음 요소(anw)가 보이게 하라</li>
+<li>que를 클릭했을때 on class 적용, 다른 que나 해당 que 클릭시 on class 해제</li>
+<li>하나의 anw만 화면에 나타나야 하고, 애닌메이트 슬라이드 를 적용</li>
+</ol>
+<h2 id="구현"><a href="#구현" class="headerlink" title="구현"></a>구현</h2><script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+<script>
+$(document).ready(function() {
+    $('.que').on('click', function(){
+$(this).next().stop().slideToggle(300);
+        $(this).toggleClass('on').siblings().removeClass('on');
+        $(this).next().siblings('.anw').slideUp(300);
+     })  
+});
+
+</script>
+<style>
+   *{
+  box-sizing: border-box; 
+}
+  
+.que:first-child{
+    border-top: 1px solid black;
+  }
+  
+.que{
+  position: relative;
+  padding: 17px 0;
+  cursor: pointer;
+  font-size: 14px;
+  border-bottom: 1px solid #dddddd;
+  
+}
+  
+.que::before{
+  display: inline-block;
+  content: 'Q';
+  font-size: 14px;
+  color: #006633;
+  margin-right: 5px;
+}
+
+.que.on>span{
+  font-weight: bold;
+  color: #006633; 
+}
+  
+.anw {
+  display: none;
+    overflow: hidden;
+  font-size: 14px;
+  background-color: #f4f4f2;
+  padding: 27px 0;
+}
+  
+.anw::before {
+  display: inline-block;
+  content: 'A';
+  font-size: 14px;
+  font-weight: bold;
+  color: #666;
+  margin-right: 5px;
+}
+</style>
+
+  <div id="Accordion_wrap">
+       <div class="que">
+        <span>This is first question.</span>
+       </div>
+       <div class="anw">
+        <span>This is first answer.</span>
+       </div>
+        <div class="que">
+        <span>This is second question.</span>
+       </div>
+       <div class="anw">
+        <span>This is second answer.</span>
+       </div>
+        <div class="que">
+        <span>This is third question.</span>
+       </div>
+       <div class="anw">
+        <span>This is third answer.</span>
+       </div>
+  </div>
+
+
+
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">            </span><br><span class="line"><span class="variable language_">window</span>.<span class="property">onload</span> = <span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line"></span><br><span class="line">    $(<span class="string">&#x27;.que&#x27;</span>).<span class="title function_">on</span>(<span class="string">&#x27;click&#x27;</span>, <span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line"></span><br><span class="line">        $(<span class="variable language_">this</span>).<span class="title function_">next</span>().<span class="title function_">stop</span>().<span class="title function_">slideToggle</span>(<span class="number">300</span>);</span><br><span class="line">        $(<span class="variable language_">this</span>).<span class="title function_">toggleClass</span>(<span class="string">&#x27;on&#x27;</span>).<span class="title function_">siblings</span>().<span class="title function_">removeClass</span>(<span class="string">&#x27;on&#x27;</span>);</span><br><span class="line">        $(<span class="variable language_">this</span>).<span class="title function_">next</span>().<span class="title function_">siblings</span>(<span class="string">&#x27;.anw&#x27;</span>).<span class="title function_">slideUp</span>(<span class="number">300</span>);</span><br><span class="line">     </span><br><span class="line">    &#125;)  </span><br><span class="line"></span><br><span class="line">  </span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="해설"><a href="#해설" class="headerlink" title="해설"></a>해설</h2><ol>
+<li>next()함수는 바로 다음 요소를 선택하여 준다.</li>
+<li>stop함수는 적용된 애니메이트를 멈춰주는 역할을 한다. 여기서 stop을 사용해야 하는 이유는, slideToggle함수가 적용된 후 해당 함수를 멈춘 후 다음 요소의 애니메이트를 적용시키기 위해서다.</li>
+<li>siblings() 에 요소 이름을 넣어주면, 해당 요소 이름을 가지고 있는 형제요소를 선택하여 준다. 만약 ()안에 anw를 넣어주지 않으면, 모든 anw, que형제요소를 slideup 한다.</li>
+</ol>
+
+</div> 
+
+<script>
+    window.onload = detectors();
+</script>
+    <div class="post-footer">
+    <div class="h-line-primary"></div>
+    <nav class="post-nav">
+        <div class="prev-item">
+           
+        </div>
+        <div class="next-item">
+            
+                <div class="icon arrow-right"></div>
+                <div class="post-link">
+                  <a href="/2022/05/16/%5BjQuery%EC%B2%B4%ED%81%AC%EB%B0%95%EC%8A%A4%5D/">Next</a>  
+                </div>  
+            
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="post-comment">
+
+     
+
+     
+    
+    
+
+</div>
+     
+  
+</article>
+        </div>
+      </div>
+      
+      <div class="footer">
+    <div class="flex-container">
+        <div class="footer-text">
+            
+            
+            
+                Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & <a target="_blank" rel="noopener" href="https://github.com/zoeingwingkei/frame/">Frame</a>
+                
+        </div>
+    </div>
+</div>
+
+    </div>
+
+  </body>
+</html>
