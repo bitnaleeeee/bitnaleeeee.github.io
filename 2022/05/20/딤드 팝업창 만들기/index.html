@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="John Doe">
+
+
+
+
+
+
+
+<title>jQuery 딤드 팝업창 만들기 | Hexo</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Roboto+Mono&display=swap');
+</style>
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/frame.js"></script>
+    
+
+
+
+
+
+
+
+
+
+
+  <meta name="generator" content="Hexo 6.1.0"></head>
+  <body>
+    <div class="mask-border">
+    </div>
+
+    <div class="wrapper">
+
+      <div class="header">
+  <div class="flex-container">
+    <div class="header-inner">
+      <div class="site-brand-container">
+        <a href="/">
+          
+            day.binna
+          
+        </a>
+      </div>
+      <div id="menu-btn" class="menu-btn" onclick="toggleMenu()">
+        Menu
+      </div>
+      <nav class="site-nav">
+        <ul class="menu-list">
+          
+            
+              <li class="menu-item">
+                <a href="/">Home</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/archives/">Archive</a>
+              </li> 
+                   
+          
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main">
+        <div class="flex-container">
+          <article id="post">
+
+  
+    <div class="post-head">
+    <div class="post-info">
+        <div class="tag-list">
+            
+        </div>
+        <div class="post-title">
+            
+            
+                jQuery 딤드 팝업창 만들기
+            
+            
+        </div>
+        <span class="post-date">
+            May 20, 2022
+        </span>
+    </div>
+    <div class="post-img">
+        
+            <div class="h-line-primary"></div>
+              
+    </div>
+</div>
+    <div class="post-content">
+    <h2 id="UI-조건"><a href="#UI-조건" class="headerlink" title="UI 조건"></a>UI 조건</h2><ol>
+<li>버튼 클릭시 팝업창이 나타난다.</li>
+<li>팝업창이 띄워져 있을때, 딤드 영역이나 닫기 버튼 클릭시 팝업창이 닫힌다.</li>
+</ol>
+<h2 id="구현"><a href="#구현" class="headerlink" title="구현"></a>구현</h2><h2 id=""><a href="#" class="headerlink" title=""></a></h2><script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+<script>
+$(document).ready(function () {
+   $('.btn').on('click', function () {
+$('.popWrap').show();
+})
+$('.close').on('click', function () {
+$('.popWrap').hide();
+})
+$('.dimmed').on('click', function () {
+$('.popWrap').hide();
+})
+});
+
+</script>
+<style>
+   * {
+      margin: 0;
+      padding: 0
+    }
+html {
+      height: 100%
+    }
+body {
+      position: relative;
+      height: 200%
+    }
+.btn {
+      cursor: pointer
+    }
+.popWrap {
+      display: none
+    }
+.popWrap .dimmed {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, .8)
+    }
+.popWrap .pop {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      margin: -150px 0 0 -200px;
+      box-sizing: border-box;
+      padding: 20px;
+      width: 400px;
+      height: 300px;
+      background-color: #fff
+    }
+.popWrap .pop .cnt {
+      position: relative
+    }
+.popWrap .pop .cnt h1 {
+      text-align: center;
+      font-size: 25px
+    }
+.popWrap .pop .cnt p {
+      margin-top: 10px
+    }
+.popWrap .pop .cnt button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      border: 0;
+      width: 40px;
+      height: 25px;
+      line-height: 25px;
+      cursor: pointer;
+      background-color: #ccc
+    }
+</style>
+<p class="btn">클릭</p>
+  <div class="popWrap">
+    <div class="dimmed">
+      <!-- dimmed -->
+    </div>
+    <div class="pop">
+      <div class="cnt">
+        <h1>팝업 제목</h1>
+        <p>팝업 내용</p>
+        <button class="close">닫기</button>
+      </div>
+    </div>
+  </div>
+
+
+
+<h2 id="-1"><a href="#-1" class="headerlink" title=""></a></h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">          </span><br><span class="line">$(<span class="variable language_">document</span>).<span class="title function_">ready</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    $(<span class="string">&#x27;.btn&#x27;</span>).<span class="title function_">on</span>(<span class="string">&#x27;click&#x27;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">      $(<span class="string">&#x27;.popWrap&#x27;</span>).<span class="title function_">show</span>();</span><br><span class="line"></span><br><span class="line">    &#125;)</span><br><span class="line">    $(<span class="string">&#x27;.close&#x27;</span>).<span class="title function_">on</span>(<span class="string">&#x27;click&#x27;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">      $(<span class="string">&#x27;.popWrap&#x27;</span>).<span class="title function_">hide</span>();</span><br><span class="line"></span><br><span class="line">    &#125;)</span><br><span class="line">    $(<span class="string">&#x27;.dimmed&#x27;</span>).<span class="title function_">on</span>(<span class="string">&#x27;click&#x27;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">      $(<span class="string">&#x27;.popWrap&#x27;</span>).<span class="title function_">hide</span>();</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="해설"><a href="#해설" class="headerlink" title="해설"></a>해설</h2><ol>
+<li>버튼 클릭시 팝업이 나타나는 함수 실행</li>
+<li>닫기 버튼 클릭 또는 딤드 영역 클릭시 팝업창 닫힘</li>
+</ol>
+
+</div> 
+
+<script>
+    window.onload = detectors();
+</script>
+    <div class="post-footer">
+    <div class="h-line-primary"></div>
+    <nav class="post-nav">
+        <div class="prev-item">
+           
+        </div>
+        <div class="next-item">
+            
+                <div class="icon arrow-right"></div>
+                <div class="post-link">
+                  <a href="/2022/05/19/%EC%95%84%EC%BD%94%EB%94%94%EC%96%B8%20%EB%A9%94%EB%89%B4%20%EB%A7%8C%EB%93%A4%EA%B8%B0/">Next</a>  
+                </div>  
+            
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="post-comment">
+
+     
+
+     
+    
+    
+
+</div>
+     
+  
+</article>
+        </div>
+      </div>
+      
+      <div class="footer">
+    <div class="flex-container">
+        <div class="footer-text">
+            
+            
+            
+                Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & <a target="_blank" rel="noopener" href="https://github.com/zoeingwingkei/frame/">Frame</a>
+                
+        </div>
+    </div>
+</div>
+
+    </div>
+
+  </body>
+</html>
