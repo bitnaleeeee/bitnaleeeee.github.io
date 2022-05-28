@@ -14,7 +14,7 @@
 
 
 
-<title>jQuery Select Box | Hexo</title>
+<title>Jquery:slide banner | Hexo</title>
 
 
 
@@ -105,12 +105,12 @@
         <div class="post-title">
             
             
-                jQuery Select Box
+                Jquery:slide banner
             
             
         </div>
         <span class="post-date">
-            Apr 21, 2022
+            May 25, 2022
         </span>
     </div>
     <div class="post-img">
@@ -120,152 +120,187 @@
     </div>
 </div>
     <div class="post-content">
-    <h2 id="조건"><a href="#조건" class="headerlink" title="조건"></a>조건</h2><ol>
-<li><p>select class 클릭 시, list class 보이게 하라!</p>
-</li>
-<li><p>li 항목 클릭 시, 해당 텍스트가 select text에 담겨야 한다</p>
-</li>
-<li><p>li 항목 클릭 시, 형제 리스트 목록은 숨겨져야 한다. (클래스 제거)</p>
-</li>
-<li><p>list class가 보일때 select box를 제외한 부분을 클릭할 시, 모든 리스트는 숨겨져야 한다.</p>
-<p> 조건 4-1. select 를 제외한 다른 부분을 클릭할때 &#x3D; select 클릭이 아닐때<br> 조건 4-2. list가 다 보였을때</p>
-</li>
-</ol>
-<h2 id="구현"><a href="#구현" class="headerlink" title="구현"></a>구현</h2><script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <h2 id="구현"><a href="#구현" class="headerlink" title="구현"></a>구현</h2><script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 <script>
   $(document).ready(function () {
-    $('.select').on('click', function () {
-      $('.list').toggleClass('on');
-    })
-
-    $('li').on('click', function () {
-
-      let pickList = $(this).text();
-      $('.select').text(pickList);
-      $(this).parent().removeClass('on');
-    })
-    $(document).on('click', function (event) {
+     load();
 
 
-      if (!($(event.target).is($('.select'))) && $('.list').hasClass('on')) {
-        $('.list').removeClass('on')
+$('.btn .prev').on('click', function () {
+
+        prev();
+
+      }) 
+      $('.btn .next').on('click', function () {
+        
+        next();
+
+      })
+
+      function load() {
+
+        $('.slide .slideCnt li').not(":first").css("left", "800px");
       }
-    })
+
+      let num = 0;
+
+      function prev() {
+        $('.slide .slideCnt li').eq(num).css("left", "800px");
+        num--;
+        if (num < 0) { num = 3; }
+
+        $('.slide .slideCnt li').eq(num).animate({ left: "0px" }, 500);
+
+      }
+
+      function next() {
+        $('.slide .slideCnt li').eq(num).css("left", "800px");
+        num++;
+        if (num > 3) { num = 0; }
+        $('.slide .slideCnt li').eq(num).animate({ left: "0px" }, 500);
+
+
+      }
+
+
   });
 </script>
 
-<style>
-* {
-margin: 0;
-padding: 0;
-}
-.select_wrap {
-margin: 20px;
-}
+ <style>
+    * {
+      margin: 0;
+      padding: 0
+    }
 
-.select_wrap .box {
-display: inline-block;
-position: relative;
-width: 150px;
-}
+    .slide {
+      position: relative;
+      margin: 0 auto;
+      width: 800px;
+      height: 500px;
+      text-align: center
+    }
 
-.select_wrap .box .select {
-position: relative;
-border: 2px solid #ccc;
-box-sizing: border-box;
-padding: 0 10px;
-height: 40px;
-line-height: 35px;
-font-size: 16px;
-background-color: #fff;
-cursor: pointer;
-}
+    .slide .slideCnt {
+      position: relative;
+      overflow: hidden;
+      width: 800px;
+      height: 500px;
 
-.select_wrap .box .select:after {
-content: '▼';
-position: absolute;
-top: 0;
-right: 10px;
-}
+    }
 
-.select_wrap.on .box .select:after {
-content: '▲';
-}
+    .slide .slideCnt li {
+      position: absolute;
+      ;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      list-style: none;
+      font-size: 50px;
+      line-height: 500px;
+      text-align: center;
+      color: #fff
+    }
 
-.select_wrap .box .list {
-display: none;
-overflow-y: auto;
-position: absolute;
-top: 45px;
-left: 0;
-z-index: 10;
-border: 2px solid #ccc;
-box-sizing: border-box;
-padding: 10px 0;
-width: 100%;
-max-height: 200px;
-background-color: #fff;
-}
-.select_wrap .box .list.on {
-display: block;
-}
-.select_wrap .box .list::-webkit-scrollbar {
-width: 10px;
-height: 0;
-}
+    .slide .slideCnt li:nth-child(1) {
+      background-color: #ccc
+    }
 
-.select_wrap .box .list::-webkit-scrollbar-button:start:decrement,
-.select_wrap .box .list::-webkit-scrollbar-button:end:increment {
-display: block;
-height: 0;
-}
+    .slide .slideCnt li:nth-child(2) {
+      background-color: #999
+    }
 
-.select_wrap .box .list::-webkit-scrollbar-track {
-background: rgba(0, 0, 0, .05);
--webkit-border-radius: 10px;
-border-radius: 10px;
-}
+    .slide .slideCnt li:nth-child(3) {
+      background-color: #666
+    }
 
-.select_wrap .box .list::-webkit-scrollbar-thumb {
-height: 50px;
-width: 50px;
-background: rgba(0, 0, 0, .2);
--webkit-border-radius: 5px;
-border-radius: 5px;
-}
+    .slide .slideCnt li:nth-child(4) {
+      background-color: #333
+    }
 
-.select_wrap .box .list>li {
-box-sizing: border-box;
-padding: 0 10px;
-width: 100%;
-height: 35px;
-line-height: 35px;
-cursor: pointer;
-}
+    .slide .btn a {
+      position: absolute;
+      top: 50%;
+      margin-top: -15px;
+      border-radius: 3px;
+      width: 50px;
+      height: 30px;
+      text-align: center;
+      text-decoration: none;
+      line-height: 30px;
+      background-color: #fff;
+      color: #333
+    }
 
-.select_wrap .box .list>li:hover {
-background-color: #ccc;
-}
-</style>
+    .slide .btn a.prev {
+      left: 10px
+    }
 
-<div class="select_wrap">
-  <div class="box">
-    <div class="select">먹고싶은 과일</div>
-    <ul class="list">
-      <li class="selected">선택</li>
-      <li>딸기</li>
-      <li>귤</li>
-      <li>오렌지</li>
-      <li>블루베리</li>
-      <li>파인애플</li>
-      <li>망고</li>
-      <li>스테비아토마토</li>
-      <li>메론</li>
-      <li>바나나</li>
-      <li>체리</li>
+    .slide .btn a.next {
+      right: 10px
+    }
+
+    .slide .indicator {
+      display: inline-block;
+      position: relative;
+      bottom: 30px
+    }
+
+    .slide .indicator a {
+      display: block;
+      float: left;
+      margin-left: 5px;
+      border-radius: 3px;
+      width: 20px;
+      height: 20px;
+      text-align: center;
+      text-decoration: none;
+      line-height: 20px;
+      background-color: #fff;
+      color: #333
+    }
+
+    .slide .indicator a:first-child {
+      margin-left: 0
+    }
+
+    .slide .indicator a.on {
+      background-color: #000;
+      color: #fff
+    }
+
+    .slide .autoBtn {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      border-radius: 3px;
+      width: 50px;
+      height: 30px;
+      text-align: center;
+      text-decoration: none;
+      line-height: 30px;
+      background-color: #fff;
+      color: #333
+    }
+  </style>
+</head>
+
+<body>
+  <div class="slide">
+    <ul class="slideCnt">
+      <li>slide1</li>
+      <li>slide2</li>
+      <li>slide3</li>
+      <li>slide4</li>
     </ul>
+    <div class="btn">
+      <a href="#" class="prev">prev</a>
+      <a href="#" class="next">next</a>
+    </div>
   </div>
-</div>
+</body>
+
+</html>
 
 
 
@@ -294,7 +329,7 @@ background-color: #ccc;
            
                 <div class="icon arrow-left"></div>
                 <div class="post-link">
-                    <a href="/2022/05/16/%5BjQuery%EC%B2%B4%ED%81%AC%EB%B0%95%EC%8A%A4%5D/">Prev</a>
+                    <a href="/2022/05/28/Fixednavigation/">Prev</a>
                 </div>
             
         </div>
@@ -302,7 +337,7 @@ background-color: #ccc;
             
                 <div class="icon arrow-right"></div>
                 <div class="post-link">
-                  <a href="/2022/04/13/%5BJavaScript%5D%EB%AC%B8%EC%9E%90%20%EA%B0%9C%EC%88%98%20%EC%84%B8%EA%B8%B0/">Next</a>  
+                  <a href="/2022/05/20/%EB%94%A4%EB%93%9C%20%ED%8C%9D%EC%97%85%EC%B0%BD%20%EB%A7%8C%EB%93%A4%EA%B8%B0/">Next</a>  
                 </div>  
             
         </div>
