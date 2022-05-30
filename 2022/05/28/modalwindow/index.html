@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="John Doe">
+
+
+
+
+
+
+
+<title>Jquery_modal window | Hexo</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Roboto+Mono&display=swap');
+</style>
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/frame.js"></script>
+    
+
+
+
+
+
+
+
+
+
+
+  <meta name="generator" content="Hexo 6.1.0"></head>
+  <body>
+    <div class="mask-border">
+    </div>
+
+    <div class="wrapper">
+
+      <div class="header">
+  <div class="flex-container">
+    <div class="header-inner">
+      <div class="site-brand-container">
+        <a href="/">
+          
+            day.binna
+          
+        </a>
+      </div>
+      <div id="menu-btn" class="menu-btn" onclick="toggleMenu()">
+        Menu
+      </div>
+      <nav class="site-nav">
+        <ul class="menu-list">
+          
+            
+              <li class="menu-item">
+                <a href="/">Home</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/archives/">Archive</a>
+              </li> 
+                   
+          
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main">
+        <div class="flex-container">
+          <article id="post">
+
+  
+    <div class="post-head">
+    <div class="post-info">
+        <div class="tag-list">
+            
+        </div>
+        <div class="post-title">
+            
+            
+                Jquery_modal window
+            
+            
+        </div>
+        <span class="post-date">
+            May 28, 2022
+        </span>
+    </div>
+    <div class="post-img">
+        
+            <div class="h-line-primary"></div>
+              
+    </div>
+</div>
+    <div class="post-content">
+    <h2 id="UI-조건"><a href="#UI-조건" class="headerlink" title="UI 조건"></a>UI 조건</h2><ol>
+<li>눌러보세용 클릭 시 모달 창이 나타난다.</li>
+<li>닫기를 누르면 모달창이 닫아진다.</li>
+</ol>
+<h2 id="구현"><a href="#구현" class="headerlink" title="구현"></a>구현</h2><script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+<script>
+$(document).ready(function() {
+      $('.modalLink').on('click', function () {
+        $('#modalLayer').fadeIn('slow');
+        $('.modalContent').css({ "margin-top": "-220px", "margin-left": "-100px" });
+        $(this).blur();
+        $('.modalContent > a').focus();
+        return false;
+      });
+      $('button').on('click', function () {
+        $('#modalLayer').fadeOut('slow')
+        $('.modalLink').focus();
+      })
+    });
+
+
+</script>
+<style>
+      a {
+      color: #000;
+    }
+    .mask {
+      width: 100%;
+      height: 100%;
+      position: fixed;
+      left: 0;
+      top: 0;
+      z-index: 10;
+      background: #000;
+      opacity: .5;
+      filter: alpha(opacity=50);
+    }
+    #modalLayer {
+      display: none;
+      position: relative;
+    }
+    #modalLayer .modalContent {
+      width: 440px;
+      height: 200px;
+      padding: 20px;
+      border: 1px solid #ccc;
+      position: fixed;
+      left: 50%;
+      top: 50%;
+      z-index: 11;
+      background: #fff;
+    }
+    #modalLayer .modalContent button {
+      position: absolute;
+      right: 0;
+      top: 0;
+      cursor: pointer;
+    }
+</style>
+  <script src="http://code.jquery.com/jquery-3.3.1.js"></script>
+<p>   <a href="#modalLayer" class="modalLink">눌러보세용</a><br>  <div id="modalLayer"><br>    <div class="modalContent"><br>      <a href="#">모달창 테스트</a><br>      <button type="button">닫기</button><br>    </div><br>  </div></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="variable language_">document</span>).<span class="title function_">ready</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line"></span><br><span class="line">  $(<span class="string">&#x27;.modalLink&#x27;</span>).<span class="title function_">on</span>(<span class="string">&#x27;click&#x27;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    $(<span class="string">&#x27;#modalLayer&#x27;</span>).<span class="title function_">fadeIn</span>(<span class="string">&#x27;slow&#x27;</span>);</span><br><span class="line">    $(<span class="string">&#x27;.modalContent&#x27;</span>).<span class="title function_">css</span>(&#123; <span class="string">&quot;margin-top&quot;</span>: <span class="string">&quot;-220px&quot;</span>, <span class="string">&quot;margin-left&quot;</span>: <span class="string">&quot;-100px&quot;</span> &#125;);</span><br><span class="line">    $(<span class="variable language_">this</span>).<span class="title function_">blur</span>();</span><br><span class="line">    $(<span class="string">&#x27;.modalContent &gt; a&#x27;</span>).<span class="title function_">focus</span>();</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  $(<span class="string">&#x27;button&#x27;</span>).<span class="title function_">on</span>(<span class="string">&#x27;click&#x27;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line"></span><br><span class="line">    $(<span class="string">&#x27;#modalLayer&#x27;</span>).<span class="title function_">fadeOut</span>(<span class="string">&#x27;slow&#x27;</span>)</span><br><span class="line">    $(<span class="string">&#x27;.modalLink&#x27;</span>).<span class="title function_">focus</span>();</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="해설"><a href="#해설" class="headerlink" title="해설"></a>해설</h2><ol>
+<li>retrun false는 함수를 중복 실행되지 않게 방지한다(이벤트 실행방지)</li>
+<li>focus 와 blur 를 사용하여 버블링 및 캡쳐링 모두 발생되지 않게 한다.</li>
+</ol>
+
+</div> 
+
+<script>
+    window.onload = detectors();
+</script>
+    <div class="post-footer">
+    <div class="h-line-primary"></div>
+    <nav class="post-nav">
+        <div class="prev-item">
+           
+                <div class="icon arrow-left"></div>
+                <div class="post-link">
+                    <a href="/2022/05/28/Fixednavigation/">Prev</a>
+                </div>
+            
+        </div>
+        <div class="next-item">
+            
+                <div class="icon arrow-right"></div>
+                <div class="post-link">
+                  <a href="/2022/05/25/slide%20banner/">Next</a>  
+                </div>  
+            
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="post-comment">
+
+     
+
+     
+    
+    
+
+</div>
+     
+  
+</article>
+        </div>
+      </div>
+      
+      <div class="footer">
+    <div class="flex-container">
+        <div class="footer-text">
+            
+            
+            
+                Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & <a target="_blank" rel="noopener" href="https://github.com/zoeingwingkei/frame/">Frame</a>
+                
+        </div>
+    </div>
+</div>
+
+    </div>
+
+  </body>
+</html>

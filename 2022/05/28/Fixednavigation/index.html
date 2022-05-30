@@ -136,17 +136,12 @@ $(document).ready(function() {
         else {
           fixedNav.removeClass('fixed');
         }
-
-
       })
-
-
-
     });
 
 </script>
 <style>
-  * {
+    * {
       margin: 0;
       padding: 0
     }
@@ -199,7 +194,7 @@ $(document).ready(function() {
       background-color: #000
     }
 </style>
-
+  <script src="http://code.jquery.com/jquery-3.3.1.js"></script>
   <div class="cnt">contents</div>
   <ul class="fixedNav">
     <li><a href="#">link01</a></li>
@@ -207,15 +202,10 @@ $(document).ready(function() {
     <li><a href="#">link03</a></li>
     <li><a href="#">link04</a></li>
   </ul>
-</div>
-
-
-
-
-
-
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">window</span>.<span class="property">onload</span> = <span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line"></span><br><span class="line">   $(<span class="variable language_">window</span>).<span class="title function_">scroll</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">        <span class="keyword">let</span> height = $(<span class="variable language_">document</span>).<span class="title function_">scrollTop</span>();</span><br><span class="line">        <span class="keyword">let</span> fixedNav = $(<span class="string">&#x27;.fixedNav&#x27;</span>);</span><br><span class="line">        <span class="keyword">if</span> (height &gt;= <span class="number">300</span>) &#123;</span><br><span class="line">          fixedNav.<span class="title function_">addClass</span>(<span class="string">&#x27;fixed&#x27;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">          fixedNav.<span class="title function_">removeClass</span>(<span class="string">&#x27;fixed&#x27;</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">      &#125;)</span><br></pre></td></tr></table></figure>
-<h2 id="해설"><a href="#해설" class="headerlink" title="해설"></a>해설</h2><ol>
+## 해설
+
+<ol>
 <li>1.cnt의 hieght가 300이므로, widow.scrolltop이 300이 넘어갈 경우,<br>해당 메뉴바를 상단(top&#x3D;0)에 고정시키는 class를 입혀준다.</li>
 <li>2.만약 window.scrolltop이 300 이하인 경우, 메뉴바를 상단에<br> 고정시키게 되면, cnt보다 위에 있게 되므로 removeclass를 하여 적용을 해제시켜준다.</li>
 </ol>
@@ -235,7 +225,7 @@ $(document).ready(function() {
             
                 <div class="icon arrow-right"></div>
                 <div class="post-link">
-                  <a href="/2022/05/25/slide%20banner/">Next</a>  
+                  <a href="/2022/05/28/modalwindow/">Next</a>  
                 </div>  
             
         </div>
