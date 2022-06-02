@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="John Doe">
+
+
+
+
+
+
+
+<title>jQuery 생년월일 Select Box | Hexo</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Roboto+Mono&display=swap');
+</style>
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/frame.js"></script>
+    
+
+
+
+
+
+
+
+
+
+
+  <meta name="generator" content="Hexo 6.1.0"></head>
+  <body>
+    <div class="mask-border">
+    </div>
+
+    <div class="wrapper">
+
+      <div class="header">
+  <div class="flex-container">
+    <div class="header-inner">
+      <div class="site-brand-container">
+        <a href="/">
+          
+            day.binna
+          
+        </a>
+      </div>
+      <div id="menu-btn" class="menu-btn" onclick="toggleMenu()">
+        Menu
+      </div>
+      <nav class="site-nav">
+        <ul class="menu-list">
+          
+            
+              <li class="menu-item">
+                <a href="/">Home</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/archives/">Archive</a>
+              </li> 
+                   
+          
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main">
+        <div class="flex-container">
+          <article id="post">
+
+  
+    <div class="post-head">
+    <div class="post-info">
+        <div class="tag-list">
+            
+        </div>
+        <div class="post-title">
+            
+            
+                jQuery 생년월일 Select Box
+            
+            
+        </div>
+        <span class="post-date">
+            Jun 2, 2022
+        </span>
+    </div>
+    <div class="post-img">
+        
+            <div class="h-line-primary"></div>
+              
+    </div>
+</div>
+    <div class="post-content">
+    <h2 id="조건"><a href="#조건" class="headerlink" title="조건"></a>조건</h2><ol>
+<li>1970년도부터 오늘년도까지 년도selectbox 생성</li>
+<li>월, 일 selextbox 생성</li>
+</ol>
+<h2 id="구현"><a href="#구현" class="headerlink" title="구현"></a>구현</h2><script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+<script>
+    $(document).ready(function () {
+      let today = new Date();
+      let year = today.getFullYear();
+      for (i = 1970; i <= year; i++) {
+        $('#year').append('<option value="' + i + '">' + i + '</option>');
+      }for (i = 1; i <= 12; i++) {
+        $('#month').append('<option value="' + i + '">' + i + '</option>');
+      }for (i = 1; i <= 31; i++) {
+        $('#day').append('<option value="' + i + '">' + i + '</option>');
+      }
+
+});
+</script>
+
+<style>
+
+</style>
+
+<p>  <select name="yy" id="year"></select>년<br>  <select name="mm" id="month"></select>월<br>  <select name="dd" id="day"></select>일</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="variable language_">document</span>).<span class="title function_">ready</span>(<span class="keyword">function</span>(<span class="params"></span>)</span><br><span class="line"></span><br><span class="line">   $(<span class="variable language_">document</span>).<span class="title function_">ready</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">      <span class="keyword">let</span> today = <span class="keyword">new</span> <span class="title class_">Date</span>();</span><br><span class="line">      <span class="keyword">let</span> year = today.<span class="title function_">getFullYear</span>();</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(year);</span><br><span class="line"></span><br><span class="line">      <span class="comment">//년도 selectbox 만들기</span></span><br><span class="line">      <span class="keyword">for</span> (i = <span class="number">1970</span>; i &lt;= year; i++) &#123;</span><br><span class="line">        $(<span class="string">&#x27;#year&#x27;</span>).<span class="title function_">append</span>(<span class="string">&#x27;&lt;option value=&quot;&#x27;</span> + i + <span class="string">&#x27;&quot;&gt;&#x27;</span> + i + <span class="string">&#x27;&lt;/option&gt;&#x27;</span>);</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="comment">//월 selectbox 만들기</span></span><br><span class="line">      <span class="keyword">for</span> (i = <span class="number">1</span>; i &lt;= <span class="number">12</span>; i++) &#123;</span><br><span class="line">        $(<span class="string">&#x27;#month&#x27;</span>).<span class="title function_">append</span>(<span class="string">&#x27;&lt;option value=&quot;&#x27;</span> + i + <span class="string">&#x27;&quot;&gt;&#x27;</span> + i + <span class="string">&#x27;&lt;/option&gt;&#x27;</span>);</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">      <span class="comment">//일 selectbox 만들기</span></span><br><span class="line">      <span class="keyword">for</span> (i = <span class="number">1</span>; i &lt;= <span class="number">31</span>; i++) &#123;</span><br><span class="line">        $(<span class="string">&#x27;#day&#x27;</span>).<span class="title function_">append</span>(<span class="string">&#x27;&lt;option value=&quot;&#x27;</span> + i + <span class="string">&#x27;&quot;&gt;&#x27;</span> + i + <span class="string">&#x27;&lt;/option&gt;&#x27;</span>);</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="해설"><a href="#해설" class="headerlink" title="해설"></a>해설</h2><ol>
+<li>new Date 내장 함수를 사용하여 현재 날짜를 구한다.</li>
+<li>new Date 를 담은 변수에 getfullyear을 사용하여, 현재 년도를 가져온다.</li>
+<li>1970년도부터 현재년도까지 선택할 수 있는 년도 selctbox를 만든다.</li>
+<li>i는 변수이므로, 앞 뒤로 + i + 를 사용하여 묶어준다.</li>
+<li>같은 방식으로 월, 일 selectbox를 만든다.</li>
+</ol>
+
+</div> 
+
+<script>
+    window.onload = detectors();
+</script>
+    <div class="post-footer">
+    <div class="h-line-primary"></div>
+    <nav class="post-nav">
+        <div class="prev-item">
+           
+        </div>
+        <div class="next-item">
+            
+                <div class="icon arrow-right"></div>
+                <div class="post-link">
+                  <a href="/2022/05/28/Fixednavigation/">Next</a>  
+                </div>  
+            
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="post-comment">
+
+     
+
+     
+    
+    
+
+</div>
+     
+  
+</article>
+        </div>
+      </div>
+      
+      <div class="footer">
+    <div class="flex-container">
+        <div class="footer-text">
+            
+            
+            
+                Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & <a target="_blank" rel="noopener" href="https://github.com/zoeingwingkei/frame/">Frame</a>
+                
+        </div>
+    </div>
+</div>
+
+    </div>
+
+  </body>
+</html>
