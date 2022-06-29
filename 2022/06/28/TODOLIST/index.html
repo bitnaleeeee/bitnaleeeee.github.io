@@ -208,7 +208,7 @@ $(document).ready(function () {
   $('#button').click(function () {
     let toAdd = $('input[name=ListItem]').val(); $('.sample ol').append('<li>' + toAdd + '</li>');
   }); 
-  $('input[name=ListItem]').keypress(function (e) 
+  $('input[name=ListItem]').keypress(function (e) {
     if (e.keyCode == 13) {
       $('#button').click();
         }
