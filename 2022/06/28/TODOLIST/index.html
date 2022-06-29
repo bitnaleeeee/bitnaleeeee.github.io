@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="John Doe">
+
+
+
+
+
+
+
+<title>TO DO LIST | Hexo</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Roboto+Mono&display=swap');
+</style>
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/frame.js"></script>
+    
+
+
+
+
+
+
+
+
+
+
+  <meta name="generator" content="Hexo 6.1.0"></head>
+  <body>
+    <div class="mask-border">
+    </div>
+
+    <div class="wrapper">
+
+      <div class="header">
+  <div class="flex-container">
+    <div class="header-inner">
+      <div class="site-brand-container">
+        <a href="/">
+          
+            day.binna
+          
+        </a>
+      </div>
+      <div id="menu-btn" class="menu-btn" onclick="toggleMenu()">
+        Menu
+      </div>
+      <nav class="site-nav">
+        <ul class="menu-list">
+          
+            
+              <li class="menu-item">
+                <a href="/">Home</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/archives/">Archive</a>
+              </li> 
+                   
+          
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main">
+        <div class="flex-container">
+          <article id="post">
+
+  
+    <div class="post-head">
+    <div class="post-info">
+        <div class="tag-list">
+            
+        </div>
+        <div class="post-title">
+            
+            
+                TO DO LIST
+            
+            
+        </div>
+        <span class="post-date">
+            Jun 28, 2022
+        </span>
+    </div>
+    <div class="post-img">
+        
+            <div class="h-line-primary"></div>
+              
+    </div>
+</div>
+    <div class="post-content">
+    <h3>TO DO LIST 만들기</h3>
+
+<h1 id="조건"><a href="#조건" class="headerlink" title="조건"></a>조건</h1><ol>
+<li>버튼을 클릭했을 때 작성한 내용이 할일로 추가 된다.</li>
+<li>엔터키를 눌렀을 때 버튼을 클릭한 것과 동일한 효과 적용</li>
+<li>작성된 리스트를 더블 클릭하면 밑줄이 그어진 후 서서히 삭제된다.</li>
+<li>입력창에 마우스 클릭 시 공란이 되게 한다.</li>
+</ol>
+<h2 id="구현"><a href="#구현" class="headerlink" title="구현"></a>구현</h2><style>
+.sample .container {
+  padding: 20px;
+  width: 300px;
+  margin: 0 auto;
+  margin-top: 40px;
+  background: white;
+  border-radius: 5px;
+}
+
+.sample form {
+  display: inline-block;
+}
+
+.sample input {
+  padding: 4px 15px 4px 5px;
+}
+
+.sample #button {
+  display: inline-block;
+  background-color: #fc999b;
+  color: #ffffff;
+  border-radius: 5px;
+  text-align: center;
+  margin-top: 2px;
+  padding: 5px 15px;
+}
+
+.sample #button:hover {
+  cursor: pointer;
+  opacity: .8;
+}
+
+.sample ol {
+  padding-left: 20px;
+}
+
+.sample ol li {
+  padding: 5px;
+  color: #000;
+}
+
+.sample ol li:nth-child(even) {
+  background: #dfdfdf;
+}
+
+.sample .strike {
+  text-decoration: line-through;
+}
+
+.sample li:hover {
+  cursor: pointer;
+}
+</style>
+<div class="sample">
+  <div class="container">
+  <h2>Simple To Do List</h2>
+  <p><em>Click and drag to reorder, double click to cross an item off.</em></p>
+
+  <!-- <form name="toDoList"> -->
+
+  <input type="text" name="ListItem" />
+
+  <!-- </form> -->
+
+  <div id="button">Add</div>
+  <br />
+  <ol></ol>
+  </div>
+<div>
+
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+<link href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+$(document).ready(function () {
+  $('#button').click(function () {
+    let toAdd = $('input[name=ListItem]').val(); $('.sample ol').append('<li>' + toAdd + '</li>');
+  }); 
+  $('input[name=ListItem]').keypress(function (e) {
+    if (e.keyCode == 13) {
+      $('#button').click();
+        }
+  }); 
+  $(document).on('dblclick', 'li', function () {
+    $(this).toggleClass('strike').fadeOut('slow');
+    return false;
+  }); $('input').focus(function () { $(this).val(''); }); 
+  $('.sample ol').sortable();
+});
+</script>
+
+
+
+
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="variable language_">document</span>).<span class="title function_">ready</span>(<span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line"></span><br><span class="line"> $(<span class="string">&#x27;#button&#x27;</span>).<span class="title function_">click</span>(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="keyword">let</span> toadd = $(<span class="string">&#x27;input[name=ListItem]&#x27;</span>).<span class="title function_">val</span>();</span><br><span class="line">        $(<span class="string">&#x27;ol&#x27;</span>).<span class="title function_">append</span>(<span class="string">&#x27;&lt;li&gt;&#x27;</span> + toAdd + <span class="string">&#x27;&lt;/li&gt;&#x27;</span>);</span><br><span class="line">      &#125;);</span><br><span class="line">$(<span class="string">&#x27;input[name=ListItem]&#x27;</span>).<span class="title function_">keyup</span>(<span class="keyword">function</span> (<span class="params">e</span>) &#123;</span><br><span class="line"><span class="keyword">if</span> (e.<span class="property">keyCode</span> == <span class="number">13</span>) &#123;</span><br><span class="line">$(<span class="string">&#x27;#button&#x27;</span>).<span class="title function_">click</span>();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">  $(<span class="variable language_">document</span>).<span class="title function_">on</span>(<span class="string">&#x27;dblclick&#x27;</span>, <span class="string">&#x27;li&#x27;</span>, <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">    $(<span class="variable language_">this</span>).<span class="title function_">toggleClass</span>(<span class="string">&#x27;strike&#x27;</span>).<span class="title function_">fadeOut</span>(<span class="string">&#x27;slow&#x27;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">  &#125;);</span><br><span class="line">  $(<span class="string">&#x27;input&#x27;</span>).<span class="title function_">focus</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    $(<span class="variable language_">this</span>).<span class="title function_">val</span>(<span class="string">&#x27;&#x27;</span>);</span><br><span class="line">  &#125;);</span><br><span class="line">  $(<span class="string">&#x27;ol&#x27;</span>).<span class="title function_">sortable</span>();</span><br><span class="line"></span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="해설"><a href="#해설" class="headerlink" title="해설"></a>해설</h2><ol>
+<li>ul 안에 li 요소가 추가된 경우 li를 선택하여 이벤트 코드를 작성할 경우 코드 이후에 작성된 li는 이벤트를 실행시키지 못하는 경우가 있으므로, 이런 경우 document를 선택하고 발생할 이벤트, 선택자를 작성해주면 해당 이벤트를 실행시킬 수 있다.</li>
+<li>li에 (더블)클릭 이벤트를 작성해 줄 경우, 부모 태그 요소에도 이벤트가 적용되어 중복 실행될 수 있으므로 버블링을 방지하기 위해 return false를 작성해준다.</li>
+</ol>
+
+</div> 
+
+<script>
+    window.onload = detectors();
+</script>
+    <div class="post-footer">
+    <div class="h-line-primary"></div>
+    <nav class="post-nav">
+        <div class="prev-item">
+           
+                <div class="icon arrow-left"></div>
+                <div class="post-link">
+                    <a href="/2022/06/29/todolist/">Prev</a>
+                </div>
+            
+        </div>
+        <div class="next-item">
+            
+                <div class="icon arrow-right"></div>
+                <div class="post-link">
+                  <a href="/2022/06/02/%EC%83%9D%EB%85%84%EC%9B%94%EC%9D%BC%20selectbox/">Next</a>  
+                </div>  
+            
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="post-comment">
+
+     
+
+     
+    
+    
+
+</div>
+     
+  
+</article>
+        </div>
+      </div>
+      
+      <div class="footer">
+    <div class="flex-container">
+        <div class="footer-text">
+            
+            
+            
+                Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & <a target="_blank" rel="noopener" href="https://github.com/zoeingwingkei/frame/">Frame</a>
+                
+        </div>
+    </div>
+</div>
+
+    </div>
+
+  </body>
+</html>
