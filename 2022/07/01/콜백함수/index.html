@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="John Doe">
+
+
+
+
+
+
+
+<title>Java script 비동기처리와 콜백함수 | Hexo</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Roboto+Mono&display=swap');
+</style>
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/frame.js"></script>
+    
+
+
+
+
+
+
+
+
+
+
+  <meta name="generator" content="Hexo 6.1.0"></head>
+  <body>
+    <div class="mask-border">
+    </div>
+
+    <div class="wrapper">
+
+      <div class="header">
+  <div class="flex-container">
+    <div class="header-inner">
+      <div class="site-brand-container">
+        <a href="/">
+          
+            day.binna
+          
+        </a>
+      </div>
+      <div id="menu-btn" class="menu-btn" onclick="toggleMenu()">
+        Menu
+      </div>
+      <nav class="site-nav">
+        <ul class="menu-list">
+          
+            
+              <li class="menu-item">
+                <a href="/">Home</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/archives/">Archive</a>
+              </li> 
+                   
+          
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main">
+        <div class="flex-container">
+          <article id="post">
+
+  
+    <div class="post-head">
+    <div class="post-info">
+        <div class="tag-list">
+            
+        </div>
+        <div class="post-title">
+            
+            
+                Java script 비동기처리와 콜백함수
+            
+            
+        </div>
+        <span class="post-date">
+            Jul 1, 2022
+        </span>
+    </div>
+    <div class="post-img">
+        
+            <div class="h-line-primary"></div>
+              
+    </div>
+</div>
+    <div class="post-content">
+    <h1 id="비동기처리와-콜백함수"><a href="#비동기처리와-콜백함수" class="headerlink" title="비동기처리와 콜백함수"></a>비동기처리와 콜백함수</h1><h3 id="1-자바스크립트는-동기적인가-비동기적인가"><a href="#1-자바스크립트는-동기적인가-비동기적인가" class="headerlink" title="1. 자바스크립트는 동기적인가 비동기적인가?"></a>1. 자바스크립트는 동기적인가 비동기적인가?</h3><p>1)자바스크립트는 동기적이다.<br>호이스팅이 된 이후부터 코드가 작성된 순서대로 하나씩 동기적으로 실행한다.<br>*호이스팅(Hoisting)이란? 자바스크립트에서 코드를 처리할 때 먼저 var 변수 등의 선언이나 function declaration을 최상단으로 띄운 후 코드를 읽는다. 이로 인해 var 변수의 경우 중복 선언 가능 등의 문제점이 야기 되자 ES6에서 let 이 추가되었다. </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;1&#x27;</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;2&#x27;</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;3&#x27;</span>); <span class="comment">//차례대로 1,2,3 출력</span></span><br></pre></td></tr></table></figure>
+
+<p>  2)자바스크립트는 비동기적이다. 언제 코드가 처리될지 알 수 없다.<br>    대표적 예시 - setTimeout (웹 API)<br>    브라우저에서 제공되어지는 API 로 지정한 시간이 지나면 전달 받은 함수를 호출한다.<br>    브라우저에서 호출(callback)하면 자바스크립트는 전달했던 함수를 화면에 출력(실행)한다.<br>    setTimeout은 자바스크립트 비동기 처리의 대표적 예시이다. </p>
+<h3 id="setTimeout을-사용한-자바스크립트의-비동기-처리-예시"><a href="#setTimeout을-사용한-자바스크립트의-비동기-처리-예시" class="headerlink" title="setTimeout을 사용한 자바스크립트의 비동기 처리 예시"></a>setTimeout을 사용한 자바스크립트의 비동기 처리 예시</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">setTimeout</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  cossole.<span class="title function_">log</span>(<span class="string">&#x27;2&#x27;</span>);</span><br><span class="line">&#125;, <span class="number">1000</span>);</span><br></pre></td></tr></table></figure>
+
+<p>위 코드는 아래와 같이 간단히 작성 가능하다.(arrow funciton)</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">setTimeout</span>(<span class="function">()=&gt;</span> <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;2&#x27;</span>), <span class="number">1000</span>);</span><br></pre></td></tr></table></figure>
+
+<p>위 코드를 보면, setTimeout은 웹 API이므로 자바스크립트 엔진은 브라우저에게 파라미터로 해당 함수를 전달한다. 브라우저는 주어진 1초의 시간동안 함수를 처리한 후 해당 함수를 호출한다(callback). 브라우저로부터 호출 받은 자바스크립트는 해당 결과값을 처리(출력)한다.</p>
+<h3 id="jquery의-Ajax을-사용한-자바스크립트의-비동기-처리-예시"><a href="#jquery의-Ajax을-사용한-자바스크립트의-비동기-처리-예시" class="headerlink" title="jquery의 Ajax을 사용한 자바스크립트의 비동기 처리 예시"></a>jquery의 Ajax을 사용한 자바스크립트의 비동기 처리 예시</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">getData</span>(<span class="params"></span>) &#123;</span><br><span class="line">	<span class="keyword">var</span> tableData;</span><br><span class="line">	$.<span class="title function_">get</span>(<span class="string">&#x27;https://domain.com/products/1&#x27;</span>, <span class="keyword">function</span>(<span class="params">response</span>) &#123;</span><br><span class="line">		tableData = response;</span><br><span class="line">	&#125;);</span><br><span class="line">	<span class="keyword">return</span> tableData;</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">getData</span>()); <span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
+<p>*Ajax란? 서버(Server)와 비동기적으로 데이터 주고 받는 자바스크립트의 기술을 의미한다. get 코드로 서버에게 요청 하며 새로고침 없이 데이터를 요청해 부드럽게 동작이 가능하다는 장점이 있다.<br>*서버(server)란? client가 데이터 요구하면 데이터를 보내주는 프로그램</p>
+<p>코드를 살펴보자. 왜 undefined가 나왔을까? 자바스크립트 엔진은 함수 호이스팅 후 다음 코드를 읽어간다. 바로 다음 코드에서 getData함수를 호출 했으므로 해당 함수를 처리하는데 Ajax는 서버에 데이터를 요청하는 기능이므로, 자바스크립트 엔진은 서버에서 해당 데이터 응답이 올때까지 마냥 기다리지 않고 바로 다음 코드를 읽는다.(비동기 처리) 따라서 undefined가 출력된다.</p>
+<p>그렇다면, 위와 같은 문제를 해결하고 원하는 때에 원하는 값을 출력할 수 있는 방법은 없을까? 콜백함수를 이용하여 이를 해결할 수 있다.</p>
+<h3 id="callback-함수"><a href="#callback-함수" class="headerlink" title="callback 함수"></a>callback 함수</h3><p>함수에 파라미터로 들어가는 함수로, 순차적으로 실행하고 싶을때 사용한다.<br>파라미터로 들어가 있는 함수를 전달 후 처리가 완료되면 호출(callback)한다.</p>
+<h3 id="callback-함수-사용-예시"><a href="#callback-함수-사용-예시" class="headerlink" title="callback 함수 사용 예시"></a>callback 함수 사용 예시</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">getData</span>(<span class="params">callbackFunc</span>) &#123;</span><br><span class="line">	$.<span class="title function_">get</span>(<span class="string">&#x27;https://domain.com/products/1&#x27;</span>, <span class="keyword">function</span>(<span class="params">response</span>) &#123;</span><br><span class="line">		<span class="title function_">callbackFunc</span>(response); <span class="comment">// 서버에서 받은 데이터 response를 callbackFunc() 함수에 넘겨줌</span></span><br><span class="line">	&#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">getData</span>(<span class="keyword">function</span>(<span class="params">tableData</span>) &#123;</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(tableData); <span class="comment">// $.get()의 response 값이 tableData에 전달됨</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>자바스크립트 엔진은 함수 선언부분을 호이스팅한 후에 다음 코드를 읽어나간다. 다음 코드에서 getData 함수를 호출했는데 파라미터로 함수가 들어가 있다.(콜백함수)<br>뜻을 해석하면 getData함수를 파라미터에 function(tableData)를 넣어 실행하라는 의미이다. 자바스크립트는 getData함수에 콜백 함수를 파라미터로 넣어서 코드를 읽어 나가고,<br>해당 response의 값이 출력된다. 이렇게 콜백함수를 이용하면 자바스크립트의 비동기 처리의 특성에도 원하는 때에 원하는 값을 얻어올 수 있다. </p>
+<blockquote>
+<blockquote>
+<p>참고<br>캡틴판교<br>기록맨</p>
+</blockquote>
+</blockquote>
+
+</div> 
+
+<script>
+    window.onload = detectors();
+</script>
+    <div class="post-footer">
+    <div class="h-line-primary"></div>
+    <nav class="post-nav">
+        <div class="prev-item">
+           
+        </div>
+        <div class="next-item">
+            
+                <div class="icon arrow-right"></div>
+                <div class="post-link">
+                  <a href="/2022/06/28/TODOLIST/">Next</a>  
+                </div>  
+            
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="post-comment">
+
+     
+
+     
+    
+    
+
+</div>
+     
+  
+</article>
+        </div>
+      </div>
+      
+      <div class="footer">
+    <div class="flex-container">
+        <div class="footer-text">
+            
+            
+            
+                Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & <a target="_blank" rel="noopener" href="https://github.com/zoeingwingkei/frame/">Frame</a>
+                
+        </div>
+    </div>
+</div>
+
+    </div>
+
+  </body>
+</html>
