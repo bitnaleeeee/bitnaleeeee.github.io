@@ -126,7 +126,7 @@
 <p>  2)자바스크립트는 비동기적이다. 언제 코드가 처리될지 알 수 없다.<br>    대표적 예시 - setTimeout (웹 API)<br>    브라우저에서 제공되어지는 API 로 지정한 시간이 지나면 전달 받은 함수를 호출한다.<br>    브라우저에서 호출(callback)하면 자바스크립트는 전달했던 함수를 화면에 출력(실행)한다.<br>    setTimeout은 자바스크립트 비동기 처리의 대표적 예시이다. </p>
 <h3 id="setTimeout을-사용한-자바스크립트의-비동기-처리-예시"><a href="#setTimeout을-사용한-자바스크립트의-비동기-처리-예시" class="headerlink" title="setTimeout을 사용한 자바스크립트의 비동기 처리 예시"></a>setTimeout을 사용한 자바스크립트의 비동기 처리 예시</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">setTimeout</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  cossole.<span class="title function_">log</span>(<span class="string">&#x27;2&#x27;</span>);</span><br><span class="line">&#125;, <span class="number">1000</span>);</span><br></pre></td></tr></table></figure>
 
-<p>위 코드는 아래와 같이 간단히 작성 가능하다.(arrow funciton)</p>
+<p>위 코드는 아래와 같이 간단히 작성 가능하다.(arrow function)</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">setTimeout</span>(<span class="function">()=&gt;</span> <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;2&#x27;</span>), <span class="number">1000</span>);</span><br></pre></td></tr></table></figure>
 
 <p>위 코드를 보면, setTimeout은 웹 API이므로 자바스크립트 엔진은 브라우저에게 파라미터로 해당 함수를 전달한다. 브라우저는 주어진 1초의 시간동안 함수를 처리한 후 해당 함수를 호출한다(callback). 브라우저로부터 호출 받은 자바스크립트는 해당 결과값을 처리(출력)한다.</p>
