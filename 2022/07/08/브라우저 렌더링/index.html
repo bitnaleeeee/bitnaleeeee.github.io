@@ -138,17 +138,15 @@ user - brower - website
       Server -->
 
 <h3 id="렌더링-엔진-critical-rendering-path"><a href="#렌더링-엔진-critical-rendering-path" class="headerlink" title="렌더링 엔진 (critical rendering path)"></a>렌더링 엔진 (critical rendering path)</h3><p>요청한 콘텐츠를 표시하는 역할을 한다.<br>safari는 webkit<br>firefox는 gecko<br>chrome은 blink 엔진을 사용하며, 모든 렌더링 엔진은 기본적으로 웹표준을 준수한다.</p>
-<p>렌더링 엔진의 목표</p>
-<ol>
+<h3 id="렌더링-엔진의-목표"><a href="#렌더링-엔진의-목표" class="headerlink" title="렌더링 엔진의 목표"></a>렌더링 엔진의 목표</h3><ol>
 <li>웹 페이지에 포함된 모든 요소(html, css, js, img 등)들을 화면에 보여준다</li>
 <li>업데이트가 필요할때 효율적으로 렌더링할 수 있도록 자료 구조를 생성한다. 업데이트 예시:사용자 동작으로 인한 입력, 스크롤, 애니메이션동작, 비동기요청으로 인한 데이터로딩 등.</li>
 </ol>
 <h3 id="Browser-rendering-process"><a href="#Browser-rendering-process" class="headerlink" title="Browser rendering process"></a>Browser rendering process</h3><p><img src="/../images/rendering0708.png" alt="렌더링엔진의동작과정"></p>
-<p>렌더링 엔진: 렌더트리를 만든다 (render tree &#x3D; dom tree + cssom tree)</p>
 <ol>
 <li>html - dom 트리(위에서 아래로)</li>
 <li>css - cssom 트리(위에서 아래로) ex. body태그에 text-align을 정해준다면, 자식 요소에도 동일하게 적용됨</li>
-<li>렌더트리(render tre):화면에 표시되어야 할 모든 노드의 컨텐츠, 스타일 정보를 포함하는 트리.<br>  document부터 각 노드를 순회하면서 각각에 맞는 cssom을 찾아 규칙을 적용한다.<br>  간단히 말해 dom 트리와 cssom 트리를 합해놓은 것이다.<br>  이때 렌더에 포함되지 않는 meta 태그나 Display none등은 포함되지 않는다.</li>
+<li>렌더트리(render tree):화면에 표시되어야 할 모든 노드의 컨텐츠, 스타일 정보를 포함하는 트리.<br>  document부터 각 노드를 순회하면서 각각에 맞는 cssom을 찾아 규칙을 적용한다.<br>  간단히 말해 dom 트리와 cssom 트리를 합해놓은 것이다.<br>  이때 렌더에 포함되지 않는 meta 태그나 Display none등은 포함되지 않는다.</li>
 <li>reflow(layout): 정확한위치, 크기 계산</li>
 <li>paint: 마지막으로 실제 픽셀로 그려지도록 변환한다. 텍스트, 이미지들이 실제 픽셀로 그려진다.</li>
 </ol>
