@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="John Doe">
+
+
+
+
+
+
+
+<title>JavaScript 객체(object) | Hexo</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Roboto+Mono&display=swap');
+</style>
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/frame.js"></script>
+    
+
+
+
+
+
+
+
+
+
+
+  <meta name="generator" content="Hexo 6.1.0"></head>
+  <body>
+    <div class="mask-border">
+    </div>
+
+    <div class="wrapper">
+
+      <div class="header">
+  <div class="flex-container">
+    <div class="header-inner">
+      <div class="site-brand-container">
+        <a href="/">
+          
+            bitnaleeeee 🫧
+          
+        </a>
+      </div>
+      <div id="menu-btn" class="menu-btn" onclick="toggleMenu()">
+        Menu
+      </div>
+      <nav class="site-nav">
+        <ul class="menu-list">
+          
+            
+              <li class="menu-item">
+                <a href="/">Home</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/archives/">BLOG</a>
+              </li> 
+                   
+          
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main">
+        <div class="flex-container">
+          <article id="post">
+
+  
+    <div class="post-head">
+    <div class="post-info">
+        <div class="tag-list">
+            
+        </div>
+        <div class="post-title">
+            
+            
+                JavaScript 객체(object)
+            
+            
+        </div>
+        <span class="post-date">
+            Jul 28, 2022
+        </span>
+    </div>
+    <div class="post-img">
+        
+            <div class="h-line-primary"></div>
+              
+    </div>
+</div>
+    <div class="post-content">
+    <h2 id="객체에-접근하여-property-추가하기"><a href="#객체에-접근하여-property-추가하기" class="headerlink" title="객체에 접근하여 property 추가하기"></a>객체에 접근하여 property 추가하기</h2><p>obejct에 접근하는 방법은 dot(.)과 bracket([])이 있다. </p>
+<ol>
+<li>dot notation의 경우 키와 값은 항상 정해져 있다.</li>
+<li>bracket의 경우 변수로 키와 값을 할당할 수 있다. 위의 경우 가지는 값에 따라 해당 변수에 유동적으로 다른 키와 다른 값으로 할당이 가능하다.</li>
+</ol>
+<p>위의 1,2번의 방법으로 아래 변수 information 에 담긴 객체에 property를 추가헤보자.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> information = &#123;</span><br><span class="line"> name  : <span class="string">&#x27;apple&#x27;</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<p>key값으로는 변수 addName, value값으로는 변수 porject를 담고싶다면</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> addName = <span class="string">&#x27;developer&#x27;</span></span><br><span class="line"><span class="keyword">const</span> project = <span class="string">&#x27;instargram&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>[] 사용</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">information[addName] = project</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>dot(.)사용</li>
+</ol>
+<p>위와 같이 bracket을 사용할 경우 변수 선언으로 각 해당 값을 넣을 수 있지만,<br>dot으로 접근할 경우에는 고정된 값만 직접적으로 할당시킬 수 있다.</p>
+<p>그렇다면, 객체의 각 property에 접근하는 방법은 무엇일까?</p>
+<h2 id="객체-순회하기"><a href="#객체-순회하기" class="headerlink" title="객체 순회하기"></a>객체 순회하기</h2><p>객체는 배열과는 달리 순서가 없고 영문일 경우 알파벳 순으로 나열 된다.<br>그렇다면 각 property에 접근하는 것은 불가능한 것일까?<br>객체의 내장함수를 활용하면 객체안의 각 property의 key값을 배열로 리턴할 수 있다!</p>
+<h3 id="object-keys"><a href="#object-keys" class="headerlink" title="object.keys()"></a>object.keys()</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;melon&#x27;</span>,</span><br><span class="line">  <span class="attr">weight</span>: <span class="number">4350</span>,</span><br><span class="line">  <span class="attr">price</span>: <span class="number">16500</span>,</span><br><span class="line">  <span class="attr">isFresh</span>: <span class="literal">true</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title class_">Object</span>.<span class="title function_">keys</span>(obj) <span class="comment">// [&#x27;name&#x27;, &#x27;weight&#x27;, &#x27;price&#x27;, &#x27;isFresh&#x27;] </span></span><br></pre></td></tr></table></figure>
+
+<p>위와 같이 내장 함수를 활용하여 각 객체의 키값을 배열할 수 있다.<br>이를 활용하여 키값을 리턴하려면</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;melon&#x27;</span>,</span><br><span class="line">  <span class="attr">weight</span>: <span class="number">4350</span>,</span><br><span class="line">  <span class="attr">price</span>: <span class="number">16500</span>,</span><br><span class="line">  <span class="attr">isFresh</span>: <span class="literal">true</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title class_">Object</span>.<span class="title function_">keys</span>(obj) <span class="comment">// [&#x27;name&#x27;, &#x27;weight&#x27;, &#x27;price&#x27;, &#x27;isFresh&#x27;] </span></span><br></pre></td></tr></table></figure>
+
+<p>그렇다면 키값만 리턴하는 내장함수도 있을까?</p>
+<h3 id="object-values"><a href="#object-values" class="headerlink" title="object.values()"></a>object.values()</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;melon&#x27;</span>,</span><br><span class="line">  <span class="attr">weight</span>: <span class="number">4350</span>,</span><br><span class="line">  <span class="attr">price</span>: <span class="number">16500</span>,</span><br><span class="line">  <span class="attr">isFresh</span>: <span class="literal">true</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title class_">Object</span>.<span class="title function_">values</span>(obj) <span class="comment">// [&#x27;melon&#x27;, 4350, 16500, true]</span></span><br></pre></td></tr></table></figure>
+
+<p>객체를 순회하는 두번째 방법으로는 for-in을 둘 수 있다. </p>
+<h3 id="for-in"><a href="#for-in" class="headerlink" title="for-in"></a>for-in</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;melon&#x27;</span>,</span><br><span class="line">  <span class="attr">weight</span>: <span class="number">4350</span>,</span><br><span class="line">  <span class="attr">price</span>: <span class="number">16500</span>,</span><br><span class="line">  <span class="attr">isFresh</span>: <span class="literal">true</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> key <span class="keyword">in</span> obj) &#123;</span><br><span class="line">  <span class="keyword">const</span> value = obj[key]</span><br><span class="line"></span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(key)</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(value)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>for-in문의 경우 객체 순회 외에도, 배열 순회에도 유용하게 사용 가능하다. </p>
+
+</div> 
+
+<script>
+    window.onload = detectors();
+</script>
+    <div class="post-footer">
+    <div class="h-line-primary"></div>
+    <nav class="post-nav">
+        <div class="prev-item">
+           
+        </div>
+        <div class="next-item">
+            
+                <div class="icon arrow-right"></div>
+                <div class="post-link">
+                  <a href="/2022/07/20/%ED%8F%AC%EC%A7%80%EC%85%98/">Next</a>  
+                </div>  
+            
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="post-comment">
+
+     
+
+     
+    
+    
+
+</div>
+     
+  
+</article>
+        </div>
+      </div>
+      
+      <div class="footer">
+    <div class="flex-container">
+        <div class="footer-text">
+            
+            
+            
+                Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & <a target="_blank" rel="noopener" href="https://github.com/zoeingwingkei/frame/">Frame</a>
+                
+        </div>
+    </div>
+</div>
+
+    </div>
+
+  </body>
+</html>
