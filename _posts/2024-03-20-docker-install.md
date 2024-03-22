@@ -19,16 +19,13 @@ tag: [docker, vscode]
 ### Docker 설치하기
 
 ![도커다운로드](/images/post/docker01.png)
-
-
 공식 홈페이지에 접근 하거나 Docker Hub를 통해 설치 파일을 다운로드 할 수 있다.
 나의 경우 mac을 사용 중인데 맞는 칩셋을 선택하여 설치하면 된다. 최근에 구매한 유저라면 "Applce chip"으로, 그 외에는 "Intel chip"을 선택하면 된다.
 설치 후 터미널에서 다음 명령어를 통해 정상 설치 유무를 확인할 수 있다.
 
-```javasciprt
+```javascript
 docker --version
 ```
 
 ![도커다운로드](/images/post/docker02.png)
-
 아래 보이는 프로젝트에서 해당 되는 실행하고자 하는 프로젝트의 Actions을 클릭하여 프로젝트를 구동시킨 후, vscode에서 코드를 작성하게되면 화면에 시시각각 반영되기 때문에 리액트의 경우 따로 `npm start`를 매번 하지 않아도 되어 편리하게 개발할 수 있다. 
