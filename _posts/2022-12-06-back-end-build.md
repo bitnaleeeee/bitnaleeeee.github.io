@@ -23,20 +23,20 @@ image: "/back-end-build/aws1.png"
 ###  EC2 Instance 생성하기 
 
 
-![aws1파일](/images/post/back-end-build-img01.png)
+![aws1파일](/assets/img/posts/back-end-build-img01.png)
 EC2 Instances 페이지로 이동 후 Launch Instances 을 클릭하여 EC2 Instance의 이름을 작성하고 Ubuntu를 선택 하였다.
 
 <br>
 
-![aws2파일](/images/post/back-end-build-img02.png)
+![aws2파일](/assets/img/posts/back-end-build-img02.png)
 `Instance Type` 은 t2.micro를 선택하고 새키페어생성을 눌러 아래와 같이 선택 후 원하는 키 페어 이름을 입력한다.
 
 <br>
 
-![aws3파일](/images/post/back-end-build-img03.png)
+![aws3파일](/assets/img/posts/back-end-build-img03.png)
 네트워크 편집 버튼을 누른 후 위와 같이 설정해 주고 퍼블릭IP는 활성화를 선택해준다.
 
-![aws4파일](/images/post/back-end-build-img04.png)
+![aws4파일](/assets/img/posts/back-end-build-img04.png)
 이후 Launch Instance 를 클릭하여 EC2 Instance 를 실행해주었을때 위와 같이 인스턴스 상태에 실행중이라고 뜬다면 성공이다.
 
 ### SSH를 이용한 EC2 Instance 접속
@@ -56,7 +56,7 @@ chmod 400 파일명.pem
 ```
 다시 pem 파일이 위치한 디렉토리로 이동하여 실행해주면 아래와 같이 정상적으로나온다.
 
-![aws5파일](/images/post/back-end-build-img05.png)
+![aws5파일](/assets/img/posts/back-end-build-img05.png)
 
 
 ## Ubuntu  Node.js 설치및 npm 환경구축 

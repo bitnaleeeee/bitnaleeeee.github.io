@@ -8,7 +8,7 @@ tag: [react, project]
 
 1차 Project 회고
 
-![우솝팀](/images/post/wecode-1st-project-img01.jpeg)
+![우솝팀](/assets/img/posts/wecode-1st-project-img01.jpeg)
 
 **1차 project : 2022.8.16 - 2022.8.26 우솝팀**
 

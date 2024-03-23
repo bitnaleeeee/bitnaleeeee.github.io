@@ -17,11 +17,11 @@ tag: [React, JavaScript, Vercel, Deploy]
 
 원하는 Repository import 후 자신의 프로젝트에 맞게 수정해준다
 
-![vercel02](/images/post/vercel02.png)
+![vercel02](/assets/img/posts/vercel02.png)
 
 ### Deploy하기
 
 Deploy를 누르고 잠시 기다려주면, 빌드/배포를 자동으로 진행한다.
 또한 배포 후 `Github`에 수정 사항을 `push` 할 때마다 `Vercel`이 이를 자동으로 감지하여 빌드/배포를 다시 해준다.
 
-![vercel03](/images/post/vercel03.png)
+![vercel03](/assets/img/posts/vercel03.png)

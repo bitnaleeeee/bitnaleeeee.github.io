@@ -226,6 +226,10 @@ header {
     margin: 20px !important;
     padding: 20px !important;
     background-color: var(--card-background-color) !important;
+
+    .card-body img {
+        width: 100%;
+    }
 }
 
 #topNav{

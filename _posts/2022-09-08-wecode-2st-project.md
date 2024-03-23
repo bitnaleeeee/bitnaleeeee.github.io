@@ -14,7 +14,7 @@ p > img {
 }
 </style>
 
-![WnB팀](/images/post/wecode-2st-project-img01.jpeg)
+![WnB팀](/assets/img/posts/wecode-2st-project-img01.jpeg)
 
 **2차 project : 2022.8.29 - 2022.9.8 위앤비팀**
 

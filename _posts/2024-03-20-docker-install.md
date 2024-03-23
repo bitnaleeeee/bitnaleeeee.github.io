@@ -18,7 +18,7 @@ tag: [docker, vscode]
 
 ### Docker 설치하기
 
-![도커다운로드](/images/post/docker01.png)
+![도커다운로드](/assets/img/posts/docker01.png)
 <br>
 <br>
 
@@ -34,6 +34,6 @@ docker --version
 ```
 <br>
 
-![도커다운로드](/images/post/docker02.png)
+![도커다운로드](/assets/img/posts/docker02.png)
 
 아래 보이는 프로젝트에서 해당 되는 실행하고자 하는 프로젝트의 Actions을 클릭하여 프로젝트를 구동시킨 후, vscode에서 코드를 작성하게되면 화면에 시시각각 반영되기 때문에 리액트의 경우 따로 `npm start`를 매번 하지 않아도 되어 편리하게 개발할 수 있다. 
