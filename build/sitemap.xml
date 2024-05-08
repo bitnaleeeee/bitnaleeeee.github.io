@@ -2,11 +2,11 @@
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>http://localhost:4000/blog/authors/johndoe</loc>
-<lastmod>2024-03-23T15:19:32+09:00</lastmod>
+<lastmod>2024-04-26T13:02:14+09:00</lastmod>
 </url>
 <url>
 <loc>http://localhost:4000/blog/authors/xplor4r</loc>
-<lastmod>2024-03-23T15:19:32+09:00</lastmod>
+<lastmod>2024-04-26T13:02:14+09:00</lastmod>
 </url>
 <url>
 <loc>http://localhost:4000/2022/04/02/javascript-value/</loc>
@@ -386,15 +386,15 @@
 </url>
 <url>
 <loc>http://localhost:4000/products/product1/</loc>
-<lastmod>2024-03-23T15:19:32+09:00</lastmod>
+<lastmod>2024-04-26T13:02:14+09:00</lastmod>
 </url>
 <url>
 <loc>http://localhost:4000/products/product2/</loc>
-<lastmod>2024-03-23T15:19:32+09:00</lastmod>
+<lastmod>2024-04-26T13:02:14+09:00</lastmod>
 </url>
 <url>
 <loc>http://localhost:4000/products/product3/</loc>
-<lastmod>2024-03-23T15:19:32+09:00</lastmod>
+<lastmod>2024-04-26T13:02:14+09:00</lastmod>
 </url>
 <url>
 <loc>http://localhost:4000/about/</loc>
@@ -509,6 +509,6 @@
 </url>
 <url>
 <loc>http://localhost:4000/admin/</loc>
-<lastmod>2023-02-07T18:45:44+09:00</lastmod>
+<lastmod>2024-03-23T15:43:32+09:00</lastmod>
 </url>
 </urlset>
