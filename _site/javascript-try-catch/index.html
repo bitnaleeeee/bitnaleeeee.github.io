@@ -1,0 +1,146 @@
+<!DOCTYPE html> <html lang="en-US"> <head prefix="og: http://ogp.me/ns#"> <meta charset="UTF-8" /> <meta http-equiv="X-UA-Compatible" content="ie=edge" /> <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <meta name="mobile-web-app-capable" content="yes" /> <meta name="apple-mobile-web-app-capable" content="yes" /> <meta name="application-name" content="Klise Theme" /> <meta name="apple-mobile-web-app-status-bar-style" content="#fff" /> <meta name="apple-mobile-web-app-title" content="Klise Theme" /> <title> [JavaScript] try...catch를 이용한 에러 핸들링 - Klise Theme </title> <link rel="alternate" href="http://localhost:4000/javascript-try-catch/" hreflang="en-US" /> <link rel="canonical" href="http://localhost:4000/javascript-try-catch/" /> <meta name="description" content="He&#39;s writing in Bahasa about web technology and experience as a journal for documentation things that he learned, meet him @github." /> <meta name="referrer" content="no-referrer-when-downgrade" /> <meta property="fb:app_id" content="" /> <meta property="og:site_name" content="[JavaScript] try...catch를 이용한 에러 핸들링 | Jekyll Klisé" /> <meta property="og:title" content="[JavaScript] try...catch를 이용한 에러 핸들링 | Jekyll Klisé" /> <meta property="og:type" content="website" /> <meta property="og:url" content="http://localhost:4000/javascript-try-catch/" /> <meta property="og:description" content="He&#39;s writing in Bahasa about web technology and experience as a journal for documentation things that he learned, meet him @github." /> <meta property="og:image" content="http://localhost:4000/assets/img/ogp.png" /> <meta property="og:image:width" content="640" /> <meta property="og:image:height" content="640" /> <meta name="twitter:card" content="summary" /> <meta name="twitter:title" content="[JavaScript] try...catch를 이용한 에러 핸들링 | twitter_username" /> <meta name="twitter:url" content="http://localhost:4000/javascript-try-catch/" /> <meta name="twitter:site" content="@twitter_username" /> <meta name="twitter:creator" content="@twitter_username" /> <meta name="twitter:description" content="He&#39;s writing in Bahasa about web technology and experience as a journal for documentation things that he learned, meet him @github." /> <meta name="twitter:image" content="http://localhost:4000/assets/img/ogp.png" /> <link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Klise Theme" /> <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png" /> <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32x32.png" /> <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16x16.png" /> <link rel="manifest" href="/assets/favicons/site.webmanifest" /> <link rel="mask-icon" href="/assets/favicons/safari-pinned-tab.svg" color="#5bbad5" /> <meta name="apple-mobile-web-app-title" content="Jekyll Klise" /> <meta name="application-name" content="Jekyll Klise" /> <meta name="msapplication-TileColor" content="#da532c" /> <meta name="theme-color" content="#2c2c2c" /> <link rel="stylesheet" href="/assets/css/style.css" /> <!-- for mathjax support --> </head> <body data-theme="dark" class="notransition"> <script> const body = document.body; const data = body.getAttribute("data-theme"); const initTheme = (state) => { if (state === "dark") { body.setAttribute("data-theme", "dark"); } else if (state === "light") { body.removeAttribute("data-theme"); } else { localStorage.setItem("theme", data); } }; initTheme(localStorage.getItem("theme")); setTimeout(() => body.classList.remove("notransition"), 75); </script> <div class="navbar" role="navigation"> <nav class="menu"> <input type="checkbox" id="menu-trigger" class="menu-trigger" /> <label for="menu-trigger"> <span class="menu-icon"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 512 512" > <path d="M64,384H448V341.33H64Zm0-106.67H448V234.67H64ZM64,128v42.67H448V128Z" /> </svg> </span> </label> <a id="mode"> <svg class="mode-sunny" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 512 512" > <title>LIGHT</title> <line x1="256" y1="48" x2="256" y2="96" style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" /> <line x1="256" y1="416" x2="256" y2="464" style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" /> <line x1="403.08" y1="108.92" x2="369.14" y2="142.86" style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" /> <line x1="142.86" y1="369.14" x2="108.92" y2="403.08" style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" /> <line x1="464" y1="256" x2="416" y2="256" style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" /> <line x1="96" y1="256" x2="48" y2="256" style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" /> <line x1="403.08" y1="403.08" x2="369.14" y2="369.14" style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" /> <line x1="142.86" y1="142.86" x2="108.92" y2="108.92" style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" /> <circle cx="256" cy="256" r="80" style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" /> </svg> <svg class="mode-moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 512 512" > <title>DARK</title> <line x1="256" y1="48" x2="256" y2="96" style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" /> <line x1="256" y1="416" x2="256" y2="464" style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" /> <line x1="403.08" y1="108.92" x2="369.14" y2="142.86" style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" /> <line x1="142.86" y1="369.14" x2="108.92" y2="403.08" style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" /> <line x1="464" y1="256" x2="416" y2="256" style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" /> <line x1="96" y1="256" x2="48" y2="256" style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" /> <line x1="403.08" y1="403.08" x2="369.14" y2="369.14" style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" /> <line x1="142.86" y1="142.86" x2="108.92" y2="108.92" style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" /> <circle cx="256" cy="256" r="80" style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" /> </svg> </a> <div class="trigger"> <div class="trigger-container"><a class="menu-link" href="/">home</a><a class="menu-link" href="/archive/">archive</a><a class="menu-link" href="/about/">about</a><a class="menu-link rss" href="/feed.xml"> <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 512 512" fill="#ED812E" > <title>RSS</title> <path d="M108.56,342.78a60.34,60.34,0,1,0,60.56,60.44A60.63,60.63,0,0,0,108.56,342.78Z" /> <path d="M48,186.67v86.55c52,0,101.94,15.39,138.67,52.11s52,86.56,52,138.67h86.66C325.33,312.44,199.67,186.67,48,186.67Z" /> <path d="M48,48v86.56c185.25,0,329.22,144.08,329.22,329.44H464C464,234.66,277.67,48,48,48Z" /> </svg> </a> </div> </div> </nav> </div> <div class="wrapper post"> <main class="page-content" aria-label="Content"> <article itemscope itemtype="https://schema.org/BlogPosting"> <header class="header"> <div class="tags"> <span itemprop="keywords"> <a class="tag" href="/tags/#javascript">JAVASCRIPT</a> </span> </div> <h1 class="header-title" itemprop="headline">[JavaScript] try...catch를 이용한 에러 핸들링</h1> <div class="post-meta"> <time datetime="2022-11-08T21:35:42+07:00" itemprop="datePublished"> Nov 08, 2022 </time> <span itemprop="author" itemscope itemtype="https://schema.org/Person"> <span itemprop="name">Jekyll Klisé</span> </span> <time hidden datetime="2022-11-08T21:35:42+07:00" itemprop="dateModified"> Nov 08, 2022 </time> <span hidden itemprop="publisher" itemtype="Person">Jekyll Klisé</span> <span hidden itemprop="image"></span> <span hidden itemprop="mainEntityOfPage"><p>자바스크립트에서 에러가 발생하면 코드는 멈추게 되고, 콘솔에 에러가 출력된다. 하지만 <code class="language-plaintext highlighter-rouge">try...catch</code> 문법을 사용하면 스크립트가 죽는 것을 방지하고, 에러 상황을 잡아 예외처리를 할 수 있게 한다. 기본적인 형태는 두 블록으로 구성되며 예시 코드는 아래와 같다.</p> </span> </div> </header> <div class="page-content" itemprop="articleBody"> <p>자바스크립트에서 에러가 발생하면 코드는 멈추게 되고, 콘솔에 에러가 출력된다. 하지만 <code class="language-plaintext highlighter-rouge">try...catch</code> 문법을 사용하면 스크립트가 죽는 것을 방지하고, 에러 상황을 잡아 예외처리를 할 수 있게 한다. 기본적인 형태는 두 블록으로 구성되며 예시 코드는 아래와 같다.</p> <h2 id="기본-형태"> <a href="#기본-형태" class="anchor-head"></a> 기본 형태 </h2> <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">try</span> <span class="p">{</span>
+
+  <span class="c1">// 이 구간에서 에러가 발생하면 catch로 이동</span>
+
+<span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+
+  <span class="c1">// 에러 핸들링</span>
+
+<span class="p">}</span>
+</code></pre></div></div> <ul> <li>먼저 <code class="language-plaintext highlighter-rouge">try</code> 블록의 코드가 실행된다.</li> <li><code class="language-plaintext highlighter-rouge">try</code> 블록 안에 에러가 없다면 <code class="language-plaintext highlighter-rouge">catch</code> 블록은 건너 뛴다.</li> <li><code class="language-plaintext highlighter-rouge">try</code> 블록 안에서 에러 코드를 만나면 <code class="language-plaintext highlighter-rouge">try</code> 블록의 실행이 중단되고 <code class="language-plaintext highlighter-rouge">catch</code> 블록의 코드가 실행된다.</li> <li><code class="language-plaintext highlighter-rouge">err</code> 객체에는 에러에 대한 정보가 있다.</li> </ul> <p>실제 작동 코드 살펴보자.</p> <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">try</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">아직 에러 없음</span><span class="dl">"</span><span class="p">);</span>
+
+  <span class="nx">a</span><span class="p">;</span> <span class="c1">// 에러 시작</span>
+
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">이곳은 실행 안됨</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span> <span class="c1">// a is not defined</span>
+
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">에러가 나도 이곳의 코드는 실행됨</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="p">}</span>
+</code></pre></div></div> <p><code class="language-plaintext highlighter-rouge">try</code> 블록에서 에러가 나면 아래의 <code class="language-plaintext highlighter-rouge">console.log()</code>는 실행이 안되며 바로 <code class="language-plaintext highlighter-rouge">catch</code> 블록으로 넘어간다. <code class="language-plaintext highlighter-rouge">err</code> 객체가 콘솔창에 어떤 에러인지 표시해 주며, 에러가 발생해도 <code class="language-plaintext highlighter-rouge">catch</code> 블록의 코드는 계속 실행되는 것을 확인할 수 있다. 이 부분에 에러 예외 처리를 작성해 주면 된다.</p> <h2 id="trycatch는-런타임-에러에만-작동한다"> <a href="#trycatch는-런타임-에러에만-작동한다" class="anchor-head"></a> <code class="language-plaintext highlighter-rouge">try...catch</code>는 런타임 에러에만 작동한다 </h2> <p><code class="language-plaintext highlighter-rouge">try...catch</code>는 실행이 가능한 코드에만 동작하며, 중괄호가 들어가는 등 자바스크립트 엔진이 해석할 수 없는 문법적 오류(SyntaxError)같은 경우는 작동하지 않는다.</p> <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">try</span> <span class="p">{</span>
+    
+    <span class="p">{}{</span> <span class="c1">// SyntaxError</span>
+
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">자바스크립트 엔진은 이 코드를 이해할 수 없어 실행 자체가 안됨</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">여기도 실행 안됨</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="p">}</span>
+</code></pre></div></div> <h2 id="trycatch는-동기적으로-동작한다"> <a href="#trycatch는-동기적으로-동작한다" class="anchor-head"></a> <code class="language-plaintext highlighter-rouge">try...catch</code>는 동기적으로 동작한다 </h2> <p><code class="language-plaintext highlighter-rouge">try...catch</code>는 <code class="language-plaintext highlighter-rouge">setTimeout</code>와 같이 비동기적으로 실행되는 코드의 에러는 잡아낼 수 없다.</p> <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">try</span> <span class="p">{</span>
+    
+  <span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+
+    <span class="nx">a</span><span class="p">;</span> <span class="c1">// 에러가 발생하지만 catch가 잡아낼 수 없음</span>
+
+  <span class="p">},</span> <span class="mi">1000</span><span class="p">);</span>
+
+<span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">try 블록의 에러를 잡아낼 수 없음</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="p">}</span>
+</code></pre></div></div> <p>1초뒤 <code class="language-plaintext highlighter-rouge">setTimeout</code>의 익명함수가 실행되고 에러가 발생하지만 이미 자바스크립트 엔진은 <code class="language-plaintext highlighter-rouge">try...catch</code> 블록을 떠났기 때문에 오류를 잡아낼 수 없다. 비동기로 실행되는 코드의 에러를 잡으려면 반드시 해당 함수 안에서 <code class="language-plaintext highlighter-rouge">try...catch</code> 구문을 사용해야 한다.</p> <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+
+  <span class="k">try</span> <span class="p">{</span>
+
+    <span class="nx">a</span><span class="p">;</span> <span class="c1">// 에러가 발생하지만 catch가 잡아낼 수 있음</span>
+
+  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">try 블록의 에러를 잡아냄</span><span class="dl">"</span><span class="p">);</span>
+
+  <span class="p">}</span>
+  
+<span class="p">},</span> <span class="mi">1000</span><span class="p">);</span>
+</code></pre></div></div> <h2 id="에러-객체"> <a href="#에러-객체" class="anchor-head"></a> 에러 객체 </h2> <p>에러가 발생하면 자바스크립트는 에러 내용이 담긴 객체를 생성하고 <code class="language-plaintext highlighter-rouge">catch</code> 블록의 인수로 전달한다.</p> <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">try</span> <span class="p">{</span>
+
+  <span class="nx">a</span><span class="p">;</span> <span class="c1">// 에러 시작</span>
+
+<span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span> <span class="c1">// ReferenceError: a is not defined</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">err</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span> <span class="c1">// ReferenceError</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">err</span><span class="p">.</span><span class="nx">message</span><span class="p">);</span> <span class="c1">// a is not defined</span>
+  
+<span class="p">}</span>
+</code></pre></div></div> <p><code class="language-plaintext highlighter-rouge">name</code> 프로퍼티는 에러의 이름을 나타내고 <code class="language-plaintext highlighter-rouge">message</code>는 에러에 대한 상세 내용을 가지고 있다.</p> <h2 id="직접-에러를-생성해-던지기"> <a href="#직접-에러를-생성해-던지기" class="anchor-head"></a> 직접 에러를 생성해 던지기 </h2> <h3 id="throw-연산자"> <a href="#throw-연산자" class="anchor-head"></a> throw 연산자 </h3> <p><code class="language-plaintext highlighter-rouge">throw</code> 연산자는 예외를 던질 수 있으며, <code class="language-plaintext highlighter-rouge">catch</code> 블록에 전달된다.</p> <blockquote> <p><code class="language-plaintext highlighter-rouge">throw</code> 연산자는 함수의 실행을 중단한다는 표현과 같다.</p> </blockquote> <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">try</span> <span class="p">{</span>
+
+  <span class="k">throw</span> <span class="dl">"</span><span class="s2">예외 처리를 던짐</span><span class="dl">"</span><span class="p">;</span>
+
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">여긴 실행 안됨</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span> <span class="c1">// 예외 처리를 던짐</span>
+  
+<span class="p">}</span>
+</code></pre></div></div> <p>위 코드에서 <code class="language-plaintext highlighter-rouge">throw</code>는 예외를 던지고 있으며, <code class="language-plaintext highlighter-rouge">throw</code> 아래의 로직은 실행이 안된다. <code class="language-plaintext highlighter-rouge">throw</code> 연산자자와 에러 객체 생성자를 이용하여 예외 처리를 해보자.</p> <h3 id="에러-객체-생성자"> <a href="#에러-객체-생성자" class="anchor-head"></a> 에러 객체 생성자 </h3> <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">error</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="dl">"</span><span class="s2">에러 발생</span><span class="dl">"</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">syntaxError</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SyntaxError</span><span class="p">(</span><span class="dl">"</span><span class="s2">문법 에러 발생</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span> <span class="c1">// Error: 에러 발생</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">syntaxError</span><span class="p">);</span> <span class="c1">// SyntaxError: 문법 에러 발생</span>
+</code></pre></div></div> <p>자바스크립트는 <code class="language-plaintext highlighter-rouge">Error</code>, <code class="language-plaintext highlighter-rouge">SyntaxError</code>, <code class="language-plaintext highlighter-rouge">ReferenceError</code>, <code class="language-plaintext highlighter-rouge">TypeError</code> 등 표준 애러 객체 생성자를 지원하며, 이 생성자들을 이용해 에러 객체를 만들 수 있다.</p> <h3 id="생성한-에러-던지기"> <a href="#생성한-에러-던지기" class="anchor-head"></a> 생성한 에러 던지기 </h3> <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">person</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">foo</span><span class="dl">"</span><span class="p">,</span>
+  <span class="na">age</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span>
+<span class="p">};</span>
+
+<span class="k">try</span> <span class="p">{</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">person</span><span class="p">.</span><span class="nx">gender</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">throw</span> <span class="k">new</span> <span class="nx">SyntaxError</span><span class="p">(</span><span class="dl">"</span><span class="s2">성별이 없음</span><span class="dl">"</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">이곳은 실행이 안됨</span><span class="dl">"</span><span class="p">);</span> <span class="c1">// person.gender 값이 없기 때문에 실행이 안됨</span>
+
+<span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span> <span class="c1">// Error: 성별이 없음</span>
+  
+<span class="p">}</span>
+</code></pre></div></div> <p>위 코드의 <code class="language-plaintext highlighter-rouge">try</code> 블록에서는 성별 값이 있는지 체크하고 있는데, 체크 대상인 <code class="language-plaintext highlighter-rouge">person</code> 객체에는 이름과 나이만 있고 성별이 없다. 때문에 성별이 없을 때 직접 생성한 에러를 던지고 있고, <code class="language-plaintext highlighter-rouge">catch</code> 블록에서 에러를 받아 출력하고 있다.</p> <blockquote> <p>참고로 위 에러는 직접 생성한 에러이기 때문에 실제 <code class="language-plaintext highlighter-rouge">SyntaxError</code> 에러는 아니다.</p> </blockquote> <h2 id="에러-다시-던지기"> <a href="#에러-다시-던지기" class="anchor-head"></a> 에러 다시 던지기 </h2> <p><code class="language-plaintext highlighter-rouge">try...catch</code>는 애초에 <code class="language-plaintext highlighter-rouge">try</code> 블록에서 발생한 모든 에러를 잡는 목적으로 만들어졌다. 에러의 종류와 상관 없이 모든 에러를 잡는것은 디버깅에 어려움을 주기 때문에 예상치 못한 에러를 다시 던져서 에러의 종류에 따라 대응을 해줘야 한다.</p> <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">person</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">foo</span><span class="dl">"</span><span class="p">,</span>
+  <span class="na">age</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span>
+<span class="p">};</span>
+
+<span class="kd">const</span> <span class="nx">getError</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">try</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">person</span><span class="p">.</span><span class="nx">gender</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">throw</span> <span class="k">new</span> <span class="nx">SyntaxError</span><span class="p">(</span><span class="dl">"</span><span class="s2">성별이 없음</span><span class="dl">"</span><span class="p">);</span>
+      <span class="c1">// throw new ReferenceError("성별이 없음");</span>
+    <span class="p">}</span>
+  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">err</span> <span class="k">instanceof</span> <span class="nx">SyntaxError</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">이 에러는 </span><span class="dl">"</span> <span class="o">+</span> <span class="nx">err</span><span class="p">);</span> <span class="c1">// SyntaxError일 경우</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="k">throw</span> <span class="nx">err</span><span class="p">;</span> <span class="c1">// SyntaxError가 아닐 경우 밖으로 다시 던짐</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="k">try</span> <span class="p">{</span>
+  <span class="nx">getError</span><span class="p">();</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">err</span> <span class="k">instanceof</span> <span class="nx">ReferenceError</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">이 에러는 </span><span class="dl">"</span> <span class="o">+</span> <span class="nx">err</span><span class="p">);</span> <span class="c1">// ReferenceError일 경우</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div> <p><code class="language-plaintext highlighter-rouge">getError()</code>가 실행되면서 <code class="language-plaintext highlighter-rouge">SyntaxError</code>를 잡아내고 있으며, 만약 <code class="language-plaintext highlighter-rouge">SyntaxError</code> 에러가 아닐 경우는 다시 에러를 함수 밖으로 던지며, 함수 외부에서 에러를 다시 잡고 있다. 함수 밖에서는 <code class="language-plaintext highlighter-rouge">ReferenceError</code>일 경우를 잡아내고 있다. <code class="language-plaintext highlighter-rouge">SyntaxError</code>일 경우는 함수 내부에서 에러를 잡고 <code class="language-plaintext highlighter-rouge">ReferenceError</code>일 경우는 함수 외부에서 잡는다고 보면 된다.</p> <h2 id="finally"> <a href="#finally" class="anchor-head"></a> finally </h2> <p><code class="language-plaintext highlighter-rouge">finally</code>절은 에러의 유무와 상관없이 마지막으로 사용되는 블록이며, 마지막 제어가 필요할 때 사용하면 된다.</p> <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">try</span> <span class="p">{</span>
+    
+  <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="dl">"</span><span class="s2">에러 발생</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span> <span class="c1">// 에러 발생</span>
+
+<span class="p">}</span> <span class="k">finally</span> <span class="p">{</span>
+
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">항상 실행</span><span class="dl">"</span><span class="p">);</span> <span class="c1">// 항상 실행</span>
+
+<span class="p">}</span>
+</code></pre></div></div> <h2 id="references"> <a href="#references" class="anchor-head"></a> References </h2> <p><a href="https://ko.javascript.info/try-catch">‘try..catch’와 에러 핸들링</a><br /> <a href="https://rinae.dev/posts/how-to-handle-errors-1">에러 처리를 어떻게 하면 좋을까? - 1</a><br /> <a href="https://www.opentutorials.org/module/4302/26560">예외 ( throw,[try/catch/finally])</a></p> </div> </article> </main> <small class="post-updated-at">updated_at 08-11-2022</small> <nav class="post-nav"> <a class="post-nav-item post-nav-prev" href="/javascript-shallow-copy-deep-copy/" > <div class="nav-arrow">Previous</div> <span class="post-title">[JavaScript] 얕은 복사, 깊은 복사</span> </a> <a class="post-nav-item post-nav-next" href="/wecode-1st-project/"> <div class="nav-arrow">Next</div> <span class="post-title">[Memoirs] 1ST Project Woosop</span> </a> </nav> <footer class="footer"> <a class="footer_item" href="/thanks">ack.</a> <a class="footer_item" href="javascript::void(0)">resume</a> <a class="footer_item" href="/feed.xml">rss</a> <span class="footer_item">&copy; 2024</span> <small class="footer_copyright"> <!-- Klisé Theme: https://github.com/piharpi/jekyll-klise --> <a href="https://github.com/piharpi/jekyll-klise" target="_blank" rel="noreferrer noopener" >klisé</a > theme on <a href="https://jekyllrb.com" target="_blank" rel="noreferrer noopener" >jekyll</a > </small> </footer> <script src="/assets/js/main.js" defer="defer"></script> </div> </body> </html>

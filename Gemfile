@@ -6,6 +6,7 @@ gem 'faraday-retry'
 gem 'backports', '~> 3.23'
 gem 'kramdown'
 gem 'puma'
+gem 'jekyll-postfiles'
 
 
 # If you want to use GitHub Pages, remove the "gem "jekyll"" above and

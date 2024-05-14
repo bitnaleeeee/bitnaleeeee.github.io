@@ -1,0 +1,163 @@
+<!DOCTYPE html> <html lang="en-US"> <head prefix="og: http://ogp.me/ns#"> <meta charset="UTF-8" /> <meta http-equiv="X-UA-Compatible" content="ie=edge" /> <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <meta name="mobile-web-app-capable" content="yes" /> <meta name="apple-mobile-web-app-capable" content="yes" /> <meta name="application-name" content="Klise Theme" /> <meta name="apple-mobile-web-app-status-bar-style" content="#fff" /> <meta name="apple-mobile-web-app-title" content="Klise Theme" /> <title> [SASS] 중첩(Nesting), 변수(letiables), 가져오기(Import) - Klise Theme </title> <link rel="alternate" href="http://localhost:4000/sass-nesting-variables-import/" hreflang="en-US" /> <link rel="canonical" href="http://localhost:4000/sass-nesting-variables-import/" /> <meta name="description" content="He&#39;s writing in Bahasa about web technology and experience as a journal for documentation things that he learned, meet him @github." /> <meta name="referrer" content="no-referrer-when-downgrade" /> <meta property="fb:app_id" content="" /> <meta property="og:site_name" content="[SASS] 중첩(Nesting), 변수(letiables), 가져오기(Import) | Jekyll Klisé" /> <meta property="og:title" content="[SASS] 중첩(Nesting), 변수(letiables), 가져오기(Import) | Jekyll Klisé" /> <meta property="og:type" content="website" /> <meta property="og:url" content="http://localhost:4000/sass-nesting-variables-import/" /> <meta property="og:description" content="He&#39;s writing in Bahasa about web technology and experience as a journal for documentation things that he learned, meet him @github." /> <meta property="og:image" content="http://localhost:4000/assets/img/ogp.png" /> <meta property="og:image:width" content="640" /> <meta property="og:image:height" content="640" /> <meta name="twitter:card" content="summary" /> <meta name="twitter:title" content="[SASS] 중첩(Nesting), 변수(letiables), 가져오기(Import) | twitter_username" /> <meta name="twitter:url" content="http://localhost:4000/sass-nesting-variables-import/" /> <meta name="twitter:site" content="@twitter_username" /> <meta name="twitter:creator" content="@twitter_username" /> <meta name="twitter:description" content="He&#39;s writing in Bahasa about web technology and experience as a journal for documentation things that he learned, meet him @github." /> <meta name="twitter:image" content="http://localhost:4000/assets/img/ogp.png" /> <link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Klise Theme" /> <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png" /> <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32x32.png" /> <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16x16.png" /> <link rel="manifest" href="/assets/favicons/site.webmanifest" /> <link rel="mask-icon" href="/assets/favicons/safari-pinned-tab.svg" color="#5bbad5" /> <meta name="apple-mobile-web-app-title" content="Jekyll Klise" /> <meta name="application-name" content="Jekyll Klise" /> <meta name="msapplication-TileColor" content="#da532c" /> <meta name="theme-color" content="#2c2c2c" /> <link rel="stylesheet" href="/assets/css/style.css" /> <!-- for mathjax support --> </head> <body data-theme="dark" class="notransition"> <script> const body = document.body; const data = body.getAttribute("data-theme"); const initTheme = (state) => { if (state === "dark") { body.setAttribute("data-theme", "dark"); } else if (state === "light") { body.removeAttribute("data-theme"); } else { localStorage.setItem("theme", data); } }; initTheme(localStorage.getItem("theme")); setTimeout(() => body.classList.remove("notransition"), 75); </script> <div class="navbar" role="navigation"> <nav class="menu"> <input type="checkbox" id="menu-trigger" class="menu-trigger" /> <label for="menu-trigger"> <span class="menu-icon"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 512 512" > <path d="M64,384H448V341.33H64Zm0-106.67H448V234.67H64ZM64,128v42.67H448V128Z" /> </svg> </span> </label> <a id="mode"> <svg class="mode-sunny" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 512 512" > <title>LIGHT</title> <line x1="256" y1="48" x2="256" y2="96" style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" /> <line x1="256" y1="416" x2="256" y2="464" style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" /> <line x1="403.08" y1="108.92" x2="369.14" y2="142.86" style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" /> <line x1="142.86" y1="369.14" x2="108.92" y2="403.08" style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" /> <line x1="464" y1="256" x2="416" y2="256" style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" /> <line x1="96" y1="256" x2="48" y2="256" style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" /> <line x1="403.08" y1="403.08" x2="369.14" y2="369.14" style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" /> <line x1="142.86" y1="142.86" x2="108.92" y2="108.92" style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" /> <circle cx="256" cy="256" r="80" style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" /> </svg> <svg class="mode-moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 512 512" > <title>DARK</title> <line x1="256" y1="48" x2="256" y2="96" style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" /> <line x1="256" y1="416" x2="256" y2="464" style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" /> <line x1="403.08" y1="108.92" x2="369.14" y2="142.86" style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" /> <line x1="142.86" y1="369.14" x2="108.92" y2="403.08" style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" /> <line x1="464" y1="256" x2="416" y2="256" style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" /> <line x1="96" y1="256" x2="48" y2="256" style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" /> <line x1="403.08" y1="403.08" x2="369.14" y2="369.14" style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" /> <line x1="142.86" y1="142.86" x2="108.92" y2="108.92" style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" /> <circle cx="256" cy="256" r="80" style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px" /> </svg> </a> <div class="trigger"> <div class="trigger-container"><a class="menu-link" href="/">home</a><a class="menu-link" href="/archive/">archive</a><a class="menu-link" href="/about/">about</a><a class="menu-link rss" href="/feed.xml"> <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 512 512" fill="#ED812E" > <title>RSS</title> <path d="M108.56,342.78a60.34,60.34,0,1,0,60.56,60.44A60.63,60.63,0,0,0,108.56,342.78Z" /> <path d="M48,186.67v86.55c52,0,101.94,15.39,138.67,52.11s52,86.56,52,138.67h86.66C325.33,312.44,199.67,186.67,48,186.67Z" /> <path d="M48,48v86.56c185.25,0,329.22,144.08,329.22,329.44H464C464,234.66,277.67,48,48,48Z" /> </svg> </a> </div> </div> </nav> </div> <div class="wrapper post"> <main class="page-content" aria-label="Content"> <article itemscope itemtype="https://schema.org/BlogPosting"> <header class="header"> <div class="tags"> <span itemprop="keywords"> <a class="tag" href="/tags/#sass">SASS</a>, <a class="tag" href="/tags/#css">CSS</a> </span> </div> <h1 class="header-title" itemprop="headline">[SASS] 중첩(Nesting), 변수(letiables), 가져오기(Import)</h1> <div class="post-meta"> <time datetime="2022-08-09T22:08:04+07:00" itemprop="datePublished"> Aug 09, 2022 </time> <span itemprop="author" itemscope itemtype="https://schema.org/Person"> <span itemprop="name">Jekyll Klisé</span> </span> <time hidden datetime="2022-08-09T22:08:04+07:00" itemprop="dateModified"> Aug 09, 2022 </time> <span hidden itemprop="publisher" itemtype="Person">Jekyll Klisé</span> <span hidden itemprop="image"></span> <span hidden itemprop="mainEntityOfPage"><h2 id="중첩nesting">중첩(Nesting)</h2> <p>SASS는 중첩기능을 사용할 수 있다. 상위 선택자의 반복을 피할수 있어 좀 더 편리하게 복잡한 구조를 작성할 수 있다.</p> </span> </div> </header> <div class="page-content" itemprop="articleBody"> <h2 id="중첩nesting"> <a href="#중첩nesting" class="anchor-head"></a> 중첩(Nesting) </h2> <p>SASS는 중첩기능을 사용할 수 있다. 상위 선택자의 반복을 피할수 있어 좀 더 편리하게 복잡한 구조를 작성할 수 있다.</p> <p><strong>SCSS</strong></p> <div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.wrap</span> <span class="p">{</span>
+    <span class="nl">width</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span>
+    <span class="nc">.list</span> <span class="p">{</span>
+        <span class="nl">padding</span><span class="p">:</span> <span class="m">20px</span><span class="p">;</span>
+        <span class="nt">li</span> <span class="p">{</span>
+            <span class="nl">color</span><span class="p">:</span> <span class="no">red</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div> <p><strong>Compiled to</strong></p> <div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.wrap</span> <span class="p">{</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.wrap</span> <span class="nc">.list</span> <span class="p">{</span>
+  <span class="nl">padding</span><span class="p">:</span> <span class="m">20px</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.wrap</span> <span class="nc">.list</span> <span class="nt">li</span> <span class="p">{</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="no">red</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div> <h2 id="상위-선책자-참조"> <a href="#상위-선책자-참조" class="anchor-head"></a> 상위 선책자 참조 </h2> <p>중첩 안에서 <code class="language-plaintext highlighter-rouge">&amp;</code>키워드는 상위(부모) 선택자를 참조한다.</p> <p><strong>SCSS</strong></p> <div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.wrap</span> <span class="p">{</span>
+    <span class="nl">width</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span>
+    <span class="k">&amp;</span><span class="nc">.active</span> <span class="p">{</span>
+        <span class="nl">color</span><span class="p">:</span> <span class="no">red</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div> <p><strong>Compiled to</strong></p> <div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.wrap</span> <span class="p">{</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.wrap.active</span> <span class="p">{</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="no">red</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div> <p><code class="language-plaintext highlighter-rouge">&amp;</code> 키워드는 상위 선택자를 참조했기 때문에 아래와 같이 응용이 가능하다.</p> <p><strong>SCSS</strong></p> <div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.wrap</span> <span class="p">{</span>
+    <span class="nl">width</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span>
+    <span class="k">&amp;</span><span class="nt">-small</span> <span class="p">{</span> <span class="nl">font-size</span><span class="p">:</span> <span class="m">12px</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">&amp;</span><span class="nt">-medium</span> <span class="p">{</span> <span class="nl">font-size</span><span class="p">:</span> <span class="m">14px</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">&amp;</span><span class="nt">-large</span> <span class="p">{</span> <span class="nl">font-size</span><span class="p">:</span> <span class="m">16px</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div> <p><strong>Compiled to</strong></p> <div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.wrap</span> <span class="p">{</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.wrap-small</span> <span class="p">{</span>
+  <span class="nl">font-size</span><span class="p">:</span> <span class="m">12px</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.wrap-medium</span> <span class="p">{</span>
+  <span class="nl">font-size</span><span class="p">:</span> <span class="m">14px</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.wrap-large</span> <span class="p">{</span>
+  <span class="nl">font-size</span><span class="p">:</span> <span class="m">16px</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div> <h2 id="중첩-벗어나기"> <a href="#중첩-벗어나기" class="anchor-head"></a> 중첩 벗어나기 </h2> <p>중첩에서 벗어나고 싶을 때 <code class="language-plaintext highlighter-rouge">@at-root</code>키워드를 사용한다. 중첩 안에서 생성하되 중첩 밖에서 사용해야 하는 경우에 유용하다.</p> <p><strong>SCSS</strong></p> <div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.list</span> <span class="p">{</span>
+    <span class="nl">width</span><span class="p">:</span> <span class="m">100px</span><span class="p">;</span>
+    <span class="nt">li</span> <span class="p">{</span>
+        <span class="nl">width</span><span class="p">:</span> <span class="m">50px</span><span class="p">;</span>
+        <span class="k">@at-root</span> <span class="nc">.box</span> <span class="p">{</span>
+            <span class="nl">width</span><span class="p">:</span> <span class="m">10px</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div> <p><strong>Compiled to</strong></p> <div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.list</span> <span class="p">{</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">100px</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.list</span> <span class="nt">li</span> <span class="p">{</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">50px</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.box</span> <span class="p">{</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">10px</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div> <h2 id="중첩된-속성"> <a href="#중첩된-속성" class="anchor-head"></a> 중첩된 속성 </h2> <p><code class="language-plaintext highlighter-rouge">font-</code>, <code class="language-plaintext highlighter-rouge">margin-</code> 등과 같이 동일한 네임 스페이스를 가지는 속성들은 아래와 같이 사용할 수 있다.</p> <p><strong>SCSS</strong></p> <div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.wrap</span> <span class="p">{</span>
+    <span class="nl">font</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">weight</span><span class="p">:</span> <span class="nb">bold</span><span class="p">;</span>
+        <span class="nl">size</span><span class="p">:</span> <span class="m">12px</span><span class="p">;</span>
+        <span class="na">family</span><span class="p">:</span> <span class="nb">sans-serif</span><span class="p">;</span>
+    <span class="p">};</span>
+    <span class="nl">margin</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nl">top</span><span class="p">:</span> <span class="m">10px</span><span class="p">;</span>
+        <span class="nl">left</span><span class="p">:</span> <span class="m">20px</span><span class="p">;</span>
+    <span class="p">};</span>
+    <span class="nl">padding</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nl">bottom</span><span class="p">:</span> <span class="m">20px</span><span class="p">;</span>
+        <span class="nl">right</span><span class="p">:</span> <span class="m">10px</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div> <p><strong>Compiled to</strong></p> <div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.wrap</span> <span class="p">{</span>
+  <span class="nl">font-weight</span><span class="p">:</span> <span class="nb">bold</span><span class="p">;</span>
+  <span class="nl">font-size</span><span class="p">:</span> <span class="m">12px</span><span class="p">;</span>
+  <span class="nl">font-family</span><span class="p">:</span> <span class="nb">sans-serif</span><span class="p">;</span>
+  <span class="nl">margin-top</span><span class="p">:</span> <span class="m">10px</span><span class="p">;</span>
+  <span class="nl">margin-left</span><span class="p">:</span> <span class="m">20px</span><span class="p">;</span>
+  <span class="nl">padding-bottom</span><span class="p">:</span> <span class="m">20px</span><span class="p">;</span>
+  <span class="nl">padding-right</span><span class="p">:</span> <span class="m">10px</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div> <h2 id="변수letiables"> <a href="#변수letiables" class="anchor-head"></a> 변수(letiables) </h2> <p>반복적으로 사용되는 값을 변수로 지정할 수 있다. 변수 이름 앞에는 항상 <code class="language-plaintext highlighter-rouge">$</code>를 붙인다.</p> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$변수이름: 속성값;
+</code></pre></div></div> <p><strong>SCSS</strong></p> <div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$color-code</span><span class="p">:</span> <span class="mh">#000</span><span class="p">;</span>
+<span class="nv">$url</span><span class="p">:</span> <span class="s2">"/common/images/"</span><span class="p">;</span>
+<span class="nv">$w</span><span class="p">:</span> <span class="m">200px</span><span class="p">;</span>
+
+<span class="nc">.wrap</span> <span class="p">{</span>
+    <span class="nl">color</span><span class="p">:</span> <span class="nv">$color-code</span><span class="p">;</span>
+    <span class="nl">background-image</span><span class="p">:</span> <span class="nv">$url</span><span class="p">;</span>
+    <span class="nl">width</span><span class="p">:</span> <span class="nv">$w</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div> <p><strong>Compiled to</strong></p> <div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.wrap</span> <span class="p">{</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="mh">#000</span><span class="p">;</span>
+  <span class="nl">background-image</span><span class="p">:</span> <span class="s2">"/common/images/"</span><span class="p">;</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">200px</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div> <h2 id="변수의-유효범위"> <a href="#변수의-유효범위" class="anchor-head"></a> 변수의 유효범위 </h2> <p>변수는 사용 가능한 유효범위가 있다. 선언된 블록({}) 내에서만 유효범위를 가진다.</p> <p><strong>SCSS</strong></p> <div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.wrap</span> <span class="p">{</span>
+    <span class="nv">$w</span><span class="p">:</span> <span class="m">100px</span><span class="p">;</span>
+    <span class="nc">.box</span> <span class="p">{</span>
+        <span class="nl">width</span><span class="p">:</span> <span class="nv">$w</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Error</span>
+<span class="nc">.box2</span> <span class="p">{</span>
+    <span class="nl">width</span><span class="p">:</span> <span class="nv">$w</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div> <p>변수 <code class="language-plaintext highlighter-rouge">$w</code>는 <code class="language-plaintext highlighter-rouge">.wrap</code>의 블록 안에서 설정되었기 때문에, 블록 밖의 <code class="language-plaintext highlighter-rouge">.box2</code>에서 사용할 수 없다.</p> <h2 id="변수-재-할당"> <a href="#변수-재-할당" class="anchor-head"></a> 변수 재 할당 </h2> <p>아래처럼 변수에 변수를 할당할 수 있다.</p> <p><strong>SCSS</strong></p> <div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$red</span><span class="p">:</span> <span class="mh">#FF0000</span><span class="p">;</span>
+<span class="nv">$color-code</span><span class="p">:</span> <span class="nv">$red</span><span class="p">;</span>
+
+<span class="nc">.box</span> <span class="p">{</span>
+    <span class="nl">color</span><span class="p">:</span> <span class="nv">$color-code</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div> <p><strong>Compiled to</strong></p> <div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.box</span> <span class="p">{</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="mh">#FF0000</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div> <h2 id="전역-설정"> <a href="#전역-설정" class="anchor-head"></a> 전역 설정 </h2> <p><code class="language-plaintext highlighter-rouge">!global</code> 플래그를 사용하면 변수의 유효범위를 전역(Global)로 설정할 수 있다. 대신 기존에 사용하던 같은 이름의 변수가 있을 경우 값이 덮어져 사용된다.</p> <p><strong>SCSS</strong></p> <div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.box</span> <span class="p">{</span>
+    <span class="nv">$w</span><span class="p">:</span> <span class="m">100px</span> <span class="o">!</span><span class="n">global</span><span class="p">;</span>
+    <span class="nl">width</span><span class="p">:</span> <span class="nv">$w</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.box2</span> <span class="p">{</span>
+    <span class="nl">width</span><span class="p">:</span> <span class="nv">$w</span><span class="p">;</span>
+    <span class="nv">$w</span><span class="p">:</span> <span class="m">200px</span> <span class="o">!</span><span class="n">global</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.box3</span> <span class="p">{</span>
+    <span class="nl">width</span><span class="p">:</span> <span class="nv">$w</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div> <p><strong>Compiled to</strong></p> <div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.box</span> <span class="p">{</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">100px</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.box2</span> <span class="p">{</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">100px</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.box3</span> <span class="p">{</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">200px</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div> <h2 id="초기값-설정"> <a href="#초기값-설정" class="anchor-head"></a> 초기값 설정 </h2> <p><code class="language-plaintext highlighter-rouge">!default</code> 플래그는 할당되지 않은 변수의 초깃값을 설정한다. 즉, 할당되어있는 변수가 있다면 변수가 기존 할당 값을 사용한다.</p> <p><strong>SCSS</strong></p> <div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$w</span><span class="p">:</span> <span class="m">100px</span><span class="p">;</span>
+
+<span class="nc">.box</span> <span class="p">{</span>
+    <span class="nv">$w</span><span class="p">:</span> <span class="m">200px</span> <span class="o">!</span><span class="nb">default</span><span class="p">;</span>
+    <span class="nl">width</span><span class="p">:</span> <span class="nv">$w</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div> <p><strong>Compiled to</strong></p> <div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.box</span> <span class="p">{</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">100px</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div> <p>변수와 값을 설정하겠지만, 혹시 기존 변수가 있을 경우 현재 설정하는 값은 사용하지 않겠다는 의미로 쓸 수 있다.</p> <h2 id="문자-보간"> <a href="#문자-보간" class="anchor-head"></a> 문자 보간 </h2> <p><code class="language-plaintext highlighter-rouge">#{}</code>를 이용하여 코드의 어디든지 변수 값을 넣을 수 있다.</p> <p><strong>SCSS</strong></p> <div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$family</span><span class="p">:</span> <span class="nf">unquote</span><span class="p">(</span><span class="s2">"Droid+Sans"</span><span class="p">);</span>
+<span class="k">@import</span> <span class="sx">url("http://fonts.googleapis.com/css?family=</span><span class="si">#{</span><span class="nv">$family</span><span class="si">}</span><span class="sx">")</span><span class="p">;</span>
+</code></pre></div></div> <p><strong>Compiled to</strong></p> <div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">@import</span> <span class="sx">url("http://fonts.googleapis.com/css?family=Droid+Sans")</span><span class="p">;</span>
+</code></pre></div></div> <h2 id="가져오기import"> <a href="#가져오기import" class="anchor-head"></a> 가져오기(Import) </h2> <p>CSS에는 현재 파일에 다른 CSS를 불러오는 <code class="language-plaintext highlighter-rouge">@import</code>라는 속성이 있다. 이 속성을 사용하면 의도에 따라 코드를 잘게 쪼개어 효율적으로 유지 보수할 수 있지만, <code class="language-plaintext highlighter-rouge">@import</code>로 선언되어 있는 CSS마다 http 요청을 발생하므로 웹페이지 성능 저하의 원인이 된다 하여 사용을 지양하고 있다. SASS에서도 다른 파일을 불러올 수 있는 <code class="language-plaintext highlighter-rouge">@import</code>가 있다. CSS의 <code class="language-plaintext highlighter-rouge">@import</code>와 다른 점은 여러개의 SASS파일은 <code class="language-plaintext highlighter-rouge">@import</code>해도 최종적으로 하나의 CSS로 컴파일해주기 때문에 성능에 영향을 주지 않고 코드를 여러 파일로 나누어 관리할 수 있다. 물론 <code class="language-plaintext highlighter-rouge">@import</code>된 파일에서 정의된 내용은 부모 SASS 파일에서도 사용할 수 있다.</p> <div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 작성 방법 : @import "파일명.scss" 또는 @import "파일명";</span>
+<span class="k">@import</span> <span class="s2">"reset"</span><span class="p">;</span>
+<span class="k">@import</span> <span class="s2">"reset.scss"</span><span class="p">;</span>
+</code></pre></div></div> <p>참고로 <code class="language-plaintext highlighter-rouge">.scss</code>파일을 <code class="language-plaintext highlighter-rouge">@import</code>할 경우, <code class="language-plaintext highlighter-rouge">.scss</code> 확장자를 써주지 않아도 된다.</p> <h2 id="partials"> <a href="#partials" class="anchor-head"></a> Partials </h2> <p>만약 <code class="language-plaintext highlighter-rouge">.scss</code>파일 앞에 언더바(_)로 시작하면 CSS파일로 따로 컴파일 되지 않는다. html에서 해당 CSS파일을 불러올일이 없고, <code class="language-plaintext highlighter-rouge">@import</code>만 필요한 경우에는 이 기능을 사용하면 된다.</p> <h2 id="references"> <a href="#references" class="anchor-head"></a> References </h2> <p><a href="https://heropy.blog/2018/01/31/sass/">Sass(SCSS) 완전 정복!</a><br /> <a href="http://hwangsunsoo.org/lecture/src/sass_article_seminar_2017_2nd_half.html">Sass 기초와 활용</a><br /> <a href="https://recoveryman.tistory.com/277">[사스(Sass)] 2. Sass 사용법</a><br /> <a href="https://developer.mozilla.org/ko/docs/Glossary/CSS_preprocessor">CSS 전처리기</a><br /> <a href="https://designmeme.github.io/ko/blog/write-sass-with-scss/">Sass는 SCSS로 쓰세요</a><br /> <a href="https://i-fiction.tistory.com/9">[사스(Sass)] Sass 기본 사용법 (컴파일 및 명령어)</a></p> </div> </article> </main> <small class="post-updated-at">updated_at 09-08-2022</small> <nav class="post-nav"> <a class="post-nav-item post-nav-prev" href="/javascript-es6-destructuring-assignment/" > <div class="nav-arrow">Previous</div> <span class="post-title">[JavaScript] 비구조화 할당(Destructuring Assignment)</span> </a> <a class="post-nav-item post-nav-next" href="/sass-operations/"> <div class="nav-arrow">Next</div> <span class="post-title">[SASS] 연산(Operations)</span> </a> </nav> <footer class="footer"> <a class="footer_item" href="/thanks">ack.</a> <a class="footer_item" href="javascript::void(0)">resume</a> <a class="footer_item" href="/feed.xml">rss</a> <span class="footer_item">&copy; 2024</span> <small class="footer_copyright"> <!-- Klisé Theme: https://github.com/piharpi/jekyll-klise --> <a href="https://github.com/piharpi/jekyll-klise" target="_blank" rel="noreferrer noopener" >klisé</a > theme on <a href="https://jekyllrb.com" target="_blank" rel="noreferrer noopener" >jekyll</a > </small> </footer> <script src="/assets/js/main.js" defer="defer"></script> </div> </body> </html>

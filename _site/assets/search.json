@@ -1,0 +1,811 @@
+[
+  
+    {
+      "title"    : "[Algorithm]Docker-Compose Setting",
+      "description" : "",
+      "tags"     : "docker, vscode",
+      "url"      : "/docker-install/",
+      "date"     : "2024-03-20 19:10:59 +0700"
+    } ,
+  
+    {
+      "title"    : "[Algorithm]알고리즘 문제풀이",
+      "description" : "",
+      "tags"     : "JavaScript, Algorithm",
+      "url"      : "/isPalindrome/",
+      "date"     : "2024-02-03 19:10:59 +0700"
+    } ,
+  
+    {
+      "title"    : "[Algorithm]알고리즘 문제풀이",
+      "description" : "",
+      "tags"     : "JavaScript, Algorithm",
+      "url"      : "/factorial/",
+      "date"     : "2024-02-02 19:10:59 +0700"
+    } ,
+  
+    {
+      "title"    : "[JavaScript]기본형과 참조형",
+      "description" : "",
+      "tags"     : "JavaScript, Object, primitive-type, reference-type",
+      "url"      : "/primitive-reference-copy/",
+      "date"     : "2024-02-01 19:10:59 +0700"
+    } ,
+  
+    {
+      "title"    : "[JavaScript]배열은 객체다",
+      "description" : "",
+      "tags"     : "JavaScript, Array, Object",
+      "url"      : "/array-object/",
+      "date"     : "2024-01-31 19:10:59 +0700"
+    } ,
+  
+    {
+      "title"    : "[Algorithm]프로그래머스 알고리즘 문제풀이",
+      "description" : "",
+      "tags"     : "JavaScript, Algorithm",
+      "url"      : "/overwriting-string/",
+      "date"     : "2024-01-28 19:10:59 +0700"
+    } ,
+  
+    {
+      "title"    : "피보나치 수열(Fibonacci Sequence)",
+      "description" : "",
+      "tags"     : "JavaScript, Algorithm",
+      "url"      : "/fibonacci/",
+      "date"     : "2024-01-25 19:10:59 +0700"
+    } ,
+  
+    {
+      "title"    : "유용한 VScode플러그인 추천",
+      "description" : "",
+      "tags"     : "VScode",
+      "url"      : "/codeeditor/",
+      "date"     : "2024-01-10 19:10:59 +0700"
+    } ,
+  
+    {
+      "title"    : "[React] 리액트 비동기처리로 인한 오류 해결하기(TIL)",
+      "description" : "",
+      "tags"     : "React, JavaScript, TIL",
+      "url"      : "/react-localstorage/",
+      "date"     : "2023-12-07 02:10:59 +0700"
+    } ,
+  
+    {
+      "title"    : "[React] 쿼리 스트링(Query String)",
+      "description" : "",
+      "tags"     : "React, JavaScript, QueryString",
+      "url"      : "/query-string/",
+      "date"     : "2023-11-30 02:10:59 +0700"
+    } ,
+  
+    {
+      "title"    : "[React] 프론트엔드 Vercel로 손쉽게 배포하기",
+      "description" : "",
+      "tags"     : "React, JavaScript, Vercel, Deploy",
+      "url"      : "/react-vercel/",
+      "date"     : "2023-11-28 02:10:59 +0700"
+    } ,
+  
+    {
+      "title"    : "[JavaScript] debugger 사용법",
+      "description" : "",
+      "tags"     : "JavaScript, debugger, React",
+      "url"      : "/javascript-debugger/",
+      "date"     : "2023-11-27 01:00:59 +0700"
+    } ,
+  
+    {
+      "title"    : "[React] String 문장 안에 변수명 넣고 연결, 출력하기",
+      "description" : "",
+      "tags"     : "react, html, template",
+      "url"      : "/react-structure/",
+      "date"     : "2023-11-20 19:00:59 +0700"
+    } ,
+  
+    {
+      "title"    : "[React] useNavigate로 페이지 뒤로가기 구현하기",
+      "description" : "",
+      "tags"     : "react, useNavigate, hook",
+      "url"      : "/react-back-icon/",
+      "date"     : "2023-10-12 19:00:59 +0700"
+    } ,
+  
+    {
+      "title"    : "[Vue3] fontawesome 사용하기",
+      "description" : "",
+      "tags"     : "Vue3, fontawesome, javascript, library",
+      "url"      : "/vue-fontawesome/",
+      "date"     : "2023-09-08 19:00:59 +0700"
+    } ,
+  
+    {
+      "title"    : "[React] Slick arrow custom",
+      "description" : "",
+      "tags"     : "react, slick, react-slick",
+      "url"      : "/react-slick/",
+      "date"     : "2023-08-16 19:00:59 +0700"
+    } ,
+  
+    {
+      "title"    : "[React] 조건부 렌더링과 &amp;&amp; 연산자 사용시 주의사항",
+      "description" : "",
+      "tags"     : "React, JavaScript",
+      "url"      : "/react-rendering/",
+      "date"     : "2023-07-30 01:00:59 +0700"
+    } ,
+  
+    {
+      "title"    : "[JavaScript] 원시(primitive)타입 VS 객체(object)타입",
+      "description" : "",
+      "tags"     : "javascript, dataType",
+      "url"      : "/javascript-type/",
+      "date"     : "2023-07-19 01:00:59 +0700"
+    } ,
+  
+    {
+      "title"    : "[Network] CORS 에러와 개념, 해결방법",
+      "description" : "",
+      "tags"     : "CORS, JavaScript, Browser, React",
+      "url"      : "/network-cors/",
+      "date"     : "2023-07-14 01:00:59 +0700"
+    } ,
+  
+    {
+      "title"    : "[JavaScript] async/await",
+      "description" : "",
+      "tags"     : "React, async, await, JavaScript",
+      "url"      : "/react-async-wait/",
+      "date"     : "2023-07-13 01:00:59 +0700"
+    } ,
+  
+    {
+      "title"    : "[Network] REST API, GraphQL 차이",
+      "description" : "",
+      "tags"     : "React, CRUD, RESTAPI, GraphQL, http, API",
+      "url"      : "/network-http-api/",
+      "date"     : "2023-07-10 01:00:59 +0700"
+    } ,
+  
+    {
+      "title"    : "[React] 전개연산자를 활용한 배열에 객체넣기",
+      "description" : "",
+      "tags"     : "React, array, object, CRUD, useState, map",
+      "url"      : "/react-crud/",
+      "date"     : "2023-07-06 01:00:59 +0700"
+    } ,
+  
+    {
+      "title"    : "[JavaScript] JSON의 등장과 XML",
+      "description" : "",
+      "tags"     : "javascript, XML, json, html, data",
+      "url"      : "/javascript-xml-vs-json/",
+      "date"     : "2023-06-13 19:00:59 +0700"
+    } ,
+  
+    {
+      "title"    : "[HTML] 데이터 속성(Data Attribute)",
+      "description" : "",
+      "tags"     : "html, javascript, data attribute",
+      "url"      : "/html-data-attribute/",
+      "date"     : "2023-06-13 17:00:59 +0700"
+    } ,
+  
+    {
+      "title"    : "[CSS] 스프라이트 기법",
+      "description" : "",
+      "tags"     : "React, Sprite, CSS, HTML",
+      "url"      : "/css-sprite/",
+      "date"     : "2023-06-12 01:00:59 +0700"
+    } ,
+  
+    {
+      "title"    : "[JavaScript] 자바스크립트의 오류 유형",
+      "description" : "",
+      "tags"     : "javascript, error",
+      "url"      : "/javascript-error-type/",
+      "date"     : "2023-04-09 17:08:01 +0700"
+    } ,
+  
+    {
+      "title"    : "[React] React Navbar fixed",
+      "description" : "",
+      "tags"     : "React, JavaScript, SCSS",
+      "url"      : "/react-nav-fixed/",
+      "date"     : "2023-02-21 01:00:59 +0700"
+    } ,
+  
+    {
+      "title"    : "[React] React-Query 상태관리",
+      "description" : "",
+      "tags"     : "React, CRUD, React-query",
+      "url"      : "/react-react-query/",
+      "date"     : "2023-02-09 01:00:59 +0700"
+    } ,
+  
+    {
+      "title"    : "[React] 아토믹(Atomic)디자인 패턴",
+      "description" : "",
+      "tags"     : "React, Atomic, SPA",
+      "url"      : "/react-atomic/",
+      "date"     : "2023-02-09 01:00:59 +0700"
+    } ,
+  
+    {
+      "title"    : "[HTML] 시맨틱 마크업(Sematic Markup)",
+      "description" : "",
+      "tags"     : "html, css, Semantic-Tag",
+      "url"      : "/sematic-markup/",
+      "date"     : "2023-02-08 03:00:59 +0700"
+    } ,
+  
+    {
+      "title"    : "[ETC]절대경로와 상대경로",
+      "description" : "",
+      "tags"     : "etc",
+      "url"      : "/img-search/",
+      "date"     : "2023-02-06 22:00:59 +0700"
+    } ,
+  
+    {
+      "title"    : "[JavaScript] Callback 과 Promise",
+      "description" : "",
+      "tags"     : "JavaScript, CallBack, Promise",
+      "url"      : "/javascript-callback/",
+      "date"     : "2023-01-29 01:00:59 +0700"
+    } ,
+  
+    {
+      "title"    : "[React] FontAwesome",
+      "description" : "",
+      "tags"     : "React",
+      "url"      : "/fontawsome/",
+      "date"     : "2023-01-26 01:00:59 +0700"
+    } ,
+  
+    {
+      "title"    : "[Vue3] 할 일 관리 앱",
+      "description" : "",
+      "tags"     : "Vue3, JavaScript",
+      "url"      : "/to-do-list-vue/",
+      "date"     : "2023-01-21 01:00:59 +0700"
+    } ,
+  
+    {
+      "title"    : "[JavaScript] 정규표현식(RegExp)",
+      "description" : "",
+      "tags"     : "JS, React, RegExp",
+      "url"      : "/RegExp/",
+      "date"     : "2023-01-10 23:00:59 +0700"
+    } ,
+  
+    {
+      "title"    : "[GitHub] REAEME.md 에 기술블로그 최신 글 가져오기",
+      "description" : "",
+      "tags"     : "git, gitHub",
+      "url"      : "/read-me-style/",
+      "date"     : "2023-01-08 22:00:59 +0700"
+    } ,
+  
+    {
+      "title"    : "[React] Debounce",
+      "description" : "",
+      "tags"     : "React, Debounce, lodash",
+      "url"      : "/debounce/",
+      "date"     : "2023-01-03 23:00:59 +0700"
+    } ,
+  
+    {
+      "title"    : "[React] dangerouslySetInnerHTML",
+      "description" : "",
+      "tags"     : "React, HTML, XSS",
+      "url"      : "/dangerously-setInner-html/",
+      "date"     : "2023-01-03 22:00:59 +0700"
+    } ,
+  
+    {
+      "title"    : "[Network] 인터넷 네트워크",
+      "description" : "",
+      "tags"     : "IP, TCP, UDP, PORT",
+      "url"      : "/internet-network/",
+      "date"     : "2022-12-12 01:00:59 +0700"
+    } ,
+  
+    {
+      "title"    : "[JavaScript] 타입 변환과 단축평가",
+      "description" : "",
+      "tags"     : "javascript",
+      "url"      : "/javascript-type-coercion/",
+      "date"     : "2022-12-10 21:00:08 +0700"
+    } ,
+  
+    {
+      "title"    : "[JavaScript] 함수형 프로그래밍의 순수 함수",
+      "description" : "",
+      "tags"     : "javascript, pure function, functional programming",
+      "url"      : "/javascript-pure-function/",
+      "date"     : "2022-12-10 18:30:35 +0700"
+    } ,
+  
+    {
+      "title"    : "[Memoirs] 2ND Project WnB",
+      "description" : "",
+      "tags"     : "react, project",
+      "url"      : "/wecode-2st-project/",
+      "date"     : "2022-12-09 02:00:00 +0700"
+    } ,
+  
+    {
+      "title"    : "[AWS] AWS EC2 생성하여 서버 배포하기",
+      "description" : "",
+      "tags"     : "AWS, EC2",
+      "url"      : "/back-end-build/",
+      "date"     : "2022-12-07 01:00:59 +0700"
+    } ,
+  
+    {
+      "title"    : "[GitHub] 리액트 프로젝트를 gh-pages로 배포하는 방법",
+      "description" : "",
+      "tags"     : "github",
+      "url"      : "/front-end-build/",
+      "date"     : "2022-12-06 01:00:59 +0700"
+    } ,
+  
+    {
+      "title"    : "[JavaScript] 문자열이 공백인지 체크",
+      "description" : "",
+      "tags"     : "javascript",
+      "url"      : "/javascript-check-space-string/",
+      "date"     : "2022-11-30 01:21:25 +0700"
+    } ,
+  
+    {
+      "title"    : "[Memoirs] 1ST Project Woosop",
+      "description" : "",
+      "tags"     : "react, project",
+      "url"      : "/wecode-1st-project/",
+      "date"     : "2022-11-28 02:00:00 +0700"
+    } ,
+  
+    {
+      "title"    : "[JavaScript] try...catch를 이용한 에러 핸들링",
+      "description" : "",
+      "tags"     : "javascript",
+      "url"      : "/javascript-try-catch/",
+      "date"     : "2022-11-08 21:35:42 +0700"
+    } ,
+  
+    {
+      "title"    : "[JavaScript] 얕은 복사, 깊은 복사",
+      "description" : "",
+      "tags"     : "javascript",
+      "url"      : "/javascript-shallow-copy-deep-copy/",
+      "date"     : "2022-10-18 19:00:59 +0700"
+    } ,
+  
+    {
+      "title"    : "[React] 유효성 검사 및 API 호출, To Do List 체크박스 수정 및 삭제기능 배포",
+      "description" : "",
+      "tags"     : "react, javascript",
+      "url"      : "/wanted-pre-on-boarding-task/",
+      "date"     : "2022-10-13 23:31:00 +0700"
+    } ,
+  
+    {
+      "title"    : "[JavaScript] 전개연산자(Spread Operator)",
+      "description" : "",
+      "tags"     : "javascript",
+      "url"      : "/javascript-spread-operator/",
+      "date"     : "2022-09-28 19:00:59 +0700"
+    } ,
+  
+    {
+      "title"    : "[JavaScript] 클로저",
+      "description" : "",
+      "tags"     : "javascript",
+      "url"      : "/javascript-closure/",
+      "date"     : "2022-09-01 19:00:59 +0700"
+    } ,
+  
+    {
+      "title"    : "[SASS] 연산(Operations)",
+      "description" : "",
+      "tags"     : "sass, css",
+      "url"      : "/sass-operations/",
+      "date"     : "2022-08-10 22:11:16 +0700"
+    } ,
+  
+    {
+      "title"    : "[SASS] 중첩(Nesting), 변수(letiables), 가져오기(Import)",
+      "description" : "",
+      "tags"     : "sass, css",
+      "url"      : "/sass-nesting-variables-import/",
+      "date"     : "2022-08-09 22:08:04 +0700"
+    } ,
+  
+    {
+      "title"    : "[JavaScript] 비구조화 할당(Destructuring Assignment)",
+      "description" : "",
+      "tags"     : "javascript, es6",
+      "url"      : "/javascript-es6-destructuring-assignment/",
+      "date"     : "2022-08-05 03:51:12 +0700"
+    } ,
+  
+    {
+      "title"    : "[JavaScript] Fetch API",
+      "description" : "",
+      "tags"     : "http, javascript",
+      "url"      : "/javascript-fetch-api/",
+      "date"     : "2022-07-30 00:10:56 +0700"
+    } ,
+  
+    {
+      "title"    : "[JavaScript] 객체(Object)",
+      "description" : "",
+      "tags"     : "javascript",
+      "url"      : "/javascript-object/",
+      "date"     : "2022-07-28 19:00:59 +0700"
+    } ,
+  
+    {
+      "title"    : "[CSS] Layout Display, Position 정리",
+      "description" : "",
+      "tags"     : "css",
+      "url"      : "/css-position/",
+      "date"     : "2022-07-20 17:00:59 +0700"
+    } ,
+  
+    {
+      "title"    : "[HTML] Semantic web/tag 사용을 지향해야 하는 이유",
+      "description" : "",
+      "tags"     : "html",
+      "url"      : "/html-Semantic/",
+      "date"     : "2022-07-20 01:00:59 +0700"
+    } ,
+  
+    {
+      "title"    : "[Git] 깃 커밋 메시지 컨벤션(Git Commit Message Convention)",
+      "description" : "",
+      "tags"     : "git",
+      "url"      : "/git-commit-message-convention/",
+      "date"     : "2022-07-12 18:00:29 +0700"
+    } ,
+  
+    {
+      "title"    : "[Browser] 우리가 보는 화면은 어떻게 만들어 졌을까?",
+      "description" : "",
+      "tags"     : "browser",
+      "url"      : "/browser-rendering/",
+      "date"     : "2022-07-08 21:00:08 +0700"
+    } ,
+  
+    {
+      "title"    : "[Git] 깃 명령어",
+      "description" : "",
+      "tags"     : "git",
+      "url"      : "/git-command/",
+      "date"     : "2022-07-08 19:00:23 +0700"
+    } ,
+  
+    {
+      "title"    : "[JavaScript] 비동기처리와 콜백함수의 개념",
+      "description" : "",
+      "tags"     : "javascript",
+      "url"      : "/javascript-callback-function/",
+      "date"     : "2022-07-02 02:10:59 +0700"
+    } ,
+  
+    {
+      "title"    : "[Network] 포트(Port)",
+      "description" : "",
+      "tags"     : "network, port",
+      "url"      : "/network-port/",
+      "date"     : "2022-07-01 23:10:00 +0700"
+    } ,
+  
+    {
+      "title"    : "[JavaScript] 배열 메서드",
+      "description" : "",
+      "tags"     : "javascript",
+      "url"      : "/javascript-array-method/",
+      "date"     : "2022-06-29 18:40:59 +0700"
+    } ,
+  
+    {
+      "title"    : "[jQuery] Todolist UI",
+      "description" : "",
+      "tags"     : "javascript, jquery",
+      "url"      : "/ui-jquery-todolist/",
+      "date"     : "2022-06-28 17:34:50 +0700"
+    } ,
+  
+    {
+      "title"    : "[JavaScript] 데이터 타입",
+      "description" : "",
+      "tags"     : "javascript",
+      "url"      : "/javascript-data/",
+      "date"     : "2022-06-24 21:30:59 +0700"
+    } ,
+  
+    {
+      "title"    : "[JavaScript] ES5 Array.reduce",
+      "description" : "",
+      "tags"     : "javascript, es5",
+      "url"      : "/javascript-array-reduce/",
+      "date"     : "2022-06-22 01:57:42 +0700"
+    } ,
+  
+    {
+      "title"    : "[JavaScript] ES5 Array.some",
+      "description" : "",
+      "tags"     : "javascript, es5",
+      "url"      : "/javascript-array-some/",
+      "date"     : "2022-06-20 01:55:20 +0700"
+    } ,
+  
+    {
+      "title"    : "[JavaScript] ES5 Array.filter",
+      "description" : "",
+      "tags"     : "javascript, es5",
+      "url"      : "/javascript-array-filter/",
+      "date"     : "2022-06-19 01:53:36 +0700"
+    } ,
+  
+    {
+      "title"    : "[JavaScript] ES5 Array.map",
+      "description" : "",
+      "tags"     : "javascript, es5",
+      "url"      : "/javascript-array-map/",
+      "date"     : "2022-06-18 01:49:45 +0700"
+    } ,
+  
+    {
+      "title"    : "[JavaScript] ES5 Array.forEach",
+      "description" : "",
+      "tags"     : "javascript, es5",
+      "url"      : "/javascript-array-foreach/",
+      "date"     : "2022-06-17 01:46:41 +0700"
+    } ,
+  
+    {
+      "title"    : "[JavaScript]자바스크립트 GET과 POST 차이",
+      "description" : "",
+      "tags"     : "network",
+      "url"      : "/network-get-post/",
+      "date"     : "2022-06-14 23:10:00 +0700"
+    } ,
+  
+    {
+      "title"    : "[jQuery] 생년월일 Select Box UI",
+      "description" : "",
+      "tags"     : "javascript, jquery",
+      "url"      : "/ui-jquery-birthday-selectbox/",
+      "date"     : "2022-06-02 23:00:08 +0700"
+    } ,
+  
+    {
+      "title"    : "[jQuery] Hamburger Menu UI",
+      "description" : "",
+      "tags"     : "javascript, jquery",
+      "url"      : "/ui-jquery-hamburger-menu/",
+      "date"     : "2022-05-28 19:50:38 +0700"
+    } ,
+  
+    {
+      "title"    : "[jQuery] Fixed Navigation UI",
+      "description" : "",
+      "tags"     : "javascript, jquery",
+      "url"      : "/ui-jquery-fixed-navigation/",
+      "date"     : "2022-05-28 19:50:38 +0700"
+    } ,
+  
+    {
+      "title"    : "[jQuery] Accodian Menu UI",
+      "description" : "",
+      "tags"     : "javascript, jquery",
+      "url"      : "/ui-jquery-accodian-menu/",
+      "date"     : "2022-05-28 19:50:38 +0700"
+    } ,
+  
+    {
+      "title"    : "[React] JSX 문법",
+      "description" : "",
+      "tags"     : "react, jsx",
+      "url"      : "/react-jsx/",
+      "date"     : "2022-05-26 19:00:59 +0700"
+    } ,
+  
+    {
+      "title"    : "[JavaScript] 호출 스택(Call Stack)",
+      "description" : "",
+      "tags"     : "javascript",
+      "url"      : "/javascript-call-stack/",
+      "date"     : "2022-05-23 19:44:59 +0700"
+    } ,
+  
+    {
+      "title"    : "[jQuery] Dimmed Popup UI",
+      "description" : "",
+      "tags"     : "javascript, jquery",
+      "url"      : "/ui-jquery-dimmed-popup/",
+      "date"     : "2022-05-20 17:41:08 +0700"
+    } ,
+  
+    {
+      "title"    : "[jQuery] Modal Popup UI",
+      "description" : "",
+      "tags"     : "javascript, jquery",
+      "url"      : "/ui-jquery-modal-window/",
+      "date"     : "2022-05-17 19:50:38 +0700"
+    } ,
+  
+    {
+      "title"    : "[jQuery] Agree Checkbox UI",
+      "description" : "",
+      "tags"     : "javascript, jquery",
+      "url"      : "/ui-jquery-checkbox/",
+      "date"     : "2022-05-17 03:08:38 +0700"
+    } ,
+  
+    {
+      "title"    : "[JavaScript] 변수 선언과 호이스팅(Hoisting)",
+      "description" : "",
+      "tags"     : "javascript",
+      "url"      : "/javascript-variable/",
+      "date"     : "2022-05-14 02:10:59 +0700"
+    } ,
+  
+    {
+      "title"    : "[jQuery] Select Box UI",
+      "description" : "",
+      "tags"     : "javascript, jquery",
+      "url"      : "/ui-jquery-selectbox/",
+      "date"     : "2022-04-22 03:37:08 +0700"
+    } ,
+  
+    {
+      "title"    : "[JavaScript] while 반복문",
+      "description" : "",
+      "tags"     : "javascript",
+      "url"      : "/javascript-while/",
+      "date"     : "2022-04-21 19:34:59 +0700"
+    } ,
+  
+    {
+      "title"    : "[JavaScript] 자바스크립트 switch 조건문",
+      "description" : "",
+      "tags"     : "javascript",
+      "url"      : "/javascript-switch/",
+      "date"     : "2022-04-20 21:30:59 +0700"
+    } ,
+  
+    {
+      "title"    : "[JavaScript] 자바스크립트 노드 생성 및 추가",
+      "description" : "",
+      "tags"     : "javascript",
+      "url"      : "/javascript-add-node/",
+      "date"     : "2022-04-18 21:30:59 +0700"
+    } ,
+  
+    {
+      "title"    : "[JavaScript] 문자열 자르기",
+      "description" : "",
+      "tags"     : "javascript",
+      "url"      : "/javascript-string-slice/",
+      "date"     : "2022-04-15 19:30:59 +0700"
+    } ,
+  
+    {
+      "title"    : "[JavaScript] 자바스크립트의 실행 환경",
+      "description" : "",
+      "tags"     : "javascript",
+      "url"      : "/javascript-run-time/",
+      "date"     : "2022-04-14 03:03:59 +0700"
+    } ,
+  
+    {
+      "title"    : "[JavaScript] 특정 값의 수를 구하는 함수",
+      "description" : "",
+      "tags"     : "javascript",
+      "url"      : "/javascript-get-string-index/",
+      "date"     : "2022-04-14 03:03:59 +0700"
+    } ,
+  
+    {
+      "title"    : "[JavaScript] 스코프(Scope)",
+      "description" : "",
+      "tags"     : "javascript",
+      "url"      : "/javascript-scope/",
+      "date"     : "2022-04-14 02:10:59 +0700"
+    } ,
+  
+    {
+      "title"    : "[JavaScript]return과 console.log의 차이",
+      "description" : "",
+      "tags"     : "JavaScript",
+      "url"      : "/consolereturn/",
+      "date"     : "2022-04-10 19:10:59 +0700"
+    } ,
+  
+    {
+      "title"    : "[JavaScript] 자료형(참조 타입)",
+      "description" : "",
+      "tags"     : "javascript",
+      "url"      : "/javascript-reference-data-type/",
+      "date"     : "2022-04-04 22:34:59 +0700"
+    } ,
+  
+    {
+      "title"    : "[JavaScript] 자료형(원시 타입)",
+      "description" : "",
+      "tags"     : "javascript",
+      "url"      : "/javascript-primitive-data-type/",
+      "date"     : "2022-04-03 01:24:59 +0700"
+    } ,
+  
+    {
+      "title"    : "[JavaScript] 자바스크립트 변수",
+      "description" : "",
+      "tags"     : "javascript",
+      "url"      : "/javascript-value/",
+      "date"     : "2022-04-02 02:10:59 +0700"
+    } ,
+  
+    {
+      "title"    : "Maths Example with Mathjax",
+      "description" : "",
+      "tags"     : "",
+      "url"      : "/maths-example/",
+      "date"     : "2021-06-17 05:57:49 +0700"
+    } ,
+  
+    {
+      "title"    : "Welcome to Jekyll!",
+      "description" : "",
+      "tags"     : "",
+      "url"      : "/welcome-to-jekyll/",
+      "date"     : "2020-08-29 09:29:20 +0700"
+    } ,
+  
+    {
+      "title"    : "Cara ribet memperbarui forked repo",
+      "description" : "Ada dua cara untuk memperbarui forked repository menggunakan web interface yang disediakan oleh github tapi ribet, atau melalui terminal yang lebih ribet lagi.",
+      "tags"     : "tips, git, software",
+      "url"      : "/cara-memperbarui-fork-repository/",
+      "date"     : "2020-01-29 01:00:00 +0700"
+    } ,
+  
+    {
+      "title"    : "What is a shell? 🐚 adalah kerang ajaib?",
+      "description" : "Shell adalah sebuah command-line interpreter; program yang berperan sebagai penerjemah perintah yang diinputkan oleh User yang melalui terminal, sehingga perintah tersebut bisa dimengerti oleh si Kernel.",
+      "tags"     : "unix/linux, cli",
+      "url"      : "/apa-itu-shell/",
+      "date"     : "2020-01-25 11:58:47 +0700"
+    } ,
+  
+    {
+      "title"    : "How this site was born 👶",
+      "description" : "All the services are free, a source code this site placed on github repository and intergration with netlify service, another service that you can use is github page for hosting your own static site.",
+      "tags"     : "blog, netlify, jekyll, github",
+      "url"      : "/how-this-site-was-made/",
+      "date"     : "2018-09-28 09:45:47 +0700"
+    } ,
+  
+    {
+      "title"    : "Python Notes from Intro to Machine Learning",
+      "description" : "Notes and code snippets of Python that I&#39;ve been collecting so far throughout the &quot;Intro to Machine Learning&quot; course.",
+      "tags"     : "python, machine-learning",
+      "url"      : "/python-notes-from-Intro-to-machine-learning/",
+      "date"     : "2018-04-14 10:00:00 +0700"
+    } ,
+  
+    {
+      "title"    : "React Component with Dot Notation",
+      "description" : "Learn how to define a React component that is accessible through the dot notation. A common component pattern to show a parent-child relation.",
+      "tags"     : "javascript, react",
+      "url"      : "/react-component-with-dot-notation/",
+      "date"     : "2018-04-07 23:04:00 +0700"
+    } 
+  
+]

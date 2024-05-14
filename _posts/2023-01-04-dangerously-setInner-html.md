@@ -33,7 +33,8 @@ const highLight = (str) => {
       <a
         href="#none"
         key={idx}
-        dangerouslySetInnerHTML={{ __html: highLight(items) }}
+        dangerouslySetInnerHTML={{ items | highLight }}
+
       />
     );
   })}
@@ -62,7 +63,8 @@ const sanitizer = dompurify.sanitize;
       <a
         href="#none"
         key={idx}
-        dangerouslySetInnerHTML={{ __html: sanitizer(highLight(items)) }}
+        dangerouslySetInnerHTML={{ items | highLight | sanitizer }}
+
       />
     );
   })}
