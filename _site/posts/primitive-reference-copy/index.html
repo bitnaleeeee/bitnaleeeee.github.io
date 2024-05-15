@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hello, I am bincco! | [JavaScript]기본형과 참조형</title>
+  
+  <link rel="stylesheet" href="/assets/css/post.css" />
+  <link rel="stylesheet" href="/assets/css/syntax.css" />
+  
+  <link rel="stylesheet" href="/assets/css/common.css" />
+  <script src="/assets/js/categories.js"></script>
+  <script>
+    const currentTheme = localStorage.getItem("theme");
+    if (currentTheme) {
+      document.documentElement.setAttribute(
+        "data-theme",
+        localStorage.getItem("theme")
+      );
+    }
+  </script>
+  
+  <script defer src="/assets/js/lbox.js"></script>
+  
+</head>
+
+  <body>
+    <main>
+      <header>
+  <a class="site-title" href="/">Hello, I am bincco!</a>
+  <!-- dark/light mode -->
+  <span id="dark-mode-toggle" style="cursor: pointer">
+    <svg
+      stroke="currentColor"
+      fill="currentColor"
+      stroke-width="0"
+      viewBox="0 0 16 16"
+      height="1.2em"
+      width="1.2em"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zm0 13V2a6 6 0 1 1 0 12z"
+      ></path>
+    </svg>
+  </span>
+</header>
+
+      <section class="article">
+        <div class="article-header">
+          <h2 class="article-title">[JavaScript]기본형과 참조형</h2>
+          <small class="date">01 Feb 2024</small>
+          <div class="categories">
+            
+          </div>
+        </div>
+        <div class="content"><p>자바스크립트는 7가지의 데이터 타입이 있다. (<code class="language-plaintext highlighter-rouge">Number</code>, <code class="language-plaintext highlighter-rouge">Stirng</code>, <code class="language-plaintext highlighter-rouge">boolean</code>, <code class="language-plaintext highlighter-rouge">undefined</code>, <code class="language-plaintext highlighter-rouge">null</code>, <code class="language-plaintext highlighter-rouge">Symbol</code>(<code class="language-plaintext highlighter-rouge">ES6</code>부터 추가) <code class="language-plaintext highlighter-rouge">Object</code>)
+7가지의 데이터 타입은 두 가지로 구분할 수 있는데 원시타입(기본형)과 객체타입(참조형)이다. <br /></p>
+
+<p>원시타입과 객체타입의 다른 점은 크게 두가지로 나뉘어 지는데, 첫번째로 원시타입은 값 자체의 수정이 불가능하고, 객체타입은 값 자체의 수정이 가능하다는 점이다. 두번째로 다른 점은 원시타입 변수를 변수에 할당하였을때 값 자체가 복사되고 객체타입 변수에 변수를 할당했을때는 값의 주소가 복사된다는 것이다.</p>
+
+<h2 id="첫번째-구분-값의-변경-유무">첫번째 구분: 값의 변경 유무</h2>
+
+<ol>
+  <li>변경 불가능한 값: 원시타입(primitive type) : <code class="language-plaintext highlighter-rouge">Number</code>, <code class="language-plaintext highlighter-rouge">Stirng</code>, <code class="language-plaintext highlighter-rouge">boolean</code>, <code class="language-plaintext highlighter-rouge">undefined</code>, <code class="language-plaintext highlighter-rouge">null</code>, <code class="language-plaintext highlighter-rouge">Symbol</code> <br /></li>
+  <li>변경 가능한 값: 객체타입(object/reference type) : <code class="language-plaintext highlighter-rouge">Object</code></li>
+</ol>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">num</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+<span class="nx">num</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">num</span><span class="p">);</span> <span class="c1">// 3</span>
+</code></pre></div></div>
+
+<p>위와 같이 원시값에 새로운 원시값을 재할당한 경우 값이 변경된 것이 아니라 새로운 메모리 주소에 3이라는 값을 할당한다. 즉 2가 할당되어있던 메모리 공간에 3을 재할당하는 것이 아닌, 2가 할당되어있는 메모리는 그대로 존재한 상태로 3이라는 새로운 원시값을 새로운 메모리에 재할당하고 변수가 참조하던 메모리 공간의 주소를 변경하여 보여준다.
+위 예시의 숫자뿐 아니라 다른 원시타입도 동일하다. 원시 값은 값을 변경할 수 없고 재할당할 경우 새로운 메모리 공간에 새로운 원시값을 저장하고 변수가 참조하는 주소를 변경한다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">num</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">];</span>
+<span class="nx">num</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">];</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">num</span><span class="p">);</span> <span class="c1">// [4,5]</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">person</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">lee</span><span class="dl">'</span>
+<span class="p">};</span>
+
+<span class="nx">person</span><span class="p">.</span><span class="nx">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">kim</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">person</span><span class="p">)</span> <span class="c1">// {name: 'kim'}</span>
+</code></pre></div></div>
+
+<p>위와 같이 배열(객체타입)의 값을 재할당할 경우 실체 객체에 접근하여 값을 변경한다. 조금 더 자세히 얘기하면 객체타입을 할당한 변수는 객체가 담긴 메모리 주소를 참조한다. 원시값을 할당한 변수가 원시 값 자체를 값으로 갖는 것과는 저장하는 방식이 다르다고 할 수 있다. 아무튼 객체타입은 값 자체의 수정이 가능하기 때문에 값을 재할당하면 참조하는 주소는 같고 그 주소를 통해 메모리 공간에 접근하여 참조 값을 변경한다.</p>
+
+<p>정리하자면 원시타입과 객체타입을 각각 변수에 할당할때 원시타입을 담은 변수의 경우 값 자체를 변수의 값으로 갖지만 객체타입을 담은 변수는 객체값을 담은 메모리 주소를 참조한다.
+두번쨰로 원시타입은 값 자체를 변경할 수 없기때문에 값을 재할당할 경우 새로운 메모리에 새 원시값을 저장하고 메모리 공간의 주소를 변경시킨다. 객체타입은 값 자체의 수정이 가능하므로 변수가 참조하는 메모리 주소를 통해 참조값에 접근하여 값 자체를 변경시키고 참조하는 주소는 변경시키지 않는다.</p>
+
+<h2 id="두번째-구분-기본형과-참조형">두번째 구분: 기본형과 참조형</h2>
+
+<p>두번째 구분은 변수에 변수를 할당하였을때 어떻게 동작하는가 이다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">x</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">y</span> <span class="o">=</span> <span class="nx">x</span><span class="p">;</span>
+
+<span class="nx">x</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">y</span><span class="p">);</span> <span class="c1">// 2</span>
+</code></pre></div></div>
+
+<p>원시값을 담은 변수 <code class="language-plaintext highlighter-rouge">x</code>에 변수 <code class="language-plaintext highlighter-rouge">y</code>를 할당하면 각각 다른 메모리 공간에 같은 값을 저장하게 된다. 이때 변수 <code class="language-plaintext highlighter-rouge">x</code>를 변경하면 원시값을 담은 변수 <code class="language-plaintext highlighter-rouge">x</code>는 값 자체를 2에서 3으로 변경하고 메모리 공간의 주소는 동일한 상태로 남겨둔다. 따라서 <code class="language-plaintext highlighter-rouge">y</code> 또한 다른 메모리주소의 공간에서 원시값 2를 담고 있기 때문에 변수 <code class="language-plaintext highlighter-rouge">x</code>의 값을 변경하여도 영향을 받지 않고 기존에 할당하였던 2를 출력한다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">];</span>
+
+<span class="kd">let</span> <span class="nx">y</span> <span class="o">=</span> <span class="nx">x</span><span class="p">;</span>
+
+<span class="nx">x</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">y</span><span class="p">);</span> <span class="c1">// [1,2,3,4]</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">x</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">lee</span><span class="dl">'</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="nx">y</span> <span class="o">=</span> <span class="nx">x</span>
+
+<span class="nx">x</span><span class="p">.</span><span class="nx">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">kim</span><span class="dl">'</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">y</span><span class="p">)</span> <span class="c1">// {name:'kim'}</span>
+</code></pre></div></div>
+
+<p>앞서 말했듯이 객체타입의 변수는 참조값을 통해 객체에 접근한다. 즉 메모리에 저장되어 있는 참조 값을 통해 실제 객체에 접근하는 것이다. 따라서 변수 <code class="language-plaintext highlighter-rouge">y</code>에 <code class="language-plaintext highlighter-rouge">x</code>를 할당한 경우 참조하는 메모리 주소를 복사한다. 즉 변수 <code class="language-plaintext highlighter-rouge">x</code>와 <code class="language-plaintext highlighter-rouge">y</code>는 같은 메모리 주소를 가르킨다. 이것은 두개의 식별자가 하나의 객체를 공유하는 것이다. 따라서 <code class="language-plaintext highlighter-rouge">x</code>를 변경하였을때 <code class="language-plaintext highlighter-rouge">x</code>는 참조값을 통해 실제 객체에 접근하여 값을 변경시키고, 그것을 바라보고 있는 다른 식별자 <code class="language-plaintext highlighter-rouge">y</code>도 영향을 받게된다. 즉, 객체타입은 값 자체를 변경시킬 수 있고 바라보는 메모리 주소를 변경하지 않기 때문에 같은 메모리 주소를 바라보는 <code class="language-plaintext highlighter-rouge">x</code>와 <code class="language-plaintext highlighter-rouge">y</code>는 같은 값을 공유하게 된다.</p>
+
+<p>자바스크립트의 데이터 타입에 따라 변수를 할당했을때, 또 그 변수에 변수를 할당하게 되었을때 자바스크립트의 동작 방식을 인지하고 있어야 코드가 길어졌을때 의도하지 않은 방식으로 코드가 동작하는 오류를 범하지 않을 수 있다.</p>
+</div>
+      </section>
+      <footer>
+  <p>&copy; 1947 - 2024 | Hello, I am bincco!</p>
+</footer>
+<script src="/assets/js/mode.js" defer></script>
+
+    </main>
+    <section id="category-modal-bg"></section>
+<section id="category-modal">
+  <h1 id="category-modal-title"></h1>
+  <section id="category-modal-content"></section>
+</section>
+
+  </body>
+</html>

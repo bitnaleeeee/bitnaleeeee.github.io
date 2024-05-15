@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hello, I am bincco! | [React] 프론트엔드 Vercel로 손쉽게 배포하기</title>
+  
+  <link rel="stylesheet" href="/assets/css/post.css" />
+  <link rel="stylesheet" href="/assets/css/syntax.css" />
+  
+  <link rel="stylesheet" href="/assets/css/common.css" />
+  <script src="/assets/js/categories.js"></script>
+  <script>
+    const currentTheme = localStorage.getItem("theme");
+    if (currentTheme) {
+      document.documentElement.setAttribute(
+        "data-theme",
+        localStorage.getItem("theme")
+      );
+    }
+  </script>
+  
+  <script defer src="/assets/js/lbox.js"></script>
+  
+</head>
+
+  <body>
+    <main>
+      <header>
+  <a class="site-title" href="/">Hello, I am bincco!</a>
+  <!-- dark/light mode -->
+  <span id="dark-mode-toggle" style="cursor: pointer">
+    <svg
+      stroke="currentColor"
+      fill="currentColor"
+      stroke-width="0"
+      viewBox="0 0 16 16"
+      height="1.2em"
+      width="1.2em"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zm0 13V2a6 6 0 1 1 0 12z"
+      ></path>
+    </svg>
+  </span>
+</header>
+
+      <section class="article">
+        <div class="article-header">
+          <h2 class="article-title">[React] 프론트엔드 Vercel로 손쉽게 배포하기</h2>
+          <small class="date">28 Nov 2023</small>
+          <div class="categories">
+            
+          </div>
+        </div>
+        <div class="content"><p><code class="language-plaintext highlighter-rouge">Vercel</code>은 <code class="language-plaintext highlighter-rouge">Next.js</code>개발팀에서 만든 빌드/배포/호스팅 서비스를 제공하는 프론트엔드 배포자동화 호스팅 사이트이다. 이와 유사한 서비스로 <code class="language-plaintext highlighter-rouge">Netlify</code>라는 서비스가 있다.</p>
+
+<h3 id="vercel-회원가입">Vercel 회원가입</h3>
+
+<p>우선 <code class="language-plaintext highlighter-rouge">Vercel</code> 홈페이지(https://vercel.com)에 접속 후 회원가입을 해야 한다.
+회원가입을 하고 로그인하여 작업한 레포가 있는 <code class="language-plaintext highlighter-rouge">git</code> 계정과 연결 시켜 준다.</p>
+
+<h3 id="configure-project">Configure Project</h3>
+
+<p>원하는 Repository import 후 자신의 프로젝트에 맞게 수정해준다</p>
+
+<p><img src="/assets/img/posts/vercel02.png" alt="vercel02" /></p>
+
+<h3 id="deploy하기">Deploy하기</h3>
+
+<p>Deploy를 누르고 잠시 기다려주면, 빌드/배포를 자동으로 진행한다.
+또한 배포 후 <code class="language-plaintext highlighter-rouge">Github</code>에 수정 사항을 <code class="language-plaintext highlighter-rouge">push</code> 할 때마다 <code class="language-plaintext highlighter-rouge">Vercel</code>이 이를 자동으로 감지하여 빌드/배포를 다시 해준다.</p>
+
+<p><img src="/assets/img/posts/vercel03.png" alt="vercel03" /></p>
+</div>
+      </section>
+      <footer>
+  <p>&copy; 1947 - 2024 | Hello, I am bincco!</p>
+</footer>
+<script src="/assets/js/mode.js" defer></script>
+
+    </main>
+    <section id="category-modal-bg"></section>
+<section id="category-modal">
+  <h1 id="category-modal-title"></h1>
+  <section id="category-modal-content"></section>
+</section>
+
+  </body>
+</html>

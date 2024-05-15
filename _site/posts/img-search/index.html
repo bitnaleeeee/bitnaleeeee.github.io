@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hello, I am bincco! | [ETC]절대경로와 상대경로</title>
+  
+  <link rel="stylesheet" href="/assets/css/post.css" />
+  <link rel="stylesheet" href="/assets/css/syntax.css" />
+  
+  <link rel="stylesheet" href="/assets/css/common.css" />
+  <script src="/assets/js/categories.js"></script>
+  <script>
+    const currentTheme = localStorage.getItem("theme");
+    if (currentTheme) {
+      document.documentElement.setAttribute(
+        "data-theme",
+        localStorage.getItem("theme")
+      );
+    }
+  </script>
+  
+  <script defer src="/assets/js/lbox.js"></script>
+  
+</head>
+
+  <body>
+    <main>
+      <header>
+  <a class="site-title" href="/">Hello, I am bincco!</a>
+  <!-- dark/light mode -->
+  <span id="dark-mode-toggle" style="cursor: pointer">
+    <svg
+      stroke="currentColor"
+      fill="currentColor"
+      stroke-width="0"
+      viewBox="0 0 16 16"
+      height="1.2em"
+      width="1.2em"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zm0 13V2a6 6 0 1 1 0 12z"
+      ></path>
+    </svg>
+  </span>
+</header>
+
+      <section class="article">
+        <div class="article-header">
+          <h2 class="article-title">[ETC]절대경로와 상대경로</h2>
+          <small class="date">07 Feb 2023</small>
+          <div class="categories">
+            
+          </div>
+        </div>
+        <div class="content"><p>절대경로와 상대경로를 간단히 정리해 보자.</p>
+
+<h2 id="경로">경로</h2>
+
+<blockquote>
+  <p>컴퓨터의 파일을 찾아가는 방법을 말하며 절대경로와 상대경로가 있다.</p>
+</blockquote>
+
+<h2 id="절대경로">절대경로</h2>
+
+<blockquote>
+  <p>최상위의 루트 디렉토리(절대적인 기준)를 기준으로 경유한 경로를 모두 기입하는 방식이다.</p>
+</blockquote>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ / : 최상위 디렉토리
+</code></pre></div></div>
+
+<h4 id="예시">예시</h4>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>C:\Users\username\Desktop\sample.txt
+</code></pre></div></div>
+
+<h2 id="현재-디렉토리">현재 디렉토리</h2>
+
+<blockquote>
+  <p>현재 디렉토리를 기준으로 하여 다른 경로를 표시하는 방식이다. 주로 상대경로로 디렉토리에 접근한다.</p>
+</blockquote>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./ : 현재 디렉토리
+</code></pre></div></div>
+
+<h2 id="현재-디렉토리의-상위-디렉토리">현재 디렉토리의 상위 디렉토리</h2>
+
+<blockquote>
+  <p>현재 디렉토리를 기준으로 하여 다른 경로를 표시하는 방식이다. 주로 상대경로로 디렉토리에 접근한다.</p>
+</blockquote>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>../ : 현재 디렉토리의 상위 디랙토리
+</code></pre></div></div>
+
+<h3 id="상대경로를-자주-사용하는-이유">상대경로를 자주 사용하는 이유</h3>
+
+<p>파일의 경로가 자주 바뀌거나 최초 디렉토리가 서로 다른 경우에 그때마다 경로를 다시 작성하거나 OS별로 관리하는 것은 비효율 적이므로 주로 현재 위치의 디렉토리에서 다른 디렉토리의 경로를 표시하는 방법을 자주 사용한다.</p>
+</div>
+      </section>
+      <footer>
+  <p>&copy; 1947 - 2024 | Hello, I am bincco!</p>
+</footer>
+<script src="/assets/js/mode.js" defer></script>
+
+    </main>
+    <section id="category-modal-bg"></section>
+<section id="category-modal">
+  <h1 id="category-modal-title"></h1>
+  <section id="category-modal-content"></section>
+</section>
+
+  </body>
+</html>

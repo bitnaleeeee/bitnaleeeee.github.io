@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hello, I am bincco! | [React] React Navbar fixed</title>
+  
+  <link rel="stylesheet" href="/assets/css/post.css" />
+  <link rel="stylesheet" href="/assets/css/syntax.css" />
+  
+  <link rel="stylesheet" href="/assets/css/common.css" />
+  <script src="/assets/js/categories.js"></script>
+  <script>
+    const currentTheme = localStorage.getItem("theme");
+    if (currentTheme) {
+      document.documentElement.setAttribute(
+        "data-theme",
+        localStorage.getItem("theme")
+      );
+    }
+  </script>
+  
+  <script defer src="/assets/js/lbox.js"></script>
+  
+</head>
+
+  <body>
+    <main>
+      <header>
+  <a class="site-title" href="/">Hello, I am bincco!</a>
+  <!-- dark/light mode -->
+  <span id="dark-mode-toggle" style="cursor: pointer">
+    <svg
+      stroke="currentColor"
+      fill="currentColor"
+      stroke-width="0"
+      viewBox="0 0 16 16"
+      height="1.2em"
+      width="1.2em"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zm0 13V2a6 6 0 1 1 0 12z"
+      ></path>
+    </svg>
+  </span>
+</header>
+
+      <section class="article">
+        <div class="article-header">
+          <h2 class="article-title">[React] React Navbar fixed</h2>
+          <small class="date">21 Feb 2023</small>
+          <div class="categories">
+            
+          </div>
+        </div>
+        <div class="content"><p>React 의 <code class="language-plaintext highlighter-rouge">useState</code> 와 <code class="language-plaintext highlighter-rouge">useEffect</code>를 이용하여 화면 스크롤이 일정 부분 아래로 내려갔을때 상단의 네비게이션을 고정시키는 함수를 아래와 같이 작성해보았다.</p>
+
+<h2 id="scrolly-값에-따라-boolean-값-부여하기">scrollY 값에 따라 Boolean 값 부여하기</h2>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="p">[</span><span class="nx">scrollY</span><span class="p">,</span> <span class="nx">setScrollY</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="kd">const</span> <span class="p">[</span><span class="nx">scrollActive</span><span class="p">,</span> <span class="nx">setScrollActive</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+
+<span class="kd">function</span> <span class="nx">scrollFixed</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">if</span><span class="p">(</span><span class="nx">scrollY</span> <span class="o">&gt;</span> <span class="mi">150</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">setScrollY</span><span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">pageYOffset</span><span class="p">);</span>
+    <span class="nx">setScrollActive</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span> 
+    <span class="nx">setScrollY</span><span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">pageYOffset</span><span class="p">);</span>
+    <span class="nx">setScrollActive</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p><code class="language-plaintext highlighter-rouge">scorllY</code> 의 높이가 150 이상일때 해당 높이값을 저장하고 그에 따라 <code class="language-plaintext highlighter-rouge">scrollActive</code>의 <code class="language-plaintext highlighter-rouge">Boolean</code>값을 변경해주는 함수를 작성하였다.</p>
+
+<h2 id="스크롤-이벤트-감지-및-함수-호출하기">스크롤 이벤트 감지 및 함수 호출하기</h2>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="p">[</span><span class="nx">scrollY</span><span class="p">,</span> <span class="nx">setScrollY</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="kd">const</span> <span class="p">[</span><span class="nx">scrollActive</span><span class="p">,</span> <span class="nx">setScrollActive</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+
+<span class="nx">useEffect</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">function</span> <span class="nx">scrollListner</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">scroll</span><span class="dl">'</span><span class="p">,</span> <span class="nx">scrollFixed</span><span class="p">);</span>
+  <span class="p">};</span>
+  <span class="nx">scrollListener</span><span class="p">();</span>
+  <span class="k">return</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nb">window</span><span class="p">.</span><span class="nx">removeEventListenr</span><span class="p">(</span><span class="dl">'</span><span class="s1">scroll</span><span class="dl">'</span><span class="p">,</span> <span class="nx">scrollFixed</span><span class="p">);</span>
+  <span class="p">};</span>
+<span class="p">});</span>
+</code></pre></div></div>
+<p>화면이 초기 렌더링 되었을때 화면 스크롤 이벤트를 감지하고 <code class="language-plaintext highlighter-rouge">scrollFixed</code>함수를 실행시키는 함수가 실행되고, <code class="language-plaintext highlighter-rouge">useEffect</code>는 화면이 동작할때마다 연속해서 실행되기 때문에 해당 동작을 무한 반복하지 않도록 끝내는 함수를 <code class="language-plaintext highlighter-rouge">return</code>에 작성해 주었다.</p>
+
+<pre><code class="language-javaScript">&lt;div className={scrollActive ? "fixed" : "fixed off"}&gt;
+</code></pre>
+<p>JSX 부분에 <code class="language-plaintext highlighter-rouge">scrollActive</code>의 값이 <code class="language-plaintext highlighter-rouge">true</code>일때 <code class="language-plaintext highlighter-rouge">fixed</code> 클래스를 적용하고 <code class="language-plaintext highlighter-rouge">false</code>일때 <code class="language-plaintext highlighter-rouge">fixed off</code>클래스를 주는 구문을 작성하여 특정 스크롤 높이에서 네비게이션 바가 고정되도록 작성하였다.</p>
+</div>
+      </section>
+      <footer>
+  <p>&copy; 1947 - 2024 | Hello, I am bincco!</p>
+</footer>
+<script src="/assets/js/mode.js" defer></script>
+
+    </main>
+    <section id="category-modal-bg"></section>
+<section id="category-modal">
+  <h1 id="category-modal-title"></h1>
+  <section id="category-modal-content"></section>
+</section>
+
+  </body>
+</html>

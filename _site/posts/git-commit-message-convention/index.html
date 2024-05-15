@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hello, I am bincco! | [Git] 깃 커밋 메시지 컨벤션(Git Commit Message Convention)</title>
+  
+  <link rel="stylesheet" href="/assets/css/post.css" />
+  <link rel="stylesheet" href="/assets/css/syntax.css" />
+  
+  <link rel="stylesheet" href="/assets/css/common.css" />
+  <script src="/assets/js/categories.js"></script>
+  <script>
+    const currentTheme = localStorage.getItem("theme");
+    if (currentTheme) {
+      document.documentElement.setAttribute(
+        "data-theme",
+        localStorage.getItem("theme")
+      );
+    }
+  </script>
+  
+  <script defer src="/assets/js/lbox.js"></script>
+  
+</head>
+
+  <body>
+    <main>
+      <header>
+  <a class="site-title" href="/">Hello, I am bincco!</a>
+  <!-- dark/light mode -->
+  <span id="dark-mode-toggle" style="cursor: pointer">
+    <svg
+      stroke="currentColor"
+      fill="currentColor"
+      stroke-width="0"
+      viewBox="0 0 16 16"
+      height="1.2em"
+      width="1.2em"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zm0 13V2a6 6 0 1 1 0 12z"
+      ></path>
+    </svg>
+  </span>
+</header>
+
+      <section class="article">
+        <div class="article-header">
+          <h2 class="article-title">[Git] 깃 커밋 메시지 컨벤션(Git Commit Message Convention)</h2>
+          <small class="date">12 Jul 2022</small>
+          <div class="categories">
+            
+          </div>
+        </div>
+        <div class="content"><p>커밋 메시지는 타입, 제목, 본문(선택), 꼬리말(선택) 세 부분으로 작성한다.</p>
+
+<ul>
+  <li>[타입(Type)] 제목(Title)</li>
+  <li>본문(Body)</li>
+  <li>꼬리말(Footer)</li>
+</ul>
+
+<h2 id="제목">제목</h2>
+
+<ul>
+  <li>커밋 메세지 제목의 맨 앞에 타입(Type)을 붙여준다. 각 타입의 종류는 아래와 같다.
+    <ul>
+      <li>기능(feat): 새로운 기능을 추가</li>
+      <li>버그(fix): 버그 수정</li>
+      <li>리팩토링(refactor): 코드 리팩토링</li>
+      <li>형식(style): 코드 형식, 정렬, 주석 등의 변경(동작에 영향을 주는 코드 변경 없음)</li>
+      <li>테스트(test): 테스트 추가, 테스트 리팩토링(제품 코드 수정 없음, 테스트 코드에 관련된 모든 변경에 해당)</li>
+      <li>문서(docs): 문서 수정(제품 코드 수정 없음)</li>
+      <li>기타(chore): 빌드 업무 수정, 패키지 매니저 설정 등 위에 해당되지 않는 모든 변경(제품 코드 수정 없음)</li>
+    </ul>
+  </li>
+  <li>총 글자 수는 50자 이내며 마지막에 마침표(.)를 붙이지 않는다.</li>
+  <li>커밋 유형들이 복합적인 경우 최대한 분리하여 커밋한다.</li>
+</ul>
+
+<h2 id="본문">본문</h2>
+
+<ul>
+  <li>본문은 한 줄당 72자 이하로 작성한다.</li>
+  <li>깃은 자동 줄바꿈을 지원하지 않으므로, 직접 줄바꿈을 해야 한다.</li>
+  <li>내용은 어떻게 변경하였는지 보다 무엇을, 왜 변경하였는지 설명한다.</li>
+</ul>
+
+<h2 id="꼬리말">꼬리말</h2>
+
+<ul>
+  <li>바닥 글은 선택 사항이며 이슈 트래커 ID를 참조하는데 사용된다.</li>
+</ul>
+
+<h2 id="references">References</h2>
+<p><a href="https://tttsss77.tistory.com/58">Git 사용 규칙 - Git commit 메시지</a><br />
+<a href="https://udacity.github.io/git-styleguide">Udacity Git Commit Message Style Guide</a><br />
+<a href="https://sujinlee.me/professional-github">깃허브(GitHub)로 취업하기</a><br />
+<a href="https://chris.beams.io/posts/git-commit">How to Write a Git Commit Message</a><br />
+<a href="https://meetup.toast.com/posts/106">좋은 git 커밋 메시지를 작성하기 위한 7가지 약속</a></p>
+
+</div>
+      </section>
+      <footer>
+  <p>&copy; 1947 - 2024 | Hello, I am bincco!</p>
+</footer>
+<script src="/assets/js/mode.js" defer></script>
+
+    </main>
+    <section id="category-modal-bg"></section>
+<section id="category-modal">
+  <h1 id="category-modal-title"></h1>
+  <section id="category-modal-content"></section>
+</section>
+
+  </body>
+</html>

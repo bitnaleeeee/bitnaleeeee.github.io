@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hello, I am bincco! | [React] useNavigate로 페이지 뒤로가기 구현하기</title>
+  
+  <link rel="stylesheet" href="/assets/css/post.css" />
+  <link rel="stylesheet" href="/assets/css/syntax.css" />
+  
+  <link rel="stylesheet" href="/assets/css/common.css" />
+  <script src="/assets/js/categories.js"></script>
+  <script>
+    const currentTheme = localStorage.getItem("theme");
+    if (currentTheme) {
+      document.documentElement.setAttribute(
+        "data-theme",
+        localStorage.getItem("theme")
+      );
+    }
+  </script>
+  
+  <script defer src="/assets/js/lbox.js"></script>
+  
+</head>
+
+  <body>
+    <main>
+      <header>
+  <a class="site-title" href="/">Hello, I am bincco!</a>
+  <!-- dark/light mode -->
+  <span id="dark-mode-toggle" style="cursor: pointer">
+    <svg
+      stroke="currentColor"
+      fill="currentColor"
+      stroke-width="0"
+      viewBox="0 0 16 16"
+      height="1.2em"
+      width="1.2em"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zm0 13V2a6 6 0 1 1 0 12z"
+      ></path>
+    </svg>
+  </span>
+</header>
+
+      <section class="article">
+        <div class="article-header">
+          <h2 class="article-title">[React] useNavigate로 페이지 뒤로가기 구현하기</h2>
+          <small class="date">12 Oct 2023</small>
+          <div class="categories">
+            
+          </div>
+        </div>
+        <div class="content"><p>useNavigate는 <code class="language-plaintext highlighter-rouge">hook</code>으로 페이지를 이동할 수 있게 해주는 함수를 반환할때 사용한다.<br />
+이때 주의할 점은 <code class="language-plaintext highlighter-rouge">useNavigate</code>를 직접 호출하지 않고 변수를 선언하여 사용해야한다는 점이다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">useNavigate</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">react-router-dom</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">Main</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">navigate</span> <span class="o">=</span> <span class="nx">useNavigate</span><span class="p">();</span>
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="dl">"</span><span class="s2">login</span><span class="dl">"</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nx">input</span> <span class="nx">placeholder</span><span class="o">=</span><span class="dl">"</span><span class="s2">전화번호, 사용자 이름 또는 이메일</span><span class="dl">"</span> <span class="o">/&gt;</span>
+      <span class="o">&lt;</span><span class="nx">input</span> <span class="nx">placeholder</span><span class="o">=</span><span class="dl">"</span><span class="s2">비밀번호</span><span class="dl">"</span> <span class="o">/&gt;</span>
+      <span class="o">&lt;</span><span class="nx">button</span>
+        <span class="nx">onClick</span><span class="o">=</span><span class="p">{()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+          <span class="nx">navigate</span><span class="p">(</span><span class="dl">"</span><span class="s2">/main</span><span class="dl">"</span><span class="p">);</span>
+        <span class="p">}}</span>
+      <span class="o">&gt;</span>
+        <span class="nx">로그인</span>
+      <span class="o">&lt;</span><span class="sr">/button</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>  <span class="p">);</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">hook</code>사용 규칙</p>
+
+<ul>
+  <li>컴포넌트 최상단에서만 호출해야 한다.</li>
+  <li>다른 조건문, 함수선언문, 반복문 등 중첩된 함수 안에서는 호출 할 수 없다.</li>
+  <li>컴포넌트 내부 함수에서 <code class="language-plaintext highlighter-rouge">callback</code>으로도 호출할 수 없다.</li>
+</ul>
+
+<p>번외로 유사한 기능을 하는 <code class="language-plaintext highlighter-rouge">Link</code>는 클릭 시 바로 이동하는 로직 구현시 사용하는게 적절하며,
+함수 등 조건문이 발생할때 페이지 전환이 되는 경우에는 <code class="language-plaintext highlighter-rouge">useNavigate</code>로 구현하는 것이 좋다.</p>
+
+<h2 id="뒤로가기-기능">뒤로가기 기능</h2>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">Main</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">navigate</span> <span class="o">=</span> <span class="nx">useNavigate</span><span class="p">();</span>
+
+  <span class="kd">function</span> <span class="nx">goToUrl</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">navigate</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="dl">"</span><span class="s2">mainWrap</span><span class="dl">"</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="dl">"</span><span class="s2">mainNav</span><span class="dl">"</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">FontAwesomeIcon</span>
+          <span class="nx">className</span><span class="o">=</span><span class="dl">"</span><span class="s2">backIcon</span><span class="dl">"</span>
+          <span class="nx">icon</span><span class="o">=</span><span class="p">{</span><span class="nx">faChevronLeft</span><span class="p">}</span>
+          <span class="nx">onClick</span><span class="o">=</span><span class="p">{</span><span class="nx">goToUrl</span><span class="p">}</span>
+        <span class="sr">/</span><span class="err">&gt;
+</span>      <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>  <span class="p">);</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<p>바로 이전 페이지로 이동할 수 있도로 -1인덱스 형태로 넣어주면 이전에 클릭한 페이지로 돌아가는 뒤로가기 기능을 구현하였다.
+인덱스 형태가 아닌 ‘./main’ 등으로 직접 페이지 지정도 물론 가능하다.</p>
+
+<h2 id="references">References</h2>
+
+<p><a href="https://react-slick.neostack.com/">React Slick 공식 홈페이지</a></p>
+</div>
+      </section>
+      <footer>
+  <p>&copy; 1947 - 2024 | Hello, I am bincco!</p>
+</footer>
+<script src="/assets/js/mode.js" defer></script>
+
+    </main>
+    <section id="category-modal-bg"></section>
+<section id="category-modal">
+  <h1 id="category-modal-title"></h1>
+  <section id="category-modal-content"></section>
+</section>
+
+  </body>
+</html>

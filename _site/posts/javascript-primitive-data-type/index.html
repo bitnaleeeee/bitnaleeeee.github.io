@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hello, I am bincco! | [JavaScript] 자료형(원시 타입)</title>
+  
+  <link rel="stylesheet" href="/assets/css/post.css" />
+  <link rel="stylesheet" href="/assets/css/syntax.css" />
+  
+  <link rel="stylesheet" href="/assets/css/common.css" />
+  <script src="/assets/js/categories.js"></script>
+  <script>
+    const currentTheme = localStorage.getItem("theme");
+    if (currentTheme) {
+      document.documentElement.setAttribute(
+        "data-theme",
+        localStorage.getItem("theme")
+      );
+    }
+  </script>
+  
+  <script defer src="/assets/js/lbox.js"></script>
+  
+</head>
+
+  <body>
+    <main>
+      <header>
+  <a class="site-title" href="/">Hello, I am bincco!</a>
+  <!-- dark/light mode -->
+  <span id="dark-mode-toggle" style="cursor: pointer">
+    <svg
+      stroke="currentColor"
+      fill="currentColor"
+      stroke-width="0"
+      viewBox="0 0 16 16"
+      height="1.2em"
+      width="1.2em"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zm0 13V2a6 6 0 1 1 0 12z"
+      ></path>
+    </svg>
+  </span>
+</header>
+
+      <section class="article">
+        <div class="article-header">
+          <h2 class="article-title">[JavaScript] 자료형(원시 타입)</h2>
+          <small class="date">03 Apr 2022</small>
+          <div class="categories">
+            
+          </div>
+        </div>
+        <div class="content"><p>자료형은 데이터 값의 유형이다.<br />
+원시타입과 객체(참조)타입으로 나눌 수 있다.</p>
+
+<h4 id="원시타입">원시타입</h4>
+
+<ul>
+  <li>문자열(String)</li>
+  <li>숫자(Number)</li>
+  <li>논리형(Boolean)</li>
+  <li>언디파인드(Undefined)</li>
+  <li>널(Null)</li>
+</ul>
+
+<h4 id="객체참조타입">객체(참조)타입</h4>
+
+<ul>
+  <li>객체(Object)</li>
+  <li>배열(Array)</li>
+  <li>함수(Function)</li>
+</ul>
+
+<p>여기서 객체(참조)타입과 객체(Object)의 차이에 대해 혼동하기 쉽다. 객체(참조)타입은 기본타입을 제외한 모든 자바스크립트의 객체를 가르키며, 객체(Object), 배열(Array), 함수(Function)도 객체(참조)타입 에 포함된다. 객체(Object)는 자바스크립트에서 표현되는 자료형의 값이며 객체(참조)타입중에 하나인 객체(Object)이다.</p>
+
+<h2 id="원시타입-1">원시타입</h2>
+
+<h3 id="문자string">문자(string)</h3>
+
+<p>우리가 실생활에서 쓰고 있는 글자를 문자열이라고 생각하면 된다. 변수에 담는 방식은 큰따옴표나 작은 따옴표로 감싸서 저장하시면 된다. 문자열에 따옴표를 포함하고 싶으면 다른 따옴표로 감싸주면 된다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">str</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">data</span><span class="dl">"</span><span class="p">;</span> <span class="c1">// 문자열을 담을 때</span>
+<span class="kd">let</span> <span class="nx">str</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">'data'</span><span class="dl">"</span><span class="p">;</span> <span class="c1">// 작은 따옴표를 문자열에 추가하고 싶을때</span>
+</code></pre></div></div>
+
+<p>참고로 따옴표를 문자열로 인식하고 싶을때는 역슬래쉬를 따옴표 앞에 붙여 사용하면 된다. 이 작업을 이스케이핑이라고 부른다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">str</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">'data'</span><span class="dl">"</span><span class="p">;</span> <span class="c1">// 작은 따옴표를 문자열로 인식하고 싶을때</span>
+</code></pre></div></div>
+
+<h3 id="숫자number">숫자(number)</h3>
+
+<p>우리가 알고있는 숫자라고 생각하면 된다. 자바스크립트는 모든 숫자를 64비트 부동소숫점 형태로 저장하기 때문에 하나의 타입만 존재하며 형태는 크게 정수형(10진수, 16진수), 실수형으로 나뉜다.</p>
+
+<ul>
+  <li>정수형(10진수) : 평상시에 사용하는 10진수이며, 소숫점이 없다.</li>
+  <li>정수형(16진수) : Ox로 시작하며 숫자 0~9와 문자 A~F를 사용해서 숫자를 표현한다. 보통 색상을 나타낼때 사용한다.(예 : 0xF00)</li>
+  <li>실수형 : 소숫점을 갖는 숫자</li>
+</ul>
+
+<p>자바스크립트는 소숫점을 계산할때 한가지 오류가 있는데 확인하고 넘어가자<br />
+하단의 코드를 보면</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="mf">0.1</span> <span class="o">+</span> <span class="mf">0.2</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>결과는 0.3 이 나올겉 같지만 0.30000000000000004 가 출력이 된다. 이것이 부동소수점 오류며 아래와 같은 방법으로 해결을 할 수 있다. 주의하도록 하자.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">((</span><span class="mf">0.1</span> <span class="o">*</span> <span class="mi">10</span> <span class="o">+</span> <span class="mf">0.2</span> <span class="o">*</span> <span class="mi">10</span><span class="p">)</span> <span class="o">/</span> <span class="mi">10</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h3 id="논리형boolean">논리형(boolean)</h3>
+
+<p>쉽게 설명해서 참, 거짓이라고 생각하면 된다.</p>
+
+<ul>
+  <li>참 : true</li>
+  <li>거짓 : false</li>
+</ul>
+
+<p>데이터 타입마다 true, false로 변환되는 값이 다르다.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">데이터 타입</th>
+      <th style="text-align: center">true로 변환되는 값</th>
+      <th style="text-align: center">false로 변환되는 값</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">불리언</td>
+      <td style="text-align: center">true</td>
+      <td style="text-align: center">flase</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">문자열</td>
+      <td style="text-align: center">비어 있지 않은 모든 문자열</td>
+      <td style="text-align: center">“”(빈 문자열)</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">숫자</td>
+      <td style="text-align: center">0이 아닌 모든 숫자(무한대 포함)</td>
+      <td style="text-align: center">0, NaN</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">객체</td>
+      <td style="text-align: center">모든 객체</td>
+      <td style="text-align: center">null</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Undefined</td>
+      <td style="text-align: center">해당 없음</td>
+      <td style="text-align: center">undefined</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="언디파인드undefined">언디파인드(undefined)</h3>
+
+<p>언디파인드는 아무 값도 없는 상태이다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">val</span><span class="p">;</span> <span class="c1">// undefined</span>
+</code></pre></div></div>
+
+<h3 id="널null">널(null)</h3>
+
+<p>널은 아무것도 참조하고 있지 않다라는 의미이다. 여기서 언디파인드와 널이 조금 헷갈리는데, 언디파인드는 값 자체가 선언이 되지 않은거고 널은 임의로 빈 값으로 선언한 상태라고 보면 된다. 널은 객체를 담을 변수를 초기화할때 많이 사용한다.</p>
+
+<h4 id="각-자료형의-초기화">각 자료형의 초기화</h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">num</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">// 숫자 초기화</span>
+<span class="kd">let</span> <span class="nx">str</span> <span class="o">=</span> <span class="dl">""</span><span class="p">;</span> <span class="c1">// 문자 초기화</span>
+<span class="kd">let</span> <span class="nx">boolean</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span> <span class="c1">// 논리형 초기화</span>
+<span class="kd">let</span> <span class="nx">obj</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span> <span class="c1">// 객체 초기화</span>
+</code></pre></div></div>
+</div>
+      </section>
+      <footer>
+  <p>&copy; 1947 - 2024 | Hello, I am bincco!</p>
+</footer>
+<script src="/assets/js/mode.js" defer></script>
+
+    </main>
+    <section id="category-modal-bg"></section>
+<section id="category-modal">
+  <h1 id="category-modal-title"></h1>
+  <section id="category-modal-content"></section>
+</section>
+
+  </body>
+</html>

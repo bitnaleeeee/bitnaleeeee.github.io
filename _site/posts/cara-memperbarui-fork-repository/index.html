@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hello, I am bincco! | Cara ribet memperbarui forked repo</title>
+  
+  <link rel="stylesheet" href="/assets/css/post.css" />
+  <link rel="stylesheet" href="/assets/css/syntax.css" />
+  
+  <link rel="stylesheet" href="/assets/css/common.css" />
+  <script src="/assets/js/categories.js"></script>
+  <script>
+    const currentTheme = localStorage.getItem("theme");
+    if (currentTheme) {
+      document.documentElement.setAttribute(
+        "data-theme",
+        localStorage.getItem("theme")
+      );
+    }
+  </script>
+  
+  <script defer src="/assets/js/lbox.js"></script>
+  
+</head>
+
+  <body>
+    <main>
+      <header>
+  <a class="site-title" href="/">Hello, I am bincco!</a>
+  <!-- dark/light mode -->
+  <span id="dark-mode-toggle" style="cursor: pointer">
+    <svg
+      stroke="currentColor"
+      fill="currentColor"
+      stroke-width="0"
+      viewBox="0 0 16 16"
+      height="1.2em"
+      width="1.2em"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zm0 13V2a6 6 0 1 1 0 12z"
+      ></path>
+    </svg>
+  </span>
+</header>
+
+      <section class="article">
+        <div class="article-header">
+          <h2 class="article-title">Cara ribet memperbarui forked repo</h2>
+          <small class="date">29 Jan 2020</small>
+          <div class="categories">
+            
+          </div>
+        </div>
+        <div class="content"><p>Berawal dari saya pengen memperbarui repo yang tua dari suatu organisasi, niatnya pengen rumat ulang nih, ternyata dari orginal reponya ada update, sekalian buat artikel deh, lebih kurang gambaranya seperti ini.</p>
+
+<figure>
+<img src="/cara-memperbarui-fork-repository/repo.png" alt="ilustrasi repo yang mau diupdate" />
+<figcaption>Fig 1. Gambaran ribetnya.</figcaption>
+</figure>
+
+<p>Ada dua cara untuk memperbarui forked repository menggunakan web interface yang disediakan oleh github tapi ribet, atau melalui terminal yang lebih ribet lagi.</p>
+
+<h3 id="melalui-github-boring-way-">Melalui Github (boring way) 💻</h3>
+
+<ol>
+  <li>Buka repo yang hasil fork di Github.</li>
+  <li>Klik <strong>Pull Requests</strong> di sebelah kanan, lalu <strong>New Pull Request</strong>.</li>
+  <li>Akan memunculkan hasil compare antara repo upstream dengan repo kamu(forked repo), dan jika menyatakan “There isn’t anything to compare.”, tekan link <strong>switching the base</strong>, yang mana sekarang repo kamu(forked repo) akan dibalik menjadi base repo dan repo upstream menjadi head repo.</li>
+  <li>Tekan <strong>Create Pull Request</strong>, beri judul pull request, Tekan <strong>Send Pull Request</strong>.</li>
+  <li>Tekan <strong>Merge Pull Request</strong> dan <strong>Confirm Merge</strong>.</li>
+</ol>
+
+<p>* <em>pastikan kamu tidak merubah apapun pada forked repo, supaya melakukan merge secara otomatis, kalo tidak ya paling2 konflik.</em></p>
+
+<h3 id="melalui-terminal-️">Melalui terminal ⌨️</h3>
+
+<p>Tambahkan remote alamat repository yang aslinya disini tak beri nama <code class="language-plaintext highlighter-rouge">upstream</code>., ganti <code class="language-plaintext highlighter-rouge">ORIGINAL_OWNER</code> dan <code class="language-plaintext highlighter-rouge">ORIGINAL_REPO</code> dengan alamat repo aslimu.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git add remote upstream git@github.com:ORIGINAL_OWNER/ORIGINAL_REPO.git
+<span class="nv">$ </span>git remote <span class="nt">-v</span>
+<span class="o">&gt;</span> origin    git@github.com:piharpi/www.git <span class="o">(</span>fetch<span class="o">)</span> <span class="c"># forked repo</span>
+<span class="o">&gt;</span> origin    git@github.com:piharpi/www.git <span class="o">(</span>push<span class="o">)</span> <span class="c"># forked repo</span>
+<span class="o">&gt;</span> upstream    git@github.com:ORIGINAL_OWNER/ORIGINAL_REPO.git <span class="o">(</span>fetch<span class="o">)</span> <span class="c"># upstream repo / original repo</span>
+<span class="o">&gt;</span> upstream    git@github.com:ORIGINAL_OWNER/ORIGINAL_REPO.git <span class="o">(</span>push<span class="o">)</span> <span class="c"># upstream repo / original repo</span>
+</code></pre></div></div>
+
+<p>Checkout ke local branch <code class="language-plaintext highlighter-rouge">master</code>.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git checkout master
+<span class="o">&gt;</span> Switched to branch <span class="s1">'master'</span>
+</code></pre></div></div>
+
+<p>Jika sudah, Merge local repo dengan remote <code class="language-plaintext highlighter-rouge">upstream/master</code>.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git merge upstream/master
+</code></pre></div></div>
+
+<p>Terakhir push local repo ke remote <code class="language-plaintext highlighter-rouge">origin</code>.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git add <span class="nt">-A</span>
+<span class="nv">$ </span>git commit <span class="nt">-m</span> <span class="s2">"updating origin repo"</span> <span class="o">&amp;&amp;</span> git push <span class="nt">-u</span> origin master
+</code></pre></div></div>
+
+<p>Selamat mencoba cara ribet ini, semoga bisa dipahami, saya sendiri lebih senang melalui terminal, klo ada yang ribet kenapa cari yang mudah.</p>
+
+<h5 id="resources">Resources</h5>
+
+<ul>
+  <li><a href="https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/syncing-a-fork">Syncing a fork</a></li>
+  <li><a href="https://rick.cogley.info/post/update-your-forked-repository-directly-on-github/#top">Update your fork directly on Github</a></li>
+</ul>
+</div>
+      </section>
+      <footer>
+  <p>&copy; 1947 - 2024 | Hello, I am bincco!</p>
+</footer>
+<script src="/assets/js/mode.js" defer></script>
+
+    </main>
+    <section id="category-modal-bg"></section>
+<section id="category-modal">
+  <h1 id="category-modal-title"></h1>
+  <section id="category-modal-content"></section>
+</section>
+
+  </body>
+</html>

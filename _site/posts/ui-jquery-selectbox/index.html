@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hello, I am bincco! | [jQuery] Select Box UI</title>
+  
+  <link rel="stylesheet" href="/assets/css/post.css" />
+  <link rel="stylesheet" href="/assets/css/syntax.css" />
+  
+  <link rel="stylesheet" href="/assets/css/common.css" />
+  <script src="/assets/js/categories.js"></script>
+  <script>
+    const currentTheme = localStorage.getItem("theme");
+    if (currentTheme) {
+      document.documentElement.setAttribute(
+        "data-theme",
+        localStorage.getItem("theme")
+      );
+    }
+  </script>
+  
+  <script defer src="/assets/js/lbox.js"></script>
+  
+</head>
+
+  <body>
+    <main>
+      <header>
+  <a class="site-title" href="/">Hello, I am bincco!</a>
+  <!-- dark/light mode -->
+  <span id="dark-mode-toggle" style="cursor: pointer">
+    <svg
+      stroke="currentColor"
+      fill="currentColor"
+      stroke-width="0"
+      viewBox="0 0 16 16"
+      height="1.2em"
+      width="1.2em"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zm0 13V2a6 6 0 1 1 0 12z"
+      ></path>
+    </svg>
+  </span>
+</header>
+
+      <section class="article">
+        <div class="article-header">
+          <h2 class="article-title">[jQuery] Select Box UI</h2>
+          <small class="date">22 Apr 2022</small>
+          <div class="categories">
+            
+          </div>
+        </div>
+        <div class="content"><h2 id="조건">조건</h2>
+<ol>
+  <li>select class 클릭 시, list class 보이게 하라!</li>
+  <li>li 항목 클릭 시, 해당 텍스트가 select text에 담겨야 한다</li>
+  <li>li 항목 클릭 시, 형제 리스트 목록은 숨겨져야 한다. (클래스 제거)</li>
+  <li>list class가 보일때 select box를 제외한 부분을 클릭할 시, 모든 리스트는 숨겨져야 한다.
+조건 4-1. select 를 제외한 다른 부분을 클릭할때 = select 클릭이 아닐때<br />
+조건 4-2. list가 다 보였을때</li>
+</ol>
+
+<h2 id="구현">구현</h2>
+<p class="codepen" data-height="300" data-default-tab="html,result" data-slug-hash="BaVbRBY" data-user="bitnaleeeee" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+  <span>See the Pen <a href="https://codepen.io/bitnaleeeee/pen/BaVbRBY">
+  jQuery Select Box UI</a> by day.binna (<a href="https://codepen.io/bitnaleeeee">@bitnaleeeee</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async="" src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+
+<h2 id="설명">설명</h2>
+<ol>
+  <li>toggleClass(‘클래스명’) 함수는 클릭할때 해당 클래스가 적용되고, 다시 한번 클릭하면 자동 해제된다.</li>
+  <li>$(‘객체’).text()는 해당 객체의 텍스트를 저장한다. text 괄호 ()안에 값을 넣으면, 해당 객체안의 텍스트에 값이 들어간다.</li>
+  <li>event.target();은 클릭한 객체를 나타낸다. event.target.is();는 ()안에 해당 값이 들어가있으면 true, 아닐시 false를 반환한다.</li>
+  <li>hasClass(‘클래스명’)함수는 해당 클래스가 있을시 true, 없을시 false를 반환한다.</li>
+</ol>
+</div>
+      </section>
+      <footer>
+  <p>&copy; 1947 - 2024 | Hello, I am bincco!</p>
+</footer>
+<script src="/assets/js/mode.js" defer></script>
+
+    </main>
+    <section id="category-modal-bg"></section>
+<section id="category-modal">
+  <h1 id="category-modal-title"></h1>
+  <section id="category-modal-content"></section>
+</section>
+
+  </body>
+</html>

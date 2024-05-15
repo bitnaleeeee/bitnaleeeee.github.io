@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hello, I am bincco! | [JavaScript] 자바스크립트의 오류 유형</title>
+  
+  <link rel="stylesheet" href="/assets/css/post.css" />
+  <link rel="stylesheet" href="/assets/css/syntax.css" />
+  
+  <link rel="stylesheet" href="/assets/css/common.css" />
+  <script src="/assets/js/categories.js"></script>
+  <script>
+    const currentTheme = localStorage.getItem("theme");
+    if (currentTheme) {
+      document.documentElement.setAttribute(
+        "data-theme",
+        localStorage.getItem("theme")
+      );
+    }
+  </script>
+  
+  <script defer src="/assets/js/lbox.js"></script>
+  
+</head>
+
+  <body>
+    <main>
+      <header>
+  <a class="site-title" href="/">Hello, I am bincco!</a>
+  <!-- dark/light mode -->
+  <span id="dark-mode-toggle" style="cursor: pointer">
+    <svg
+      stroke="currentColor"
+      fill="currentColor"
+      stroke-width="0"
+      viewBox="0 0 16 16"
+      height="1.2em"
+      width="1.2em"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zm0 13V2a6 6 0 1 1 0 12z"
+      ></path>
+    </svg>
+  </span>
+</header>
+
+      <section class="article">
+        <div class="article-header">
+          <h2 class="article-title">[JavaScript] 자바스크립트의 오류 유형</h2>
+          <small class="date">09 Apr 2023</small>
+          <div class="categories">
+            
+          </div>
+        </div>
+        <div class="content"><p>자바스크립트의 오류 유형을 알아보자.</p>
+
+<h1 id="구문-오류syntax-error">구문 오류(Syntax Error)</h1>
+<p>자바스크립트 규칙에 어긋나는 문법으로 작성하여 자바스크립트 엔진이 이해 못 할 문자가 입력되었을 때 발생한다. 요즘에는 에디터 내부에서 오류를 친절하게 찾아주기 때문에(<strong>ESlint</strong> 혹은 <strong>Prettier</strong>) 브라우저에서 구문 오류는 찾아보기가 힘들어 졌다.</p>
+
+<h5 id="예제">예제</h5>
+<p>문자열을 따옴표로 닫지 않고 변수에 할당함</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">text</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">hello
+</span></code></pre></div></div>
+
+<h5 id="오류-메세지">오류 메세지</h5>
+<p><code class="language-plaintext highlighter-rouge">Uncaught SyntaxError</code> - 유효하지 않거나 예상치 못한 토큰</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">Uncaught</span> <span class="nx">SyntaxError</span><span class="p">:</span> <span class="nx">Invalid</span> <span class="nx">or</span> <span class="nx">unexpected</span> <span class="nx">token</span>
+</code></pre></div></div>
+
+<p><br /></p>
+
+<h1 id="타입-에러type-error">타입 에러(Type Error)</h1>
+<p>가장 많이 발생하는 에러중 하나로 구문의 기대하는 값이 아닐 경우 오류가 발생한다. 쉽게 말해 변수의 값이 원하는 값이 아닐 때 나타난다고 볼 수 있다.</p>
+
+<h5 id="예제-1">예제 1</h5>
+<p><code class="language-plaintext highlighter-rouge">obj</code> 객체에 없는 함수 <code class="language-plaintext highlighter-rouge">myFunc</code>를 호출할 때 타입 에러가 발생한다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{};</span>
+<span class="kd">let</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">obj</span><span class="p">.</span><span class="nx">myFunc</span><span class="p">();</span>
+</code></pre></div></div>
+
+<h5 id="오류-메세지-1">오류 메세지</h5>
+<p><code class="language-plaintext highlighter-rouge">Uncaught TypeError</code> - <code class="language-plaintext highlighter-rouge">obj.myFunc</code>는 함수가 아닙니다</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">Uncaught</span> <span class="nx">TypeError</span><span class="p">:</span> <span class="nx">obj</span><span class="p">.</span><span class="nx">myFunc</span> <span class="nx">is</span> <span class="nx">not</span> <span class="nx">a</span> <span class="kd">function</span>
+</code></pre></div></div>
+
+<h5 id="예제-2">예제 2</h5>
+<p><code class="language-plaintext highlighter-rouge">obj</code> 값이 <code class="language-plaintext highlighter-rouge">null</code> 혹은 <code class="language-plaintext highlighter-rouge">undefined</code>일 경우 없는 프로퍼티를 호출하면 에러가 발생한다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">obj</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+<span class="c1">// or</span>
+<span class="kd">let</span> <span class="nx">obj</span><span class="p">;</span>
+
+<span class="kd">let</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">obj</span><span class="p">.</span><span class="nx">myProperty</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h5 id="오류-메세지-2">오류 메세지</h5>
+<p><code class="language-plaintext highlighter-rouge">Uncaught TypeError</code> - 정의되지 않은 속성을 읽을 수 없습니다</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">Uncaught</span> <span class="nx">TypeError</span><span class="p">:</span> <span class="nx">Cannot</span> <span class="nx">read</span> <span class="nx">properties</span> <span class="k">of</span> <span class="kc">undefined</span> <span class="p">(</span><span class="nx">reading</span> <span class="dl">'</span><span class="s1">myProperty</span><span class="dl">'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="타입-에러의-방어-코드단축-평가">타입 에러의 방어 코드(단축 평가)</h3>
+<p>해당 변수의 객체가 있을 경우에만 프로퍼티(혹은 함수)를 사용하고 싶다면 오류가 발생하지 않도록 아래처럼 방어 코드(단축 평가)를 추가할 수 있다. 리액트같은 라이브러리를 사용하는 경우 <code class="language-plaintext highlighter-rouge">state</code>가 선언되기 전에 렌더링 될때 타입 에러가 발생되는 경우가 많은데 아래처럼 사용이 가능하다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">obj</span> <span class="o">&amp;&amp;</span> <span class="nx">obj</span><span class="p">.</span><span class="nx">myProperty</span><span class="p">;</span>
+<span class="c1">// obj가 존재할 경우에만 myProperty 프로퍼티를 호출</span>
+</code></pre></div></div>
+
+<p><br /></p>
+
+<h1 id="참조-에러reference-error">참조 에러(Reference Error)</h1>
+<p>참조 에러는 현재 범위에 존재하지 않거나 선언하지 않은 변수를 참조하였을때 발생하는 에러유형이다.</p>
+
+<h5 id="예제-1">예제</h5>
+<p>선언되지 않은 함수 <code class="language-plaintext highlighter-rouge">boo</code>를 호출하면 참조 에러가 발생한다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">foo</span><span class="p">()</span> <span class="p">{}</span>
+<span class="nx">boo</span><span class="p">();</span>
+</code></pre></div></div>
+
+<h5 id="오류-메세지-3">오류 메세지</h5>
+<p><code class="language-plaintext highlighter-rouge">Uncaught ReferenceError</code> - boo가 정의되지 않았습니다</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">Uncaught</span> <span class="nx">ReferenceError</span><span class="p">:</span> <span class="nx">boo</span> <span class="nx">is</span> <span class="nx">not</span> <span class="nx">defined</span>
+</code></pre></div></div>
+
+<p><br /></p>
+
+<h1 id="범위-에러reference-error">범위 에러(Reference Error)</h1>
+<p>어떤 값이나 데이터가 유효한 자원의 범위를 넘어설 때 발생한다. 대표적으로 콜 스택 초과 에러가 있다.</p>
+
+<h5 id="예제-2">예제</h5>
+<p>foo 함수는 boo를 호출하고 boo 함수는 foo를 호출하면 무한 루프가 걸리면서 스택이 오버되었을 때 오류가 난다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">foo</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">boo</span><span class="p">();</span>
+<span class="p">}</span>
+<span class="kd">function</span> <span class="nx">boo</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">foo</span><span class="p">();</span>
+<span class="p">}</span>
+<span class="nx">foo</span><span class="p">();</span>
+</code></pre></div></div>
+
+<h5 id="오류-메세지-4">오류 메세지</h5>
+<p><code class="language-plaintext highlighter-rouge">Uncaught RangeError</code> - 최대 호출 스택 크기 초과</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">Uncaught</span> <span class="nx">RangeError</span><span class="p">:</span> <span class="nx">Maximum</span> <span class="nx">call</span> <span class="nx">stack</span> <span class="nx">size</span> <span class="nx">exceeded</span>
+</code></pre></div></div>
+
+<p><br /></p>
+
+<h1 id="그-외-에러">그 외 에러</h1>
+<p>이 외에도 아래와 같은 에러들이 존재한다.</p>
+<ul>
+  <li><strong>EvalError</strong> : <code class="language-plaintext highlighter-rouge">eval()</code> 함수와 관련한 오류가 발생했을 때</li>
+  <li><strong>InternalError</strong> : 자바스크립트 엔진 내부에서 오류가 발생했을 때</li>
+  <li><strong>URIError</strong> : <code class="language-plaintext highlighter-rouge">encodeURI()</code>나 <code class="language-plaintext highlighter-rouge">decodeURI()</code> 함수에 부적절한 매개변수를 제공했을 때</li>
+</ul>
+
+<p><br /></p>
+
+<h1 id="references">References</h1>
+<p><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Error">MDN Web Docs - Error</a><br />
+<a href="https://blog.shiren.dev/2021-06-29/">자주 발생하는 자바스크립트 에러</a><br />
+<a href="https://hongong.hanbit.co.kr/크롬으로-자바스크립트-오류-확인하는-방법과-7가지/">자바스크립트 오류 확인하는 방법과 7가지 오류 유형</a></p>
+</div>
+      </section>
+      <footer>
+  <p>&copy; 1947 - 2024 | Hello, I am bincco!</p>
+</footer>
+<script src="/assets/js/mode.js" defer></script>
+
+    </main>
+    <section id="category-modal-bg"></section>
+<section id="category-modal">
+  <h1 id="category-modal-title"></h1>
+  <section id="category-modal-content"></section>
+</section>
+
+  </body>
+</html>

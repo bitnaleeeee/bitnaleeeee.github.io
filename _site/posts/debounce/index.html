@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hello, I am bincco! | [React] Debounce</title>
+  
+  <link rel="stylesheet" href="/assets/css/post.css" />
+  <link rel="stylesheet" href="/assets/css/syntax.css" />
+  
+  <link rel="stylesheet" href="/assets/css/common.css" />
+  <script src="/assets/js/categories.js"></script>
+  <script>
+    const currentTheme = localStorage.getItem("theme");
+    if (currentTheme) {
+      document.documentElement.setAttribute(
+        "data-theme",
+        localStorage.getItem("theme")
+      );
+    }
+  </script>
+  
+  <script defer src="/assets/js/lbox.js"></script>
+  
+</head>
+
+  <body>
+    <main>
+      <header>
+  <a class="site-title" href="/">Hello, I am bincco!</a>
+  <!-- dark/light mode -->
+  <span id="dark-mode-toggle" style="cursor: pointer">
+    <svg
+      stroke="currentColor"
+      fill="currentColor"
+      stroke-width="0"
+      viewBox="0 0 16 16"
+      height="1.2em"
+      width="1.2em"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zm0 13V2a6 6 0 1 1 0 12z"
+      ></path>
+    </svg>
+  </span>
+</header>
+
+      <section class="article">
+        <div class="article-header">
+          <h2 class="article-title">[React] Debounce</h2>
+          <small class="date">04 Jan 2023</small>
+          <div class="categories">
+            
+          </div>
+        </div>
+        <div class="content"><h3 id="이벤트핸들러를-효율적으로-처리해야-하는-이유">이벤트핸들러를 효율적으로 처리해야 하는 이유</h3>
+<p>이벤트가 발생할때마다 반복문을 실행하는 함수나 API 로직이 호출되는 경우 비용적인 문제가 발생할 뿐 아니라 최적화에도 좋지 않다.
+이런 경우 사용하는 <code class="language-plaintext highlighter-rouge">Debounce</code>에 대해 알아보자.</p>
+
+<h3 id="debounce">Debounce</h3>
+<p><code class="language-plaintext highlighter-rouge">Debounce</code>는 특정 이벤트가 발생할때마다 비지니스 로직이 과도하게 호출되는 것을 방지하기 위해 delay를 걸어주는 방식으로 이해하면 쉽다. 즉, 연이어 호출되는 함수를 일정 시간이 지난 후 마지막 로직만 실행하도록 작성할 수 있다.</p>
+
+<h3 id="사용방법">사용방법</h3>
+<ol>
+  <li>설치</li>
+</ol>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">$</span> <span class="nx">npm</span> <span class="nx">install</span> <span class="nx">lodash</span>
+</code></pre></div></div>
+
+<p>아래는 내 코드 예시이다.</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="k">import</span> <span class="k">import</span> <span class="p">{</span> <span class="nx">debounce</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">lodash</span><span class="dl">"</span><span class="p">;</span>
+
+  <span class="kd">const</span> <span class="nx">inputStrValue</span> <span class="o">=</span> <span class="nx">debounce</span><span class="p">((</span><span class="nx">str</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">setInputTxt</span><span class="p">(</span><span class="nx">str</span><span class="p">);</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nx">str</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="p">{</span>
+      <span class="kd">const</span> <span class="nx">inputText</span> <span class="o">=</span> <span class="nx">inputStr</span><span class="p">(</span><span class="nx">str</span><span class="p">);</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">inputText</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">setData</span><span class="p">(</span><span class="nx">inputText</span><span class="p">);</span>
+      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">setData</span><span class="p">([]);</span>
+      <span class="p">}</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="nx">setData</span><span class="p">(</span><span class="nx">allData</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">},</span> <span class="mi">500</span><span class="p">);</span>
+</code></pre></div></div>
+<p>설치한 <code class="language-plaintext highlighter-rouge">lodash</code>라이브러리를 <code class="language-plaintext highlighter-rouge">import</code>해준 뒤 최적화시킬 함수 전체를 감싸주면 된다. 나의 경우는 500을 입력하여 0.5 초뒤 최종 입력된 <code class="language-plaintext highlighter-rouge">input</code>값에만 함수를 호출하도록 작성하였다. 만일, <code class="language-plaintext highlighter-rouge">debounce</code>를 사용하지 않는다면 <code class="language-plaintext highlighter-rouge">input</code>창에 값이 입력될때마다 <code class="language-plaintext highlighter-rouge">inputStrValue</code>함수가 호출될 것이다. <code class="language-plaintext highlighter-rouge">debounce</code>를 사용해줌으로써, 0.5초 후에 마지막 이벤트에 대해서만 함수가 호출되도록 코드를 효율적으로 작성할 수 있었다.</p>
+</div>
+      </section>
+      <footer>
+  <p>&copy; 1947 - 2024 | Hello, I am bincco!</p>
+</footer>
+<script src="/assets/js/mode.js" defer></script>
+
+    </main>
+    <section id="category-modal-bg"></section>
+<section id="category-modal">
+  <h1 id="category-modal-title"></h1>
+  <section id="category-modal-content"></section>
+</section>
+
+  </body>
+</html>

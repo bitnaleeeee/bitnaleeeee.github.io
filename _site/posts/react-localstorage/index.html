@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hello, I am bincco! | [React] 리액트 비동기처리로 인한 오류 해결하기(TIL)</title>
+  
+  <link rel="stylesheet" href="/assets/css/post.css" />
+  <link rel="stylesheet" href="/assets/css/syntax.css" />
+  
+  <link rel="stylesheet" href="/assets/css/common.css" />
+  <script src="/assets/js/categories.js"></script>
+  <script>
+    const currentTheme = localStorage.getItem("theme");
+    if (currentTheme) {
+      document.documentElement.setAttribute(
+        "data-theme",
+        localStorage.getItem("theme")
+      );
+    }
+  </script>
+  
+  <script defer src="/assets/js/lbox.js"></script>
+  
+</head>
+
+  <body>
+    <main>
+      <header>
+  <a class="site-title" href="/">Hello, I am bincco!</a>
+  <!-- dark/light mode -->
+  <span id="dark-mode-toggle" style="cursor: pointer">
+    <svg
+      stroke="currentColor"
+      fill="currentColor"
+      stroke-width="0"
+      viewBox="0 0 16 16"
+      height="1.2em"
+      width="1.2em"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zm0 13V2a6 6 0 1 1 0 12z"
+      ></path>
+    </svg>
+  </span>
+</header>
+
+      <section class="article">
+        <div class="article-header">
+          <h2 class="article-title">[React] 리액트 비동기처리로 인한 오류 해결하기(TIL)</h2>
+          <small class="date">07 Dec 2023</small>
+          <div class="categories">
+            
+          </div>
+        </div>
+        <div class="content"><p>리액트는 자바스크립트를 기반으로 하고 있으므로 주로 비동기적인 작업을 다루는데에도 자바스크립트의 특성을 따라가고 있다.
+예를 들어 <code class="language-plaintext highlighter-rouge">setState</code> 함수나 <code class="language-plaintext highlighter-rouge">useEffect</code> 훅에서 비동적으로 동작한다.</p>
+
+<p>이러한 특성으로 발생한 오류는 아래와 같다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span> <span class="nx">useState</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">react</span><span class="dl">"</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">App</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">../Lexical/App</span><span class="dl">"</span><span class="p">;</span>
+<span class="k">import</span> <span class="dl">"</span><span class="s2">./Main.scss</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">Main</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="p">[</span><span class="nx">items</span><span class="p">,</span> <span class="nx">setItems</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">([]);</span>
+  <span class="kd">const</span> <span class="p">[</span><span class="nx">memo</span><span class="p">,</span> <span class="nx">setMemo</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">([]);</span>
+  <span class="kd">let</span> <span class="nx">inputText</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">localStorage</span><span class="p">.</span><span class="nx">getItem</span><span class="p">(</span><span class="dl">"</span><span class="s2">inputText</span><span class="dl">"</span><span class="p">));</span>
+
+  <span class="kd">function</span> <span class="nx">addNoteBook</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">newItems</span> <span class="o">=</span> <span class="p">[...</span><span class="nx">items</span><span class="p">,</span> <span class="s2">`노트북 </span><span class="p">${</span><span class="nx">items</span><span class="p">.</span><span class="nx">length</span> <span class="o">+</span> <span class="mi">1</span><span class="p">}</span><span class="s2">`</span><span class="p">];</span>
+    <span class="nx">setItems</span><span class="p">(</span><span class="nx">newItems</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="kd">function</span> <span class="nx">removeNoteBook</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">updatedList</span> <span class="o">=</span> <span class="nx">items</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+    <span class="nx">setItems</span><span class="p">(</span><span class="nx">updatedList</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="kd">function</span> <span class="nx">addNewMemo</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">inputText</span><span class="p">)</span>
+    <span class="nx">setMemo</span><span class="p">([...</span><span class="nx">memo</span><span class="p">,</span> <span class="nx">inputText</span><span class="p">]);</span>
+  <span class="p">}</span>
+  <span class="c1">// inputText가 한 박자씩 늦게 받아와 짐</span>
+</code></pre></div></div>
+
+<p>위 코드를 살펴보면 <code class="language-plaintext highlighter-rouge">inputText</code>로 데이터를 저장하고 함수 내에 불러 올때 데이터가 늦게 들어오는 오류가 발생했다. 보통 프론트엔드에서 백엔드를 따로 구현하지 않고 프론트단에서 데이터를 처리하는 방법으로 흔히 <code class="language-plaintext highlighter-rouge">LocalStorage</code>를 사용하곤 하는데
+이때 데이터를 저장하거나 함수를 불러오고자 할때 데이터가 한박자씩 늦게 들어오게 된다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">console.log</code>를 찍어보았을때 <code class="language-plaintext highlighter-rouge">localStorage.getItem</code>으로 받아온 데이터가 함수 밖에서는 실시간으로 보이지만, <code class="language-plaintext highlighter-rouge">addNewMemo</code> 함수 안에서는 한박자 느린 원인은 리액트의 비동기 동작과 관련이 있다.
+<code class="language-plaintext highlighter-rouge">localStorage.getItem</code>은 브라우저의 로컬 스토리지에서 데이터를 동기적으로 가져오는 것이 아니라 비동기적으로 동작하므로 함수 밖에서는 데이터가 바로 갱신된 것처럼 보이지만 함수 내에서는 데이터가 아직 업데이트되기 전에 <code class="language-plaintext highlighter-rouge">console.log</code>가 실행되어 이러한 오류가 발생하게 된다.</p>
+
+<p>자바스크립트에서 비동기 동작을 다룰 때는 <code class="language-plaintext highlighter-rouge">localStorage.getItem</code>의 콜백 함수를 사용하거나, <code class="language-plaintext highlighter-rouge">async/await</code> 를 활용하여 처리할 수 있다. 예를 들어</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span> <span class="nx">useEffect</span><span class="p">,</span> <span class="nx">useState</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">react</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">MyComponent</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="p">[</span><span class="nx">data</span><span class="p">,</span> <span class="nx">setData</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+
+  <span class="nx">useEffect</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">fetchData</span> <span class="o">=</span> <span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="k">try</span> <span class="p">{</span>
+        <span class="kd">const</span> <span class="nx">localStorageData</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">localStorage</span><span class="p">.</span><span class="nx">getItem</span><span class="p">(</span><span class="dl">"</span><span class="s2">yourKey</span><span class="dl">"</span><span class="p">);</span>
+        <span class="nx">setData</span><span class="p">(</span><span class="nx">localStorageData</span><span class="p">);</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">localStorageData</span><span class="p">);</span>
+        <span class="c1">// 이 시점에서는 data가 업데이트된 후에 실행</span>
+      <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="dl">"</span><span class="s2">Error fetching data from localStorage:</span><span class="dl">"</span><span class="p">,</span> <span class="nx">error</span><span class="p">);</span>
+      <span class="p">}</span>
+    <span class="p">};</span>
+
+    <span class="nx">fetchData</span><span class="p">();</span>
+  <span class="p">},</span> <span class="p">[]);</span> <span class="c1">// 빈 배열을 넣어 최초 한 번만 실행되도록 설정</span>
+
+  <span class="k">return</span> <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span><span class="p">{</span><span class="cm">/* data를 사용하여 렌더링 또는 다른 작업 수행 */</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/div&gt;</span><span class="err">;
+</span><span class="p">};</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="nx">MyComponent</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>또는 간단하게 함수를 호출하는 시작점을 변경해줘도 해결은 가능하다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span> <span class="nx">useState</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">react</span><span class="dl">"</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">App</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">../Lexical/App</span><span class="dl">"</span><span class="p">;</span>
+<span class="k">import</span> <span class="dl">"</span><span class="s2">./Main.scss</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">Main</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="p">[</span><span class="nx">items</span><span class="p">,</span> <span class="nx">setItems</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">([]);</span>
+  <span class="kd">const</span> <span class="p">[</span><span class="nx">memo</span><span class="p">,</span> <span class="nx">setMemo</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">([]);</span>
+
+  <span class="kd">function</span> <span class="nx">addNoteBook</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">newItems</span> <span class="o">=</span> <span class="p">[...</span><span class="nx">items</span><span class="p">,</span> <span class="s2">`노트북 </span><span class="p">${</span><span class="nx">items</span><span class="p">.</span><span class="nx">length</span> <span class="o">+</span> <span class="mi">1</span><span class="p">}</span><span class="s2">`</span><span class="p">];</span>
+    <span class="nx">setItems</span><span class="p">(</span><span class="nx">newItems</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="kd">function</span> <span class="nx">removeNoteBook</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">updatedList</span> <span class="o">=</span> <span class="nx">items</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+    <span class="nx">setItems</span><span class="p">(</span><span class="nx">updatedList</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="kd">function</span> <span class="nx">addNewMemo</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="nx">inputText</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">localStorage</span><span class="p">.</span><span class="nx">getItem</span><span class="p">(</span><span class="dl">"</span><span class="s2">inputText</span><span class="dl">"</span><span class="p">));</span>
+    <span class="nx">setMemo</span><span class="p">([...</span><span class="nx">memo</span><span class="p">,</span> <span class="nx">inputText</span><span class="p">]);</span>
+    <span class="c1">//inputText 데이터 바로 받아와짐</span>
+  <span class="p">}</span>
+</code></pre></div></div>
+
+<p>위와 같이 <code class="language-plaintext highlighter-rouge">addNewMemo</code>함수 내에 <code class="language-plaintext highlighter-rouge">inputText</code>를 선언해줘도 해결이 가능한 것을 볼 수 있다.</p>
+
+<p>이렇게 리액트 애플리케이션에서 사용되는 여러 <code class="language-plaintext highlighter-rouge">API</code>들 (예: 데이터 fetching, AJAX 호출 등)은 자바스크립트 비동기 패턴을 따르므로 이로 인한 오류를 해결하기 위해서는
+<code class="language-plaintext highlighter-rouge">Promise</code>나 <code class="language-plaintext highlighter-rouge">async/await</code> 같은 기능을 사용하여 비동기 코드를 작성하고 관리할 수 있다.</p>
+</div>
+      </section>
+      <footer>
+  <p>&copy; 1947 - 2024 | Hello, I am bincco!</p>
+</footer>
+<script src="/assets/js/mode.js" defer></script>
+
+    </main>
+    <section id="category-modal-bg"></section>
+<section id="category-modal">
+  <h1 id="category-modal-title"></h1>
+  <section id="category-modal-content"></section>
+</section>
+
+  </body>
+</html>

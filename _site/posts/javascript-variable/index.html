@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hello, I am bincco! | [JavaScript] 변수 선언과 호이스팅(Hoisting)</title>
+  
+  <link rel="stylesheet" href="/assets/css/post.css" />
+  <link rel="stylesheet" href="/assets/css/syntax.css" />
+  
+  <link rel="stylesheet" href="/assets/css/common.css" />
+  <script src="/assets/js/categories.js"></script>
+  <script>
+    const currentTheme = localStorage.getItem("theme");
+    if (currentTheme) {
+      document.documentElement.setAttribute(
+        "data-theme",
+        localStorage.getItem("theme")
+      );
+    }
+  </script>
+  
+  <script defer src="/assets/js/lbox.js"></script>
+  
+</head>
+
+  <body>
+    <main>
+      <header>
+  <a class="site-title" href="/">Hello, I am bincco!</a>
+  <!-- dark/light mode -->
+  <span id="dark-mode-toggle" style="cursor: pointer">
+    <svg
+      stroke="currentColor"
+      fill="currentColor"
+      stroke-width="0"
+      viewBox="0 0 16 16"
+      height="1.2em"
+      width="1.2em"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zm0 13V2a6 6 0 1 1 0 12z"
+      ></path>
+    </svg>
+  </span>
+</header>
+
+      <section class="article">
+        <div class="article-header">
+          <h2 class="article-title">[JavaScript] 변수 선언과 호이스팅(Hoisting)</h2>
+          <small class="date">14 May 2022</small>
+          <div class="categories">
+            
+          </div>
+        </div>
+        <div class="content"><h1 id="변수-선언과-hoisting">변수 선언과 Hoisting</h1>
+
+<h2 id="변수-선언의-세가지-키워드와-차이">변수 선언의 세가지 키워드와 차이</h2>
+
+<h3 id="1-재선언-재할당">1. 재선언, 재할당</h3>
+
+<p>변수를 선언할 때는 <code class="language-plaintext highlighter-rouge">var</code>, <code class="language-plaintext highlighter-rouge">let</code>, <code class="language-plaintext highlighter-rouge">const</code> 키워드를 사용한다.
+<code class="language-plaintext highlighter-rouge">var</code> 는 자바스크립트의 초창기 문법이고 ES6에서 <code class="language-plaintext highlighter-rouge">let</code>과 <code class="language-plaintext highlighter-rouge">const</code>가 추가 되었다. <code class="language-plaintext highlighter-rouge">var</code>의 경우 재선언, 재할당을 할 수 있으며 <code class="language-plaintext highlighter-rouge">let</code>은 재할당은 가능하나, 재선언은 불가능하다. <code class="language-plaintext highlighter-rouge">const</code>는 재선언, 재할당이 모두 불가능하다. 상수의 경우는 <code class="language-plaintext highlighter-rouge">const</code>로 선언한다.</p>
+
+<blockquote>
+  <p>let : 재선언 O 재할당 O
+<br />
+let : 재선언 X 재할당 O
+<br />
+const : 재선언 X 재할당 X</p>
+</blockquote>
+
+<h3 id="2-block-level-scope-vs-funciotn-level-scope">2. block level scope vs funciotn level scope</h3>
+
+<p><code class="language-plaintext highlighter-rouge">let</code>과 <code class="language-plaintext highlighter-rouge">const</code>는 <code class="language-plaintext highlighter-rouge">var</code>의 취약점을 보완하기 위해 등장했다. <code class="language-plaintext highlighter-rouge">var</code>의 경우 함수의 코드 <code class="language-plaintext highlighter-rouge">block</code>만을 <code class="language-plaintext highlighter-rouge">local scope</code>로 인정한다. 따라서 함수 외부의 <code class="language-plaintext highlighter-rouge">var</code>키워드로 선언한 변수는 어떠한 <code class="language-plaintext highlighter-rouge">block</code>내에서 선언해도 모두 전역번수가 된다.
+이로인해 의도치 않게 전역 변수가 중복 선언되는 경우가 발생한다. 하지만 <code class="language-plaintext highlighter-rouge">let</code>의 경우 재선언이 불가능하므로 같은 변수를 중복 선언하면 문법 에러가 뜬다. 또한 <code class="language-plaintext highlighter-rouge">let</code> 키워드로 선언한 변수는 모든 코드의 <code class="language-plaintext highlighter-rouge">block</code>을 <code class="language-plaintext highlighter-rouge">local scope</code>로 인정한다. 즉 <code class="language-plaintext highlighter-rouge">block</code> 밖에서 접근이 불가능하다. <code class="language-plaintext highlighter-rouge">const</code>는 <code class="language-plaintext highlighter-rouge">let</code>과 대부분 동일하나 재할당이 불가하여 상수를 선언하기에 적합하다.
+<code class="language-plaintext highlighter-rouge">var</code>는 이렇듯 함수 외부의 <code class="language-plaintext highlighter-rouge">block</code> 에서 선언된 모든 변수를 전역 변수로 인정하고 재언선이 가능하여 변수명 중복 등 개발자 입장에서 error prone해 질 수 있다는 단점이 있다.</p>
+
+<h2 id="hoisitng">Hoisitng</h2>
+
+<p>hoisitng은 함수 선언식과 변수선언이 최상단에 끌어올려지는 것을 말한다. hoisitng는 JS 동작 그 자체이며 런타임이 실행되기 전, 자바스크립트 엔진은 변수 선언을 최상단으로 끌어올려 먼저 읽는데 이를 호이스팅 이라고 한다.</p>
+
+<h3 id="1-var의-호이스팅">1. var의 호이스팅</h3>
+
+<p><code class="language-plaintext highlighter-rouge">var</code> 키워드로 변수 선언시 초기화가 암묵적으로 한번에 진행되고, 선언만 최상단으로 끌어올려진다. 즉 초기화된 값 <code class="language-plaintext highlighter-rouge">undefined</code>가 출력되며 값의 할당은 순차적으로 런타임에 실행된다.</p>
+
+<h3 id="2-let-const-의-호이스팅">2. let, const 의 호이스팅</h3>
+
+<p><code class="language-plaintext highlighter-rouge">let</code>의 경우 초기화 단계가 변수 선언문에 도달했을때 진행된다. 따라서, 초기화 단계가 실행되기 전에 값에 접근하면 ReferenceError(참조 에러)가 출력된다. 이렇게 초기화 지점까지 변수를 참조할 수 없는 구간을 일시적 사각지대(TDZ)라고 한다</p>
+
+<h2 id="tdz-temporal-death-zone">TDZ (Temporal Death Zone)</h2>
+
+<p>임시적으로 죽어있는 공간. 선언 전에 변수를 사용하는 것을 비허용하는 이 개념상의 공간에 <code class="language-plaintext highlighter-rouge">const</code>와 <code class="language-plaintext highlighter-rouge">let</code>이 들어간다. 여기서 변수 선언과 할당 초기화 개념의 차이점에 대해 알 필요가 있는데, hoisitng이 되는 것은 변수의 선언만이다. var를 포함한 let, const 모든 선언은 hoisting이 일어난다. 즉 할당전에 console로 출력을 하게 되면 <code class="language-plaintext highlighter-rouge">let</code>과 <code class="language-plaintext highlighter-rouge">const</code>는 ReferenceError가 나온다. 이는 const와 let 선언이 hoisitng 되어 TDZ에 들어갔음을 의미한다.</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">var</code>, <code class="language-plaintext highlighter-rouge">let</code>, <code class="language-plaintext highlighter-rouge">const</code> 의 선언은 모두 hoisitng 된다. <code class="language-plaintext highlighter-rouge">var</code>의 경우 선언과 동시에 초기화가 진행되기 때문에 TDZ에 들어가지 않고 선언 부분만 끌어올려져 때문에(hoisting) 할당되기 전까지 <code class="language-plaintext highlighter-rouge">undefiend</code>가 출력된다. 하지만, <code class="language-plaintext highlighter-rouge">let</code>, <code class="language-plaintext highlighter-rouge">const</code>의 경우 초기화는 변수에 값을 할당할때에 발생하기 때문에 <code class="language-plaintext highlighter-rouge">hoisting</code> 되었을때 값을 참조하면 ReferenceError가 출력된다. 즉, 일시적으로 죽어있는 공간(TDZ)에 들어가있기에 할당 전에 접근하려고 할 경우 ReferenceError 로 해당 변수에 참조할 수 없다는 에러가 출력된다.</li>
+</ul>
+</div>
+      </section>
+      <footer>
+  <p>&copy; 1947 - 2024 | Hello, I am bincco!</p>
+</footer>
+<script src="/assets/js/mode.js" defer></script>
+
+    </main>
+    <section id="category-modal-bg"></section>
+<section id="category-modal">
+  <h1 id="category-modal-title"></h1>
+  <section id="category-modal-content"></section>
+</section>
+
+  </body>
+</html>

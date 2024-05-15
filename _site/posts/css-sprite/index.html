@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hello, I am bincco! | [CSS] 스프라이트 기법</title>
+  
+  <link rel="stylesheet" href="/assets/css/post.css" />
+  <link rel="stylesheet" href="/assets/css/syntax.css" />
+  
+  <link rel="stylesheet" href="/assets/css/common.css" />
+  <script src="/assets/js/categories.js"></script>
+  <script>
+    const currentTheme = localStorage.getItem("theme");
+    if (currentTheme) {
+      document.documentElement.setAttribute(
+        "data-theme",
+        localStorage.getItem("theme")
+      );
+    }
+  </script>
+  
+  <script defer src="/assets/js/lbox.js"></script>
+  
+</head>
+
+  <body>
+    <main>
+      <header>
+  <a class="site-title" href="/">Hello, I am bincco!</a>
+  <!-- dark/light mode -->
+  <span id="dark-mode-toggle" style="cursor: pointer">
+    <svg
+      stroke="currentColor"
+      fill="currentColor"
+      stroke-width="0"
+      viewBox="0 0 16 16"
+      height="1.2em"
+      width="1.2em"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zm0 13V2a6 6 0 1 1 0 12z"
+      ></path>
+    </svg>
+  </span>
+</header>
+
+      <section class="article">
+        <div class="article-header">
+          <h2 class="article-title">[CSS] 스프라이트 기법</h2>
+          <small class="date">12 Jun 2023</small>
+          <div class="categories">
+            
+          </div>
+        </div>
+        <div class="content"><p>스프라이트(Sprite) 는 여러 개의 이미지를 하나의 이미지로 합쳐서 관리하는 것을 말한다.<br />
+웹에서 사용되는 이미지의 경우 해당 이미지를 사용자에게 보여주기 위해 웹 브라우저는 서버에 이미지를 요청하게 되고 그만큼 로딩시간이 소요된다.</p>
+
+<p>이를 효율적으로 하기 위해 웹 상에서 사용되는 아이콘 등의 이미지 파일들을 하나의 파일로 합쳐서 관리하여 웹 상에서 브라우저가 다운받아야 할 이미지를 줄여주고 관리하기도 쉽다는 장점이 있다.</p>
+
+<h1 id="사용법">사용법</h1>
+
+<p>아래는 내가 스프라이트 기법을 사용할때 작성한 코드 예시이다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>          <span class="p">.</span><span class="nx">todaytemper</span> <span class="p">{</span>
+           <span class="nx">margin</span><span class="o">-</span><span class="nx">right</span><span class="p">:</span> <span class="mi">30</span><span class="nx">px</span><span class="p">;</span>
+           <span class="nl">position</span><span class="p">:</span> <span class="nx">relative</span><span class="p">;</span>
+           <span class="o">&amp;</span><span class="p">::</span><span class="nx">after</span> <span class="p">{</span>
+             <span class="nl">content</span><span class="p">:</span> <span class="dl">""</span><span class="p">;</span>
+             <span class="nl">width</span><span class="p">:</span> <span class="mi">28</span><span class="nx">px</span><span class="p">;</span>
+             <span class="nl">height</span><span class="p">:</span> <span class="mi">17</span><span class="nx">px</span><span class="p">;</span>
+             <span class="nl">background</span><span class="p">:</span> <span class="nx">url</span><span class="p">(</span><span class="nx">사용할이미지의</span> <span class="nx">주소입력</span><span class="p">)</span>
+               <span class="nx">no</span><span class="o">-</span><span class="nx">repeat</span><span class="p">;</span>
+             <span class="nl">top</span><span class="p">:</span> <span class="mi">0</span><span class="nx">px</span><span class="p">;</span>
+             <span class="nl">right</span><span class="p">:</span> <span class="o">-</span><span class="mi">26</span><span class="nx">px</span><span class="p">;</span>
+             <span class="nl">position</span><span class="p">:</span> <span class="nx">absolute</span><span class="p">;</span>
+             <span class="nl">display</span><span class="p">:</span> <span class="nx">inline</span><span class="o">-</span><span class="nx">block</span><span class="p">;</span>
+             <span class="nx">background</span><span class="o">-</span><span class="nx">position</span><span class="p">:</span> <span class="o">-</span><span class="mi">314</span><span class="nx">px</span> <span class="o">-</span><span class="mi">81</span><span class="nx">px</span><span class="p">;</span>
+             <span class="nx">background</span><span class="o">-</span><span class="nx">size</span><span class="p">:</span> <span class="mi">396</span><span class="nx">px</span> <span class="mi">185</span><span class="nx">px</span><span class="p">;</span>
+           <span class="p">}</span>
+
+</code></pre></div></div>
+
+<p>사용할 이미지의 url을 <code class="language-plaintext highlighter-rouge">background</code>로 넣어준 후 <code class="language-plaintext highlighter-rouge">width</code>와 <code class="language-plaintext highlighter-rouge">height</code>로 넣을 크기를 지정해 준 후, <code class="language-plaintext highlighter-rouge">background-size</code>와 <code class="language-plaintext highlighter-rouge">background-position</code>를 사용하여 노출시킬 이미지를 지정해주면 된다.</p>
+
+<p>이때 <code class="language-plaintext highlighter-rouge">width</code>와 <code class="language-plaintext highlighter-rouge">height</code>는 이미지가 들어갈 공간, 크기를 설정해주는 것이고 <code class="language-plaintext highlighter-rouge">background-size</code>는 url로 넣은 이미지를 어떤 크기로 불러올 것인지에 대한 설정값이다. 마지막으로 여러개의 이미지 중, 어떤 이미지를 웹 상에 노출시킬 것인지 <code class="language-plaintext highlighter-rouge">background-position</code>를 지정하여 원하는 이미지를 노출시키면 된다.</p>
+
+<p>이로 인해 이미지 로딩 속도가 최적하 되며 파일 관리가 용이할 뿐 아니라 마크업이 간결해진다는 장점이 있다.</p>
+</div>
+      </section>
+      <footer>
+  <p>&copy; 1947 - 2024 | Hello, I am bincco!</p>
+</footer>
+<script src="/assets/js/mode.js" defer></script>
+
+    </main>
+    <section id="category-modal-bg"></section>
+<section id="category-modal">
+  <h1 id="category-modal-title"></h1>
+  <section id="category-modal-content"></section>
+</section>
+
+  </body>
+</html>

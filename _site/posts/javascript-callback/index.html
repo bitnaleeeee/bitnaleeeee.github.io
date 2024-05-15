@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hello, I am bincco! | [JavaScript] Callback 과 Promise</title>
+  
+  <link rel="stylesheet" href="/assets/css/post.css" />
+  <link rel="stylesheet" href="/assets/css/syntax.css" />
+  
+  <link rel="stylesheet" href="/assets/css/common.css" />
+  <script src="/assets/js/categories.js"></script>
+  <script>
+    const currentTheme = localStorage.getItem("theme");
+    if (currentTheme) {
+      document.documentElement.setAttribute(
+        "data-theme",
+        localStorage.getItem("theme")
+      );
+    }
+  </script>
+  
+  <script defer src="/assets/js/lbox.js"></script>
+  
+</head>
+
+  <body>
+    <main>
+      <header>
+  <a class="site-title" href="/">Hello, I am bincco!</a>
+  <!-- dark/light mode -->
+  <span id="dark-mode-toggle" style="cursor: pointer">
+    <svg
+      stroke="currentColor"
+      fill="currentColor"
+      stroke-width="0"
+      viewBox="0 0 16 16"
+      height="1.2em"
+      width="1.2em"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zm0 13V2a6 6 0 1 1 0 12z"
+      ></path>
+    </svg>
+  </span>
+</header>
+
+      <section class="article">
+        <div class="article-header">
+          <h2 class="article-title">[JavaScript] Callback 과 Promise</h2>
+          <small class="date">29 Jan 2023</small>
+          <div class="categories">
+            
+          </div>
+        </div>
+        <div class="content"><p>콜백함수를 이용하면 자바스크립트의 비동기 처리의 특성에도 원하는 시간에 원하는 값을 얻어올 수 있다. 하지만 콜백 패턴은 콜백 지옥으로 인해 가독성이 나쁘고 비동기 처리 중 발생한 에러의 처리가 곤란하며 한계가 있다는 단점이 있다. 이를 해결하기 위해 ES6에서는 비동기 처리를 위한 패턴으로 프로미스(<code class="language-plaintext highlighter-rouge">Promise</code>)를 도입하였다.</p>
+
+<h2 id="promise"><code class="language-plaintext highlighter-rouge">Promise</code></h2>
+<p><code class="language-plaintext highlighter-rouge">Promise</code> 생성자 함수를 <code class="language-plaintext highlighter-rouge">new</code> 연산자와 함께 호출하면 프로미스(객체)를 생성한다. <code class="language-plaintext highlighter-rouge">promise</code>생성자 함수는 비동기 처리를 수행할 콜백 함수를 인수로 전달 받는데 이 콜백 함수는 <code class="language-plaintext highlighter-rouge">resoleve</code>와 <code class="language-plaintext highlighter-rouge">reject</code>함수를 인수로 전달받는다.</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">promise</span>  <span class="o">=</span> <span class="k">new</span> <span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">if</span><span class="p">(</span><span class="cm">/*통신을 성공했을때*/</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">resolve</span><span class="p">(</span><span class="dl">'</span><span class="s1">result</span><span class="dl">'</span><span class="p">);</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="nx">rejuct</span><span class="p">(</span><span class="dl">'</span><span class="s1">fail</span><span class="dl">'</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div></div>
+<p>위와 같이 <code class="language-plaintext highlighter-rouge">new</code>연산자로 <code class="language-plaintext highlighter-rouge">Promise</code> 객체를 생성하여 비동기 처리를 할 수 있다. 비동기 처리는 <code class="language-plaintext highlighter-rouge">Promise</code> 생성자 함수가 인수로 전달받은 콜백 함수 내부에서 수행하며, 성공하면 <code class="language-plaintext highlighter-rouge">resolve</code> 함수에 인수로 전달하여 호출, 실패시 <code class="language-plaintext highlighter-rouge">reject</code> 함수에 인수로 전달하며 호출하도록 작성한다.</p>
+</div>
+      </section>
+      <footer>
+  <p>&copy; 1947 - 2024 | Hello, I am bincco!</p>
+</footer>
+<script src="/assets/js/mode.js" defer></script>
+
+    </main>
+    <section id="category-modal-bg"></section>
+<section id="category-modal">
+  <h1 id="category-modal-title"></h1>
+  <section id="category-modal-content"></section>
+</section>
+
+  </body>
+</html>

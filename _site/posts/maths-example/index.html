@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hello, I am bincco! | Maths Example with Mathjax</title>
+  
+  <link rel="stylesheet" href="/assets/css/post.css" />
+  <link rel="stylesheet" href="/assets/css/syntax.css" />
+  
+  <link rel="stylesheet" href="/assets/css/common.css" />
+  <script src="/assets/js/categories.js"></script>
+  <script>
+    const currentTheme = localStorage.getItem("theme");
+    if (currentTheme) {
+      document.documentElement.setAttribute(
+        "data-theme",
+        localStorage.getItem("theme")
+      );
+    }
+  </script>
+  
+  <script defer src="/assets/js/lbox.js"></script>
+  
+</head>
+
+  <body>
+    <main>
+      <header>
+  <a class="site-title" href="/">Hello, I am bincco!</a>
+  <!-- dark/light mode -->
+  <span id="dark-mode-toggle" style="cursor: pointer">
+    <svg
+      stroke="currentColor"
+      fill="currentColor"
+      stroke-width="0"
+      viewBox="0 0 16 16"
+      height="1.2em"
+      width="1.2em"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zm0 13V2a6 6 0 1 1 0 12z"
+      ></path>
+    </svg>
+  </span>
+</header>
+
+      <section class="article">
+        <div class="article-header">
+          <h2 class="article-title">Maths Example with Mathjax</h2>
+          <small class="date">17 Jun 2021</small>
+          <div class="categories">
+            
+            <a href="#!" class="category">jekyll</a>
+            
+            <a href="#!" class="category">update</a>
+            
+          </div>
+        </div>
+        <div class="content"><p>Below is an example of maths using mathjax.</p>
+
+<p>Any page needing maths should start with the frontmatter:</p>
+
+<figure class="highlight"><pre><code class="language-markdown" data-lang="markdown">usemathjax: true</code></pre></figure>
+
+\[\begin{align*}
+y = y(x,t) &amp;= A e^{i\theta} \\
+&amp;= A (\cos \theta + i \sin \theta) \\
+&amp;= A (\cos(kx - \omega t) + i \sin(kx - \omega t)) \\
+&amp;= A\cos(kx - \omega t) + i A\sin(kx - \omega t)  \\
+&amp;= A\cos \Big(\frac{2\pi}{\lambda}x - \frac{2\pi v}{\lambda} t \Big) + i A\sin \Big(\frac{2\pi}{\lambda}x - \frac{2\pi v}{\lambda} t \Big)  \\
+&amp;= A\cos \frac{2\pi}{\lambda} (x - v t) + i A\sin \frac{2\pi}{\lambda} (x - v t)
+\end{align*}\]
+
+<p>Inline maths can be written with the <code class="language-plaintext highlighter-rouge">\\(</code> and <code class="language-plaintext highlighter-rouge">\\)</code> characters, producing inline maths
+such as \(\delta(t) \xrightarrow{\mathscr{F}} 1\).</p>
+
+<p>The above is accomplished with thanks to <a href="https://alanduan.me/random/mathjax/">Alan Duan</a> and <a href="https://webdocs.cs.ualberta.ca/~zichen2/blog/coding/setup/2019/02/17/how-to-add-mathjax-support-to-jekyll.html.">Zichen Vincent Zhang</a>.</p>
+</div>
+      </section>
+      <footer>
+  <p>&copy; 1947 - 2024 | Hello, I am bincco!</p>
+</footer>
+<script src="/assets/js/mode.js" defer></script>
+
+    </main>
+    <section id="category-modal-bg"></section>
+<section id="category-modal">
+  <h1 id="category-modal-title"></h1>
+  <section id="category-modal-content"></section>
+</section>
+
+  </body>
+</html>

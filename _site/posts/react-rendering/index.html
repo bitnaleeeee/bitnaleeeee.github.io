@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hello, I am bincco! | [React] 조건부 렌더링과 && 연산자 사용시 주의사항</title>
+  
+  <link rel="stylesheet" href="/assets/css/post.css" />
+  <link rel="stylesheet" href="/assets/css/syntax.css" />
+  
+  <link rel="stylesheet" href="/assets/css/common.css" />
+  <script src="/assets/js/categories.js"></script>
+  <script>
+    const currentTheme = localStorage.getItem("theme");
+    if (currentTheme) {
+      document.documentElement.setAttribute(
+        "data-theme",
+        localStorage.getItem("theme")
+      );
+    }
+  </script>
+  
+  <script defer src="/assets/js/lbox.js"></script>
+  
+</head>
+
+  <body>
+    <main>
+      <header>
+  <a class="site-title" href="/">Hello, I am bincco!</a>
+  <!-- dark/light mode -->
+  <span id="dark-mode-toggle" style="cursor: pointer">
+    <svg
+      stroke="currentColor"
+      fill="currentColor"
+      stroke-width="0"
+      viewBox="0 0 16 16"
+      height="1.2em"
+      width="1.2em"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zm0 13V2a6 6 0 1 1 0 12z"
+      ></path>
+    </svg>
+  </span>
+</header>
+
+      <section class="article">
+        <div class="article-header">
+          <h2 class="article-title">[React] 조건부 렌더링과 && 연산자 사용시 주의사항</h2>
+          <small class="date">30 Jul 2023</small>
+          <div class="categories">
+            
+          </div>
+        </div>
+        <div class="content"><p>리액트의 조건부 렌더링은 자바스크립트와 동일한 방식으로 작동하다
+if문, 삼항 연산자 또는 논리 &amp;&amp; 연산자를 사용하여 조건부 렌더링 코드를 작성해 줄 수 있는데
+&amp;&amp; 연산자는 조건부 렌더링 사용시 더 짧은 코드로 작성하고 싶을 때 사용한다.</p>
+
+<p>아래 예시를 살펴보면
+&amp;&amp; 연산자를 사용하여 <code class="language-plaintext highlighter-rouge">data.shortData</code> 가 있을때 렌더링 하여 <code class="language-plaintext highlighter-rouge">map</code>함수로 뿌려주도록 코드를 작성하였다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">return</span> <span class="p">(</span>
+  <span class="o">&lt;&gt;</span>
+    <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="dl">"</span><span class="s2">grid-box short-form-box</span><span class="dl">"</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="dl">"</span><span class="s2">title-wrap</span><span class="dl">"</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">h3</span> <span class="nx">className</span><span class="o">=</span><span class="dl">"</span><span class="s2">title</span><span class="dl">"</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="nx">span</span> <span class="nx">className</span><span class="o">=</span><span class="dl">"</span><span class="s2">title-sub</span><span class="dl">"</span><span class="o">&gt;</span><span class="nx">짧은</span> <span class="nx">즐거움</span><span class="o">&lt;</span><span class="sr">/span</span><span class="err">&gt;
+</span>          <span class="o">&lt;</span><span class="nx">span</span> <span class="nx">className</span><span class="o">=</span><span class="dl">"</span><span class="s2">title-sub short-form</span><span class="dl">"</span><span class="o">&gt;</span><span class="nx">숏폼</span><span class="o">&lt;</span><span class="sr">/span</span><span class="err">&gt;
+</span>          <span class="o">&lt;</span><span class="nx">span</span> <span class="nx">className</span><span class="o">=</span><span class="dl">"</span><span class="s2">title-sub-img short-form</span><span class="dl">"</span><span class="o">&gt;&lt;</span><span class="sr">/span</span><span class="err">&gt;
+</span>        <span class="o">&lt;</span><span class="sr">/h3</span><span class="err">&gt;
+</span>      <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>      <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="dl">"</span><span class="s2">short-form-list</span><span class="dl">"</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">ul</span> <span class="nx">className</span><span class="o">=</span><span class="dl">"</span><span class="s2">short-form-list-inner</span><span class="dl">"</span><span class="o">&gt;</span>
+          <span class="p">{</span><span class="nx">data</span><span class="p">.</span><span class="nx">shortData</span> <span class="o">&amp;&amp;</span>
+            <span class="nx">data</span><span class="p">.</span><span class="nx">shortData</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">item</span><span class="p">,</span> <span class="nx">idx</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+              <span class="k">return</span> <span class="p">(</span>
+                <span class="o">&lt;</span><span class="nx">li</span> <span class="nx">key</span><span class="o">=</span><span class="p">{</span><span class="nx">idx</span><span class="p">}</span><span class="o">&gt;</span>
+                  <span class="o">&lt;</span><span class="nx">a</span> <span class="nx">href</span><span class="o">=</span><span class="dl">"</span><span class="s2">#!</span><span class="dl">"</span><span class="o">&gt;</span>
+                    <span class="o">&lt;</span><span class="nx">img</span> <span class="nx">src</span><span class="o">=</span><span class="p">{</span><span class="nx">item</span><span class="p">.</span><span class="nx">img</span><span class="p">}</span> <span class="nx">alt</span><span class="o">=</span><span class="dl">""</span> <span class="nx">className</span><span class="o">=</span><span class="dl">"</span><span class="s2">img</span><span class="dl">"</span> <span class="o">/&gt;</span>
+                    <span class="o">&lt;</span><span class="nx">p</span> <span class="nx">className</span><span class="o">=</span><span class="dl">"</span><span class="s2">info</span><span class="dl">"</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">item</span><span class="p">.</span><span class="nx">info</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/p</span><span class="err">&gt;
+</span>                    <span class="o">&lt;</span><span class="nx">p</span> <span class="nx">className</span><span class="o">=</span><span class="dl">"</span><span class="s2">brand</span><span class="dl">"</span><span class="o">&gt;</span> <span class="p">{</span><span class="nx">item</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/p</span><span class="err">&gt;
+</span>                  <span class="o">&lt;</span><span class="sr">/a</span><span class="err">&gt;
+</span>                <span class="o">&lt;</span><span class="sr">/li</span><span class="err">&gt;
+</span>              <span class="p">);</span>
+            <span class="p">})}</span>
+        <span class="o">&lt;</span><span class="sr">/ul</span><span class="err">&gt;
+</span>      <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>  <span class="o">&lt;</span><span class="sr">/</span><span class="err">&gt;
+</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>만약 위 코드를 if 문으로 작성한다면</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>          <span class="o">&lt;</span><span class="nx">ul</span> <span class="nx">className</span><span class="o">=</span><span class="dl">"</span><span class="s2">short-form-list-inner</span><span class="dl">"</span><span class="o">&gt;</span>
+            <span class="p">{</span><span class="k">if</span> <span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">shortData</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nx">data</span><span class="p">.</span><span class="nx">shortData</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">item</span><span class="p">,</span> <span class="nx">idx</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="p">...</span>
+            <span class="p">}</span> <span class="p">}</span>
+            <span class="k">else</span> <span class="p">{</span>
+              <span class="kc">null</span>
+            <span class="p">}</span>
+                <span class="p">);</span>
+              <span class="p">})}</span>
+          <span class="o">&lt;</span><span class="sr">/ul</span><span class="err">&gt;
+</span></code></pre></div></div>
+
+<p>으로 작성할 수 있고, 삼항연산자로 작성한다면</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>          <span class="o">&lt;</span><span class="nx">ul</span> <span class="nx">className</span><span class="o">=</span><span class="dl">"</span><span class="s2">short-form-list-inner</span><span class="dl">"</span><span class="o">&gt;</span>
+         <span class="p">{</span><span class="nx">data</span><span class="p">.</span><span class="nx">shortData</span> <span class="p">?</span>   <span class="nx">data</span><span class="p">.</span><span class="nx">shortData</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">item</span><span class="p">,</span> <span class="nx">idx</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="p">...</span> <span class="p">:</span> <span class="kc">null</span> <span class="p">}</span>
+                <span class="p">);</span>
+              <span class="p">})}</span>
+          <span class="o">&lt;</span><span class="sr">/ul</span><span class="err">&gt;
+</span></code></pre></div></div>
+
+<p>로 작성할 수 있다
+이처럼 &amp;&amp; 연산자를 사용하면 보다 간결하게 코드를 작성할 수 있는 장점이 있다.</p>
+
+<p>하지만 주의사항으로는 &amp;&amp; 연산자의 경우 <code class="language-plaintext highlighter-rouge">true</code>일때 렌더링 하도록 작성하고 있는데
+이때 만약 값이 <code class="language-plaintext highlighter-rouge">boolean</code>이 아닌 숫자 0이나 <code class="language-plaintext highlighter-rouge">undefined</code>일 경우 문제점이 발생한다.</p>
+
+<ol>
+  <li>undefined일때 아래와 같은 에러가 발생한다</li>
+</ol>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="dl">"</span><span class="s2">Uncaught Error: Error(...): Nothing was returned from render.
+This usually means a return statement is missing.
+Or, to render nothing, return null.</span><span class="dl">"</span>
+</code></pre></div></div>
+
+<ol>
+  <li>값이 0 일때
+<code class="language-plaintext highlighter-rouge">JavaScript</code>에서 true &amp;&amp; expression 은 항상 expression 평가되고
+false &amp;&amp; expression 은 항상 <code class="language-plaintext highlighter-rouge">false</code>로 평가 되기 된다.
+따라서 &amp;&amp; 뒤의 엘리먼트는 조건이 <code class="language-plaintext highlighter-rouge">true</code>일때 출력이 되고, 조건이 <code class="language-plaintext highlighter-rouge">false</code>라면 <code class="language-plaintext highlighter-rouge">React</code>는 무시한다.</li>
+</ol>
+
+<p>이때 <code class="language-plaintext highlighter-rouge">false</code>로 평가될 수 있는 표현식을 반환하면 &amp;&amp; 뒤에 있는 표현식은 건너뛰지만
+<code class="language-plaintext highlighter-rouge">false</code>로 평가될 수 있는 표현식이 반환되기 때문에 condition이 0일 경우 UI에 0 이 표시된다.</p>
+
+<p>따라서 &amp;&amp; 연산자 작성 시 &gt; 0 로 조건을 주거나, 삼항연산자를 사용하여 이러한 에러를 방지할 수 있다.</p>
+</div>
+      </section>
+      <footer>
+  <p>&copy; 1947 - 2024 | Hello, I am bincco!</p>
+</footer>
+<script src="/assets/js/mode.js" defer></script>
+
+    </main>
+    <section id="category-modal-bg"></section>
+<section id="category-modal">
+  <h1 id="category-modal-title"></h1>
+  <section id="category-modal-content"></section>
+</section>
+
+  </body>
+</html>

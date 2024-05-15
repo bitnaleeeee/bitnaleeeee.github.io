@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hello, I am bincco! | [React] React-Query 상태관리</title>
+  
+  <link rel="stylesheet" href="/assets/css/post.css" />
+  <link rel="stylesheet" href="/assets/css/syntax.css" />
+  
+  <link rel="stylesheet" href="/assets/css/common.css" />
+  <script src="/assets/js/categories.js"></script>
+  <script>
+    const currentTheme = localStorage.getItem("theme");
+    if (currentTheme) {
+      document.documentElement.setAttribute(
+        "data-theme",
+        localStorage.getItem("theme")
+      );
+    }
+  </script>
+  
+  <script defer src="/assets/js/lbox.js"></script>
+  
+</head>
+
+  <body>
+    <main>
+      <header>
+  <a class="site-title" href="/">Hello, I am bincco!</a>
+  <!-- dark/light mode -->
+  <span id="dark-mode-toggle" style="cursor: pointer">
+    <svg
+      stroke="currentColor"
+      fill="currentColor"
+      stroke-width="0"
+      viewBox="0 0 16 16"
+      height="1.2em"
+      width="1.2em"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zm0 13V2a6 6 0 1 1 0 12z"
+      ></path>
+    </svg>
+  </span>
+</header>
+
+      <section class="article">
+        <div class="article-header">
+          <h2 class="article-title">[React] React-Query 상태관리</h2>
+          <small class="date">09 Feb 2023</small>
+          <div class="categories">
+            
+          </div>
+        </div>
+        <div class="content"><p>웹 개발에 있어서 상태란 주어진 시간에 대해 시스템을 나타내는 것으로 언제든지 변경될 수 있는 것. 즉 문자열, 배열, 객체 등의 형태로 응용 프로그램에 저장된 데이터를 의미한다.</p>
+
+<h2 id="상태-관리">상태 관리</h2>
+<p>상태 관리라는 것은 프로덕트 규모가 커짐에 따라 많은 양의 데이터를 어떻게 효율적으로 관리할 것인가에 대한 다양한 방법론을 의미한다.</p>
+
+<h3 id="react-query-의-등장"><code class="language-plaintext highlighter-rouge">React-query</code> 의 등장</h3>
+<p>데이터의 주체(Ownership)가 Client인지 Server인지에 따라 관심사를 분리하여 각 특성에 맞게 효율적으로 상태를 관리 하자는 방법론에 맞춰 상태 관리 라이브러리인 <code class="language-plaintext highlighter-rouge">React-query</code>가 등장 하였다. <code class="language-plaintext highlighter-rouge">React-query</code>는 기존 상태 관리 라이브러리와 다르게 (<code class="language-plaintext highlighter-rouge">Redux</code>, <code class="language-plaintext highlighter-rouge">MobX</code>, <code class="language-plaintext highlighter-rouge">Recoil</code>..) Server State를 관리하기에 용이하다.</p>
+
+<h2 id="react-query"><code class="language-plaintext highlighter-rouge">React-query</code></h2>
+<p><code class="language-plaintext highlighter-rouge">React-query</code>는 상태관리 영역 중, 서버의 상태 관리에 초점을 맞추고 있는 라이브러리이다. Server State는 말 그대로 CRUD를 통해 서버와 데이터 싱크를 맞추는 부분이라고 할 수 있다. <code class="language-plaintext highlighter-rouge">React-query</code>는 서버 상태 가져오기, 캐싱, 동기화 및 업데이트를 보다 쉽게 다룰 수 있도록 해준다.</p>
+<h3 id="crud"><code class="language-plaintext highlighter-rouge">CRUD</code></h3>
+<p>Create(생성), Read(읽기 또는 인출), Update(갱신), Delete(삭제)의 약자로 사용자 인터페이스가 갖추어야 할 기본적인 기능이라고 할 수 있으며 주로 클라이언트와 서버가 데이터를 통신할때에 활용되는 개념이다.</p>
+<blockquote>
+  <p>데이터 생성(Create), 데이터 읽기(Read), 데이터 갱신(Update), 데이터 삭제(Delete) &gt; C.R.U.D</p>
+</blockquote>
+
+<h3 id="react-query-시작하기"><code class="language-plaintext highlighter-rouge">React-query</code> 시작하기</h3>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">$</span> <span class="nx">npm</span> <span class="nx">install</span> <span class="p">@</span><span class="nd">tanstack</span><span class="sr">/react-query</span><span class="err">ㄱ
+</span><span class="nx">$</span> <span class="nx">npm</span> <span class="nx">install</span> <span class="p">@</span><span class="nd">tanstack</span><span class="sr">/react-query-devtool</span><span class="err">s
+</span></code></pre></div></div>
+<p>아래와 같이 <code class="language-plaintext highlighter-rouge">import</code> 시켜준 후 사용하면 된다.</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">React</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">QueryClient</span><span class="p">,</span> <span class="nx">QueryClientProvider</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@tanstack/react-query</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">ReactQueryDevtools</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@tanstack/react-query-devtools</span><span class="dl">'</span>
+
+<span class="kd">const</span> <span class="nx">queryClient</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">QueryClient</span><span class="p">();</span>
+
+<span class="kd">const</span> <span class="nx">root</span> <span class="o">=</span> <span class="nx">ReactDOM</span><span class="p">.</span><span class="nx">createRoot</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">'</span><span class="s1">root</span><span class="dl">'</span><span class="p">));</span>
+<span class="nx">root</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span>
+  <span class="o">&lt;</span><span class="nx">QueryClientProvider</span> <span class="nx">client</span><span class="o">=</span><span class="p">{</span><span class="nx">queryClient</span><span class="p">}</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nx">ReactQueryDevtools</span> <span class="nx">initialIsOpen</span><span class="o">=</span><span class="p">{</span><span class="kc">true</span><span class="p">}</span> <span class="sr">/</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="nx">App</span> <span class="o">/&gt;</span>
+    <span class="o">&lt;</span><span class="sr">/QueryClientProvider</span><span class="err">&gt;
+</span><span class="p">);</span>
+</code></pre></div></div>
+
+</div>
+      </section>
+      <footer>
+  <p>&copy; 1947 - 2024 | Hello, I am bincco!</p>
+</footer>
+<script src="/assets/js/mode.js" defer></script>
+
+    </main>
+    <section id="category-modal-bg"></section>
+<section id="category-modal">
+  <h1 id="category-modal-title"></h1>
+  <section id="category-modal-content"></section>
+</section>
+
+  </body>
+</html>

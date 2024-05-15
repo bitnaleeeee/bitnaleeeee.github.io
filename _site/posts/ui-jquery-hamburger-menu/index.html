@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hello, I am bincco! | [jQuery] Hamburger Menu UI</title>
+  
+  <link rel="stylesheet" href="/assets/css/post.css" />
+  <link rel="stylesheet" href="/assets/css/syntax.css" />
+  
+  <link rel="stylesheet" href="/assets/css/common.css" />
+  <script src="/assets/js/categories.js"></script>
+  <script>
+    const currentTheme = localStorage.getItem("theme");
+    if (currentTheme) {
+      document.documentElement.setAttribute(
+        "data-theme",
+        localStorage.getItem("theme")
+      );
+    }
+  </script>
+  
+  <script defer src="/assets/js/lbox.js"></script>
+  
+</head>
+
+  <body>
+    <main>
+      <header>
+  <a class="site-title" href="/">Hello, I am bincco!</a>
+  <!-- dark/light mode -->
+  <span id="dark-mode-toggle" style="cursor: pointer">
+    <svg
+      stroke="currentColor"
+      fill="currentColor"
+      stroke-width="0"
+      viewBox="0 0 16 16"
+      height="1.2em"
+      width="1.2em"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zm0 13V2a6 6 0 1 1 0 12z"
+      ></path>
+    </svg>
+  </span>
+</header>
+
+      <section class="article">
+        <div class="article-header">
+          <h2 class="article-title">[jQuery] Hamburger Menu UI</h2>
+          <small class="date">28 May 2022</small>
+          <div class="categories">
+            
+          </div>
+        </div>
+        <div class="content"><h2 id="ui-조건">UI 조건</h2>
+<ol>
+  <li>햄버거 메뉴 버튼 클릭시, 각기 다른 클래스가 입혀진다.</li>
+  <li>다시 클릭시 기존 햄버거 메뉴로 돌아온다.</li>
+</ol>
+
+<h2 id="구현">구현</h2>
+<p class="codepen" data-height="300" data-default-tab="html,result" data-slug-hash="ZERPvPw" data-user="bitnaleeeee" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+  <span>See the Pen <a href="https://codepen.io/bitnaleeeee/pen/ZERPvPw">
+  Untitled</a> by day.binna (<a href="https://codepen.io/bitnaleeeee">@bitnaleeeee</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async="" src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+
+<h2 id="설명">설명</h2>
+<ol>
+  <li>각 menu trigger 클래스 안의 12개 요소를 선택해주는 함수를 작성한다.</li>
+  <li>this로 총 12개의 menu-trigger를 받고 하나씩 클릭할때마다 각 index값의 1을 더해준 active-(index+1)명의 클래스를 입혀준다.</li>
+  <li>재클릭시 원래 모양으로 복귀해야하므로 toggleclass를 사용.</li>
+  <li>preventDefault();는 a태그가 실행되지 않도록 막아준다.</li>
+</ol>
+</div>
+      </section>
+      <footer>
+  <p>&copy; 1947 - 2024 | Hello, I am bincco!</p>
+</footer>
+<script src="/assets/js/mode.js" defer></script>
+
+    </main>
+    <section id="category-modal-bg"></section>
+<section id="category-modal">
+  <h1 id="category-modal-title"></h1>
+  <section id="category-modal-content"></section>
+</section>
+
+  </body>
+</html>

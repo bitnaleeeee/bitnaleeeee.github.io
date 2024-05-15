@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hello, I am bincco! | [Network] 포트(Port)</title>
+  
+  <link rel="stylesheet" href="/assets/css/post.css" />
+  <link rel="stylesheet" href="/assets/css/syntax.css" />
+  
+  <link rel="stylesheet" href="/assets/css/common.css" />
+  <script src="/assets/js/categories.js"></script>
+  <script>
+    const currentTheme = localStorage.getItem("theme");
+    if (currentTheme) {
+      document.documentElement.setAttribute(
+        "data-theme",
+        localStorage.getItem("theme")
+      );
+    }
+  </script>
+  
+  <script defer src="/assets/js/lbox.js"></script>
+  
+</head>
+
+  <body>
+    <main>
+      <header>
+  <a class="site-title" href="/">Hello, I am bincco!</a>
+  <!-- dark/light mode -->
+  <span id="dark-mode-toggle" style="cursor: pointer">
+    <svg
+      stroke="currentColor"
+      fill="currentColor"
+      stroke-width="0"
+      viewBox="0 0 16 16"
+      height="1.2em"
+      width="1.2em"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zm0 13V2a6 6 0 1 1 0 12z"
+      ></path>
+    </svg>
+  </span>
+</header>
+
+      <section class="article">
+        <div class="article-header">
+          <h2 class="article-title">[Network] 포트(Port)</h2>
+          <small class="date">02 Jul 2022</small>
+          <div class="categories">
+            
+          </div>
+        </div>
+        <div class="content"><h2 id="포트port">포트(Port)</h2>
+
+<ul>
+  <li>컴퓨터의 주변 장치와 연결하기 위한 연결단</li>
+  <li>IP 내에서 프로세스 구분을 하기 위해 사용</li>
+  <li>쉽게 말해 각 프로토콜의 데이터가 통하는 논리적 통로</li>
+  <li>각 포트는 번호로 구별되며 이 번호를 포트 번호라고 함</li>
+  <li>포트 번호는 IP 주소와 함께 쓰여 해당하는 프로토콜에 의해 사용됨</li>
+</ul>
+
+<h2 id="포트-번호는-크게-세-종류로-구분된다">포트 번호는 크게 세 종류로 구분된다.</h2>
+
+<ul>
+  <li>0번 ~ 1023번: 잘 알려진 포트 (well-known port)</li>
+  <li>1024번 ~ 49151번: 등록된 포트 (registered port)</li>
+  <li>49152번 ~ 65535번: 동적 포트 (dynamic port)</li>
+</ul>
+
+<h2 id="잘-알려진-포트-번호의-대표적-예는-다음과-같다">잘 알려진 포트 번호의 대표적 예는 다음과 같다.</h2>
+
+<ul>
+  <li>20 : FTP(data)</li>
+  <li>21 : FTP(제어)</li>
+  <li>22 : SSH</li>
+  <li>23 : 텔넷</li>
+  <li>53 : DNS</li>
+  <li>80 : 월드 와이드 웹 HTTP</li>
+  <li>119 : NNTP</li>
+  <li>443 : TLS/SSL 방식의 HTTP</li>
+</ul>
+
+<h2 id="references">References</h2>
+<p><a href="https://ko.wikipedia.org/wiki/포트_(컴퓨터_네트워킹)">포트 (컴퓨터 네트워킹)</a><br />
+<a href="https://namu.wiki/w/포트">포트</a></p>
+</div>
+      </section>
+      <footer>
+  <p>&copy; 1947 - 2024 | Hello, I am bincco!</p>
+</footer>
+<script src="/assets/js/mode.js" defer></script>
+
+    </main>
+    <section id="category-modal-bg"></section>
+<section id="category-modal">
+  <h1 id="category-modal-title"></h1>
+  <section id="category-modal-content"></section>
+</section>
+
+  </body>
+</html>

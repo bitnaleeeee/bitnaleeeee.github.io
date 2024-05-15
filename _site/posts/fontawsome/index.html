@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hello, I am bincco! | [React] FontAwesome</title>
+  
+  <link rel="stylesheet" href="/assets/css/post.css" />
+  <link rel="stylesheet" href="/assets/css/syntax.css" />
+  
+  <link rel="stylesheet" href="/assets/css/common.css" />
+  <script src="/assets/js/categories.js"></script>
+  <script>
+    const currentTheme = localStorage.getItem("theme");
+    if (currentTheme) {
+      document.documentElement.setAttribute(
+        "data-theme",
+        localStorage.getItem("theme")
+      );
+    }
+  </script>
+  
+  <script defer src="/assets/js/lbox.js"></script>
+  
+</head>
+
+  <body>
+    <main>
+      <header>
+  <a class="site-title" href="/">Hello, I am bincco!</a>
+  <!-- dark/light mode -->
+  <span id="dark-mode-toggle" style="cursor: pointer">
+    <svg
+      stroke="currentColor"
+      fill="currentColor"
+      stroke-width="0"
+      viewBox="0 0 16 16"
+      height="1.2em"
+      width="1.2em"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zm0 13V2a6 6 0 1 1 0 12z"
+      ></path>
+    </svg>
+  </span>
+</header>
+
+      <section class="article">
+        <div class="article-header">
+          <h2 class="article-title">[React] FontAwesome</h2>
+          <small class="date">26 Jan 2023</small>
+          <div class="categories">
+            
+          </div>
+        </div>
+        <div class="content"><p><code class="language-plaintext highlighter-rouge">React</code>로 클론코딩을 할때 아이콘의 경우는 <code class="language-plaintext highlighter-rouge">Font Awesome</code>을 자주 사용하였는데 이번 기회에 간략하게 사용법에 대해 정리해본다.</p>
+
+<h2 id="font-awesome-설치"><code class="language-plaintext highlighter-rouge">Font Awesome</code> 설치</h2>
+
+<p><code class="language-plaintext highlighter-rouge">Font Awesome</code>은 웹에서 아이콘이 필요할 때 가장 많이 사용되는 라이브러리 중 하나로 사용 전 아래와 같이 설치가 필요하다.</p>
+
+<ol>
+  <li>기본 패키지 설치</li>
+</ol>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">$</span> <span class="nx">npm</span> <span class="nx">i</span> <span class="p">@</span><span class="nd">fortawesome</span><span class="sr">/fontawesome-svg-cor</span><span class="err">e
+</span></code></pre></div></div>
+
+<ol>
+  <li>무료로 제공되는 Solid, Regular, Brands 3가지 아이콘 패키지 설치</li>
+</ol>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">$</span> <span class="nx">npm</span> <span class="nx">i</span> <span class="p">@</span><span class="nd">fortawesome</span><span class="sr">/free-solid-svg-icon</span><span class="err">s
+</span><span class="nx">$</span> <span class="nx">npm</span> <span class="nx">i</span> <span class="p">@</span><span class="nd">fortawesome</span><span class="sr">/free-regular-svg-icon</span><span class="err">s
+</span><span class="nx">$</span> <span class="nx">npm</span> <span class="nx">i</span> <span class="p">@</span><span class="nd">fortawesome</span><span class="sr">/free-brands-svg-icon</span><span class="err">s
+</span></code></pre></div></div>
+
+<ol>
+  <li>리액트로 <code class="language-plaintext highlighter-rouge">import</code> 해올 수 있도록 설치</li>
+</ol>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">$</span> <span class="nx">npm</span> <span class="nx">i</span> <span class="p">@</span><span class="nd">fortawesome</span><span class="sr">/react-fontawesom</span><span class="err">e
+</span></code></pre></div></div>
+
+<p>설치가 완료되었다면 사용하고자 하는 컴포넌트의 상단에 <code class="language-plaintext highlighter-rouge">import</code>를 시켜주면 된다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">React</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">react</span><span class="dl">"</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">FontAwesomeIcon</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">@fortawesome/react-fontawesome</span><span class="dl">"</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>그리고 Font Awesome 홈페이지에 들어가 무료로 제공하는 아이콘들 중 원하는 아이콘을 선택한 후 <code class="language-plaintext highlighter-rouge">React</code>부분을 선택하게 되면 자동으로 복사가 된다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&lt;</span><span class="nx">FontAwesomeIcon</span> <span class="nx">icon</span><span class="o">=</span><span class="dl">"</span><span class="s2">fa-regular fa-check</span><span class="dl">"</span> <span class="o">/&gt;</span> <span class="c1">//예시</span>
+</code></pre></div></div>
+
+<p>복사된 위 형식의 fa-check 부분에서 “-“를 제거하고 뒷문자를 대문자로 치환하여 아래와 같이 <code class="language-plaintext highlighter-rouge">import</code> 시키면 된다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">React</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">react</span><span class="dl">"</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">FontAwesomeIcon</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">@fortawesome/react-fontawesome</span><span class="dl">"</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">faCheck</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">@fortawesome/free-solid-svg-icons</span><span class="dl">"</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>이렇게 불러온 아이콘을 컴포넌트에 넣을때는</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//JSX</span>
+<span class="o">&lt;</span><span class="nx">FontAwesomeIcon</span> <span class="nx">className</span><span class="o">=</span><span class="dl">"</span><span class="s2">iconStye</span><span class="dl">"</span> <span class="nx">icon</span><span class="o">=</span><span class="p">{</span><span class="nx">faCheck</span><span class="p">}</span> <span class="sr">/</span><span class="err">&gt;
+</span></code></pre></div></div>
+
+<p>위와 같이 넣어주면 원하는 아이콘이 구현 화면에서 나타난다.</p>
+</div>
+      </section>
+      <footer>
+  <p>&copy; 1947 - 2024 | Hello, I am bincco!</p>
+</footer>
+<script src="/assets/js/mode.js" defer></script>
+
+    </main>
+    <section id="category-modal-bg"></section>
+<section id="category-modal">
+  <h1 id="category-modal-title"></h1>
+  <section id="category-modal-content"></section>
+</section>
+
+  </body>
+</html>

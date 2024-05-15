@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hello, I am bincco! | [Git] 깃 명령어</title>
+  
+  <link rel="stylesheet" href="/assets/css/post.css" />
+  <link rel="stylesheet" href="/assets/css/syntax.css" />
+  
+  <link rel="stylesheet" href="/assets/css/common.css" />
+  <script src="/assets/js/categories.js"></script>
+  <script>
+    const currentTheme = localStorage.getItem("theme");
+    if (currentTheme) {
+      document.documentElement.setAttribute(
+        "data-theme",
+        localStorage.getItem("theme")
+      );
+    }
+  </script>
+  
+  <script defer src="/assets/js/lbox.js"></script>
+  
+</head>
+
+  <body>
+    <main>
+      <header>
+  <a class="site-title" href="/">Hello, I am bincco!</a>
+  <!-- dark/light mode -->
+  <span id="dark-mode-toggle" style="cursor: pointer">
+    <svg
+      stroke="currentColor"
+      fill="currentColor"
+      stroke-width="0"
+      viewBox="0 0 16 16"
+      height="1.2em"
+      width="1.2em"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zm0 13V2a6 6 0 1 1 0 12z"
+      ></path>
+    </svg>
+  </span>
+</header>
+
+      <section class="article">
+        <div class="article-header">
+          <h2 class="article-title">[Git] 깃 명령어</h2>
+          <small class="date">08 Jul 2022</small>
+          <div class="categories">
+            
+          </div>
+        </div>
+        <div class="content"><p>자주 쓴 명령어 위주로 작성, 추후 계속 추가 예정</p>
+
+<h2 id="초기화">초기화</h2>
+
+<p>깃 초기화 : 기존 디렉토리를 git 저장소로 만든다.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ git init
+</code></pre></div></div>
+
+<p>깃 상태 확인 : 현재 작업중인 브랜치와 파일 상태를 알려준다.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ git status
+</code></pre></div></div>
+
+<h2 id="설정">설정</h2>
+
+<p>전역 사용자 이름 생성</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ git config --global user.name "your name"
+</code></pre></div></div>
+
+<p>전역 사용자 이메일 생성</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ git config --global user.email "your_email@youremail.com"
+</code></pre></div></div>
+
+<p>저장소별 사용자 이름 생성</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ git config user.name "your name"
+</code></pre></div></div>
+
+<p>저장소별 사용자 이메일 생성</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ git config user.email "your_email@youremail.com"
+</code></pre></div></div>
+
+<blockquote>
+  <p>사용자 설정이 되어 있지 않으면 깃허브의 저장소에 커밋 이력 및 작성자의 아이콘도 ? 로 표시된다. 웬만하면 사용자 설정을 해주도록 하자</p>
+</blockquote>
+
+<p>저장소 복제하기</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ git clone "url"
+</code></pre></div></div>
+
+<p>저장소 추가하기</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ git remote add origin "url"
+</code></pre></div></div>
+
+<p>로컬저장소가 바라보고 있는 저장소의 정보 확인</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ git remote -v
+</code></pre></div></div>
+
+<p>전역 설정 정보 조회</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ git config --global --list
+</code></pre></div></div>
+
+<p>저장소 정보 조회</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ git config --list
+</code></pre></div></div>
+
+<h2 id="파일-추가-및-업로드">파일 추가 및 업로드</h2>
+
+<p>스테이지에 수정된 파일 업로드</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ git add 'file name'
+</code></pre></div></div>
+
+<p>스테이지에 수정된 모든 파일 업로드</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ git add .
+</code></pre></div></div>
+
+<p>커밋하기</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ git commit -m 'message'
+</code></pre></div></div>
+
+<p>원격 저장소에 업로드</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ git push origin master
+</code></pre></div></div>
+
+<p>원격 저장소에서 다운로드</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ git pull origin master
+</code></pre></div></div>
+
+<h2 id="되돌리기">되돌리기</h2>
+
+<p>스테이지에 올라간 파일 전부 내리기</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ git reset
+</code></pre></div></div>
+
+<h2 id="이력">이력</h2>
+
+<p>모든 이력 보기</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ git log
+</code></pre></div></div>
+
+<p>이력 나가기</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ q
+</code></pre></div></div>
+
+<p>이력과 변경사항을 함께 보기</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ git log -p
+</code></pre></div></div>
+
+<h2 id="브랜치">브랜치</h2>
+
+<p>지역 브랜치 목록 보기</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ git branch
+</code></pre></div></div>
+
+<p>원격 저장소 브랜치 목록 보기</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ git branch -r
+</code></pre></div></div>
+
+<p>지역 브랜치 및 원격 저장소 모든 브랜치 목록 보기</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ git branch -a
+</code></pre></div></div>
+
+<p>브랜치 생성하기</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ git branch "branch name"
+</code></pre></div></div>
+
+<p>해당 브랜치로 체크아웃 하기</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ git checkout "branch name"
+</code></pre></div></div>
+
+<p>브랜치를 생성하고 생성된 체크아웃 하기</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ git checkout -b "branch name"
+</code></pre></div></div>
+
+<p>해당 브랜치 삭제하기</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ git branch -d "branch name"
+</code></pre></div></div>
+
+<p>해당 브랜치 강제 삭제하기</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ git branch -D "branch name"
+</code></pre></div></div>
+</div>
+      </section>
+      <footer>
+  <p>&copy; 1947 - 2024 | Hello, I am bincco!</p>
+</footer>
+<script src="/assets/js/mode.js" defer></script>
+
+    </main>
+    <section id="category-modal-bg"></section>
+<section id="category-modal">
+  <h1 id="category-modal-title"></h1>
+  <section id="category-modal-content"></section>
+</section>
+
+  </body>
+</html>

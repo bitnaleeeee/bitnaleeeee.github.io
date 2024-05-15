@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hello, I am bincco! | [React] 전개연산자를 활용한 배열에 객체넣기</title>
+  
+  <link rel="stylesheet" href="/assets/css/post.css" />
+  <link rel="stylesheet" href="/assets/css/syntax.css" />
+  
+  <link rel="stylesheet" href="/assets/css/common.css" />
+  <script src="/assets/js/categories.js"></script>
+  <script>
+    const currentTheme = localStorage.getItem("theme");
+    if (currentTheme) {
+      document.documentElement.setAttribute(
+        "data-theme",
+        localStorage.getItem("theme")
+      );
+    }
+  </script>
+  
+  <script defer src="/assets/js/lbox.js"></script>
+  
+</head>
+
+  <body>
+    <main>
+      <header>
+  <a class="site-title" href="/">Hello, I am bincco!</a>
+  <!-- dark/light mode -->
+  <span id="dark-mode-toggle" style="cursor: pointer">
+    <svg
+      stroke="currentColor"
+      fill="currentColor"
+      stroke-width="0"
+      viewBox="0 0 16 16"
+      height="1.2em"
+      width="1.2em"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zm0 13V2a6 6 0 1 1 0 12z"
+      ></path>
+    </svg>
+  </span>
+</header>
+
+      <section class="article">
+        <div class="article-header">
+          <h2 class="article-title">[React] 전개연산자를 활용한 배열에 객체넣기</h2>
+          <small class="date">06 Jul 2023</small>
+          <div class="categories">
+            
+          </div>
+        </div>
+        <div class="content"><p><strong>TIL(Today I Learned)</strong><br />
+전개연산자를 활용하여 배열에 객체 데이터를 방법에 대해 정리하고 한다.
+다만 조건이 있는데,
+배열형태의 전체 데이터에 각 <code class="language-plaintext highlighter-rouge">id</code>값을 비교하여 일치하는 객체 형태의 갱신 데이터를 덮어줘야 한다.</p>
+
+<blockquote>
+  <ol>
+    <li>배열 형태의 전체 데이터와 객체 형태의 갱신 데이터의 아이디 값을 비교한다 (<code class="language-plaintext highlighter-rouge">map</code>함수 활용)</li>
+    <li>일치하는 기존 데이터에 갱신된 데이터를 전개연산자로 덮어 씌운다.</li>
+    <li>전체 데이터에 갱신된 데이터와 다른 기존의 데이터의 형태를 그대로 저장하여 <code class="language-plaintext highlighter-rouge">useState</code>에 담아준다.</li>
+  </ol>
+</blockquote>
+
+<p>작성한 코드는 아래와 같다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">updateInput</span> <span class="o">=</span> <span class="p">(</span><span class="nx">id</span><span class="p">,</span> <span class="nx">checked</span><span class="p">,</span> <span class="nx">str</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">fetch</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="nx">API</span><span class="p">.</span><span class="nx">TODO</span><span class="p">}</span><span class="s2">/</span><span class="p">${</span><span class="nx">id</span><span class="p">}</span><span class="s2">`</span><span class="p">,</span> <span class="p">{</span>
+    <span class="na">method</span><span class="p">:</span> <span class="dl">"</span><span class="s2">PUT</span><span class="dl">"</span><span class="p">,</span>
+    <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+      <span class="dl">"</span><span class="s2">Content-Type</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">application/json</span><span class="dl">"</span><span class="p">,</span>
+      <span class="na">Authorization</span><span class="p">:</span> <span class="s2">`Bearer </span><span class="p">${</span><span class="nx">localStorage</span><span class="p">.</span><span class="nx">getItem</span><span class="p">(</span><span class="dl">"</span><span class="s2">token</span><span class="dl">"</span><span class="p">)}</span><span class="s2">`</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="na">body</span><span class="p">:</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span>
+      <span class="na">todo</span><span class="p">:</span> <span class="nx">str</span><span class="p">,</span>
+      <span class="na">isCompleted</span><span class="p">:</span> <span class="nx">checked</span><span class="p">,</span>
+    <span class="p">}),</span>
+  <span class="p">})</span>
+    <span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">())</span>
+    <span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">data</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">setGetData</span><span class="p">(</span>
+        <span class="nx">getData</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">item</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+          <span class="k">return</span> <span class="nx">item</span><span class="p">.</span><span class="nx">id</span> <span class="o">===</span> <span class="nx">id</span> <span class="p">?</span> <span class="p">{</span> <span class="p">...</span><span class="nx">item</span><span class="p">,</span> <span class="p">...</span><span class="nx">data</span> <span class="p">}</span> <span class="p">:</span> <span class="nx">item</span><span class="p">;</span>
+        <span class="p">})</span>
+      <span class="p">);</span>
+    <span class="p">});</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<p>기존 데이터를 저장하고 있는 <code class="language-plaintext highlighter-rouge">getData</code>에 <code class="language-plaintext highlighter-rouge">map</code>함수로 각 데이터의 <code class="language-plaintext highlighter-rouge">id</code>값과 통신하여 받아온 데이터의 <code class="language-plaintext highlighter-rouge">id</code>값을 비교하여 일치하는 데이터를 <code class="language-plaintext highlighter-rouge">return</code> 하여, 일치하는 객체형태의 데이터와 기존 받아온 데이터를 전개연산자를 활용하여 덮어씌워준다. 그리고 일치하지 않는 다른 <code class="language-plaintext highlighter-rouge">item</code>데이터 값들은 그대로 둔 후 <code class="language-plaintext highlighter-rouge">useState</code>로 담아주면 갱신된 데이터를 반영한 전체 데이터를 세팅할 수 있다.</p>
+</div>
+      </section>
+      <footer>
+  <p>&copy; 1947 - 2024 | Hello, I am bincco!</p>
+</footer>
+<script src="/assets/js/mode.js" defer></script>
+
+    </main>
+    <section id="category-modal-bg"></section>
+<section id="category-modal">
+  <h1 id="category-modal-title"></h1>
+  <section id="category-modal-content"></section>
+</section>
+
+  </body>
+</html>

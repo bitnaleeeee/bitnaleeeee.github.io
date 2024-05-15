@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hello, I am bincco! | [Vue3] fontawesome 사용하기</title>
+  
+  <link rel="stylesheet" href="/assets/css/post.css" />
+  <link rel="stylesheet" href="/assets/css/syntax.css" />
+  
+  <link rel="stylesheet" href="/assets/css/common.css" />
+  <script src="/assets/js/categories.js"></script>
+  <script>
+    const currentTheme = localStorage.getItem("theme");
+    if (currentTheme) {
+      document.documentElement.setAttribute(
+        "data-theme",
+        localStorage.getItem("theme")
+      );
+    }
+  </script>
+  
+  <script defer src="/assets/js/lbox.js"></script>
+  
+</head>
+
+  <body>
+    <main>
+      <header>
+  <a class="site-title" href="/">Hello, I am bincco!</a>
+  <!-- dark/light mode -->
+  <span id="dark-mode-toggle" style="cursor: pointer">
+    <svg
+      stroke="currentColor"
+      fill="currentColor"
+      stroke-width="0"
+      viewBox="0 0 16 16"
+      height="1.2em"
+      width="1.2em"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zm0 13V2a6 6 0 1 1 0 12z"
+      ></path>
+    </svg>
+  </span>
+</header>
+
+      <section class="article">
+        <div class="article-header">
+          <h2 class="article-title">[Vue3] fontawesome 사용하기</h2>
+          <small class="date">08 Sep 2023</small>
+          <div class="categories">
+            
+          </div>
+        </div>
+        <div class="content"><p>fontawsome은 웹 아이콘 폰트를 모아놓은 라이브러리이다.<br />
+Vue3에 설치 방법 및 사용법에 대해 알아보려 한다.</p>
+
+<h2 id="설치">설치</h2>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">npm</span> <span class="nx">i</span> <span class="o">--</span><span class="nx">save</span> <span class="p">@</span><span class="nd">fortawesome</span><span class="sr">/fontawesome-svg-cor</span><span class="err">e
+</span>
+<span class="nx">npm</span> <span class="nx">i</span> <span class="o">--</span><span class="nx">save</span> <span class="p">@</span><span class="nd">fortawesome</span><span class="sr">/free-solid-svg-icon</span><span class="err">s
+</span><span class="nx">npm</span> <span class="nx">i</span> <span class="o">--</span><span class="nx">save</span> <span class="p">@</span><span class="nd">fortawesome</span><span class="sr">/free-regular-svg-icon</span><span class="err">s
+</span><span class="nx">npm</span> <span class="nx">i</span> <span class="o">--</span><span class="nx">save</span> <span class="p">@</span><span class="nd">fortawesome</span><span class="sr">/free-brands-svg-icon</span><span class="err">s
+</span>
+<span class="nx">npm</span> <span class="nx">i</span> <span class="o">--</span><span class="nx">save</span> <span class="p">@</span><span class="nd">fortawesome</span><span class="sr">/vue-fontawesome@</span><span class="err">3
+</span></code></pre></div></div>
+
+<h2 id="vuejs3-적용">Vue.js3 적용</h2>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">createApp</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">vue</span><span class="dl">"</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">App</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">./App.vue</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="cm">/* import the fontawesome core */</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">library</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">@fortawesome/fontawesome-svg-core</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="cm">/* import font awesome icon component */</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">FontAwesomeIcon</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">@fortawesome/vue-fontawesome</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="cm">/* import specific icons */</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">faChevronLeft</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">@fortawesome/free-solid-svg-icons</span><span class="dl">"</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">faMagnifyingGlass</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">@fortawesome/free-solid-svg-icons</span><span class="dl">"</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">faBars</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">@fortawesome/free-solid-svg-icons</span><span class="dl">"</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">faDoorOpen</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">@fortawesome/free-solid-svg-icons</span><span class="dl">"</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">faSquarePlus</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">@fortawesome/free-solid-svg-icons</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="cm">/* add icons to the library */</span>
+<span class="nx">library</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">faMagnifyingGlass</span><span class="p">,</span> <span class="nx">faChevronLeft</span><span class="p">,</span> <span class="nx">faBars</span><span class="p">,</span> <span class="nx">faDoorOpen</span><span class="p">,</span> <span class="nx">faSquarePlus</span><span class="p">);</span>
+
+<span class="nx">createApp</span><span class="p">(</span><span class="nx">App</span><span class="p">).</span><span class="nx">component</span><span class="p">(</span><span class="dl">"</span><span class="s2">font-awesome-icon</span><span class="dl">"</span><span class="p">,</span> <span class="nx">FontAwesomeIcon</span><span class="p">).</span><span class="nx">mount</span><span class="p">(</span><span class="dl">"</span><span class="s2">#app</span><span class="dl">"</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>리액트와는 다르게 main.js에서 import 및 export를 해주어야 한다.</p>
+
+<h2 id="vuejs3에-사용">Vue.js3에 사용</h2>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&lt;</span><span class="nx">template</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="nx">div</span> <span class="kd">class</span><span class="o">=</span><span class="dl">"</span><span class="s2">nav</span><span class="dl">"</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nx">font</span><span class="o">-</span><span class="nx">awesome</span><span class="o">-</span><span class="nx">icon</span> <span class="nx">icon</span><span class="o">=</span><span class="dl">"</span><span class="s2">fa-solid fa-chevron-left</span><span class="dl">"</span> <span class="o">/&gt;</span>
+    <span class="o">&lt;</span><span class="nx">font</span><span class="o">-</span><span class="nx">awesome</span><span class="o">-</span><span class="nx">icon</span> <span class="nx">icon</span><span class="o">=</span><span class="dl">"</span><span class="s2">fa-solid fa-magnifying-glass</span><span class="dl">"</span> <span class="o">/&gt;</span>
+    <span class="o">&lt;</span><span class="nx">font</span><span class="o">-</span><span class="nx">awesome</span><span class="o">-</span><span class="nx">icon</span> <span class="nx">icon</span><span class="o">=</span><span class="dl">"</span><span class="s2">fa-solid fa-bars</span><span class="dl">"</span> <span class="o">/&gt;</span>
+  <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span><span class="o">&lt;</span><span class="sr">/template</span><span class="err">&gt;
+</span></code></pre></div></div>
+
+<p>원하는 컴포넌트에서 사용해주면 된다. Pro등 유료 아이콘을 제외하고 무료 아이콘을 선택하여 vue.js의 String Syntax를 붙여넣어 주면 화면에 출력된다.</p>
+
+<h2 id="references">References</h2>
+
+<p><a href="https://fontawesome.com/docs/web/use-with/vue/">Vue 공식 홈페이지</a></p>
+</div>
+      </section>
+      <footer>
+  <p>&copy; 1947 - 2024 | Hello, I am bincco!</p>
+</footer>
+<script src="/assets/js/mode.js" defer></script>
+
+    </main>
+    <section id="category-modal-bg"></section>
+<section id="category-modal">
+  <h1 id="category-modal-title"></h1>
+  <section id="category-modal-content"></section>
+</section>
+
+  </body>
+</html>

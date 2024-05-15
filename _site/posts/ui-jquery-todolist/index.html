@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hello, I am bincco! | [jQuery] Todolist UI</title>
+  
+  <link rel="stylesheet" href="/assets/css/post.css" />
+  <link rel="stylesheet" href="/assets/css/syntax.css" />
+  
+  <link rel="stylesheet" href="/assets/css/common.css" />
+  <script src="/assets/js/categories.js"></script>
+  <script>
+    const currentTheme = localStorage.getItem("theme");
+    if (currentTheme) {
+      document.documentElement.setAttribute(
+        "data-theme",
+        localStorage.getItem("theme")
+      );
+    }
+  </script>
+  
+  <script defer src="/assets/js/lbox.js"></script>
+  
+</head>
+
+  <body>
+    <main>
+      <header>
+  <a class="site-title" href="/">Hello, I am bincco!</a>
+  <!-- dark/light mode -->
+  <span id="dark-mode-toggle" style="cursor: pointer">
+    <svg
+      stroke="currentColor"
+      fill="currentColor"
+      stroke-width="0"
+      viewBox="0 0 16 16"
+      height="1.2em"
+      width="1.2em"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zm0 13V2a6 6 0 1 1 0 12z"
+      ></path>
+    </svg>
+  </span>
+</header>
+
+      <section class="article">
+        <div class="article-header">
+          <h2 class="article-title">[jQuery] Todolist UI</h2>
+          <small class="date">28 Jun 2022</small>
+          <div class="categories">
+            
+          </div>
+        </div>
+        <div class="content"><h1 id="to-do-list-만들기">TO DO LIST 만들기</h1>
+<h1 id="조건">조건</h1>
+<ol>
+  <li>버튼을 클릭했을 때 작성한 내용이 할일로 추가 된다.</li>
+  <li>엔터키를 눌렀을 때 버튼을 클릭한 것과 동일한 효과 적용</li>
+  <li>작성된 리스트를 더블 클릭하면 밑줄이 그어진 후 서서히 삭제된다.</li>
+  <li>입력창에 마우스 클릭 시 공란이 되게 한다.</li>
+</ol>
+
+<h1 id="구현">구현</h1>
+<p class="codepen" data-height="300" data-default-tab="html,result" data-slug-hash="qBKvwOg" data-user="bitnaleeeee" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+  <span>See the Pen <a href="https://codepen.io/bitnaleeeee/pen/qBKvwOg">
+  Untitled</a> by day.binna (<a href="https://codepen.io/bitnaleeeee">@bitnaleeeee</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async="" src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+
+<h1 id="설명">설명</h1>
+<ol>
+  <li>ul 안에 li 요소가 추가된 경우 li를 선택하여 이벤트 코드를 작성할 경우 코드 이후에 작성된 li는 이벤트를 실행시키지 못하는 경우가 있으므로, 이런 경우 document를 선택하고 발생할 이벤트, 선택자를 작성해주면 해당 이벤트를 실행시킬 수 있다.</li>
+  <li>li에 (더블)클릭 이벤트를 작성해 줄 경우, 부모 태그 요소에도 이벤트가 적용되어 중복 실행될 수 있으므로 버블링을 방지하기 위해 return false를 작성해준다.</li>
+</ol>
+</div>
+      </section>
+      <footer>
+  <p>&copy; 1947 - 2024 | Hello, I am bincco!</p>
+</footer>
+<script src="/assets/js/mode.js" defer></script>
+
+    </main>
+    <section id="category-modal-bg"></section>
+<section id="category-modal">
+  <h1 id="category-modal-title"></h1>
+  <section id="category-modal-content"></section>
+</section>
+
+  </body>
+</html>

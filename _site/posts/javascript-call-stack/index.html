@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hello, I am bincco! | [JavaScript] 호출 스택(Call Stack)</title>
+  
+  <link rel="stylesheet" href="/assets/css/post.css" />
+  <link rel="stylesheet" href="/assets/css/syntax.css" />
+  
+  <link rel="stylesheet" href="/assets/css/common.css" />
+  <script src="/assets/js/categories.js"></script>
+  <script>
+    const currentTheme = localStorage.getItem("theme");
+    if (currentTheme) {
+      document.documentElement.setAttribute(
+        "data-theme",
+        localStorage.getItem("theme")
+      );
+    }
+  </script>
+  
+  <script defer src="/assets/js/lbox.js"></script>
+  
+</head>
+
+  <body>
+    <main>
+      <header>
+  <a class="site-title" href="/">Hello, I am bincco!</a>
+  <!-- dark/light mode -->
+  <span id="dark-mode-toggle" style="cursor: pointer">
+    <svg
+      stroke="currentColor"
+      fill="currentColor"
+      stroke-width="0"
+      viewBox="0 0 16 16"
+      height="1.2em"
+      width="1.2em"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zm0 13V2a6 6 0 1 1 0 12z"
+      ></path>
+    </svg>
+  </span>
+</header>
+
+      <section class="article">
+        <div class="article-header">
+          <h2 class="article-title">[JavaScript] 호출 스택(Call Stack)</h2>
+          <small class="date">23 May 2022</small>
+          <div class="categories">
+            
+          </div>
+        </div>
+        <div class="content"><h2 id="호출-스택">호출 스택</h2>
+
+<p>호출 스택이란 <strong>함수의 호출을 기록하는 자료구조</strong>이다. 기본적으로 우리가 프로그램 안에서 위치한 곳이며, 만약 우리가 어떤 함수를 실행시킨다면, 우리는 스택 위에 무언가를 올리는(push) 행위를 하는 것이다. 그리고 우리가 함수로부터 반환을 받을 때, 우리는 스택의 맨 위를 가져오는(pop) 것이다.</p>
+
+<blockquote>
+  <p>자료구조란 사전적인 의미는 자료(Data)의 집합의 의미하며, 각 원소들이 논리적으로 정의된 규칙에 의해 나열되며 자료에 대한 처리를 효율적으로 수행할 수 있도록 자료를 구분하여 표현한 것</p>
+</blockquote>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">func01</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="dl">"</span><span class="s2">Oops!</span><span class="dl">"</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="kd">function</span> <span class="nx">func02</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">func01</span><span class="p">();</span>
+<span class="p">}</span>
+<span class="kd">function</span> <span class="nx">func03</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">func02</span><span class="p">();</span>
+<span class="p">}</span>
+<span class="nx">func03</span><span class="p">();</span>
+<span class="c1">// Uncaught Error: Oops!</span>
+<span class="c1">// at func01 (index.html:27)</span>
+<span class="c1">// at func02 (index.html:30)</span>
+<span class="c1">// at func03 (index.html:33)</span>
+<span class="c1">// at window.onload (index.html:35)</span>
+</code></pre></div></div>
+
+<p>위 코드를 실행해보면 콘솔창에 빨간 애러 스택들이 나온다. 보통 그것들은 호출 스택의 현재 상태를 나타내며, 실패함 함수를 스택처럼 위에서 아래로 나타낸다.</p>
+
+<p>크롬 개발자 도구의 디버깅 기능을 활용하여 호출스택을 확인해 볼 수 있다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">func01</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">hello</span><span class="dl">"</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="kd">function</span> <span class="nx">func02</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">func01</span><span class="p">();</span>
+<span class="p">}</span>
+<span class="kd">function</span> <span class="nx">func03</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">func02</span><span class="p">();</span>
+<span class="p">}</span>
+<span class="k">debugger</span><span class="p">;</span>
+<span class="nx">func03</span><span class="p">();</span>
+</code></pre></div></div>
+
+<p>위 코드를 실행하면 디버깅 모드가 시작될 것이다. 개발자 도구에서 <code class="language-plaintext highlighter-rouge">Sources</code> 패널의 <code class="language-plaintext highlighter-rouge">Call Stack</code>을 확인해 보면 처음에는 <code class="language-plaintext highlighter-rouge">(anonymous)</code>이 출력되며, <code class="language-plaintext highlighter-rouge">Step</code> 버튼을 클릭하여 다음 함수를 들어갈 때 마다 스택이 점점 쌓이는 것을 볼 수 있다.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>func01
+func02
+func03
+(anonymous)
+</code></pre></div></div>
+
+<p>그리고 함수를 빠져 나갈 때 마다 스택이 위에서 부터 빠져 나가는 것을 확인할 수 있다. 이러한 각 단계를 <strong>스택 프레임(Stack Frame)</strong> 이라고 한다.</p>
+
+<h2 id="스택-오버플로우">스택 오버플로우</h2>
+<p>스택의 사이즈를 초과했을 때 발생하는 오류인데 보통 재귀를 호출했을 때 나타난다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">func</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">func</span><span class="p">();</span>
+<span class="p">}</span>
+<span class="nx">func</span><span class="p">();</span>
+<span class="c1">// Uncaught RangeError: Maximum call stack size exceeded</span>
+<span class="c1">// at foo (index.html:25)</span>
+<span class="c1">// at foo (index.html:26)</span>
+<span class="c1">// at foo (index.html:26)</span>
+<span class="c1">// at foo (index.html:26)</span>
+<span class="c1">// at foo (index.html:26)</span>
+<span class="c1">// at foo (index.html:26)</span>
+<span class="c1">// at foo (index.html:26)</span>
+<span class="c1">// at foo (index.html:26)</span>
+<span class="c1">// at foo (index.html:26)</span>
+<span class="c1">// at foo (index.html:26)</span>
+</code></pre></div></div>
+<p>엔진에서 이 코드를 실행할 때, <code class="language-plaintext highlighter-rouge">func()</code>에 의해서 <code class="language-plaintext highlighter-rouge">func</code>함수가 호출된다. 여기서 다시 <code class="language-plaintext highlighter-rouge">func</code>함수를 호출하고 반복적으로 함수를 호출하게 된다. 그러면 매번 실행할 때마다 호출스택에 <code class="language-plaintext highlighter-rouge">func()</code>가 쌓이며 최대 허용치를 넘으면 위처럼 에러를 발생시킨다.</p>
+
+<h2 id="references">References</h2>
+<p><a href="https://medium.com/@gaurav.pandvia/understanding-javascript-function-executions-tasks-event-loop-call-stack-more-part-1-5683dea1f5ec">Understanding Javascript Function Executions — Call Stack, Event Loop , Tasks &amp; more</a><br />
+<a href="https://velog.io/@jakeseo_me/2019-03-15-2303-작성됨-rmjta5a3xh">자바스크립트 개발자라면 알아야 할 33가지 개념 #1 콜스택 (번역)</a><br />
+<a href="https://andrew0409.tistory.com/148">자료구조 : 자료구조란? (Data Structure)</a><br />
+<a href="https://joshua1988.github.io/web-development/translation/javascript/how-js-works-inside-engine/">자바스크립트의 동작원리: 엔진, 런타임, 호출 스택</a></p>
+
+</div>
+      </section>
+      <footer>
+  <p>&copy; 1947 - 2024 | Hello, I am bincco!</p>
+</footer>
+<script src="/assets/js/mode.js" defer></script>
+
+    </main>
+    <section id="category-modal-bg"></section>
+<section id="category-modal">
+  <h1 id="category-modal-title"></h1>
+  <section id="category-modal-content"></section>
+</section>
+
+  </body>
+</html>

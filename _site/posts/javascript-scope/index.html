@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hello, I am bincco! | [JavaScript] 스코프(Scope)</title>
+  
+  <link rel="stylesheet" href="/assets/css/post.css" />
+  <link rel="stylesheet" href="/assets/css/syntax.css" />
+  
+  <link rel="stylesheet" href="/assets/css/common.css" />
+  <script src="/assets/js/categories.js"></script>
+  <script>
+    const currentTheme = localStorage.getItem("theme");
+    if (currentTheme) {
+      document.documentElement.setAttribute(
+        "data-theme",
+        localStorage.getItem("theme")
+      );
+    }
+  </script>
+  
+  <script defer src="/assets/js/lbox.js"></script>
+  
+</head>
+
+  <body>
+    <main>
+      <header>
+  <a class="site-title" href="/">Hello, I am bincco!</a>
+  <!-- dark/light mode -->
+  <span id="dark-mode-toggle" style="cursor: pointer">
+    <svg
+      stroke="currentColor"
+      fill="currentColor"
+      stroke-width="0"
+      viewBox="0 0 16 16"
+      height="1.2em"
+      width="1.2em"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zm0 13V2a6 6 0 1 1 0 12z"
+      ></path>
+    </svg>
+  </span>
+</header>
+
+      <section class="article">
+        <div class="article-header">
+          <h2 class="article-title">[JavaScript] 스코프(Scope)</h2>
+          <small class="date">14 Apr 2022</small>
+          <div class="categories">
+            
+          </div>
+        </div>
+        <div class="content"><p>자바스크립트에서의 스코프란 코드가 실행되는 컨텍스트(유효범위)이며 <code class="language-plaintext highlighter-rouge">전역 스코프</code>, <code class="language-plaintext highlighter-rouge">지역 스코프</code>, <code class="language-plaintext highlighter-rouge">eval 스코프</code>로 나눌 수 있다.</p>
+
+<h2 id="전역-스코프">전역 스코프</h2>
+<ul>
+  <li>함수나 객체의 밖에서 선언되었다면 전역 스코프로 정의된다.</li>
+  <li>모든 곳에서 전역 스코프에 있는 변수를 사용할 수 있다.</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 전역 스코프</span>
+<span class="kd">let</span> <span class="nx">foo</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">foo</span><span class="p">);</span> <span class="c1">// 1</span>
+
+<span class="kd">function</span> <span class="nx">func</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// foo가 전역에서 선언되었기 때문에 함수 내부에서도 foo값을 사용할 수 있다.</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">foo</span><span class="p">);</span> <span class="c1">// 1</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="지역-스코프">지역 스코프</h2>
+<ul>
+  <li>함수나 객체의 안에서 선언되었다면 지역 스코프로 정의된다.</li>
+  <li>해당 함수나 객체에서만 지역 스코프를 사용할 수 있다.</li>
+</ul>
+
+<h3 id="함수-지역-스코프">함수 지역 스코프</h3>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">func</span><span class="p">()</span> <span class="p">{</span>
+
+    <span class="c1">// 지역 스코프</span>
+    <span class="kd">let</span> <span class="nx">foo</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">foo</span><span class="p">);</span> <span class="c1">// 1</span>
+<span class="p">}</span>
+
+<span class="c1">// foo가 func 함수 내부에서 선언되었기 때문에 함수 외부에서 사용을 할 수 없다.</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">foo</span><span class="p">);</span> <span class="c1">// Uncaught ReferenceError: foo is not defined</span>
+</code></pre></div></div>
+
+<h3 id="객체-지역-스코프">객체 지역 스코프</h3>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">foo</span><span class="p">:</span> <span class="mi">1</span>
+<span class="p">};</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">obj</span><span class="p">.</span><span class="nx">boo</span><span class="p">);</span> <span class="c1">// 1</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">boo</span><span class="p">);</span> <span class="c1">// Uncaught ReferenceError: foo is not defined</span>
+</code></pre></div></div>
+
+<h2 id="eval-스코프">eval 스코프</h2>
+<ul>
+  <li>eval의 경우 eval()을 사용해 매개변수를 사용하면 이를 사용했을 경우에만 해당 스코프에 담긴 값을 불러온다. 각각 선언할때 고유한 스코프를 가지는 것이 특징이다.</li>
+</ul>
+</div>
+      </section>
+      <footer>
+  <p>&copy; 1947 - 2024 | Hello, I am bincco!</p>
+</footer>
+<script src="/assets/js/mode.js" defer></script>
+
+    </main>
+    <section id="category-modal-bg"></section>
+<section id="category-modal">
+  <h1 id="category-modal-title"></h1>
+  <section id="category-modal-content"></section>
+</section>
+
+  </body>
+</html>

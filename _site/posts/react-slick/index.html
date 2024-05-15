@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hello, I am bincco! | [React] Slick arrow custom</title>
+  
+  <link rel="stylesheet" href="/assets/css/post.css" />
+  <link rel="stylesheet" href="/assets/css/syntax.css" />
+  
+  <link rel="stylesheet" href="/assets/css/common.css" />
+  <script src="/assets/js/categories.js"></script>
+  <script>
+    const currentTheme = localStorage.getItem("theme");
+    if (currentTheme) {
+      document.documentElement.setAttribute(
+        "data-theme",
+        localStorage.getItem("theme")
+      );
+    }
+  </script>
+  
+  <script defer src="/assets/js/lbox.js"></script>
+  
+</head>
+
+  <body>
+    <main>
+      <header>
+  <a class="site-title" href="/">Hello, I am bincco!</a>
+  <!-- dark/light mode -->
+  <span id="dark-mode-toggle" style="cursor: pointer">
+    <svg
+      stroke="currentColor"
+      fill="currentColor"
+      stroke-width="0"
+      viewBox="0 0 16 16"
+      height="1.2em"
+      width="1.2em"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zm0 13V2a6 6 0 1 1 0 12z"
+      ></path>
+    </svg>
+  </span>
+</header>
+
+      <section class="article">
+        <div class="article-header">
+          <h2 class="article-title">[React] Slick arrow custom</h2>
+          <small class="date">16 Aug 2023</small>
+          <div class="categories">
+            
+          </div>
+        </div>
+        <div class="content"><p>Slick Arrow Custom 설치방법은 아래와 같다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">npm</span> <span class="nx">i</span> <span class="nx">react</span><span class="o">-</span><span class="nx">slick</span>
+<span class="nx">yarn</span> <span class="nx">add</span> <span class="nx">react</span><span class="o">-</span><span class="nx">slick</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">react-slick</code>에서 스타일을 수정하고 싶다면 아래도 추가로 설치해준다</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">npm</span> <span class="nx">i</span> <span class="nx">slick</span><span class="o">-</span><span class="nx">carousel</span>
+</code></pre></div></div>
+
+<h2 id="사용방법">사용방법</h2>
+
+<p>위와 같이 사용하고자 하는 컴포넌트에 불러와준다</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">Slider</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">react-slick</span><span class="dl">"</span><span class="p">;</span>
+<span class="k">import</span> <span class="dl">"</span><span class="s2">slick-carousel/slick/slick.css</span><span class="dl">"</span><span class="p">;</span>
+<span class="k">import</span> <span class="dl">"</span><span class="s2">slick-carousel/slick/slick-theme.css</span><span class="dl">"</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h3 id="기본-구조">기본 구조</h3>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span> <span class="nx">Component</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">react</span><span class="dl">"</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">Slider</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">react-slick</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="kd">class</span> <span class="nx">SimpleSlider</span> <span class="kd">extends</span> <span class="nx">Component</span> <span class="p">{</span>
+  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">settings</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="na">dots</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span> <span class="c1">// 슬라이드 밑에 있는 동그라미 버튼</span>
+      <span class="na">infinite</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span> <span class="c1">// 무한 스크롤 여부</span>
+      <span class="na">speed</span><span class="p">:</span> <span class="mi">500</span><span class="p">,</span> <span class="c1">// 넘어가는 속도</span>
+      <span class="na">slidesToShow</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="c1">// 슬라이드 갯수</span>
+      <span class="na">slidesToScroll</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="c1">// 스크롤 갯수</span>
+    <span class="p">};</span>
+    <span class="k">return</span> <span class="p">(</span>
+      <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">h2</span><span class="o">&gt;</span> <span class="nx">Single</span> <span class="nx">Item</span><span class="o">&lt;</span><span class="sr">/h2</span><span class="err">&gt;
+</span>        <span class="o">&lt;</span><span class="nx">Slider</span> <span class="p">{...</span><span class="nx">settings</span><span class="p">}</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="nx">h3</span><span class="o">&gt;</span><span class="mi">1</span><span class="o">&lt;</span><span class="sr">/h3</span><span class="err">&gt;
+</span>          <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>          <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="nx">h3</span><span class="o">&gt;</span><span class="mi">2</span><span class="o">&lt;</span><span class="sr">/h3</span><span class="err">&gt;
+</span>          <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>          <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="nx">h3</span><span class="o">&gt;</span><span class="mi">3</span><span class="o">&lt;</span><span class="sr">/h3</span><span class="err">&gt;
+</span>          <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>          <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="nx">h3</span><span class="o">&gt;</span><span class="mi">4</span><span class="o">&lt;</span><span class="sr">/h3</span><span class="err">&gt;
+</span>          <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>          <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="nx">h3</span><span class="o">&gt;</span><span class="mi">5</span><span class="o">&lt;</span><span class="sr">/h3</span><span class="err">&gt;
+</span>          <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>          <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="nx">h3</span><span class="o">&gt;</span><span class="mi">6</span><span class="o">&lt;</span><span class="sr">/h3</span><span class="err">&gt;
+</span>          <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>        <span class="o">&lt;</span><span class="sr">/Slider</span><span class="err">&gt;
+</span>      <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>    <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>위에 있는 기본 샘플을 가져다 사용하거나
+<a href="https://react-slick.neostack.com/docs/example/custom-arrows/">여기</a>에 다른 샘플들도 있으므로 참고하면 좋다.
+추가로 <code class="language-plaintext highlighter-rouge">arrows</code>를 넣어줄 수도 있고 원하는대로 스타일링 할 수 있다.</p>
+
+<h2 id="references">References</h2>
+
+<p><a href="https://react-slick.neostack.com/">React Slick 공식 홈페이지</a></p>
+</div>
+      </section>
+      <footer>
+  <p>&copy; 1947 - 2024 | Hello, I am bincco!</p>
+</footer>
+<script src="/assets/js/mode.js" defer></script>
+
+    </main>
+    <section id="category-modal-bg"></section>
+<section id="category-modal">
+  <h1 id="category-modal-title"></h1>
+  <section id="category-modal-content"></section>
+</section>
+
+  </body>
+</html>

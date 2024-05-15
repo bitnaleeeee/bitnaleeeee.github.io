@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hello, I am bincco! | [React] 쿼리 스트링(Query String)</title>
+  
+  <link rel="stylesheet" href="/assets/css/post.css" />
+  <link rel="stylesheet" href="/assets/css/syntax.css" />
+  
+  <link rel="stylesheet" href="/assets/css/common.css" />
+  <script src="/assets/js/categories.js"></script>
+  <script>
+    const currentTheme = localStorage.getItem("theme");
+    if (currentTheme) {
+      document.documentElement.setAttribute(
+        "data-theme",
+        localStorage.getItem("theme")
+      );
+    }
+  </script>
+  
+  <script defer src="/assets/js/lbox.js"></script>
+  
+</head>
+
+  <body>
+    <main>
+      <header>
+  <a class="site-title" href="/">Hello, I am bincco!</a>
+  <!-- dark/light mode -->
+  <span id="dark-mode-toggle" style="cursor: pointer">
+    <svg
+      stroke="currentColor"
+      fill="currentColor"
+      stroke-width="0"
+      viewBox="0 0 16 16"
+      height="1.2em"
+      width="1.2em"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zm0 13V2a6 6 0 1 1 0 12z"
+      ></path>
+    </svg>
+  </span>
+</header>
+
+      <section class="article">
+        <div class="article-header">
+          <h2 class="article-title">[React] 쿼리 스트링(Query String)</h2>
+          <small class="date">30 Nov 2023</small>
+          <div class="categories">
+            
+          </div>
+        </div>
+        <div class="content"><p>쿼리스트링은 <code class="language-plaintext highlighter-rouge">URL</code> 끝에 ?을 시작으로, 키=값 형태로 여러 쌍의 데이터를 전송하는 방법이다. 홈페이지의 상세페이지를 생각하면 쉬운데 이를 통해 웹 페이지에 요청한 데이터를 서버로 전송하거나 서버로부터 받은 데이터를 웹 페이지에 출력하는 등의 작업을 할 수 있다.</p>
+
+<ul>
+  <li>예시 형태 - https://mail.google.com/mail/u/0/?tab=rm&amp;ogbl#inbox
+<br /> ? 뒤의 tab이 <code class="language-plaintext highlighter-rouge">key</code> 값, = 뒤의 rm&amp;ogbl#inbox 이 <code class="language-plaintext highlighter-rouge">value</code>값, 데이터 쌍 간에는 &amp; 기호로 구분한다.</li>
+</ul>
+
+<h3 id="나의-프로젝트-활용-예시">나의 프로젝트 활용 예시</h3>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">locationUrl</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">href</span><span class="p">;</span>
+<span class="nx">locationUrl</span> <span class="o">=</span> <span class="nx">locationUrl</span> <span class="o">+</span> <span class="s2">`?mbti=`</span> <span class="o">+</span> <span class="nx">str</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">handleCopyClipBoard</span> <span class="o">=</span> <span class="k">async</span> <span class="p">(</span><span class="nx">text</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">try</span> <span class="p">{</span>
+    <span class="k">await</span> <span class="nb">navigator</span><span class="p">.</span><span class="nx">clipboard</span><span class="p">.</span><span class="nx">writeText</span><span class="p">(</span><span class="nx">text</span><span class="p">);</span>
+
+    <span class="nx">alert</span><span class="p">(</span><span class="dl">"</span><span class="s2">링크가 복사되었습니다!</span><span class="dl">"</span><span class="p">);</span>
+  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="dl">"</span><span class="s2">복사 실패!</span><span class="dl">"</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">window.location.href</code>는 현재 <code class="language-plaintext highlighter-rouge">URL</code>을 가져와서 <code class="language-plaintext highlighter-rouge">locationUrl</code>변수에 담아준다.</li>
+  <li><code class="language-plaintext highlighter-rouge">locationUrl</code>에 쿼리스트링 키=값 형태를 심어준다.</li>
+  <li><code class="language-plaintext highlighter-rouge">navigator.clipboard.writeText(text)</code>로 URL + 쿼리스트링 을 복사한다.</li>
+</ol>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">useSearchParams</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">react-router-dom</span><span class="dl">"</span><span class="p">;</span>
+<span class="kd">const</span> <span class="p">[</span><span class="nx">searchParams</span><span class="p">,</span> <span class="nx">setSearchParams</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useSearchParams</span><span class="p">();</span>
+<span class="kd">let</span> <span class="nx">queryValue</span> <span class="o">=</span> <span class="nx">searchParams</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">"</span><span class="s2">mbti</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="kd">function</span> <span class="nx">dataMapArr</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">data</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">sameData</span> <span class="o">=</span> <span class="nx">data</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">mbti</span><span class="p">;</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nx">str</span> <span class="o">===</span> <span class="nx">sameData</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">valData</span> <span class="o">=</span> <span class="nx">data</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">queryValue</span> <span class="o">===</span> <span class="nx">sameData</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">valData</span> <span class="o">=</span> <span class="nx">data</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="nx">dataMapArr</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+</code></pre></div></div>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">useSearchParams</code>는 <code class="language-plaintext highlighter-rouge">React</code>에서 제공하는 <code class="language-plaintext highlighter-rouge">hook</code>으로 현재 <code class="language-plaintext highlighter-rouge">URL</code>주소를 가져온다</li>
+  <li><code class="language-plaintext highlighter-rouge">searchParams.get()</code>안에 가져오고 싶은 <code class="language-plaintext highlighter-rouge">value</code>의 <code class="language-plaintext highlighter-rouge">key</code>를 넣어주면 해당 값을 가져올 수 있다.</li>
+  <li><code class="language-plaintext highlighter-rouge">queryValue</code>과 받아온 데이터의 이름이 일치할때, 해당 데이터를 보여주도록 작성한다.</li>
+</ol>
+
+<p>쿼리스트링을 사용하여 key=value를 넣어주면, 해당 url로 들어갔을때 특정한 데이터를 보이게 작성할 수 있고 링크를 보냈을때 방문자가 데이터를 로컬스토리지에 저장하고 있지 않더라도 쿼리스트링으로 일치하는 데이터를 가져오도록 화면을 구성할 수 있다.</p>
+</div>
+      </section>
+      <footer>
+  <p>&copy; 1947 - 2024 | Hello, I am bincco!</p>
+</footer>
+<script src="/assets/js/mode.js" defer></script>
+
+    </main>
+    <section id="category-modal-bg"></section>
+<section id="category-modal">
+  <h1 id="category-modal-title"></h1>
+  <section id="category-modal-content"></section>
+</section>
+
+  </body>
+</html>

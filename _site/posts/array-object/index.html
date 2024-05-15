@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hello, I am bincco! | [JavaScript]배열은 객체다</title>
+  
+  <link rel="stylesheet" href="/assets/css/post.css" />
+  <link rel="stylesheet" href="/assets/css/syntax.css" />
+  
+  <link rel="stylesheet" href="/assets/css/common.css" />
+  <script src="/assets/js/categories.js"></script>
+  <script>
+    const currentTheme = localStorage.getItem("theme");
+    if (currentTheme) {
+      document.documentElement.setAttribute(
+        "data-theme",
+        localStorage.getItem("theme")
+      );
+    }
+  </script>
+  
+  <script defer src="/assets/js/lbox.js"></script>
+  
+</head>
+
+  <body>
+    <main>
+      <header>
+  <a class="site-title" href="/">Hello, I am bincco!</a>
+  <!-- dark/light mode -->
+  <span id="dark-mode-toggle" style="cursor: pointer">
+    <svg
+      stroke="currentColor"
+      fill="currentColor"
+      stroke-width="0"
+      viewBox="0 0 16 16"
+      height="1.2em"
+      width="1.2em"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zm0 13V2a6 6 0 1 1 0 12z"
+      ></path>
+    </svg>
+  </span>
+</header>
+
+      <section class="article">
+        <div class="article-header">
+          <h2 class="article-title">[JavaScript]배열은 객체다</h2>
+          <small class="date">31 Jan 2024</small>
+          <div class="categories">
+            
+          </div>
+        </div>
+        <div class="content"><p>배열이란 여러 개의 값을 순차적으로 나열한 가장 기본적인 자료구조이다.
+사용빈도가 매우 높기에 자바스크립트는 배열을 다루기 위한 다양한 메서드를 제공하고 있다.</p>
+
+<p>정확하게 말하면 자바스크립트에 배열이라는 타입은 존재하지 않으며 배열은 <code class="language-plaintext highlighter-rouge">length</code> 와 <code class="language-plaintext highlighter-rouge">index</code>의 프로퍼티를 가진 객체 타입이다.
+일반 객체와 다른 점은 배열은 값의 순서, 즉 <code class="language-plaintext highlighter-rouge">index</code>와 <code class="language-plaintext highlighter-rouge">length</code> 프로퍼티를 가진다는 점이고 이로 인해 배열은 반복문을 통해 순차적으로 값에 접근하기 적합한 자료구조이다.
+따라서 배열 빌트인 메소들을 활용할 수 있다면 코딩에 매우 도움이 된다고 할 수 있다.</p>
+
+<p>아래 자주사용하는 배열 메서드를 정리하였다. 주의할 점은 원본배열을 직접 변경하는 경우 변수에는 변경된 프로퍼티 값이 저장되고 원본 배열에는 최종 수정된 값이 저장되며,
+원본 배열을 변경하지 않고 새로운 배열을 반환하는 경우 반드시 반환값을 변수에 할당받아야 한다는 점이다.</p>
+
+<h3 id="배열-메서드">배열 메서드</h3>
+
+<h4 id="원본-배열을-직접-변경하는-메서드">원본 배열을 직접 변경하는 메서드</h4>
+
+<p>원본 배열의 처음이나 마지막에 요소를 추가하거나 제거</p>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">Array.prototype.push</code> <code class="language-plaintext highlighter-rouge">push</code> 메서드는 인수로 전달받은 모든 값을 원본 배열의 마지막 요소에 추가하고 변경된 프로퍼티 값을 반환한다.</li>
+</ol>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">arr</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">];</span>
+
+<span class="kd">let</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">arr</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span> <span class="c1">// 4</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">arr</span><span class="p">);</span> <span class="c1">// 1,2,3,4</span>
+</code></pre></div></div>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">Array.prototype.pop</code> : <code class="language-plaintext highlighter-rouge">pop</code> 메서드는 원본 배열의 마지막 요소를 제거하고 제거한 요소를 반환한다.</li>
+</ol>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">arr</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">];</span>
+
+<span class="kd">let</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">arr</span><span class="p">.</span><span class="nx">pop</span><span class="p">();</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span> <span class="c1">// 3</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">arr</span><span class="p">);</span> <span class="c1">///1,2</span>
+</code></pre></div></div>
+
+<p>3.<code class="language-plaintext highlighter-rouge">Array.prototype.unshift</code>: <code class="language-plaintext highlighter-rouge">unshift</code> 메서드는 원본 배열의 0 인덱스에 인수로 전달받은 값을 추가하고 값을 반환한다</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">arr</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">];</span>
+
+<span class="kd">let</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">arr</span><span class="p">.</span><span class="nx">unshift</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span> <span class="c1">// 0</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">arr</span><span class="p">);</span> <span class="c1">//0,1,2,3</span>
+</code></pre></div></div>
+
+<p>4.<code class="language-plaintext highlighter-rouge">Array.prototype.shift</code>: <code class="language-plaintext highlighter-rouge">shift</code> 메서드는 원본 배열 0 인덱스의 프로퍼티 값을 제거하고 제거한 값을 반환한다</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">arr</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">];</span>
+
+<span class="kd">let</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">arr</span><span class="p">.</span><span class="nx">shift</span><span class="p">();</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span> <span class="c1">//1</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">arr</span><span class="p">);</span> <span class="c1">//2,3</span>
+</code></pre></div></div>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">Array.prototype.splice</code> <code class="language-plaintext highlighter-rouge">splice</code> 메서드는 배열의 중간에 요소를 추가하거나 제거하는 경우 사용한다. 3개의 매개변수를 받아 원본 배열을 직접 변경한다.</li>
+</ol>
+
+<ul>
+  <li>start: 원본 배열 요소를 제거하기 시작할 인덱스</li>
+  <li>deleteCount: 제거할 요소의 개수</li>
+  <li>items: 제거한 위치에 추가할 요소</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">arr</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">];</span>
+
+<span class="kd">let</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">arr</span><span class="p">.</span><span class="nx">splice</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">);</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span> <span class="c1">// [3] 제거한 요소가 배열로 반환된다.</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">arr</span><span class="p">);</span> <span class="c1">// [0,1,2,3]</span>
+</code></pre></div></div>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">Array.prototype.join</code> <code class="language-plaintext highlighter-rouge">join</code> 메서드는 원본 배열의 모든 요소를 문자열(<code class="language-plaintext highlighter-rouge">String</code>)로 반환한다.</li>
+</ol>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">arr</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">];</span>
+
+<span class="nx">arr</span><span class="p">.</span><span class="nx">join</span><span class="p">();</span> <span class="c1">// '1,2,3,4'</span>
+<span class="nx">arr</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="dl">""</span><span class="p">);</span> <span class="c1">// '1234'</span>
+<span class="nx">arr</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="dl">"</span><span class="s2">:</span><span class="dl">"</span><span class="p">);</span> <span class="c1">// '1:2:3:4'</span>
+</code></pre></div></div>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">Array.prototype.reverse</code> <code class="language-plaintext highlighter-rouge">reverse</code> 메서드는 원본 배열의 순서를 뒤집는다.</li>
+</ol>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">arr</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">];</span>
+
+<span class="nx">arr</span><span class="p">.</span><span class="nx">reverse</span><span class="p">();</span> <span class="c1">// [3,2,1]</span>
+</code></pre></div></div>
+
+<h4 id="원본-배열을-변경하지-않고-새로운-배열을-반환하는-메서드">원본 배열을 변경하지 않고 새로운 배열을 반환하는 메서드</h4>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">Array.prototype.concat</code> : <code class="language-plaintext highlighter-rouge">concat</code> 메서드는 인수로 전달 된 값을 원본 배열 마지막 요소로 추가한 새로운 배열을 반환한다. 만약 전달된 값이 배열일 경우 배열을 해체하여 새로운 배열에 프로퍼티를 담아 반환한다.</li>
+</ol>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">arr</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">];</span>
+
+<span class="kd">let</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">arr</span><span class="p">.</span><span class="nx">concat</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span> <span class="c1">// [1,2,3,4]</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">arr</span><span class="p">);</span> <span class="c1">// [1,2,3]</span>
+
+<span class="kd">let</span> <span class="nx">arr2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">];</span>
+
+<span class="kd">let</span> <span class="nx">answer</span> <span class="o">=</span> <span class="nx">arr</span><span class="p">.</span><span class="nx">concat</span><span class="p">(</span><span class="nx">arr2</span><span class="p">);</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">answer</span><span class="p">);</span> <span class="c1">// 1,2,3,4</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">arr</span><span class="p">);</span> <span class="c1">// 1,2,3</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">arr2</span><span class="p">);</span> <span class="c1">//4</span>
+</code></pre></div></div>
+
+<p>2.<code class="language-plaintext highlighter-rouge">Array.prototype.slice</code>:<code class="language-plaintext highlighter-rouge">slice</code> 메서드는 인수로 전달된 범위의 요소를 복사하여 배열로 반환한다. 원본 배열은 변경되지 않는다.</p>
+
+<ul>
+  <li>start: 복사를 시작할 인덱스이다</li>
+  <li>end: 복사를 종료할 인덱스이며, 해당 end 숫자의 인덱스는 복사되지 않는다. 직전 인덱스까지 복사된다는 점에 유의해야 한다.</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">arr</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">];</span>
+
+<span class="nx">arr</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span> <span class="c1">// 1,2</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">arr</span><span class="p">);</span> <span class="c1">// 1,2,3</span>
+</code></pre></div></div>
+
+<h4 id="새로-추가된-메서드">새로 추가된 메서드</h4>
+
+<p>1.<code class="language-plaintext highlighter-rouge">Array.prototype.includes</code>: <code class="language-plaintext highlighter-rouge">includes</code>메서드는 <code class="language-plaintext highlighter-rouge">ES7</code>에서 새로 도입된 배열 내에 특정 요소가 포함되어 있는지 확인하여 <code class="language-plaintext highlighter-rouge">boolean</code>값을 리턴해주는 메서드이다. 첫번째 인수로 검색할 대상을 지정하고 두번째 인수로 검색을 시작할 인덱스를 전달할 수 있다. 두번째 인덱스를 생략할 경우 기본값은 0으로 처음부터 검색한다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">arr</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">];</span>
+
+<span class="nx">arr</span><span class="p">.</span><span class="nx">includes</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span> <span class="c1">//false</span>
+<span class="nx">arr</span><span class="p">.</span><span class="nx">includes</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span> <span class="c1">//true</span>
+</code></pre></div></div>
+
+<p>이외에도 배열의 다양한 빌트인 메서드를 알고 능숙하게 활용하는 것이 코드 작성에 도움이 되므로 지속적으로 추가 업데이트 할 예정이다.</p>
+</div>
+      </section>
+      <footer>
+  <p>&copy; 1947 - 2024 | Hello, I am bincco!</p>
+</footer>
+<script src="/assets/js/mode.js" defer></script>
+
+    </main>
+    <section id="category-modal-bg"></section>
+<section id="category-modal">
+  <h1 id="category-modal-title"></h1>
+  <section id="category-modal-content"></section>
+</section>
+
+  </body>
+</html>

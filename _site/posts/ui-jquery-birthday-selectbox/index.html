@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hello, I am bincco! | [jQuery] 생년월일 Select Box UI</title>
+  
+  <link rel="stylesheet" href="/assets/css/post.css" />
+  <link rel="stylesheet" href="/assets/css/syntax.css" />
+  
+  <link rel="stylesheet" href="/assets/css/common.css" />
+  <script src="/assets/js/categories.js"></script>
+  <script>
+    const currentTheme = localStorage.getItem("theme");
+    if (currentTheme) {
+      document.documentElement.setAttribute(
+        "data-theme",
+        localStorage.getItem("theme")
+      );
+    }
+  </script>
+  
+  <script defer src="/assets/js/lbox.js"></script>
+  
+</head>
+
+  <body>
+    <main>
+      <header>
+  <a class="site-title" href="/">Hello, I am bincco!</a>
+  <!-- dark/light mode -->
+  <span id="dark-mode-toggle" style="cursor: pointer">
+    <svg
+      stroke="currentColor"
+      fill="currentColor"
+      stroke-width="0"
+      viewBox="0 0 16 16"
+      height="1.2em"
+      width="1.2em"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zm0 13V2a6 6 0 1 1 0 12z"
+      ></path>
+    </svg>
+  </span>
+</header>
+
+      <section class="article">
+        <div class="article-header">
+          <h2 class="article-title">[jQuery] 생년월일 Select Box UI</h2>
+          <small class="date">03 Jun 2022</small>
+          <div class="categories">
+            
+          </div>
+        </div>
+        <div class="content"><h2 id="조건">조건</h2>
+
+<ol>
+  <li>1970년도부터 오늘년도까지 년도selectbox 생성</li>
+  <li>월, 일 selextbox 생성</li>
+</ol>
+
+<!-- ## 구현
+
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+<script>
+    $(document).ready(function () {
+      let today = new Date();
+      let year = today.getFullYear();
+      for (i = 1970; i <= year; i++) {
+        $('#year').append('<option value="' + i + '">' + i + '</option>');
+      }for (i = 1; i <= 12; i++) {
+        $('#month').append('<option value="' + i + '">' + i + '</option>');
+      }for (i = 1; i <= 31; i++) {
+        $('#day').append('<option value="' + i + '">' + i + '</option>');
+      }
+
+});
+</script>
+
+<style>
+
+</style>
+
+<select name="yy" id="year"></select>년
+<select name="mm" id="month"></select>월
+<select name="dd" id="day"></select>일 -->
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://code.jquery.com/jquery-2.2.4.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;select</span> <span class="na">name=</span><span class="s">"yy"</span> <span class="na">id=</span><span class="s">"year"</span><span class="nt">&gt;&lt;/select&gt;</span>년
+<span class="nt">&lt;select</span> <span class="na">name=</span><span class="s">"mm"</span> <span class="na">id=</span><span class="s">"month"</span><span class="nt">&gt;&lt;/select&gt;</span>월
+<span class="nt">&lt;select</span> <span class="na">name=</span><span class="s">"dd"</span> <span class="na">id=</span><span class="s">"day"</span><span class="nt">&gt;&lt;/select&gt;</span>일
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="nx">today</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">();</span>
+  <span class="kd">let</span> <span class="nx">year</span> <span class="o">=</span> <span class="nx">today</span><span class="p">.</span><span class="nx">getFullYear</span><span class="p">();</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">year</span><span class="p">);</span>
+
+  <span class="c1">//년도 selectbox 만들기</span>
+  <span class="k">for</span> <span class="p">(</span><span class="nx">i</span> <span class="o">=</span> <span class="mi">1970</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;=</span> <span class="nx">year</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#year</span><span class="dl">'</span><span class="p">).</span><span class="nx">append</span><span class="p">(</span><span class="dl">'</span><span class="s1">&lt;option value="</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">i</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">"&gt;</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">i</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">&lt;/option&gt;</span><span class="dl">'</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="c1">//월 selectbox 만들기</span>
+  <span class="k">for</span> <span class="p">(</span><span class="nx">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;=</span> <span class="mi">12</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#month</span><span class="dl">'</span><span class="p">).</span><span class="nx">append</span><span class="p">(</span><span class="dl">'</span><span class="s1">&lt;option value="</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">i</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">"&gt;</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">i</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">&lt;/option&gt;</span><span class="dl">'</span><span class="p">);</span>
+  <span class="p">}</span>
+
+
+  <span class="c1">//일 selectbox 만들기</span>
+  <span class="k">for</span> <span class="p">(</span><span class="nx">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;=</span> <span class="mi">31</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#day</span><span class="dl">'</span><span class="p">).</span><span class="nx">append</span><span class="p">(</span><span class="dl">'</span><span class="s1">&lt;option value="</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">i</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">"&gt;</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">i</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">&lt;/option&gt;</span><span class="dl">'</span><span class="p">);</span>
+  <span class="p">}</span>
+
+<span class="p">});</span>
+</code></pre></div></div>
+
+<h2 id="해설">해설</h2>
+<ol>
+  <li>new Date 내장 함수를 사용하여 현재 날짜를 구한다.</li>
+  <li>new Date 를 담은 변수에 getfullyear을 사용하여, 현재 년도를 가져온다.</li>
+  <li>1970년도부터 현재년도까지 선택할 수 있는 년도 selctbox를 만든다.</li>
+  <li>i는 변수이므로, 앞 뒤로 + i + 를 사용하여 묶어준다.</li>
+  <li>같은 방식으로 월, 일 selectbox를 만든다.</li>
+</ol>
+</div>
+      </section>
+      <footer>
+  <p>&copy; 1947 - 2024 | Hello, I am bincco!</p>
+</footer>
+<script src="/assets/js/mode.js" defer></script>
+
+    </main>
+    <section id="category-modal-bg"></section>
+<section id="category-modal">
+  <h1 id="category-modal-title"></h1>
+  <section id="category-modal-content"></section>
+</section>
+
+  </body>
+</html>

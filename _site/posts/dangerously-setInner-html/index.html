@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hello, I am bincco! | [React] dangerouslySetInnerHTML</title>
+  
+  <link rel="stylesheet" href="/assets/css/post.css" />
+  <link rel="stylesheet" href="/assets/css/syntax.css" />
+  
+  <link rel="stylesheet" href="/assets/css/common.css" />
+  <script src="/assets/js/categories.js"></script>
+  <script>
+    const currentTheme = localStorage.getItem("theme");
+    if (currentTheme) {
+      document.documentElement.setAttribute(
+        "data-theme",
+        localStorage.getItem("theme")
+      );
+    }
+  </script>
+  
+  <script defer src="/assets/js/lbox.js"></script>
+  
+</head>
+
+  <body>
+    <main>
+      <header>
+  <a class="site-title" href="/">Hello, I am bincco!</a>
+  <!-- dark/light mode -->
+  <span id="dark-mode-toggle" style="cursor: pointer">
+    <svg
+      stroke="currentColor"
+      fill="currentColor"
+      stroke-width="0"
+      viewBox="0 0 16 16"
+      height="1.2em"
+      width="1.2em"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zm0 13V2a6 6 0 1 1 0 12z"
+      ></path>
+    </svg>
+  </span>
+</header>
+
+      <section class="article">
+        <div class="article-header">
+          <h2 class="article-title">[React] dangerouslySetInnerHTML</h2>
+          <small class="date">04 Jan 2023</small>
+          <div class="categories">
+            
+          </div>
+        </div>
+        <div class="content"><p><code class="language-plaintext highlighter-rouge">dangerouslySetInnerHTML</code>은 브라우저에 DOM에서 <code class="language-plaintext highlighter-rouge">innterHTML</code>을 사용하기 위한 React의 대체 방법이다. 일반적으로 코드에서 HTML을 설정하는 것은 XSS 공격에 쉽게 노출될 수 있기 때문에 위험하다는 것을 상기시키기 위해 <code class="language-plaintext highlighter-rouge">dangerouslySetInnerHTML</code>을 작성하고 <code class="language-plaintext highlighter-rouge">__html</code>키로 객체를 전달해주어야 한다.</p>
+
+<h3 id="xss-공격이란">XSS 공격이란?</h3>
+<p>CRoss Site Scripting의 약자로 함께 웹 상에서 가장 기초적인 취약점 공격 방법중 하나이다. 권한이 없는 사용자가 악의적인 용도로 웹 사이트에 스크립트를 삽입하는 공격 기법으로, 공격에 성공하게 될 경우 사이트에 접속한 사용자는 삽입된 코드를 실행하게 되어 의도치 않은 행동을 수행시키거나 쿠키나 세션 토큰 등의 민감한 정보를 탈취당할 수 있다.</p>
+
+<p>아래는 내 코드의 예시이다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">highLight</span> <span class="o">=</span> <span class="p">(</span><span class="nx">str</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">inputTxt</span><span class="p">)</span> <span class="k">return</span> <span class="nx">str</span><span class="p">;</span>
+    <span class="kd">let</span> <span class="nx">regex</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">RegExp</span><span class="p">(</span><span class="nx">inputTxt</span><span class="p">,</span> <span class="dl">"</span><span class="s2">gi</span><span class="dl">"</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nx">str</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span>
+      <span class="nx">regex</span><span class="p">,</span>
+      <span class="dl">'</span><span class="s1">&lt;span class="highlight"&gt;</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">inputTxt</span> <span class="o">+</span> <span class="dl">"</span><span class="s2">&lt;/span&gt;</span><span class="dl">"</span>
+    <span class="p">);</span>
+  <span class="p">};</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//JSX 부분</span>
+<span class="o">&lt;</span><span class="nx">span</span> <span class="nx">className</span><span class="o">=</span><span class="dl">"</span><span class="s2">bundle_badge</span><span class="dl">"</span><span class="o">&gt;</span>
+  <span class="p">{</span><span class="nx">jobItem</span><span class="p">.</span><span class="nx">keywords</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">items</span><span class="p">,</span> <span class="nx">idx</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span>
+      <span class="o">&lt;</span><span class="nx">a</span>
+        <span class="nx">href</span><span class="o">=</span><span class="dl">"</span><span class="s2">#none</span><span class="dl">"</span>
+        <span class="nx">key</span><span class="o">=</span><span class="p">{</span><span class="nx">idx</span><span class="p">}</span>
+        <span class="nx">dangerouslySetInnerHTML</span><span class="o">=</span>
+
+      <span class="sr">/</span><span class="err">&gt;
+</span>    <span class="p">);</span>
+  <span class="p">})}</span>
+<span class="o">&lt;</span><span class="sr">/span</span><span class="err">&gt;
+</span></code></pre></div></div>
+<p><code class="language-plaintext highlighter-rouge">__html</code> 키로 객체를 전달해 주면 UI상에서 <code class="language-plaintext highlighter-rouge">HTML</code>요소를 보여줄 수 있다. 그때 반드시 위처럼 <code class="language-plaintext highlighter-rouge">dangerouslySetInnerHTML</code>를 표기해서 위험한 코드인 것을 알리도록 작성할 것을 리액트 메뉴얼에선 권장하고 있다.</p>
+
+<p>추가로 이렇게 불가피하게 사용해야할 상황이 생긴다면 <code class="language-plaintext highlighter-rouge">dompurify</code> 같은 악성 <code class="language-plaintext highlighter-rouge">HTML</code>을 모두 제거하고 깨끗한 <code class="language-plaintext highlighter-rouge">HTML</code>데이터를 반환해주는 sanitization library와 함께 사용해주는 것이 좋다.</p>
+
+<h3 id="dompurify-사용법">dompurify 사용법</h3>
+
+<p>1.설치</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">$</span> <span class="nx">npm</span> <span class="nx">install</span> <span class="nx">dompurify</span>
+</code></pre></div></div>
+
+<p>2.코드 예시</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">sanitizer</span> <span class="o">=</span> <span class="nx">dompurify</span><span class="p">.</span><span class="nx">sanitize</span><span class="p">;</span>
+</code></pre></div></div>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//JSX 부분</span>
+<span class="o">&lt;</span><span class="nx">span</span> <span class="nx">className</span><span class="o">=</span><span class="dl">"</span><span class="s2">bundle_badge</span><span class="dl">"</span><span class="o">&gt;</span>
+  <span class="p">{</span><span class="nx">jobItem</span><span class="p">.</span><span class="nx">keywords</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">items</span><span class="p">,</span> <span class="nx">idx</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span>
+      <span class="o">&lt;</span><span class="nx">a</span>
+        <span class="nx">href</span><span class="o">=</span><span class="dl">"</span><span class="s2">#none</span><span class="dl">"</span>
+        <span class="nx">key</span><span class="o">=</span><span class="p">{</span><span class="nx">idx</span><span class="p">}</span>
+        <span class="nx">dangerouslySetInnerHTML</span><span class="o">=</span>
+
+      <span class="sr">/</span><span class="err">&gt;
+</span>    <span class="p">);</span>
+  <span class="p">})}</span>
+<span class="o">&lt;</span><span class="sr">/span</span><span class="err">&gt;
+</span></code></pre></div></div>
+<p>위와 같이 선언해준 변수명으로  <code class="language-plaintext highlighter-rouge">__html</code> 전체 부분을 감싸주면 된다.</p>
+</div>
+      </section>
+      <footer>
+  <p>&copy; 1947 - 2024 | Hello, I am bincco!</p>
+</footer>
+<script src="/assets/js/mode.js" defer></script>
+
+    </main>
+    <section id="category-modal-bg"></section>
+<section id="category-modal">
+  <h1 id="category-modal-title"></h1>
+  <section id="category-modal-content"></section>
+</section>
+
+  </body>
+</html>

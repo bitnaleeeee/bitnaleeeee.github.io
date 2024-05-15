@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hello, I am bincco! | [JavaScript]return과 console.log의 차이</title>
+  
+  <link rel="stylesheet" href="/assets/css/post.css" />
+  <link rel="stylesheet" href="/assets/css/syntax.css" />
+  
+  <link rel="stylesheet" href="/assets/css/common.css" />
+  <script src="/assets/js/categories.js"></script>
+  <script>
+    const currentTheme = localStorage.getItem("theme");
+    if (currentTheme) {
+      document.documentElement.setAttribute(
+        "data-theme",
+        localStorage.getItem("theme")
+      );
+    }
+  </script>
+  
+  <script defer src="/assets/js/lbox.js"></script>
+  
+</head>
+
+  <body>
+    <main>
+      <header>
+  <a class="site-title" href="/">Hello, I am bincco!</a>
+  <!-- dark/light mode -->
+  <span id="dark-mode-toggle" style="cursor: pointer">
+    <svg
+      stroke="currentColor"
+      fill="currentColor"
+      stroke-width="0"
+      viewBox="0 0 16 16"
+      height="1.2em"
+      width="1.2em"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zm0 13V2a6 6 0 1 1 0 12z"
+      ></path>
+    </svg>
+  </span>
+</header>
+
+      <section class="article">
+        <div class="article-header">
+          <h2 class="article-title">[JavaScript]return과 console.log의 차이</h2>
+          <small class="date">10 Apr 2022</small>
+          <div class="categories">
+            
+          </div>
+        </div>
+        <div class="content"><h2 id="retrun-vs-consolelog"><code class="language-plaintext highlighter-rouge">retrun</code> vs <code class="language-plaintext highlighter-rouge">console.log</code></h2>
+
+<p>아래 코드를 살펴보면</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">printsquare</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">x</span> <span class="o">*</span> <span class="nx">x</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">getsquare</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">x</span> <span class="o">*</span> <span class="nx">x</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">printsuare</span><span class="p">(</span><span class="mi">3</span><span class="p">));</span> <span class="c1">// 9 출력</span>
+<span class="nx">getsuqare</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span> <span class="c1">// 9 출력</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">printsquare</code>와 <code class="language-plaintext highlighter-rouge">getsquare</code> 모두 9를 출력한다는 것을 알 수 있다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">getsuqare</span><span class="p">(</span><span class="mi">3</span><span class="p">));</span> <span class="c1">// undefined</span>
+</code></pre></div></div>
+
+<p>하지만 위 코드에서는 왜 <code class="language-plaintext highlighter-rouge">undefined</code>가 나올까?
+이유는 함수를 선언할때 <code class="language-plaintext highlighter-rouge">return</code>문을 따로 작성하지 않으면 <code class="language-plaintext highlighter-rouge">undefined</code> 값을 <code class="language-plaintext highlighter-rouge">return</code>하기 때문이다.
+즉 <code class="language-plaintext highlighter-rouge">return</code>은 함수를 실행하고 어떠한 값을 돌려주는 함수이고 <code class="language-plaintext highlighter-rouge">console.log</code>는 어떠한 값을 출력해주는 함수라는 것을 알 수 있다.</p>
+</div>
+      </section>
+      <footer>
+  <p>&copy; 1947 - 2024 | Hello, I am bincco!</p>
+</footer>
+<script src="/assets/js/mode.js" defer></script>
+
+    </main>
+    <section id="category-modal-bg"></section>
+<section id="category-modal">
+  <h1 id="category-modal-title"></h1>
+  <section id="category-modal-content"></section>
+</section>
+
+  </body>
+</html>

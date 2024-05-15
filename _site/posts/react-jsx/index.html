@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hello, I am bincco! | [React] JSX 문법</title>
+  
+  <link rel="stylesheet" href="/assets/css/post.css" />
+  <link rel="stylesheet" href="/assets/css/syntax.css" />
+  
+  <link rel="stylesheet" href="/assets/css/common.css" />
+  <script src="/assets/js/categories.js"></script>
+  <script>
+    const currentTheme = localStorage.getItem("theme");
+    if (currentTheme) {
+      document.documentElement.setAttribute(
+        "data-theme",
+        localStorage.getItem("theme")
+      );
+    }
+  </script>
+  
+  <script defer src="/assets/js/lbox.js"></script>
+  
+</head>
+
+  <body>
+    <main>
+      <header>
+  <a class="site-title" href="/">Hello, I am bincco!</a>
+  <!-- dark/light mode -->
+  <span id="dark-mode-toggle" style="cursor: pointer">
+    <svg
+      stroke="currentColor"
+      fill="currentColor"
+      stroke-width="0"
+      viewBox="0 0 16 16"
+      height="1.2em"
+      width="1.2em"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zm0 13V2a6 6 0 1 1 0 12z"
+      ></path>
+    </svg>
+  </span>
+</header>
+
+      <section class="article">
+        <div class="article-header">
+          <h2 class="article-title">[React] JSX 문법</h2>
+          <small class="date">26 May 2022</small>
+          <div class="categories">
+            
+          </div>
+        </div>
+        <div class="content"><p>JSX란 자바스크립트를 확장한 문법이다. 얼핏 보면 HTML과 비슷하여 템플릿 언어가 떠오를 수도 있지만, 자바스크립트의 모든 기능이 포함되어 있다. JSX를 제대로 사용하기 위해서 몇가지 규칙을 준수해줘야 한다. 이전 포스팅 <a href="https://recordboy.github.io/react-component/">[React] React 시작하기</a>에 나온 <code class="language-plaintext highlighter-rouge">App.js</code>파일에 예제를 작성하여 진행하겠다. 기존의 코드는 지우고 클래스 방식으로 컴포넌트를 만들어준 뒤 아래 예제들을 살펴보겠다.</p>
+
+<!-- more -->
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span> <span class="nx">Component</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">react</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="kd">class</span> <span class="nx">App</span> <span class="kd">extends</span> <span class="nx">Component</span> <span class="p">{</span>
+  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;&lt;</span><span class="sr">/div&gt;</span><span class="err">;
+</span>  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="nx">App</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h2 id="jsx-엘리먼트-규칙">JSX 엘리먼트 규칙</h2>
+
+<h3 id="태그는-꼭-닫혀줘야-된다">태그는 꼭 닫혀줘야 된다.</h3>
+
+<p><code class="language-plaintext highlighter-rouge">&lt;div&gt;</code>를 열었으면 꼭<code class="language-plaintext highlighter-rouge">&lt;/div&gt;</code>로 태그를 닫아주도록 한다. 또한 input이나 br태그 같은 단일 태그들은 HTML5에서 안닫아도 상관 없었지만, 리액트에서는 오류를 출력하므로 꼭 태그를 닫아주도록 한다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span> <span class="nx">Component</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">class</span> <span class="nx">App</span> <span class="kd">extends</span> <span class="nx">Component</span> <span class="p">{</span>
+  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span>
+      <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">input</span> <span class="nx">type</span><span class="o">=</span><span class="dl">"</span><span class="s2">text</span><span class="dl">"</span><span class="o">&gt;</span> <span class="c1">// error</span>
+      <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>    <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="nx">App</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h3 id="하나의-엘리먼트로-감싸줘야-한다">하나의 엘리먼트로 감싸줘야 한다.</h3>
+
+<p>리턴값이 두개의 엘리먼트로 되어있으면 오류를 출력한다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span> <span class="nx">Component</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">class</span> <span class="nx">App</span> <span class="kd">extends</span> <span class="nx">Component</span> <span class="p">{</span>
+  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span>
+      <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span> <span class="c1">// error</span>
+        <span class="nx">my</span>
+      <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>      <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+        <span class="nx">app</span>
+      <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>    <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="nx">App</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>위 문제를 해결하기 위해서 두개의 엘리먼트를 하나의 엘리먼트로 감싸야 한다.</p>
+
+<h3 id="하나의-엘리먼트로-감싸기-까다로운-경우">하나의 엘리먼트로 감싸기 까다로운 경우</h3>
+
+<p>하지만 위처럼 하나의 엘리먼트로 감싸기엔 까다로운 경우가 있다. CSS로 인한 스타일 관련 문제나 table관련 태그를 작성할 때 번거로운 경우이다. 이럴때는 아래처럼 <code class="language-plaintext highlighter-rouge">Fragment</code>을 사용하면 된다.(이 기능은 v.16.2에 도입되었다.)</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span> <span class="nx">Component</span><span class="p">,</span> <span class="nx">Fragment</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">react</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="kd">class</span> <span class="nx">App</span> <span class="kd">extends</span> <span class="nx">Component</span> <span class="p">{</span>
+  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span>
+      <span class="o">&lt;</span><span class="nx">Fragment</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span><span class="nx">my</span><span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>        <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span><span class="nx">app</span><span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>      <span class="o">&lt;</span><span class="sr">/Fragment</span><span class="err">&gt;
+</span>    <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="nx">App</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>나눠진 엘리먼트를 <code class="language-plaintext highlighter-rouge">Fragment</code>로 감싼뒤 <code class="language-plaintext highlighter-rouge">import</code>의 <code class="language-plaintext highlighter-rouge">{ Component }</code>에 <code class="language-plaintext highlighter-rouge">Fragment</code>을 추가하면 된다.</p>
+
+<h2 id="jsx-자바스크립트-사용하기">JSX 자바스크립트 사용하기</h2>
+
+<h3 id="변수-사용하기">변수 사용하기</h3>
+
+<p>JSX 내부에서 변수를 사용 할 땐 아래처럼 할 수 있다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span> <span class="nx">Component</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">react</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="kd">class</span> <span class="nx">App</span> <span class="kd">extends</span> <span class="nx">Component</span> <span class="p">{</span>
+  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">name</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">my-app</span><span class="dl">"</span><span class="p">;</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+    <span class="k">return</span> <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span><span class="nx">hello</span> <span class="p">{</span><span class="nx">name</span><span class="p">}</span> <span class="c1">// hello my-app&lt;/div&gt;;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="nx">App</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>JSX 내부에 <code class="language-plaintext highlighter-rouge">{}</code>(중괄호)안에 자바스크립트 구문을 넣어 주면 된다.</p>
+
+<h3 id="조건부-렌더링">조건부 렌더링</h3>
+
+<p>JSX 내부에서 조건부 렌더링을 할 때는 보통 삼항 연산자를 사용하거나, AND연산자(&amp;&amp;)를 사용한다. 반면에 if문은 사용할 수 없으며, 사용하려면 즉시함수를 실행해야 한다.</p>
+
+<h4 id="삼항연산자">삼항연산자</h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span> <span class="nx">Component</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">react</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="kd">class</span> <span class="nx">App</span> <span class="kd">extends</span> <span class="nx">Component</span> <span class="p">{</span>
+  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span>
+      <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+        <span class="p">{</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">===</span> <span class="mi">2</span> <span class="p">?</span> <span class="p">(</span> <span class="c1">// 참</span>
+          <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span><span class="nx">참</span><span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>        <span class="p">)</span> <span class="p">:</span> <span class="p">(</span>
+          <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span><span class="nx">거짓</span><span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>        <span class="p">)}</span>
+      <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>    <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="nx">App</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h4 id="and연산자">AND연산자</h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span> <span class="nx">Component</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">react</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="kd">class</span> <span class="nx">App</span> <span class="kd">extends</span> <span class="nx">Component</span> <span class="p">{</span>
+  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span>
+      <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+        <span class="p">{</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">===</span> <span class="mi">2</span> <span class="o">&amp;&amp;</span> <span class="p">(</span> <span class="c1">// 참</span>
+          <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span><span class="nx">참</span><span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>        <span class="p">)}</span>
+      <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>    <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="nx">App</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>참고로 AND연산자의 경우 <code class="language-plaintext highlighter-rouge">true</code>일때만 값을 보여주고, <code class="language-plaintext highlighter-rouge">false</code>일때는 아무것도 보여주지 않는다.</p>
+
+<h4 id="if문">if문</h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span> <span class="nx">Component</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">react</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="kd">class</span> <span class="nx">App</span> <span class="kd">extends</span> <span class="nx">Component</span> <span class="p">{</span>
+  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span>
+      <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+        <span class="p">{(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+          <span class="k">if</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">===</span> <span class="mi">2</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// 참</span>
+            <span class="k">return</span> <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span><span class="nx">참</span><span class="o">&lt;</span><span class="sr">/div&gt;</span><span class="err">;
+</span>          <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span><span class="nx">거짓</span><span class="o">&lt;</span><span class="sr">/div&gt;</span><span class="err">;
+</span>          <span class="p">}</span>
+        <span class="p">})()}</span>
+      <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>    <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="nx">App</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>위처럼 JSX 내부에서 로직을 작성할 수 있지만 복잡한 로직을 작성해야 할 때는 JSX 밖에서 로직을 작성하는 것이 좋다. 하지만 꼭 JSX 내부에서 작성해야 한다면 위처럼 즉시실행함수를 사용하면 된다.</p>
+
+<h2 id="style과-classname">style과 className</h2>
+
+<p>JSX에서 CSS와 class명은 HTML에서 작성하는 방법과 약간 다르다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span> <span class="nx">Component</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">react</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="kd">class</span> <span class="nx">App</span> <span class="kd">extends</span> <span class="nx">Component</span> <span class="p">{</span>
+  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">style</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="na">padding</span><span class="p">:</span> <span class="dl">"</span><span class="s2">10px</span><span class="dl">"</span><span class="p">,</span>
+      <span class="na">fontSize</span><span class="p">:</span> <span class="dl">"</span><span class="s2">15px</span><span class="dl">"</span><span class="p">,</span>
+      <span class="na">fontWeight</span><span class="p">:</span> <span class="dl">"</span><span class="s2">bold</span><span class="dl">"</span><span class="p">,</span>
+      <span class="na">backgroundColor</span><span class="p">:</span> <span class="dl">"</span><span class="s2">yellow</span><span class="dl">"</span><span class="p">,</span>
+    <span class="p">};</span>
+    <span class="k">return</span> <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">style</span><span class="p">}</span><span class="o">&gt;</span><span class="nx">my</span><span class="o">-</span><span class="nx">app</span><span class="o">&lt;</span><span class="sr">/div&gt;</span><span class="err">;
+</span>  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="nx">App</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>HTML에서는 그냥 텍스트 형태로 <code class="language-plaintext highlighter-rouge">="padding: 10px; font-size: 15px;"</code> 이런 형태로 작성하였다면 리액트에서는 객체 형태로 작성해줘야 한다. 그리고 class는 <code class="language-plaintext highlighter-rouge">class</code>대신에 <code class="language-plaintext highlighter-rouge">className</code>을 사용한다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span> <span class="nx">Component</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">react</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="kd">class</span> <span class="nx">App</span> <span class="kd">extends</span> <span class="nx">Component</span> <span class="p">{</span>
+  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="dl">"</span><span class="s2">App</span><span class="dl">"</span><span class="o">&gt;</span><span class="nx">my</span><span class="o">-</span><span class="nx">app</span><span class="o">&lt;</span><span class="sr">/div&gt;</span><span class="err">;
+</span>  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="nx">App</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h2 id="주석">주석</h2>
+
+<p>주석은 아래처럼 <code class="language-plaintext highlighter-rouge">{/* 내용 */}</code> 사이에 넣거나, 태그 사이에 넣을 수 있다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span> <span class="nx">Component</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">react</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="kd">class</span> <span class="nx">App</span> <span class="kd">extends</span> <span class="nx">Component</span> <span class="p">{</span>
+  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span>
+      <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+        <span class="p">{</span><span class="cm">/* 주석 내용 */</span><span class="p">}</span>
+        <span class="o">&lt;</span><span class="nx">div</span>
+        <span class="c1">// 태그 사이에 주석 내용</span>
+        <span class="o">&gt;</span>
+          <span class="nx">my</span><span class="o">-</span><span class="nx">app</span>
+        <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>      <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>    <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="nx">App</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h2 id="references">References</h2>
+
+<p><a href="https://velopert.com/3626">누구든지 하는 리액트 3편: JSX</a><br />
+<a href="https://ko.reactjs.org/docs/introducing-jsx.html">JSX 소개</a></p>
+</div>
+      </section>
+      <footer>
+  <p>&copy; 1947 - 2024 | Hello, I am bincco!</p>
+</footer>
+<script src="/assets/js/mode.js" defer></script>
+
+    </main>
+    <section id="category-modal-bg"></section>
+<section id="category-modal">
+  <h1 id="category-modal-title"></h1>
+  <section id="category-modal-content"></section>
+</section>
+
+  </body>
+</html>

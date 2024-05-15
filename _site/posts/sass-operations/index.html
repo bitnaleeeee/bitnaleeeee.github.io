@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hello, I am bincco! | [SASS] 연산(Operations)</title>
+  
+  <link rel="stylesheet" href="/assets/css/post.css" />
+  <link rel="stylesheet" href="/assets/css/syntax.css" />
+  
+  <link rel="stylesheet" href="/assets/css/common.css" />
+  <script src="/assets/js/categories.js"></script>
+  <script>
+    const currentTheme = localStorage.getItem("theme");
+    if (currentTheme) {
+      document.documentElement.setAttribute(
+        "data-theme",
+        localStorage.getItem("theme")
+      );
+    }
+  </script>
+  
+  <script defer src="/assets/js/lbox.js"></script>
+  
+</head>
+
+  <body>
+    <main>
+      <header>
+  <a class="site-title" href="/">Hello, I am bincco!</a>
+  <!-- dark/light mode -->
+  <span id="dark-mode-toggle" style="cursor: pointer">
+    <svg
+      stroke="currentColor"
+      fill="currentColor"
+      stroke-width="0"
+      viewBox="0 0 16 16"
+      height="1.2em"
+      width="1.2em"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zm0 13V2a6 6 0 1 1 0 12z"
+      ></path>
+    </svg>
+  </span>
+</header>
+
+      <section class="article">
+        <div class="article-header">
+          <h2 class="article-title">[SASS] 연산(Operations)</h2>
+          <small class="date">11 Aug 2022</small>
+          <div class="categories">
+            
+          </div>
+        </div>
+        <div class="content"><p>SASS는 기본적인 연산 기능을 지원한다. 레이아웃 작업시 상황에 맞게 크기를 계산하거나 정해진 값을 나눠서 작성할 경우 유용하다. 아래는 SASS에서 사용 가능한 연산자 종류이다.</p>
+
+<h2 id="산술-연산자">산술 연산자</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">종류</th>
+      <th style="text-align: center">설명</th>
+      <th style="text-align: left">주의사항</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">+</td>
+      <td style="text-align: center">더하기</td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">-</td>
+      <td style="text-align: center">빼기</td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">*</td>
+      <td style="text-align: center">곱하기</td>
+      <td style="text-align: left">하나 이상의 값이 반드시 숫자(Number)</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">/</td>
+      <td style="text-align: center">나누기</td>
+      <td style="text-align: left">오른쪽 값이 반드시 숫자(Number)</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">%</td>
+      <td style="text-align: center">나머지</td>
+      <td style="text-align: left"> </td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="비교-연산자">비교 연산자</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">종류</th>
+      <th style="text-align: left">설명</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">==</td>
+      <td style="text-align: left">동등</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">!=</td>
+      <td style="text-align: left">부등</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">&lt;</td>
+      <td style="text-align: left">대소 / 보다 작은</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">&gt;</td>
+      <td style="text-align: left">대소 / 보다 큰</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">&lt;=</td>
+      <td style="text-align: left">대소 및 동등 / 보다 작거나 같은</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">&gt;=</td>
+      <td style="text-align: left">대소 및 동등 / 보다 크거나 같은</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="논리-연산자">논리 연산자</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">종류</th>
+      <th style="text-align: left">설명</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">and</td>
+      <td style="text-align: left">그리고</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">or</td>
+      <td style="text-align: left">또는</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">not</td>
+      <td style="text-align: left">부정(반대)</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="숫자">숫자</h2>
+
+<p>일반적으로 절대값을 나타내는 px단위로 연산을 하지만, 상대적 단위(%, em, vw 등)의 연산의 경우 <code class="language-plaintext highlighter-rouge">calc()</code>로 연산 해야 한다.</p>
+
+<div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">width</span><span class="p">:</span> <span class="m">50%</span> <span class="o">-</span> <span class="m">20px</span><span class="p">;</span>  <span class="c1">// 단위 모순 에러(Incompatible units error)</span>
+<span class="nl">width</span><span class="p">:</span> <span class="nf">calc</span><span class="p">(</span><span class="m">50%</span> <span class="o">-</span> <span class="m">20px</span><span class="p">);</span>  <span class="c1">// 연산 가능</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p><strong>나누기 연산의 주의사항</strong>
+CSS는 속성 값의 숫자를 분리하는 방법으로 <code class="language-plaintext highlighter-rouge">/</code>를 허용하기 때문에 <code class="language-plaintext highlighter-rouge">/</code>가 나누기 연산으로 사용되지 않을 수 있다. 아래 예제를 보면 나누기 연산자만 연산 되지 않고 그대로 컴파일된다.</p>
+</blockquote>
+
+<p><strong>SCSS</strong></p>
+<div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">div</span> <span class="p">{</span>
+    <span class="nl">width</span><span class="p">:</span> <span class="m">20px</span> <span class="o">+</span> <span class="m">20px</span><span class="p">;</span>  <span class="c1">// 더하기</span>
+    <span class="nl">height</span><span class="p">:</span> <span class="m">40px</span> <span class="o">-</span> <span class="m">10px</span><span class="p">;</span>  <span class="c1">// 빼기</span>
+    <span class="nl">font-size</span><span class="p">:</span> <span class="m">10px</span> <span class="o">*</span> <span class="m">2</span><span class="p">;</span>  <span class="c1">// 곱하기</span>
+    <span class="nl">margin</span><span class="p">:</span> <span class="m">30px</span> <span class="o">/</span> <span class="m">2</span><span class="p">;</span>  <span class="c1">// 나누기</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>Compiled to</strong></p>
+<div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">div</span> <span class="p">{</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">40px</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="m">30px</span><span class="p">;</span>
+  <span class="nl">font-size</span><span class="p">:</span> <span class="m">20px</span><span class="p">;</span>
+  <span class="nl">margin</span><span class="p">:</span> <span class="m">30px</span><span class="o">/</span><span class="m">2</span><span class="p">;</span> <span class="c1">// Error</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>따라서 <code class="language-plaintext highlighter-rouge">/</code>를 나누기 연산 기능으로 사용하려면 다음과 같은 조건을 충족해야 한다.</p>
+
+<ul>
+  <li>값 또는 그 일부가 변수에 저장되거나 함수에 의해 반환되는 경우</li>
+  <li>값이 <code class="language-plaintext highlighter-rouge">()</code>로 묶여있는 경우</li>
+  <li>값이 다른 산술 표현식의 일부로 사용되는 경우</li>
+</ul>
+
+<p><strong>SCSS</strong></p>
+<div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">div</span> <span class="p">{</span>
+    <span class="nv">$x</span><span class="p">:</span> <span class="m">100px</span><span class="p">;</span>
+    <span class="nl">width</span><span class="p">:</span> <span class="nv">$x</span> <span class="o">/</span> <span class="m">2</span><span class="p">;</span> <span class="c1">// 변수에 저장된 값을 나누기</span>
+    <span class="nl">height</span><span class="p">:</span> <span class="p">(</span><span class="m">100px</span> <span class="o">/</span> <span class="m">2</span><span class="p">);</span> <span class="c1">// 괄호로 묶여있는 경우</span>
+    <span class="nl">font-size</span><span class="p">:</span> <span class="m">10px</span> <span class="o">+</span> <span class="m">12px</span> <span class="o">/</span> <span class="m">3</span><span class="p">;</span> <span class="c1">// 더하기 연산자와 같이 사용</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>Compiled to</strong></p>
+<div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">div</span> <span class="p">{</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">50px</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="m">50px</span><span class="p">;</span>
+  <span class="nl">font-size</span><span class="p">:</span> <span class="m">14px</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="문자">문자</h2>
+
+<p>문자 연산에는 <code class="language-plaintext highlighter-rouge">+</code>가 사용된다. 문자 연산의 결과는 첫번째 피연산자를 기준으로 한다. 첫번째 피연산자에 따옴표가 붙어있다면 연산 결과를 따옴표로 묶는다. 반대로 첫번째 피연산자에 따옴표가 붙어있지 않으면 연산 결과도 따옴표를 처리하지 않는다.</p>
+
+<p><strong>SCSS</strong></p>
+<div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">div</span><span class="p">:</span><span class="o">:</span><span class="n">after</span> <span class="p">{</span>
+    <span class="nl">content</span><span class="p">:</span> <span class="s2">"hello"</span> <span class="o">+</span> <span class="n">world</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="na">div</span><span class="p">:</span><span class="o">:</span><span class="n">after</span> <span class="p">{</span>
+    <span class="nl">content</span><span class="p">:</span> <span class="n">hello</span> <span class="o">+</span> <span class="s2">"world"</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>Compiled to</strong></p>
+<div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">div</span><span class="p">:</span><span class="o">:</span><span class="n">after</span> <span class="p">{</span>
+  <span class="nl">content</span><span class="p">:</span> <span class="s2">"helloworld"</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="na">div</span><span class="p">:</span><span class="o">:</span><span class="n">after</span> <span class="p">{</span>
+  <span class="nl">content</span><span class="p">:</span> <span class="n">helloworld</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="색상">색상</h2>
+
+<p>색상도 연산이 가능하다.</p>
+
+<h2 id="논리">논리</h2>
+
+<p>SASS의 <code class="language-plaintext highlighter-rouge">@if</code>조건문에서 사용되는 논리 연삭에는 <code class="language-plaintext highlighter-rouge">그리고</code>, <code class="language-plaintext highlighter-rouge">또는</code>, <code class="language-plaintext highlighter-rouge">부정</code>이 있다. 자바스크립트의 <code class="language-plaintext highlighter-rouge">&amp;&amp;</code>, <code class="language-plaintext highlighter-rouge">||</code>, <code class="language-plaintext highlighter-rouge">!</code>와 같은 기능이라 보면 된다.</p>
+
+<p><strong>SCSS</strong></p>
+<div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$width</span><span class="p">:</span> <span class="m">90px</span><span class="p">;</span>
+<span class="nt">div</span> <span class="p">{</span>
+  <span class="k">@if</span> <span class="nf">not</span> <span class="p">(</span><span class="nv">$width</span> <span class="o">&gt;</span> <span class="m">100px</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nl">height</span><span class="p">:</span> <span class="m">300px</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>Compiled to</strong></p>
+<div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">div</span> <span class="p">{</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="m">300px</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="references">References</h2>
+<p><a href="https://heropy.blog/2018/01/31/sass/">Sass(SCSS) 완전 정복!</a><br />
+<a href="http://hwangsunsoo.org/lecture/src/sass_article_seminar_2017_2nd_half.html">Sass 기초와 활용</a><br />
+<a href="https://recoveryman.tistory.com/277">[사스(Sass)] 2. Sass 사용법</a><br />
+<a href="https://developer.mozilla.org/ko/docs/Glossary/CSS_preprocessor">CSS 전처리기</a><br />
+<a href="https://designmeme.github.io/ko/blog/write-sass-with-scss/">Sass는 SCSS로 쓰세요</a><br />
+<a href="https://i-fiction.tistory.com/9">[사스(Sass)] Sass 기본 사용법 (컴파일 및 명령어)</a></p>
+</div>
+      </section>
+      <footer>
+  <p>&copy; 1947 - 2024 | Hello, I am bincco!</p>
+</footer>
+<script src="/assets/js/mode.js" defer></script>
+
+    </main>
+    <section id="category-modal-bg"></section>
+<section id="category-modal">
+  <h1 id="category-modal-title"></h1>
+  <section id="category-modal-content"></section>
+</section>
+
+  </body>
+</html>

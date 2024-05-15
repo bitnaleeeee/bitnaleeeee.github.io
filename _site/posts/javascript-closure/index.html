@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hello, I am bincco! | [JavaScript] 클로저</title>
+  
+  <link rel="stylesheet" href="/assets/css/post.css" />
+  <link rel="stylesheet" href="/assets/css/syntax.css" />
+  
+  <link rel="stylesheet" href="/assets/css/common.css" />
+  <script src="/assets/js/categories.js"></script>
+  <script>
+    const currentTheme = localStorage.getItem("theme");
+    if (currentTheme) {
+      document.documentElement.setAttribute(
+        "data-theme",
+        localStorage.getItem("theme")
+      );
+    }
+  </script>
+  
+  <script defer src="/assets/js/lbox.js"></script>
+  
+</head>
+
+  <body>
+    <main>
+      <header>
+  <a class="site-title" href="/">Hello, I am bincco!</a>
+  <!-- dark/light mode -->
+  <span id="dark-mode-toggle" style="cursor: pointer">
+    <svg
+      stroke="currentColor"
+      fill="currentColor"
+      stroke-width="0"
+      viewBox="0 0 16 16"
+      height="1.2em"
+      width="1.2em"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zm0 13V2a6 6 0 1 1 0 12z"
+      ></path>
+    </svg>
+  </span>
+</header>
+
+      <section class="article">
+        <div class="article-header">
+          <h2 class="article-title">[JavaScript] 클로저</h2>
+          <small class="date">01 Sep 2022</small>
+          <div class="categories">
+            
+          </div>
+        </div>
+        <div class="content"><p>중첩함수에서 내부함수가 외부함수의 환경을 기억하는것을 클로저라고 한다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">func</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="nx">foo</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">data</span><span class="dl">"</span><span class="p">;</span>
+  <span class="k">return</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">foo</span><span class="p">;</span>
+  <span class="p">};</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>func라는 함수를 선언하고 foo변수에 ‘data’문자열을 추가한 뒤 foo변수를 리턴하는 익명함수를 선언하였다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">closure</span> <span class="o">=</span> <span class="nx">func</span><span class="p">();</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">closure</span><span class="p">());</span>
+<span class="c1">// 'data'</span>
+</code></pre></div></div>
+
+<p>func함수의 리턴값을 closure변수에 할당한 뒤 closure를 실행한 값을 콘솔로 찍어보았다. 결과는 ‘data’라는 문자열이 출력되었다. func의 지역변수로 있는 foo는 func함수가 끝나면서 소멸되어야하지만 값을 잃지 않고 ‘data’값을 가지고 있다. 이 현상을 클로저라 한다. 다른 구문도 살펴보겠다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">count</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="nx">num</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="k">return</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">num</span><span class="o">++</span><span class="p">;</span>
+    <span class="k">return</span> <span class="nx">num</span><span class="p">;</span>
+  <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="nx">closure</span> <span class="o">=</span> <span class="nx">count</span><span class="p">();</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">closure</span><span class="p">());</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">closure</span><span class="p">());</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">closure</span><span class="p">());</span>
+<span class="c1">// 1</span>
+<span class="c1">// 2</span>
+<span class="c1">// 3</span>
+</code></pre></div></div>
+
+<p>count함수의 지역변수인 num값이 소멸되지 않고 계속 카운트되는 것을 확인해 볼 수 있다.</p>
+
+<h2 id="특징">특징</h2>
+
+<h3 id="변수의-은닉화">변수의 은닉화</h3>
+
+<p>자바스크립트에서는 인스턴스를 생성할때 Private letiables에 대한 접근 권한 문제가 있다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">Create</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">_name</span> <span class="o">=</span> <span class="nx">name</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="nx">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Create</span><span class="p">(</span><span class="dl">"</span><span class="s2">민수</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">obj</span><span class="p">.</span><span class="nx">_name</span><span class="p">);</span>
+<span class="c1">// 민수</span>
+</code></pre></div></div>
+
+<p>위에서 생성된 obj객체의 *name프로퍼티는 변수명 앞에 *를 포함하였기 때문에 Private letiables로 쓰고싶다는 의도를 알 수 있다. 하지만 _name프로퍼티는 동적으로 변경될 수 있다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">obj</span><span class="p">.</span><span class="nx">_name</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">인성</span><span class="dl">"</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">obj</span><span class="p">.</span><span class="nx">_name</span><span class="p">);</span>
+<span class="c1">// 인성</span>
+</code></pre></div></div>
+
+<p>이 경우 클로저를 사용하여 외부에서 내부변수에 접근하는것을 제한할 수 있다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">create</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="nx">_name</span> <span class="o">=</span> <span class="nx">name</span><span class="p">;</span>
+  <span class="k">return</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">_name</span><span class="p">);</span>
+  <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="nx">hello</span> <span class="o">=</span> <span class="nx">create</span><span class="p">(</span><span class="dl">"</span><span class="s2">민수</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">hello</span><span class="p">();</span>
+<span class="c1">// 민수</span>
+</code></pre></div></div>
+
+<p>여기서는 외부에서 _name에 접근할 방법이 전혀 없다. 이렇게 클로저를 활용하여 은닉화를 해결할 수 있다.</p>
+
+<h3 id="고유한-환경">고유한 환경</h3>
+
+<p>클로저는 고유한 환경을 가지고 있다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">func</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="nx">txt</span> <span class="o">=</span> <span class="nx">name</span><span class="p">;</span>
+  <span class="k">return</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">txt</span><span class="p">;</span>
+  <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="nx">closure01</span> <span class="o">=</span> <span class="nx">func</span><span class="p">(</span><span class="dl">"</span><span class="s2">민수</span><span class="dl">"</span><span class="p">);</span>
+<span class="kd">let</span> <span class="nx">closure02</span> <span class="o">=</span> <span class="nx">func</span><span class="p">(</span><span class="dl">"</span><span class="s2">인성</span><span class="dl">"</span><span class="p">);</span>
+<span class="kd">let</span> <span class="nx">closure03</span> <span class="o">=</span> <span class="nx">func</span><span class="p">(</span><span class="dl">"</span><span class="s2">한나</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">closure01</span><span class="p">());</span> <span class="c1">// 민수</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">closure02</span><span class="p">());</span> <span class="c1">// 인성</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">closure03</span><span class="p">());</span> <span class="c1">// 한나</span>
+</code></pre></div></div>
+
+<p>위의 구문을 보면 txt변수가 동적으로 변화하는 것처럼 보이지만, 실제로는 txt변수 자체가 여러번 생성된 것이다. 즉, closure01(), closure02(), closure03()은 서로 다른 환경을 가지고 있다. 서로 다른 환경을 가지고 있다는것은 그만큼 메모리면에서 큰 비효율을 낳는다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">Func</span><span class="p">(</span><span class="nx">input</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">input</span><span class="p">;</span>
+  <span class="k">this</span><span class="p">.</span><span class="kd">get</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
+  <span class="p">};</span>
+  <span class="k">this</span><span class="p">.</span><span class="kd">set</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">rename</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">rename</span><span class="p">;</span>
+  <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="nx">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Func</span><span class="p">(</span><span class="dl">"</span><span class="s2">민수</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">obj</span><span class="p">.</span><span class="kd">get</span><span class="p">());</span>
+</code></pre></div></div>
+
+<p>위 코드는 생성자함수를 사용하여 인스턴스를 생성하는 구문인데, 클로저가 두번(get, set)이나 생성되었다. 이 상태에서 인스턴스를 계속 만들면 같은일을 하는 클로저가 중복으로 생성되고 메모리낭비가 심해질 것이다.<br />
+따라서 클로저는 객체의 prototype안에 저장함으로써 같은 기능을 모든 인스턴스가 공유하는 형태로 코드를 만들어야한다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">Func</span><span class="p">(</span><span class="nx">input</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">input</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nx">Func</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="kd">get</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
+<span class="p">};</span>
+<span class="nx">Func</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="kd">set</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">rename</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">rename</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="kd">let</span> <span class="nx">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Func</span><span class="p">(</span><span class="dl">"</span><span class="s2">민수</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">obj</span><span class="p">.</span><span class="kd">get</span><span class="p">());</span>
+</code></pre></div></div>
+
+<p>이렇게 prototype안에 클로저를 넣으면, 인스턴스가 생성되더라도 중복으로 메모리를 낭비하지 않고, 생성자 내부의 prototype안의 클로저를 참조하기 때문에 메모리낭비를 방지할 수 있다.</p>
+
+<h2 id="정리">정리</h2>
+
+<ul>
+  <li>클로저는 독립적인(자유) 변수를 가리키는 함수 또는 클로저 안에 정의된 내부함수는 만들어진 환경을 기억한다.</li>
+  <li>클로저는 외부함수의 스코프 영역에 접근할 수 있고, 그것을 기억하고 있어야 한다.</li>
+  <li>외부함수가 종료된 후에도 내부함수는 외부함수를 계속 참조하고 있어야 한다.</li>
+  <li>데이터의 캡슐화 및 정보은닉에도 사용 가능하다.</li>
+</ul>
+
+<h2 id="references">References</h2>
+<p><a href="https://hyunseob.github.io/2016/08/30/javascript-closure/">JavaScript 클로저(Closure)</a></p>
+</div>
+      </section>
+      <footer>
+  <p>&copy; 1947 - 2024 | Hello, I am bincco!</p>
+</footer>
+<script src="/assets/js/mode.js" defer></script>
+
+    </main>
+    <section id="category-modal-bg"></section>
+<section id="category-modal">
+  <h1 id="category-modal-title"></h1>
+  <section id="category-modal-content"></section>
+</section>
+
+  </body>
+</html>

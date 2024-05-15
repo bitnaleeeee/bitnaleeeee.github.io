@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hello, I am bincco! | [GitHub] REAEME.md 에 기술블로그 최신 글 가져오기</title>
+  
+  <link rel="stylesheet" href="/assets/css/post.css" />
+  <link rel="stylesheet" href="/assets/css/syntax.css" />
+  
+  <link rel="stylesheet" href="/assets/css/common.css" />
+  <script src="/assets/js/categories.js"></script>
+  <script>
+    const currentTheme = localStorage.getItem("theme");
+    if (currentTheme) {
+      document.documentElement.setAttribute(
+        "data-theme",
+        localStorage.getItem("theme")
+      );
+    }
+  </script>
+  
+  <script defer src="/assets/js/lbox.js"></script>
+  
+</head>
+
+  <body>
+    <main>
+      <header>
+  <a class="site-title" href="/">Hello, I am bincco!</a>
+  <!-- dark/light mode -->
+  <span id="dark-mode-toggle" style="cursor: pointer">
+    <svg
+      stroke="currentColor"
+      fill="currentColor"
+      stroke-width="0"
+      viewBox="0 0 16 16"
+      height="1.2em"
+      width="1.2em"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zm0 13V2a6 6 0 1 1 0 12z"
+      ></path>
+    </svg>
+  </span>
+</header>
+
+      <section class="article">
+        <div class="article-header">
+          <h2 class="article-title">[GitHub] REAEME.md 에 기술블로그 최신 글 가져오기</h2>
+          <small class="date">09 Jan 2023</small>
+          <div class="categories">
+            
+          </div>
+        </div>
+        <div class="content"><p>GitHub READEME.md 에 기술블로그 최신 글을 자동으로 가져오고 READEME에 자동 작성되도록 하는 방법에 대해 간단히 정리하였다.</p>
+
+<h2 id="github-repository에-python-파일-만들기">GitHub Repository에 python 파일 만들기</h2>
+<p>레포지토리에 python 파일을 생성하여 아래 코드를 참고하여 URL 부분에 본인 기술 블로그 주소를 입력 후 /rss를 붙여주면 된다.</p>
+
+<p>아래는 내 코드의 예시이다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">feedparser</span><span class="p">,</span> <span class="nx">time</span>
+
+<span class="nx">URL</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">https://bitnaleeeee.github.io/feed.xml</span><span class="dl">"</span>
+<span class="nx">RSS_FEED</span> <span class="o">=</span> <span class="nx">feedparser</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">URL</span><span class="p">)</span>
+<span class="nx">MAX_POST</span> <span class="o">=</span> <span class="mi">5</span>
+
+<span class="nx">markdown_text</span> <span class="o">=</span> <span class="dl">"""</span><span class="s2">
+## Enjoys solving problems and controlling flow with JavaScript
+[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fbitnaleeeee&amp;count_bg=%23555555&amp;title_bg=%23555555&amp;icon=&amp;icon_color=%23E7E7E7&amp;title=hits&amp;edge_flat=false)](https://hits.seeyoufarm.com)
+## Recent Post 
+</span><span class="dl">"""</span>  <span class="err">#</span> <span class="nx">list</span> <span class="k">of</span> <span class="nx">blog</span> <span class="nx">posts</span> <span class="nx">will</span> <span class="nx">be</span> <span class="nx">appended</span> <span class="nx">here</span>
+
+<span class="k">for</span> <span class="nx">idx</span><span class="p">,</span> <span class="nx">feed</span> <span class="k">in</span> <span class="nx">enumerate</span><span class="p">(</span><span class="nx">RSS_FEED</span><span class="p">[</span><span class="dl">'</span><span class="s1">entries</span><span class="dl">'</span><span class="p">]):</span>
+    <span class="k">if</span> <span class="nx">idx</span> <span class="o">&gt;</span> <span class="nx">MAX_POST</span><span class="p">:</span>
+        <span class="k">break</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nx">feed_date</span> <span class="o">=</span> <span class="nx">feed</span><span class="p">[</span><span class="dl">'</span><span class="s1">published_parsed</span><span class="dl">'</span><span class="p">]</span>
+        <span class="nx">markdown_text</span> <span class="o">+=</span> <span class="nx">f</span><span class="dl">"</span><span class="s2">[{time.strftime('%Y/%m/%d', feed_date)} - {feed['title']}]({feed['link']}) &lt;br/&gt;</span><span class="se">\n</span><span class="dl">"</span>
+        
+<span class="nx">f</span> <span class="o">=</span> <span class="nx">open</span><span class="p">(</span><span class="dl">"</span><span class="s2">README.md</span><span class="dl">"</span><span class="p">,</span> <span class="nx">mode</span><span class="o">=</span><span class="dl">"</span><span class="s2">w</span><span class="dl">"</span><span class="p">,</span> <span class="nx">encoding</span><span class="o">=</span><span class="dl">"</span><span class="s2">utf-8</span><span class="dl">"</span><span class="p">)</span>
+<span class="nx">f</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">markdown_text</span><span class="p">)</span>
+<span class="nx">f</span><span class="p">.</span><span class="nx">close</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h2 id="github-acriotns-생성하기">GitHub Acriotns 생성하기</h2>
+<p>Acrionts 클릭 &gt; set up a workflow yourself 클릭 &gt; main.yml 작성화면에서 아래와 같이 코드를 참고하여 수정해 주면 된다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">#</span> <span class="nx">This</span> <span class="nx">workflow</span> <span class="nx">will</span> <span class="nx">install</span> <span class="nx">Python</span> <span class="nx">dependencies</span><span class="p">,</span> <span class="nx">run</span> <span class="nx">tests</span> <span class="nx">and</span> <span class="nx">lint</span> <span class="kd">with</span> <span class="nx">a</span> <span class="nx">single</span> <span class="nx">version</span> <span class="k">of</span> <span class="nx">Python</span>
+<span class="err">#</span> <span class="nx">For</span> <span class="nx">more</span> <span class="nx">information</span> <span class="nx">see</span><span class="p">:</span> <span class="nx">https</span><span class="p">:</span><span class="c1">//help.github.com/actions/language-and-framework-guides/using-python-with-github-actions</span>
+
+<span class="nx">name</span><span class="p">:</span> <span class="nx">Python</span> <span class="nx">application</span>
+
+<span class="nx">on</span><span class="p">:</span>
+  <span class="nx">push</span><span class="p">:</span>
+    <span class="nx">branches</span><span class="p">:</span> <span class="p">[</span> <span class="dl">"</span><span class="s2">main</span><span class="dl">"</span> <span class="p">]</span>
+  <span class="nx">pull_request</span><span class="p">:</span>
+    <span class="nx">branches</span><span class="p">:</span> <span class="p">[</span> <span class="dl">"</span><span class="s2">main</span><span class="dl">"</span> <span class="p">]</span>
+  <span class="nx">schedule</span><span class="p">:</span>
+      <span class="o">-</span> <span class="nx">cron</span><span class="p">:</span> <span class="dl">"</span><span class="s2">0 0 */1 * *</span><span class="dl">"</span>
+
+<span class="nx">jobs</span><span class="p">:</span>
+  <span class="nx">build</span><span class="p">:</span>
+
+    <span class="nx">runs</span><span class="o">-</span><span class="nx">on</span><span class="p">:</span> <span class="nx">ubuntu</span><span class="o">-</span><span class="nx">latest</span>
+
+    <span class="nx">steps</span><span class="p">:</span>
+    <span class="o">-</span> <span class="nx">uses</span><span class="p">:</span> <span class="nx">actions</span><span class="o">/</span><span class="nx">checkout</span><span class="p">@</span><span class="nd">v3</span>
+    <span class="o">-</span> <span class="nx">name</span><span class="p">:</span> <span class="nb">Set</span> <span class="nx">up</span> <span class="nx">Python</span> <span class="mf">3.10</span>
+      <span class="nx">uses</span><span class="p">:</span> <span class="nx">actions</span><span class="o">/</span><span class="nx">setup</span><span class="o">-</span><span class="nx">python</span><span class="p">@</span><span class="nd">v3</span>
+      <span class="kd">with</span><span class="p">:</span>
+        <span class="nx">python</span><span class="o">-</span><span class="nx">version</span><span class="p">:</span> <span class="dl">"</span><span class="s2">3.10</span><span class="dl">"</span>
+    <span class="o">-</span> <span class="nx">name</span><span class="p">:</span> <span class="nx">Install</span> <span class="nx">dependencies</span>
+      <span class="nx">run</span><span class="p">:</span> <span class="o">|</span>
+        <span class="nx">python</span> <span class="o">-</span><span class="nx">m</span> <span class="nx">pip</span> <span class="nx">install</span> <span class="o">--</span><span class="nx">upgrade</span> <span class="nx">pip</span>
+        <span class="nx">pip</span> <span class="nx">install</span> <span class="nx">feedparser</span>
+    <span class="o">-</span> <span class="nx">name</span><span class="p">:</span> <span class="nx">Run</span> <span class="nx">Update</span> <span class="nx">Python</span> <span class="nx">Script</span>
+      <span class="nx">run</span><span class="p">:</span> <span class="o">|</span>
+        <span class="nx">python</span> <span class="nx">main</span><span class="p">.</span><span class="nx">py</span>
+    <span class="o">-</span> <span class="nx">name</span><span class="p">:</span> <span class="nx">Update</span> <span class="nx">README</span><span class="p">.</span><span class="nx">md</span> <span class="nx">file</span>
+      <span class="nx">run</span><span class="p">:</span> <span class="o">|</span> 
+        <span class="nx">git</span> <span class="nx">pull</span>
+        <span class="nx">git</span> <span class="nx">add</span> <span class="p">.</span>
+        <span class="nx">git</span> <span class="nx">diff</span>
+        <span class="nx">git</span> <span class="nx">config</span> <span class="o">--</span><span class="nx">local</span> <span class="nx">user</span><span class="p">.</span><span class="nx">email</span> <span class="dl">"</span><span class="s2">본인의 깃허브 이메일 입력</span><span class="dl">"</span>
+        <span class="nx">git</span> <span class="nx">config</span> <span class="o">--</span><span class="nx">local</span> <span class="nx">user</span><span class="p">.</span><span class="nx">name</span> <span class="dl">"</span><span class="s2">본인의 깃허브 이름 입력</span><span class="dl">"</span>
+        <span class="nx">git</span> <span class="nx">commit</span> <span class="o">-</span><span class="nx">m</span> <span class="dl">"</span><span class="s2">Updating Blog Posts</span><span class="dl">"</span>
+        <span class="nx">git</span> <span class="nx">push</span>
+</code></pre></div></div>
+<p>본인 깃허브 이메일 및 깃허브 이름을 올바르게 입력한 후 commmit 해주면
+기술블로그의 최신 글을 README.md 자동 업데이트 할 수 있다.</p>
+</div>
+      </section>
+      <footer>
+  <p>&copy; 1947 - 2024 | Hello, I am bincco!</p>
+</footer>
+<script src="/assets/js/mode.js" defer></script>
+
+    </main>
+    <section id="category-modal-bg"></section>
+<section id="category-modal">
+  <h1 id="category-modal-title"></h1>
+  <section id="category-modal-content"></section>
+</section>
+
+  </body>
+</html>

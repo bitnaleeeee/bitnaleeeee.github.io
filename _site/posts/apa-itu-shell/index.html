@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hello, I am bincco! | What is a shell? 🐚 adalah kerang ajaib?</title>
+  
+  <link rel="stylesheet" href="/assets/css/post.css" />
+  <link rel="stylesheet" href="/assets/css/syntax.css" />
+  
+  <link rel="stylesheet" href="/assets/css/common.css" />
+  <script src="/assets/js/categories.js"></script>
+  <script>
+    const currentTheme = localStorage.getItem("theme");
+    if (currentTheme) {
+      document.documentElement.setAttribute(
+        "data-theme",
+        localStorage.getItem("theme")
+      );
+    }
+  </script>
+  
+  <script defer src="/assets/js/lbox.js"></script>
+  
+</head>
+
+  <body>
+    <main>
+      <header>
+  <a class="site-title" href="/">Hello, I am bincco!</a>
+  <!-- dark/light mode -->
+  <span id="dark-mode-toggle" style="cursor: pointer">
+    <svg
+      stroke="currentColor"
+      fill="currentColor"
+      stroke-width="0"
+      viewBox="0 0 16 16"
+      height="1.2em"
+      width="1.2em"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zm0 13V2a6 6 0 1 1 0 12z"
+      ></path>
+    </svg>
+  </span>
+</header>
+
+      <section class="article">
+        <div class="article-header">
+          <h2 class="article-title">What is a shell? 🐚 adalah kerang ajaib?</h2>
+          <small class="date">25 Jan 2020</small>
+          <div class="categories">
+            
+          </div>
+        </div>
+        <div class="content"><p><a href="http://www.youtube.com/watch?v=tc4ROCJYbm0&amp;t=70" target="_blank" rel="noopener">Dulu</a> Sebelum adanya <abbr title="Graphical User Interface">GUI</abbr> cara user berinteraksi dengan komputer menggunakan <abbr title="Command Line Interface">CLI</abbr> yaitu mengetik baris perintah pada sebuah antarmuka dalam bentuk baris teks seperti 👇.</p>
+
+<figure>
+<img src="/apa-itu-shell/terminal_nginx.gif" alt="installing nginx in ubuntu" />
+<figcaption>Fig 1. Terminal emulator, instalasi package dan check service.</figcaption>
+</figure>
+
+<p>Jika kamu pernah menggunakan unix/linux mungkin pernah menggunakan program diatas, bahkan mungkin setiap hari menggunakannya untuk mengeksekusi suatu perintah melalui <a href="http://en.wikipedia.org/wiki/List_of_terminal_emulators" target="_blank" rel="noopener">terminal emulator</a>.</p>
+
+<p>User<sup id="user"><a href="#user-ref">[1]</a></sup> tidak bisa secara langsung berkomunikasi dengan sebuah hardware komputer, maka dari itu kita membutuhkan sebuah sistem operasi; <strong>Kernel</strong> adalah program yang merupakan inti utama dari sistem operasi komputer.</p>
+
+<figure>
+<img src="/apa-itu-shell/kernel.png" alt="kernel central of operating system" />
+<figcaption>Fig 2. bagan kernel.</figcaption>
+</figure>
+
+<p>Kernel memfasilitasi interaksi antara komponen perangkat keras dan perangkat lunak, berperan untuk menangani permintaan input/ouput dari perangkat lunak, selanjutnya menerjemahkannya ke dalam pemrosesan data untuk diintruksikan ke CPU, sehingga Hardware(cpu, memory, devices) mengerti perintah yang dimaksud dari pengguna.</p>
+
+<p>Ketika kita menginputkan suatu perintah pada terminal emulator, kernel tidak langsung mengerti perintah yang kita ketik, kita membutuhkan suatu interface sebagai perantara menuju kernel yaitu <strong>Shell</strong>.</p>
+
+<figure>
+<img src="/apa-itu-shell/shell.png" alt="shell" />
+<figcaption>Fig 3. bagan komunikasi shell.</figcaption>
+</figure>
+
+<p><mark>Shell adalah sebuah command-line interpreter; program yang berperan sebagai penerjemah perintah yang diinputkan oleh User yang melalui terminal</mark>, sehingga perintah tersebut bisa dimengerti oleh si Kernel.</p>
+
+<p>Login shell biasanya ditetapkan oleh local System Administrator ketika pada saat pertama user kamu dibuat, kamu bisa lihat login shell yang sedang kamu gunakan dengan perintah dibawah ini.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">echo</span> <span class="nv">$SHELL</span>
+<span class="c"># atau</span>
+<span class="nv">$ </span><span class="nb">echo</span> <span class="nv">$0</span>
+</code></pre></div></div>
+
+<p>Setiap shell mempunyai default prompt. beberapa shell yang paling umum:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="o">(</span>dollar sign<span class="o">)</span>   <span class="c"># sh, ksh, bash</span>
+% <span class="o">(</span>percent sign<span class="o">)</span>  <span class="c"># csh, tcsh</span>
+</code></pre></div></div>
+
+<h5 id="terminologi-pada-shell-prompt">Terminologi pada shell prompt</h5>
+
+<p>Shell prompt adalah tempat dimana kita menuliskan suatu perintah, berikut adalah terminologinya ini membantu, jika kamu ingin mengetahui bagian-bagianya.</p>
+
+<figure>
+<img src="/apa-itu-shell/term_shell_prompt.png" alt="shell" />
+<figcaption>Fig 4. bagian-bagin dari shell prompt.</figcaption>
+</figure>
+
+<p>Dibawah ini salah satu contoh perintah sederhana untuk menampilkan sebuah arsitektur CPU komputer yang sedang saya gunakan.</p>
+
+<figure>
+<img src="/apa-itu-shell/terminal_lscpu.gif" alt="installing nginx in ubuntu" />
+<figcaption>Fig 5. menampilkan informasi tentang arsitektur CPU.</figcaption>
+</figure>
+
+<p>Dari perintah yang contohkan, ketika user mengetikan suatu inputan perintah di terminal dan menekan <kbd>ENTER</kbd>, maka shell akan mengubah perintah user menjadi bahasa yang bisa dipahami oleh kernel, dan Kernel menerjemahkannya ke dalam pemrosesan data untuk diintruksikan ke Hardware sehingga menghasilkan output yg sesuai dengan perintah user.</p>
+
+<p>Shell mempunyai beberapa macam dan turunan, berikut yang paling umum.</p>
+
+<figure>
+<img src="/apa-itu-shell/shell_evolution.png" alt="shell evolution" />
+<figcaption>Fig 6. evaluasi shell dari tahun ke tahun.</figcaption>
+</figure>
+
+<p>Sedikit penjelasan dari gambar diatas.</p>
+
+<ul>
+  <li>Bourne shell <code class="language-plaintext highlighter-rouge">sh</code>
+Dikembangkan oleh Stephen Bourne di Bell Labs, yang kala itu sebagai pengganti Thompson shell(diciptakan Ken Thompson), banyak sistem unix-like tetap memiliki <code class="language-plaintext highlighter-rouge">/bin/sh</code>—yang mana menjadi symbolic link atau hard link, bahkan ketika shell lain yang digunakan tetap <code class="language-plaintext highlighter-rouge">sh</code> adalah sebagai dasarnya, sebagai kompatibilitas perintah.</li>
+  <li>Korn shell <code class="language-plaintext highlighter-rouge">ksh</code> Unix shell yang dikembangkan oleh David Korn di Bell Labs,
+inisialiasi pengembangan ini berdasar pada source code Bourne shell, namun juga memiliki fitur <code class="language-plaintext highlighter-rouge">csh</code> dan <code class="language-plaintext highlighter-rouge">sh</code>, pengembanganya pun pada saat saya menulis ini pun terus <a href="http://github.com/att/ast" target="_blank" rel="noopener">terawat</a>.</li>
+  <li>Bourne again shell <code class="language-plaintext highlighter-rouge">bash</code>
+adalah proyek ini open source <a href="http://gnu.org/software/bash/" target="_blank" rel="noopener">GNU project</a> memilki kompatibel dengan <code class="language-plaintext highlighter-rouge">sh</code> yang menggabungkan fitur penting dari <code class="language-plaintext highlighter-rouge">ksh</code> dan <code class="language-plaintext highlighter-rouge">csh</code>, dan menjadi salah satu shell yang paling umum digunakan (umumnya menjadi default shell login Linux dan Apple’s macOS Mojave).</li>
+  <li>Z shell <code class="language-plaintext highlighter-rouge">zsh</code> ini mempunyai wadah komunitasnya disebutnya <a href="http://ohmyz.sh/" target="_blank" rel="noopener">“Oh My Zsh”</a>, plug-in dan theme <code class="language-plaintext highlighter-rouge">zsh</code> bisa kita temukan di komunitas ini, saya saat ini menggunakan <code class="language-plaintext highlighter-rouge">zsh</code>, shell ini juga menjadi default dari sistem operasi macOS Catalina, yang menggantikan bash.</li>
+  <li>friendly interactive shell <code class="language-plaintext highlighter-rouge">fish</code>
+yah sesuai dengan <a href="http://fishshell.com/" target="_blank" rel="noopener">deskripsi</a> di web nya, menurut saya shell ini fun banget, fitur yang saya sukai dari shell ini autosuggestions, dan konfigurasi yang mudah melalui web based.</li>
+</ul>
+
+<p>Masih banyak yang belum dijelaskan pada tulisan ini jika masih tertarik, baca lebih <a href="http://en.wikipedia.org/wiki/List_of_command-line_interpreters#Operating_system_shells" target="_blank" rel="noopener">banyak</a> dan juga <a href="http://en.wikipedia.org/wiki/Comparison_of_command_shells" target="_blank" rel="noopener">komparasinya</a> masing-masing shell.</p>
+
+<p>Jika kamu tertarik untuk mengubah default shell login pada sistem operasi, kamu bisa menginstall dengan cara mengikuti didokumentasi/cara penginstallan dimasing-masing shell disini saya tidak membahas karena distro yang kita pakai mungkin berbeda-beda.</p>
+
+<p>Untuk menjadikan default shell login pada OS bisa menggunakan perintah ini.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># command</span>
+<span class="nv">$ </span><span class="nb">sudo </span>chsh <span class="o">[</span>options] <span class="o">[</span>LOGIN]
+
+<span class="c"># contoh penggunaan</span>
+<span class="nv">$ </span><span class="nb">sudo </span>chsh <span class="nt">-s</span> /user/bin/zsh harpi
+<span class="c"># mengubah default shell user harpi menjadi zsh shell.</span>
+<span class="nv">$ </span>reboot
+
+<span class="c"># atau kamu juga bisa mengubah file /etc/passwd dan edit secara manual user shellnya.</span>
+<span class="c"># jika masih bingung manfaatkan perintah man untuk melihat manual page.</span>
+<span class="nv">$ </span>man chsh
+</code></pre></div></div>
+
+<p>Terakhir untuk tulisan ini, shell memilki berbagai macam, pilihlah shell yang sesuai dengan keinginanmu untuk menunjang produktivitas dan sesuaikan dengan kebutuhan, terlalu banyak plugin dan kebingungan memilih tema itu buruk 😁.</p>
+
+<p>Terimakasih sudah baca, <em>penulis menerima kritik dan saran.</em></p>
+
+<h5 id="notes">Notes</h5>
+
+<p><small id="user-ref"><sup><a href="#user">[1]</a></sup> Manusia yang mengoperasikan dan mengendalikan sistem komputer.</small></p>
+
+<h5 id="resources">Resources</h5>
+
+<ul>
+  <li><a href="http://developer.ibm.com/tutorials/l-linux-shells/">Evolution shells in Linux</a></li>
+  <li><a href="http://www.linfo.org/kernel.html">Kernel Defintion</a></li>
+  <li><a href="http://www.cis.rit.edu/class/simg211/unixintro/Shell.html">The Shell</a></li>
+</ul>
+</div>
+      </section>
+      <footer>
+  <p>&copy; 1947 - 2024 | Hello, I am bincco!</p>
+</footer>
+<script src="/assets/js/mode.js" defer></script>
+
+    </main>
+    <section id="category-modal-bg"></section>
+<section id="category-modal">
+  <h1 id="category-modal-title"></h1>
+  <section id="category-modal-content"></section>
+</section>
+
+  </body>
+</html>
