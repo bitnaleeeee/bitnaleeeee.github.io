@@ -1,4 +1,4 @@
-const categories = { jekyll: [{ url: `/posts/maths-example/`, date: `17 Jun 2021`, title: `Maths Example with Mathjax`},{ url: `/posts/welcome-to-jekyll/`, date: `29 Aug 2020`, title: `Welcome to Jekyll!`},],update: [{ url: `/posts/maths-example/`, date: `17 Jun 2021`, title: `Maths Example with Mathjax`},{ url: `/posts/welcome-to-jekyll/`, date: `29 Aug 2020`, title: `Welcome to Jekyll!`},], }
+const categories = {  }
 
 console.log(categories)
 
