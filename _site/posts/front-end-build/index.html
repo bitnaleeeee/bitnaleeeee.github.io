@@ -6,11 +6,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Hello, I am bincco! | [GitHub] 리액트 프로젝트를 gh-pages로 배포하는 방법</title>
   
-  <link rel="stylesheet" href="/assets/css/post.css" />
-  <link rel="stylesheet" href="/assets/css/syntax.css" />
+  <link rel="stylesheet" href="/build/assets/css/post.css" />
+  <link rel="stylesheet" href="/build/assets/css/syntax.css" />
   
-  <link rel="stylesheet" href="/assets/css/common.css" />
-  <script src="/assets/js/categories.js"></script>
+  <link rel="stylesheet" href="/build/assets/css/common.css" />
+  <script src="/build/assets/js/categories.js"></script>
   <script>
     const currentTheme = localStorage.getItem("theme");
     if (currentTheme) {
@@ -21,7 +21,7 @@
     }
   </script>
   
-  <script defer src="/assets/js/lbox.js"></script>
+  <script defer src="/build/assets/js/lbox.js"></script>
   
 </head>
 
@@ -74,14 +74,14 @@
 "deploy": "gh-pages -d build"
 </code></pre></div></div>
 
-<p><img src="/assets/img/posts/front-end-build-img01.png" alt="packagejson파일" /></p>
+<p><img src="/build/assets/img/posts/front-end-build-img01.png" alt="packagejson파일" /></p>
 <h3 id="배포하기">배포하기</h3>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm run deploy
 </code></pre></div></div>
 
 <p>배포 명령어를 입력 후 해당 github - settings - pages를 들어가면 gh-pages 브랜치가 새로 생긴다.</p>
 
-<p><img src="/assets/img/posts/front-end-build-img02.png" alt="packagejson파일" /></p>
+<p><img src="/build/assets/img/posts/front-end-build-img02.png" alt="packagejson파일" /></p>
 
 <p>위와 같이 Source 의 branch를 gh-pages로 위와 같이 설정해주면 무료로 웹 호스팅을 할 수 있다.</p>
 </div>
@@ -89,7 +89,7 @@
       <footer>
   <p>&copy; 1947 - 2024 | Hello, I am bincco!</p>
 </footer>
-<script src="/assets/js/mode.js" defer></script>
+<script src="/build/assets/js/mode.js" defer></script>
 
     </main>
     <section id="category-modal-bg"></section>

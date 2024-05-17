@@ -16,7 +16,7 @@ tag: [javascript, jquery]
   jQuery Fixed Navigation UI</a> by day.binna (<a href="https://codepen.io/bitnaleeeee">@bitnaleeeee</a>)
   on <a href="https://codepen.io">CodePen</a>.</span>
 </p>
-<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+<script async src="https://cpwebassets.codepen.io/build/assets/embed/ei.js"></script>
 
 ## 설명
 1. cnt의 hieght가 300이므로, widow.scrolltop이 300이 넘어갈 경우, 해당 메뉴바를 상단(top=0)에 고정시키는 class를 입혀준다.

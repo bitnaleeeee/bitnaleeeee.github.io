@@ -15,7 +15,7 @@ You can use Devlopr as a starter for building your own Site. we purposely keep t
 
 Highly Customizable and No Hosting or Maintainence Cost is required !
 
-![devlopr jekyll](https://github.com/sujaykundu777/devlopr-jekyll/blob/master/assets/img/screenshot.PNG?raw=true)
+![devlopr jekyll](https://github.com/sujaykundu777/devlopr-jekyll/blob/master/build/assets/img/screenshot.PNG?raw=true)
 
 devlopr uses Markdown Files to generate data like Blog Posts, Gallery, Shop Products etc. No external database is required.
 
@@ -192,7 +192,7 @@ This Project has actions to auto deploy jekyll to github pages and firebase. The
 #### Jekyll Admin
 You can easily manage the site locally using the Jekyll admin : [http://localhost:4000/admin](http://localhost:4000/admin)
 
-![Jekyll Admin](https://github.com/sujaykundu777/devlopr-jekyll/blob/master/assets/img/jekyll-admin.PNG?raw=true)
+![Jekyll Admin](https://github.com/sujaykundu777/devlopr-jekyll/blob/master/build/assets/img/jekyll-admin.PNG?raw=true)
 
 
 You can check out for all changelogs [here](https://devlopr.olvy.co/)

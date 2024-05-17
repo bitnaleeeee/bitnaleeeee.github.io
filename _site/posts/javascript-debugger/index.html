@@ -6,11 +6,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Hello, I am bincco! | [JavaScript] debugger 사용법</title>
   
-  <link rel="stylesheet" href="/assets/css/post.css" />
-  <link rel="stylesheet" href="/assets/css/syntax.css" />
+  <link rel="stylesheet" href="/build/assets/css/post.css" />
+  <link rel="stylesheet" href="/build/assets/css/syntax.css" />
   
-  <link rel="stylesheet" href="/assets/css/common.css" />
-  <script src="/assets/js/categories.js"></script>
+  <link rel="stylesheet" href="/build/assets/css/common.css" />
+  <script src="/build/assets/js/categories.js"></script>
   <script>
     const currentTheme = localStorage.getItem("theme");
     if (currentTheme) {
@@ -21,7 +21,7 @@
     }
   </script>
   
-  <script defer src="/assets/js/lbox.js"></script>
+  <script defer src="/build/assets/js/lbox.js"></script>
   
 </head>
 
@@ -71,10 +71,10 @@
 <span class="p">},</span> <span class="p">[]);</span>
 </code></pre></div></div>
 
-<p><img src="/assets/img/posts/debugger01.png" alt="debugger01" />
+<p><img src="/build/assets/img/posts/debugger01.png" alt="debugger01" />
 위 코드의 흐름에 <code class="language-plaintext highlighter-rouge">debugger</code>를 찍은 지점에서 실행을 멈추는 것을 확인할 수 있다.</p>
 
-<p><img src="/assets/img/posts/debugger02.png" alt="debugger02" />
+<p><img src="/build/assets/img/posts/debugger02.png" alt="debugger02" />
 로컬에서 reponse를 확인해보면 <code class="language-plaintext highlighter-rouge">status</code> 200 으로 통신이 성공했다는 것을 알 수 있다. 코드가 실행될때마다 각 변수에 할당하는 값이 우측에 표시 되므로 <code class="language-plaintext highlighter-rouge">console.log</code>로 일일이 찍어서 값을 확인할 필요가 없고 실행 흐름을 쭉 따라가면서 코드를 검증할 수 있다. 또 값이 할당된 변수에 마우스를 올리면 값을 직접 확인할 수도 있다.</p>
 
 <p>이렇듯 자바스크립트 개발에 있어서 <code class="language-plaintext highlighter-rouge">debugger</code>문을 활용하는 것은 코드의 흐름을 따라 효율적으로 코드를 검증할 수 있어 매우 유용하다.</p>
@@ -83,7 +83,7 @@
       <footer>
   <p>&copy; 1947 - 2024 | Hello, I am bincco!</p>
 </footer>
-<script src="/assets/js/mode.js" defer></script>
+<script src="/build/assets/js/mode.js" defer></script>
 
     </main>
     <section id="category-modal-bg"></section>

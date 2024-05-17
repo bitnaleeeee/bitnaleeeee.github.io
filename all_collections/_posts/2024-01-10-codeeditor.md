@@ -14,27 +14,27 @@ tag: [VScode]
 
 ## 1. Korean Language Pack : 에디터 한글화
 
-![plugin01](/assets/img/posts/plugin-korean.jpeg)
+![plugin01](/build/assets/img/posts/plugin-korean.jpeg)
 
 ## 2. Material Icon Theme : 탐색기 아이콘 테마
 
-![plugin02](/assets/img/posts/plugin-material.jpeg)
+![plugin02](/build/assets/img/posts/plugin-material.jpeg)
 
 ## 3. Live Server : 새로고침 없이 코딩 중인 웹 업데이트
 
-![plugin03](/assets/img/posts/plugin-server.jpeg)
+![plugin03](/build/assets/img/posts/plugin-server.jpeg)
 
 ## 4. indent-rainbow : 들여쓰기 색으로 구분
 
-![plugin04](/assets/img/posts/plugin-rainbow.jpeg)
+![plugin04](/build/assets/img/posts/plugin-rainbow.jpeg)
 
 ## 5. Bracket Pair Colorizer : 여는 괄호와 닫는 괄호 짝 지어줌
 
-![plugin05](/assets/img/posts/plugin-bracket.jpeg)
+![plugin05](/build/assets/img/posts/plugin-bracket.jpeg)
 
 ## 6. Auto Rename Tage : 여는 태그 수정시 닫는 태그도 자동 수정
 
-![plugin06](/assets/img/posts/plugin-auto.jpeg)
+![plugin06](/build/assets/img/posts/plugin-auto.jpeg)
 
 ## 7. One Dark Pro
 

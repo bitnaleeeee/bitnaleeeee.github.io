@@ -23,10 +23,10 @@ useEffect(() => {
 }, []);
 ```
 
-![debugger01](/assets/img/posts/debugger01.png)
+![debugger01](/build/assets/img/posts/debugger01.png)
 위 코드의 흐름에 `debugger`를 찍은 지점에서 실행을 멈추는 것을 확인할 수 있다.
 
-![debugger02](/assets/img/posts/debugger02.png)
+![debugger02](/build/assets/img/posts/debugger02.png)
 로컬에서 reponse를 확인해보면 `status` 200 으로 통신이 성공했다는 것을 알 수 있다. 코드가 실행될때마다 각 변수에 할당하는 값이 우측에 표시 되므로 `console.log`로 일일이 찍어서 값을 확인할 필요가 없고 실행 흐름을 쭉 따라가면서 코드를 검증할 수 있다. 또 값이 할당된 변수에 마우스를 올리면 값을 직접 확인할 수도 있다.
 
 이렇듯 자바스크립트 개발에 있어서 `debugger`문을 활용하는 것은 코드의 흐름을 따라 효율적으로 코드를 검증할 수 있어 매우 유용하다.

@@ -4,13 +4,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{{site.title}} | {{page.title}}</title>
   {% if page.layout == "post" %}
-  <link rel="stylesheet" href="{{site.baseurl}}/assets/css/post.css" />
-  <link rel="stylesheet" href="{{site.baseurl}}/assets/css/syntax.css" />
+  <link rel="stylesheet" href="{{site.baseurl}}/build/assets/css/post.css" />
+  <link rel="stylesheet" href="{{site.baseurl}}/build/assets/css/syntax.css" />
   {% else %}
-  <link rel="stylesheet" href="{{site.baseurl}}/assets/css/blog.css" />
+  <link rel="stylesheet" href="{{site.baseurl}}/build/assets/css/blog.css" />
   {%endif%}
-  <link rel="stylesheet" href="{{site.baseurl}}/assets/css/common.css" />
-  <script src="{{site.baseurl}}/assets/js/categories.js"></script>
+  <link rel="stylesheet" href="{{site.baseurl}}/build/assets/css/common.css" />
+  <script src="{{site.baseurl}}/build/assets/js/categories.js"></script>
   <script>
     const currentTheme = localStorage.getItem("theme");
     if (currentTheme) {
@@ -21,6 +21,6 @@
     }
   </script>
   {% if page.layout == "post" %}
-  <script defer src="{{site.baseurl}}/assets/js/lbox.js"></script>
+  <script defer src="{{site.baseurl}}/build/assets/js/lbox.js"></script>
   {% endif %}
 </head>

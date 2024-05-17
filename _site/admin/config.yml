@@ -5,7 +5,7 @@ backend:
   site_domain: agitated-northcutt-53b578.netlify.app
 
 media_folder: "assets/img/posts" # Media files will be stored in the repo under images/uploads
-public_folder: "/assets/img/posts" # The src attribute for uploaded media will begin with /images/uploads
+public_folder: "/build/assets/img/posts" # The src attribute for uploaded media will begin with /images/uploads
 publish_mode: editorial_workflow # To manage status (Edit, Draft, Publish)
 collections:
   - name: "blog" # Used in routes, e.g., /admin/collections/blog

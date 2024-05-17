@@ -15,7 +15,7 @@ jQuery를 이용하여 전체동의 체크박스UI를 아래와 같이 만들어
   jQuery Agree Checkbox UI</a> by day.binna (<a href="https://codepen.io/bitnaleeeee">@bitnaleeeee</a>)
   on <a href="https://codepen.io">CodePen</a>.</span>
 </p>
-<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+<script async src="https://cpwebassets.codepen.io/build/assets/embed/ei.js"></script>
 
 ## 전체 동의 체크 박스 함수 만들기
 1. 전체동의 체크 박스를 클릭하면 모두 체크되고, 해제시 모두 해제되는 함수를 생성한다.

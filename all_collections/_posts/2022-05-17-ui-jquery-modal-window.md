@@ -17,7 +17,7 @@ tag: [javascript, jquery]
   jQuery modal window UI</a> by day.binna (<a href="https://codepen.io/bitnaleeeee">@bitnaleeeee</a>)
   on <a href="https://codepen.io">CodePen</a>.</span>
 </p>
-<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+<script async src="https://cpwebassets.codepen.io/build/assets/embed/ei.js"></script>
 
 ## 설명
 1. retrun false는 함수를 중복 실행되지 않게 방지한다(이벤트 실행방지)

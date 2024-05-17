@@ -16,7 +16,7 @@ tag: [javascript, jquery]
   jQuery Dimmed popup UI</a> by day.binna (<a href="https://codepen.io/bitnaleeeee">@bitnaleeeee</a>)
   on <a href="https://codepen.io">CodePen</a>.</span>
 </p>
-<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+<script async src="https://cpwebassets.codepen.io/build/assets/embed/ei.js"></script>
 
 ## 해설
 1. 버튼 클릭시 팝업이 나타나는 함수 실행

@@ -16,7 +16,7 @@ tag: [javascript, jquery]
   Untitled</a> by day.binna (<a href="https://codepen.io/bitnaleeeee">@bitnaleeeee</a>)
   on <a href="https://codepen.io">CodePen</a>.</span>
 </p>
-<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+<script async src="https://cpwebassets.codepen.io/build/assets/embed/ei.js"></script>
 
 ## 설명
 1. 각 menu trigger 클래스 안의 12개 요소를 선택해주는 함수를 작성한다.

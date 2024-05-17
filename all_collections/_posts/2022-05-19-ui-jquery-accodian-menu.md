@@ -17,7 +17,7 @@ tag: [javascript, jquery]
   jQuery Accodian Menu UI</a> by day.binna (<a href="https://codepen.io/bitnaleeeee">@bitnaleeeee</a>)
   on <a href="https://codepen.io">CodePen</a>.</span>
 </p>
-<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+<script async src="https://cpwebassets.codepen.io/build/assets/embed/ei.js"></script>
 
 ## 설명
 1. next()함수는 바로 다음 요소를 선택하여 준다.

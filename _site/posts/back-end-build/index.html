@@ -6,11 +6,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Hello, I am bincco! | [AWS] AWS EC2 생성하여 서버 배포하기</title>
   
-  <link rel="stylesheet" href="/assets/css/post.css" />
-  <link rel="stylesheet" href="/assets/css/syntax.css" />
+  <link rel="stylesheet" href="/build/assets/css/post.css" />
+  <link rel="stylesheet" href="/build/assets/css/syntax.css" />
   
-  <link rel="stylesheet" href="/assets/css/common.css" />
-  <script src="/assets/js/categories.js"></script>
+  <link rel="stylesheet" href="/build/assets/css/common.css" />
+  <script src="/build/assets/js/categories.js"></script>
   <script>
     const currentTheme = localStorage.getItem("theme");
     if (currentTheme) {
@@ -21,7 +21,7 @@
     }
   </script>
   
-  <script defer src="/assets/js/lbox.js"></script>
+  <script defer src="/build/assets/js/lbox.js"></script>
   
 </head>
 
@@ -72,20 +72,20 @@
 
 <h3 id="ec2-instance-생성하기">EC2 Instance 생성하기</h3>
 
-<p><img src="/assets/img/posts/back-end-build-img01.png" alt="aws1파일" />
+<p><img src="/build/assets/img/posts/back-end-build-img01.png" alt="aws1파일" />
 EC2 Instances 페이지로 이동 후 Launch Instances 을 클릭하여 EC2 Instance의 이름을 작성하고 Ubuntu를 선택 하였다.</p>
 
 <p><br /></p>
 
-<p><img src="/assets/img/posts/back-end-build-img02.png" alt="aws2파일" />
+<p><img src="/build/assets/img/posts/back-end-build-img02.png" alt="aws2파일" />
 <code class="language-plaintext highlighter-rouge">Instance Type</code> 은 t2.micro를 선택하고 새키페어생성을 눌러 아래와 같이 선택 후 원하는 키 페어 이름을 입력한다.</p>
 
 <p><br /></p>
 
-<p><img src="/assets/img/posts/back-end-build-img03.png" alt="aws3파일" />
+<p><img src="/build/assets/img/posts/back-end-build-img03.png" alt="aws3파일" />
 네트워크 편집 버튼을 누른 후 위와 같이 설정해 주고 퍼블릭IP는 활성화를 선택해준다.</p>
 
-<p><img src="/assets/img/posts/back-end-build-img04.png" alt="aws4파일" />
+<p><img src="/build/assets/img/posts/back-end-build-img04.png" alt="aws4파일" />
 이후 Launch Instance 를 클릭하여 EC2 Instance 를 실행해주었을때 위와 같이 인스턴스 상태에 실행중이라고 뜬다면 성공이다.</p>
 
 <h3 id="ssh를-이용한-ec2-instance-접속">SSH를 이용한 EC2 Instance 접속</h3>
@@ -103,7 +103,7 @@ EC2 Instances 페이지로 이동 후 Launch Instances 을 클릭하여 EC2 Inst
 </code></pre></div></div>
 <p>다시 pem 파일이 위치한 디렉토리로 이동하여 실행해주면 아래와 같이 정상적으로나온다.</p>
 
-<p><img src="/assets/img/posts/back-end-build-img05.png" alt="aws5파일" /></p>
+<p><img src="/build/assets/img/posts/back-end-build-img05.png" alt="aws5파일" /></p>
 
 <h2 id="ubuntu--nodejs-설치및-npm-환경구축">Ubuntu  Node.js 설치및 npm 환경구축</h2>
 <p>노드를 설치하기에 앞서 설치에 필요한 커맨드라인툴을 설치해야 한다. 아래 명령어를 입력하여 우분투에 <code class="language-plaintext highlighter-rouge">CURL</code>를 설치한다.</p>
@@ -124,7 +124,7 @@ EC2 Instances 페이지로 이동 후 Launch Instances 을 클릭하여 EC2 Inst
       <footer>
   <p>&copy; 1947 - 2024 | Hello, I am bincco!</p>
 </footer>
-<script src="/assets/js/mode.js" defer></script>
+<script src="/build/assets/js/mode.js" defer></script>
 
     </main>
     <section id="category-modal-bg"></section>

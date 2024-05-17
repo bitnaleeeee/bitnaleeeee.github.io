@@ -9,7 +9,7 @@ permalink: /styleguide/
 
 <hr />
 
- <img src="/assets/img/styleguide.png" class="img-fluid">
+ <img src="/build/assets/img/styleguide.png" class="img-fluid">
 
 <p> Lets try the different text styles  <b> Bold </b> , <strong> Strong </strong>, <em> Emphasis </em>, <i> Italic </i> </p>
 
@@ -166,7 +166,7 @@ permalink: /styleguide/
 <h3 id="codepen-embed">CodePen Embed</h3>
 
 <p data-height="265" data-theme-id="light" data-slug-hash="YWvpRo" data-default-tab="css,result" data-user="kharrop" data-embed-version="2" data-pen-title="Referral Form" class="codepen"></p>
-<script async="" src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+<script async="" src="https://production-assets.codepen.io/build/assets/embed/ei.js"></script>
 
 <hr />
 

@@ -20,7 +20,7 @@ tag: [javascript, jquery]
   jQuery Select Box UI</a> by day.binna (<a href="https://codepen.io/bitnaleeeee">@bitnaleeeee</a>)
   on <a href="https://codepen.io">CodePen</a>.</span>
 </p>
-<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+<script async src="https://cpwebassets.codepen.io/build/assets/embed/ei.js"></script>
 
 ## 설명
 1. toggleClass('클래스명') 함수는 클릭할때 해당 클래스가 적용되고, 다시 한번 클릭하면 자동 해제된다.
