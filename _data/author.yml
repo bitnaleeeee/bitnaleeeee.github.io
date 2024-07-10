@@ -2,7 +2,8 @@ name: Binco
 dp: https://bitna.vercel.app/images/avatar.png
 description: "
   <p>
-A front-end developer who thinks from the user's perspective  </p>
+Developed by Sharad Raj who lives in South Korea building useful things for the world.
+  </p>
   <br/>
   <p>
     You should follow him on <a href='https://github.com/bitnaleeeee' target='_blank'>Github</a>
@@ -14,9 +15,9 @@ contact:
   #   url: https://www.linkedin.com/in/srsmaurya
   - title: github
     url: https://github.com/bitnaleeeee
-  # - title: twitter
-  #   url: https://twitter.com/iamsharadraj
-  - title: insta
+  - title: twitter
     url: https://www.instagram.com/dev.binco/
+  # - title: insta
+  #   url: https://www.instagram.com/dev.binco/
   - title: email
     url: bitnaleeeee@gmail.com
